@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */; };
-		221FAD3E21BAE0B8005AE7AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD3D21BAE0B8005AE7AE /* ViewController.swift */; };
 		221FAD4121BAE0B8005AE7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD3F21BAE0B8005AE7AE /* Main.storyboard */; };
 		221FAD4321BAE0C0005AE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD4221BAE0C0005AE7AE /* Assets.xcassets */; };
 		221FAD4621BAE0C0005AE7AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */; };
 		221FAD5121BAE0C0005AE7AE /* ISD196LunchroomAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD5021BAE0C0005AE7AE /* ISD196LunchroomAppTests.swift */; };
 		221FAD5C21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */; };
+		221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6921BAE1AD005AE7AE /* Podfile */; };
+		221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */; };
+		22C415C021BDB7B200114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415BF21BDB7B200114D53 /* StudentMenuViewController.swift */; };
+		22C415C221BDB83500114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C121BDB83500114D53 /* AdminMenuViewController.swift */; };
+		22F858C421BB082000C20293 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F858C321BB082000C20293 /* ViewController.swift */; };
+		2A5FD482F110986530353F15 /* Pods_ISD196LunchroomApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */; };
+		A28BB2D02B89CB2C85787003 /* Pods_ISD196LunchroomAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7671651E122AB4F6D2494A1 /* Pods_ISD196LunchroomAppUITests.framework */; };
+		C550F10235C41D608DABDA17 /* Pods_ISD196LunchroomAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90115164A48B5FCCA4A5DE /* Pods_ISD196LunchroomAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,6 @@
 /* Begin PBXFileReference section */
 		221FAD3821BAE0B8005AE7AE /* ISD196LunchroomApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISD196LunchroomApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		221FAD3D21BAE0B8005AE7AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		221FAD4021BAE0B8005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		221FAD4221BAE0C0005AE7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		221FAD4521BAE0C0005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,20 @@
 		221FAD5721BAE0C0005AE7AE /* ISD196LunchroomAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISD196LunchroomAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISD196LunchroomAppUITests.swift; sourceTree = "<group>"; };
 		221FAD5D21BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		22C415BF21BDB7B200114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
+		22C415C121BDB83500114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
+		22F858C321BB082000C20293 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISD196LunchroomApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F90115164A48B5FCCA4A5DE /* Pods_ISD196LunchroomAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISD196LunchroomAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71302B54EADDF6706B3362BB /* Pods-ISD196LunchroomApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomApp/Pods-ISD196LunchroomApp.release.xcconfig"; sourceTree = "<group>"; };
+		80F1FAF184299D5AF2887E1B /* Pods-ISD196LunchroomAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomAppTests/Pods-ISD196LunchroomAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		85D711385BD263704F4A9A4F /* Pods-ISD196LunchroomAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomAppUITests/Pods-ISD196LunchroomAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C9BB80375B1E49E5EB74EE16 /* Pods-ISD196LunchroomApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomApp/Pods-ISD196LunchroomApp.debug.xcconfig"; sourceTree = "<group>"; };
+		D0394E73C5C9A01F04F9D074 /* Pods-ISD196LunchroomAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomAppUITests/Pods-ISD196LunchroomAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E7671651E122AB4F6D2494A1 /* Pods_ISD196LunchroomAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISD196LunchroomAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2194C15A82B6C48D71ACF2 /* Pods-ISD196LunchroomAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomAppTests/Pods-ISD196LunchroomAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A5FD482F110986530353F15 /* Pods_ISD196LunchroomApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C550F10235C41D608DABDA17 /* Pods_ISD196LunchroomAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A28BB2D02B89CB2C85787003 /* Pods_ISD196LunchroomAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +104,8 @@
 				221FAD4F21BAE0C0005AE7AE /* ISD196LunchroomAppTests */,
 				221FAD5A21BAE0C0005AE7AE /* ISD196LunchroomAppUITests */,
 				221FAD3921BAE0B8005AE7AE /* Products */,
+				457AD6F1F6F955E5F72E83C2 /* Pods */,
+				EB91B74FDDE404EE439D24EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +122,16 @@
 		221FAD3A21BAE0B8005AE7AE /* ISD196LunchroomApp */ = {
 			isa = PBXGroup;
 			children = (
+				22F858C321BB082000C20293 /* ViewController.swift */,
 				221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */,
-				221FAD3D21BAE0B8005AE7AE /* ViewController.swift */,
+				22C415BF21BDB7B200114D53 /* StudentMenuViewController.swift */,
+				22C415C121BDB83500114D53 /* AdminMenuViewController.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
 				221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */,
 				221FAD4721BAE0C0005AE7AE /* Info.plist */,
+				221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */,
+				221FAD6921BAE1AD005AE7AE /* Podfile */,
 			);
 			path = ISD196LunchroomApp;
 			sourceTree = "<group>";
@@ -125,6 +154,29 @@
 			path = ISD196LunchroomAppUITests;
 			sourceTree = "<group>";
 		};
+		457AD6F1F6F955E5F72E83C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9BB80375B1E49E5EB74EE16 /* Pods-ISD196LunchroomApp.debug.xcconfig */,
+				71302B54EADDF6706B3362BB /* Pods-ISD196LunchroomApp.release.xcconfig */,
+				80F1FAF184299D5AF2887E1B /* Pods-ISD196LunchroomAppTests.debug.xcconfig */,
+				FA2194C15A82B6C48D71ACF2 /* Pods-ISD196LunchroomAppTests.release.xcconfig */,
+				D0394E73C5C9A01F04F9D074 /* Pods-ISD196LunchroomAppUITests.debug.xcconfig */,
+				85D711385BD263704F4A9A4F /* Pods-ISD196LunchroomAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EB91B74FDDE404EE439D24EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */,
+				6F90115164A48B5FCCA4A5DE /* Pods_ISD196LunchroomAppTests.framework */,
+				E7671651E122AB4F6D2494A1 /* Pods_ISD196LunchroomAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 221FAD6021BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomApp" */;
 			buildPhases = (
+				6B4300FD046FDC518D46ED05 /* [CP] Check Pods Manifest.lock */,
 				221FAD3421BAE0B8005AE7AE /* Sources */,
 				221FAD3521BAE0B8005AE7AE /* Frameworks */,
 				221FAD3621BAE0B8005AE7AE /* Resources */,
+				F5CB683681717A7267311AF7 /* [CP] Embed Pods Frameworks */,
+				39BCC75C7786260B48D24AB5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 221FAD6321BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomAppTests" */;
 			buildPhases = (
+				97E3C72B7C1D26C4F61E05FA /* [CP] Check Pods Manifest.lock */,
 				221FAD4821BAE0C0005AE7AE /* Sources */,
 				221FAD4921BAE0C0005AE7AE /* Frameworks */,
 				221FAD4A21BAE0C0005AE7AE /* Resources */,
@@ -167,6 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 221FAD6621BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomAppUITests" */;
 			buildPhases = (
+				4F6188614279F36FA08193ED /* [CP] Check Pods Manifest.lock */,
 				221FAD5321BAE0C0005AE7AE /* Sources */,
 				221FAD5421BAE0C0005AE7AE /* Frameworks */,
 				221FAD5521BAE0C0005AE7AE /* Resources */,
@@ -231,6 +288,8 @@
 			files = (
 				221FAD4621BAE0C0005AE7AE /* LaunchScreen.storyboard in Resources */,
 				221FAD4321BAE0C0005AE7AE /* Assets.xcassets in Resources */,
+				221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */,
+				221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */,
 				221FAD4121BAE0B8005AE7AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,12 +310,159 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		39BCC75C7786260B48D24AB5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ISD196LunchroomApp/Pods-ISD196LunchroomApp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAnonymousAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAnonymousAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISD196LunchroomApp/Pods-ISD196LunchroomApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F6188614279F36FA08193ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ISD196LunchroomAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B4300FD046FDC518D46ED05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ISD196LunchroomApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97E3C72B7C1D26C4F61E05FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ISD196LunchroomAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5CB683681717A7267311AF7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ISD196LunchroomApp/Pods-ISD196LunchroomApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISD196LunchroomApp/Pods-ISD196LunchroomApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		221FAD3421BAE0B8005AE7AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				221FAD3E21BAE0B8005AE7AE /* ViewController.swift in Sources */,
+				22C415C021BDB7B200114D53 /* StudentMenuViewController.swift in Sources */,
+				22C415C221BDB83500114D53 /* AdminMenuViewController.swift in Sources */,
+				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +634,7 @@
 		};
 		221FAD6121BAE0C0005AE7AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9BB80375B1E49E5EB74EE16 /* Pods-ISD196LunchroomApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -445,6 +652,7 @@
 		};
 		221FAD6221BAE0C0005AE7AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71302B54EADDF6706B3362BB /* Pods-ISD196LunchroomApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -462,6 +670,7 @@
 		};
 		221FAD6421BAE0C0005AE7AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80F1FAF184299D5AF2887E1B /* Pods-ISD196LunchroomAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -482,6 +691,7 @@
 		};
 		221FAD6521BAE0C0005AE7AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA2194C15A82B6C48D71ACF2 /* Pods-ISD196LunchroomAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +712,7 @@
 		};
 		221FAD6721BAE0C0005AE7AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0394E73C5C9A01F04F9D074 /* Pods-ISD196LunchroomAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +732,7 @@
 		};
 		221FAD6821BAE0C0005AE7AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85D711385BD263704F4A9A4F /* Pods-ISD196LunchroomAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

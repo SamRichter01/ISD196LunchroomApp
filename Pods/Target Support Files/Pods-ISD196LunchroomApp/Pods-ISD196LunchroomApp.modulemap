@@ -1,0 +1,6 @@
+framework module Pods_ISD196LunchroomApp {
+  umbrella header "Pods-ISD196LunchroomApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

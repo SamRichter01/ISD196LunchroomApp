@@ -1,0 +1,6 @@
+framework module Pods_ISD196LunchroomAppTests {
+  umbrella header "Pods-ISD196LunchroomAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
