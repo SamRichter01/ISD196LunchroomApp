@@ -28,7 +28,7 @@ class EditDatabaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsDriveReadonly]
+        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsDrive]
         service.rootURLString += "/"
         
         let settings = db.settings
