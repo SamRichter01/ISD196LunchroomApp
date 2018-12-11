@@ -115,6 +115,16 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="toLoginMenu" id="ssW-Ed-HdV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W14-f2-hXb">
+                                <rect key="frame" x="277" y="485" width="215" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="tintColor" red="0.4823529412" green="0.62745098040000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Edit Database"/>
+                                <connections>
+                                    <action selector="editDatabasePressed:" destination="cog-fp-Xus" eventType="touchUpInside" id="b8B-EJ-yDw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="WxH-al-W0A"/>
@@ -175,6 +185,6 @@
         <image name="Logo" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CE3-uR-hbH"/>
+        <segue reference="ssW-Ed-HdV"/>
     </inferredMetricsTieBreakers>
 </document>

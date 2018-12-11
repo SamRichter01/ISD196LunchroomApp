@@ -14,6 +14,9 @@ class AdminMenuViewController: UIViewController {
         performSegue(withIdentifier: "toLoginMenu", sender: self)
     }
     
+    @IBAction func editDatabasePressed(_ sender: UIButton) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
