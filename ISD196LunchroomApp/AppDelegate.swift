@@ -49,8 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             // User is signed in
             // ...
+            if (user.profile.email.contains("@apps.district196.org")) ||
+                (user.profile.email == "isd196lunchroomapp@gmail.com") {
+                    NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
+            } else {
+                GIDSignIn.sharedInstance().signOut()
+                GIDSignIn.sharedInstance().disconnect()
+            }
         }
-        NotificationCenter.default.post(name: Notification.Name("UserLoggedIn"), object: nil)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

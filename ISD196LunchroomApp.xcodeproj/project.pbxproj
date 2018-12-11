@@ -15,8 +15,8 @@
 		221FAD5C21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */; };
 		221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6921BAE1AD005AE7AE /* Podfile */; };
 		221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */; };
-		22C415C021BDB7B200114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415BF21BDB7B200114D53 /* StudentMenuViewController.swift */; };
-		22C415C221BDB83500114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C121BDB83500114D53 /* AdminMenuViewController.swift */; };
+		22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C321BED70500114D53 /* StudentMenuViewController.swift */; };
+		22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C521BED71400114D53 /* AdminMenuViewController.swift */; };
 		22F858C421BB082000C20293 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F858C321BB082000C20293 /* ViewController.swift */; };
 		2A5FD482F110986530353F15 /* Pods_ISD196LunchroomApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */; };
 		A28BB2D02B89CB2C85787003 /* Pods_ISD196LunchroomAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7671651E122AB4F6D2494A1 /* Pods_ISD196LunchroomAppUITests.framework */; };
@@ -55,8 +55,8 @@
 		221FAD5D21BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		22C415BF21BDB7B200114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
-		22C415C121BDB83500114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
+		22C415C321BED70500114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
+		22C415C521BED71400114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
 		22F858C321BB082000C20293 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISD196LunchroomApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F90115164A48B5FCCA4A5DE /* Pods_ISD196LunchroomAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISD196LunchroomAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,8 +124,8 @@
 			children = (
 				22F858C321BB082000C20293 /* ViewController.swift */,
 				221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */,
-				22C415BF21BDB7B200114D53 /* StudentMenuViewController.swift */,
-				22C415C121BDB83500114D53 /* AdminMenuViewController.swift */,
+				22C415C321BED70500114D53 /* StudentMenuViewController.swift */,
+				22C415C521BED71400114D53 /* AdminMenuViewController.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
 				221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */,
@@ -460,8 +460,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C415C021BDB7B200114D53 /* StudentMenuViewController.swift in Sources */,
-				22C415C221BDB83500114D53 /* AdminMenuViewController.swift in Sources */,
+				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
+				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 			);
