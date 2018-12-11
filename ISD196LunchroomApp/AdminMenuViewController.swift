@@ -15,7 +15,7 @@ class AdminMenuViewController: UIViewController {
     }
     
     @IBAction func editDatabasePressed(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "editDatabase", sender: self)
     }
     
     override func viewDidLoad() {

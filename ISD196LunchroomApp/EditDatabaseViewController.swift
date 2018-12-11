@@ -16,6 +16,10 @@ class EditDatabaseViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func backToMain(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toMain", sender: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
