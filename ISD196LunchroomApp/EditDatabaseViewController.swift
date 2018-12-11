@@ -1,23 +1,15 @@
 //
-//  AdminMenuViewController.swift
+//  EditDatabaseViewController.swift
 //  ISD196LunchroomApp
 //
-//  Created by Sam on 12/10/18.
+//  Created by Sam on 12/11/18.
 //  Copyright © 2018 district196.org. All rights reserved.
 //
 
 import UIKit
 
-class AdminMenuViewController: UIViewController {
+class EditDatabaseViewController: UIViewController {
 
-    @IBAction func logOutPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "toLoginMenu", sender: self)
-    }
-    
-    @IBAction func editDatabasePressed(_ sender: UIButton) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
