@@ -164,15 +164,54 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A5P-1S-vJB">
+                                <rect key="frame" x="206" y="281" width="357" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spreadsheet ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXs-i1-s0v">
+                                <rect key="frame" x="206" y="252" width="121" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zQ-CL-7Gj">
+                                <rect key="frame" x="298" y="469" width="174" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="tintColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Update current month"/>
+                                <connections>
+                                    <action selector="updateMonthPressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="8FK-UJ-xql"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJ9-8s-1lJ">
+                                <rect key="frame" x="313" y="367" width="144" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="tintColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create new month"/>
+                                <connections>
+                                    <action selector="createMonthPressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="bQV-tY-Jid"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="AlP-t2-Mh5"/>
                     </view>
+                    <connections>
+                        <outlet property="createMonthButton" destination="XJ9-8s-1lJ" id="G9H-5H-4DP"/>
+                        <outlet property="sheetIdField" destination="A5P-1S-vJB" id="Klr-z4-IdU"/>
+                        <outlet property="updateMonthButton" destination="5zQ-CL-7Gj" id="AAL-jg-BGG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaX-L2-ndW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BFG-gK-5zY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1879" y="-409"/>
+            <point key="canvasLocation" x="1878.90625" y="-409.5703125"/>
         </scene>
         <!--Student Menu View Controller-->
         <scene sceneID="7Ma-Cq-reb">
@@ -225,7 +264,7 @@
         <image name="Logo" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mES-Go-1Ed"/>
+        <segue reference="CaX-KG-pIc"/>
         <segue reference="ssW-Ed-HdV"/>
     </inferredMetricsTieBreakers>
 </document>
