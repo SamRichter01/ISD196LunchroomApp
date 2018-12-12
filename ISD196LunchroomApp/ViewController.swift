@@ -57,9 +57,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func mainMenuPressed(_ sender: UIButton) {
         if (GIDSignIn.sharedInstance().currentUser.profile.email.contains("@apps.district196.org")) {
-             performSegue(withIdentifier: "studentMainMenu", sender: self)
+            performSegue(withIdentifier: "studentMainMenu", sender: self)
         } else if (GIDSignIn.sharedInstance().currentUser.profile.email == "isd196lunchroomapp@gmail.com") {
-             performSegue(withIdentifier: "adminMainMenu", sender: self)
+            performSegue(withIdentifier: "adminMainMenu", sender: self)
         }
     }
     

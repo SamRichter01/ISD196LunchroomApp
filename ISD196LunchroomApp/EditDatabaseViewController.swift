@@ -22,7 +22,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     private let service = GTLRSheetsService()
     
-    var spreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
+    let spreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
     
     lazy var db = Firestore.firestore()
     
@@ -71,10 +71,6 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     // spreadsheet:
     // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
     func getMenu() {
-        
-        if let sheetId = sheetIdField.text {
-            spreadsheetId = sheetId
-        }
         
         let range = "'Monthly Menu'!A2:BM21"
         
