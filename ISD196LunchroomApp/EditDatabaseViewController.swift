@@ -22,17 +22,16 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     private let service = GTLRSheetsService()
     
-    let spreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
+    var spreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
     
     lazy var db = Firestore.firestore()
     
-    let pickerData = ["August", "September", "October", "November", "December", "January",
+    let pickerData = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
         service.rootURLString += "/"
         
         let settings = db.settings
@@ -72,6 +71,10 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     // spreadsheet:
     // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
     func getMenu() {
+        
+        if let sheetId = sheetIdField.text {
+            spreadsheetId = sheetId
+        }
         
         let range = "'Monthly Menu'!A2:BM21"
         
