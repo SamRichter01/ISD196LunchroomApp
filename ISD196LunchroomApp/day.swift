@@ -13,8 +13,8 @@ class Day {
     var day: Int
     var lines = [Line]()
     
-    init (day: Int) {
-        self.day = day
+    init (day: String) {
+        self.day = Int(day)!
     }
     
 }

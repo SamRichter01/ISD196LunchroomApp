@@ -10,18 +10,24 @@ import Foundation
 
 class MenuItem
 {
-    var itemType: String = "";
-    var name: String = "";
-    var price: Double = 0.0;
-    var description: String = "";
-    var ingredients: String = "";
+    var index: Int
+    var name: String
+    var price: Double
+    /*
+    var description: String
+    var ingredients: String
+    */
     
-    init(iT: String, n: String, p: Double, d: String, i: String)
+    init(index: String, name: String) {
+        self.index = Int(index)!
+        self.name = name
+        price = 0.0
+    }
+    
+    init(index: String, name: String, price: String)
     {
-        itemType = iT
-        name = n
-        price = p
-        description = d
-        ingredients = i
+        self.index = Int(index)!
+        self.name = name
+        self.price = Double(price)!
     }
 }

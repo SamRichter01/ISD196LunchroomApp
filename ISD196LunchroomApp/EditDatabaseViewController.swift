@@ -120,13 +120,13 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         for x in 0..<rows.count {
             
-            var day = Day(day: x+1)
+            var day = Day(day: "\(x+1)")
             
             for y in 2..<rows[x].count {
                 
                 if (rows[x][y] as! String).contains("Line") {
                     let line = Line(name: (rows[x][y] as! String), price: (rows[x][y+1] as! String))
-                    for z in y+1..<y+8 {
+                    for z in y..<y+8 {
                         if !(rows[x][z] as! String).contains("none") {
                             line.items.append(rows[x][z] as! String)
                         }
@@ -140,10 +140,10 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
             let dayRef = db.collection("menus").document(month.name)
                 .collection("days").document("\(day.day)")
             
-            batch.setData(["line 1": day.lines[0].items, "line 2": day.lines[1].items,
-                           "line 3": day.lines[2].items, "line 4": day.lines[3].items,
-                           "Soup Bar": day.lines[4].items, "Farm 2 School": day.lines[5].items,
-                           "Sides": day.lines[6].items], forDocument: dayRef)
+            batch.setData(["1": day.lines[0].items, "2": day.lines[1].items,
+                           "3": day.lines[2].items, "4": day.lines[3].items,
+                           "5": day.lines[4].items, "6": day.lines[5].items,
+                           "7": day.lines[6].items], forDocument: dayRef)
         }
         
         batch.commit() { err in
