@@ -30,6 +30,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn),
             name: Notification.Name("userLoggedIn"), object: nil)
     
+        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
         GIDSignIn.sharedInstance().signInSilently()
         GIDSignIn.sharedInstance().uiDelegate = self
         
