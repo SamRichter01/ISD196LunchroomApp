@@ -30,6 +30,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn),
             name: Notification.Name("userLoggedIn"), object: nil)
     
+        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
         GIDSignIn.sharedInstance().signInSilently()
         GIDSignIn.sharedInstance().uiDelegate = self
         
@@ -37,7 +38,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func signOutButtonPressed(_ sender: UIButton) {
-        
         nameLabel.text = "Signing out..."
         
         GIDSignIn.sharedInstance().disconnect()
@@ -57,9 +57,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func mainMenuPressed(_ sender: UIButton) {
         if (GIDSignIn.sharedInstance().currentUser.profile.email.contains("@apps.district196.org")) {
-             performSegue(withIdentifier: "studentMainMenu", sender: self)
+            performSegue(withIdentifier: "studentMainMenu", sender: self)
         } else if (GIDSignIn.sharedInstance().currentUser.profile.email == "isd196lunchroomapp@gmail.com") {
-             performSegue(withIdentifier: "adminMainMenu", sender: self)
+            performSegue(withIdentifier: "adminMainMenu", sender: self)
         }
     }
     

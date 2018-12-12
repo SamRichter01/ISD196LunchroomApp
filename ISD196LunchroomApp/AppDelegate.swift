@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
+            accessToken: authentication.accessToken)
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 // ...
@@ -49,13 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             // User is signed in
             // ...
-            if (user.profile.email.contains("@apps.district196.org")) ||
-                (user.profile.email == "isd196lunchroomapp@gmail.com") {
-                    NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
-            } else {
-                GIDSignIn.sharedInstance().signOut()
-                GIDSignIn.sharedInstance().disconnect()
-            }
+        }
+        if (user.profile.email.contains("@apps.district196.org")) ||
+            (user.profile.email == "isd196lunchroomapp@gmail.com") {
+            NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
+        } else {
+            GIDSignIn.sharedInstance().signOut()
+            GIDSignIn.sharedInstance().disconnect()
         }
     }
     

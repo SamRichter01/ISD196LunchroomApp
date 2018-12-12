@@ -15,6 +15,11 @@
 		221FAD5C21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */; };
 		221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6921BAE1AD005AE7AE /* Podfile */; };
 		221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */; };
+		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
+		22ACA8BD21C0291800069A70 /* month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BC21C0291800069A70 /* month.swift */; };
+		22ACA8BF21C0292700069A70 /* day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BE21C0292700069A70 /* day.swift */; };
+		22ACA8C121C0293100069A70 /* line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C021C0293100069A70 /* line.swift */; };
+		22ACA8C421C029EA00069A70 /* bridging header.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C321C029EA00069A70 /* bridging header.m */; };
 		22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C321BED70500114D53 /* StudentMenuViewController.swift */; };
 		22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C521BED71400114D53 /* AdminMenuViewController.swift */; };
 		22F858C421BB082000C20293 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F858C321BB082000C20293 /* ViewController.swift */; };
@@ -55,6 +60,12 @@
 		221FAD5D21BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
+		22ACA8BC21C0291800069A70 /* month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = month.swift; sourceTree = "<group>"; };
+		22ACA8BE21C0292700069A70 /* day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day.swift; sourceTree = "<group>"; };
+		22ACA8C021C0293100069A70 /* line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = line.swift; sourceTree = "<group>"; };
+		22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISD196LunchroomApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		22ACA8C321C029EA00069A70 /* bridging header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "bridging header.m"; sourceTree = "<group>"; };
 		22C415C321BED70500114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
 		22C415C521BED71400114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
 		22F858C321BB082000C20293 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,12 +137,18 @@
 				221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */,
 				22C415C321BED70500114D53 /* StudentMenuViewController.swift */,
 				22C415C521BED71400114D53 /* AdminMenuViewController.swift */,
+				22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */,
+				22ACA8BC21C0291800069A70 /* month.swift */,
+				22ACA8BE21C0292700069A70 /* day.swift */,
+				22ACA8C021C0293100069A70 /* line.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
 				221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */,
 				221FAD4721BAE0C0005AE7AE /* Info.plist */,
 				221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */,
 				221FAD6921BAE1AD005AE7AE /* Podfile */,
+				22ACA8C321C029EA00069A70 /* bridging header.m */,
+				22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */,
 			);
 			path = ISD196LunchroomApp;
 			sourceTree = "<group>";
@@ -250,6 +267,7 @@
 				TargetAttributes = {
 					221FAD3721BAE0B8005AE7AE = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					221FAD4B21BAE0C0005AE7AE = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -460,9 +478,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */,
 				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
+				22ACA8BD21C0291800069A70 /* month.swift in Sources */,
 				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
+				22ACA8BF21C0292700069A70 /* day.swift in Sources */,
+				22ACA8C121C0293100069A70 /* line.swift in Sources */,
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
+				22ACA8C421C029EA00069A70 /* bridging header.m in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +660,7 @@
 			baseConfigurationReference = C9BB80375B1E49E5EB74EE16 /* Pods-ISD196LunchroomApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ISD196LunchroomApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -645,6 +669,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196.ISD196LunchroomApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ISD196LunchroomApp/ISD196LunchroomApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -655,6 +681,7 @@
 			baseConfigurationReference = 71302B54EADDF6706B3362BB /* Pods-ISD196LunchroomApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ISD196LunchroomApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -663,6 +690,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196.ISD196LunchroomApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ISD196LunchroomApp/ISD196LunchroomApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
