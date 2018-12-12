@@ -22,7 +22,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     private let service = GTLRSheetsService()
     
-    let spreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
+    var spreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
     
     lazy var db = Firestore.firestore()
     
@@ -32,6 +32,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        sheetIdField.text = spreadsheetId
+        
         service.rootURLString += "/"
         
         let settings = db.settings
@@ -73,6 +75,12 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     func getMenu() {
         
         let range = "'Monthly Menu'!A2:BM21"
+        
+        if (sheetIdField.text != nil) {
+            if ((sheetIdField.text?.count)! >= spreadsheetId.count) {
+                spreadsheetId = sheetIdField.text!
+            }
+        }
         
         let query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetId, range: range)
         query.valueRenderOption = "FORMATTED_VALUE"
