@@ -20,7 +20,6 @@
 		22ACA8BF21C0292700069A70 /* day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BE21C0292700069A70 /* day.swift */; };
 		22ACA8C121C0293100069A70 /* line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C021C0293100069A70 /* line.swift */; };
 		22ACA8C421C029EA00069A70 /* bridging header.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C321C029EA00069A70 /* bridging header.m */; };
-		22ACA8C621C044FF00069A70 /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C521C044FF00069A70 /* MonthPickerView.swift */; };
 		22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C321BED70500114D53 /* StudentMenuViewController.swift */; };
 		22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C521BED71400114D53 /* AdminMenuViewController.swift */; };
 		22F858C421BB082000C20293 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F858C321BB082000C20293 /* ViewController.swift */; };
@@ -67,7 +66,6 @@
 		22ACA8C021C0293100069A70 /* line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = line.swift; sourceTree = "<group>"; };
 		22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISD196LunchroomApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		22ACA8C321C029EA00069A70 /* bridging header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "bridging header.m"; sourceTree = "<group>"; };
-		22ACA8C521C044FF00069A70 /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
 		22C415C321BED70500114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
 		22C415C521BED71400114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
 		22F858C321BB082000C20293 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				22ACA8BC21C0291800069A70 /* month.swift */,
 				22ACA8BE21C0292700069A70 /* day.swift */,
 				22ACA8C021C0293100069A70 /* line.swift */,
-				22ACA8C521C044FF00069A70 /* MonthPickerView.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
 				221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */,
@@ -490,7 +487,6 @@
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
 				22ACA8C421C029EA00069A70 /* bridging header.m in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
-				22ACA8C621C044FF00069A70 /* MonthPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

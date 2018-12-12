@@ -13,11 +13,12 @@ import FirebaseFirestore
 import GoogleAPIClientForREST
 import GoogleSignIn
 
-class EditDatabaseViewController: UIViewController {
+class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var sheetIdField: UITextField!
     @IBOutlet weak var createMonthButton: UIButton!
     @IBOutlet weak var updateMonthButton: UIButton!
+    @IBOutlet weak var monthPicker: UIPickerView!
     
     private let service = GTLRSheetsService()
     
@@ -25,15 +26,22 @@ class EditDatabaseViewController: UIViewController {
     
     lazy var db = Firestore.firestore()
     
+    let pickerData = ["August", "September", "October", "November", "December", "January",
+                      "February", "March", "April", "May", "June"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsDrive]
+        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
         service.rootURLString += "/"
         
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
+        
+        monthPicker.delegate = self
+        monthPicker.dataSource = self
+        
         // Do any additional setup after loading the view.
     }
 
@@ -44,6 +52,20 @@ class EditDatabaseViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    // The data to return fopr the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
     }
     
     // Display the data within the spreadsheet from the range
@@ -74,11 +96,11 @@ class EditDatabaseViewController: UIViewController {
             return
         }
         
-        let month = Month(name: "This Month")
+        let month = Month(name: "\(pickerData[monthPicker.selectedRow(inComponent: 0)])")
         
         // Add a new document in collection "cities"
         let menus = db.collection("menus")
-        menus.document("month").setData(["name": "\(month.name)"]) { err in
+        menus.document(month.name).setData(["name": "\(month.name)"]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
@@ -107,7 +129,8 @@ class EditDatabaseViewController: UIViewController {
             
             month.days.append(day)
             
-            let dayRef = db.collection("menus").document("month").collection("days").document("\(day.day)")
+            let dayRef = db.collection("menus").document(month.name)
+                .collection("days").document("\(day.day)")
             
             batch.setData(["line 1": day.lines[0].items, "line 2": day.lines[1].items,
                            "line 3": day.lines[2].items, "line 4": day.lines[3].items,
@@ -152,7 +175,7 @@ class EditDatabaseViewController: UIViewController {
             return
         }
         
-        let month = Month(name: "This Month")
+        let month = Month(name: "\(pickerData[monthPicker.selectedRow(inComponent: 0)])")
         
         /* Add a new document in collection "cities"
         let menus = db.collection("menus")
@@ -186,7 +209,8 @@ class EditDatabaseViewController: UIViewController {
             
             month.days.append(day)
             
-            let dayRef = db.collection("menus").document("month").collection("days").document("\(day.day)")
+            let dayRef = db.collection("menus").document(month.name)
+                .collection("days").document("\(day.day)")
             
             batch.updateData(["line 1": day.lines[0].items, "line 2": day.lines[1].items,
                            "line 3": day.lines[2].items, "line 4": day.lines[3].items,

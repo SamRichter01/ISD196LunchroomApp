@@ -37,7 +37,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func signOutButtonPressed(_ sender: UIButton) {
-        
         nameLabel.text = "Signing out..."
         
         GIDSignIn.sharedInstance().disconnect()
