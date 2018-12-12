@@ -17,8 +17,9 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var sheetIdField: UITextField!
     @IBOutlet weak var createMonthButton: UIButton!
-    @IBOutlet weak var updateMonthButton: UIButton!
     @IBOutlet weak var monthPicker: UIPickerView!
+    @IBOutlet weak var updateItemsButton: UIButton!
+    @IBOutlet weak var updateALaCarteButton: UIButton!
     
     private let service = GTLRSheetsService()
     
@@ -154,9 +155,145 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
+    // Display the data within the spreadsheet from the range
+    // spreadsheet:
+    // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
+    func getMenuItems() {
+        
+        let range = "'Daily Menu'!A2:A106"
+        
+        if (sheetIdField.text != nil) {
+            if ((sheetIdField.text?.count)! >= spreadsheetId.count) {
+                spreadsheetId = sheetIdField.text!
+            }
+        }
+        
+        let query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetId, range: range)
+        query.valueRenderOption = "FORMATTED_VALUE"
+        service.authorizer = GIDSignIn.sharedInstance().currentUser.authentication.fetcherAuthorizer()
+        service.executeQuery(query, delegate: self,
+                             didFinish: #selector(importMenuItems(ticket:finishedWithObject:error:)))
+    }
+    
+    // Process the response and display output
+    @objc func importMenuItems(ticket: GTLRServiceTicket,
+                           finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
+        
+        if let error = error {
+            return
+        }
+        
+        let rows = result.values!
+        
+        if rows.isEmpty {
+            return
+        }
+        
+        // Add a new document in collection "cities"
+        let menus = db.collection("menus")
+        menus.document("Menu Items").setData(["nunber of items": "\(rows.count)"]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+        let batch = db.batch()
+        
+        for x in 0..<rows.count {
+            
+            let dayRef = db.collection("menus").document("Menu Items")
+                .collection("Items").document("\(rows[x][0])")
+            
+            batch.setData(["Item index": "\(x)"], forDocument: dayRef)
+        }
+        
+        batch.commit() { err in
+            if let err = err {
+                print("Error writing batch \(err)")
+            } else {
+                print("Batch write succeeded.")
+            }
+        }
+    }
+    
+    // Display the data within the spreadsheet from the range
+    // spreadsheet:
+    // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
+    func getALaCarteItems() {
+        
+        let range = "'A La Carte Menu'!A2:B83"
+        
+        if (sheetIdField.text != nil) {
+            if ((sheetIdField.text?.count)! >= spreadsheetId.count) {
+                spreadsheetId = sheetIdField.text!
+            }
+        }
+        
+        let query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetId, range: range)
+        query.valueRenderOption = "FORMATTED_VALUE"
+        service.authorizer = GIDSignIn.sharedInstance().currentUser.authentication.fetcherAuthorizer()
+        service.executeQuery(query, delegate: self,
+                             didFinish: #selector(importALaCarteItems(ticket:finishedWithObject:error:)))
+    }
+    
+    // Process the response and display output
+    @objc func importALaCarteItems(ticket: GTLRServiceTicket,
+                               finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
+        
+        if let error = error {
+            return
+        }
+        
+        let rows = result.values!
+        
+        if rows.isEmpty {
+            return
+        }
+        
+        // Add a new document in collection "cities"
+        let menus = db.collection("menus")
+        menus.document("A La Carte Items").setData(["number of items": "\(rows.count)"]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+        let batch = db.batch()
+        
+        for x in 0..<rows.count {
+            
+            let dayRef = db.collection("menus").document("A La Carte Items")
+                .collection("Items").document("\(rows[x][0])")
+            
+            batch.setData(["Item index": "\(x)", "Cost": rows[x][1]], forDocument: dayRef)
+        }
+        
+        batch.commit() { err in
+            if let err = err {
+                print("Error writing batch \(err)")
+            } else {
+                print("Batch write succeeded.")
+            }
+        }
+    }
+    
     @IBAction func createMonthPressed(_ sender: UIButton) {
         getMenu()
     }
+    
+    @IBAction func updateListPressed(_ sender: UIButton) {
+        getMenuItems()
+    }
+    
+    @IBAction func updateALaCartePressed(_ sender: UIButton) {
+        getALaCarteItems()
+    }
+    
+    
     
     /*
     // MARK: - Navigation

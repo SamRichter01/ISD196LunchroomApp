@@ -202,6 +202,26 @@
                                     <action selector="createMonthPressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="bQV-tY-Jid"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfI-fI-Mp1">
+                                <rect key="frame" x="293" y="730" width="182" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="tintColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Update a la carte items"/>
+                                <connections>
+                                    <action selector="updateALaCartePressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="wzb-7g-Fyh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJM-Nd-ck9">
+                                <rect key="frame" x="307" y="650" width="154" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="tintColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Update menu items"/>
+                                <connections>
+                                    <action selector="updateListPressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="aa8-TQ-WRq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="AlP-t2-Mh5"/>
@@ -210,6 +230,8 @@
                         <outlet property="createMonthButton" destination="XJ9-8s-1lJ" id="G9H-5H-4DP"/>
                         <outlet property="monthPicker" destination="Kk5-w6-DYO" id="1WH-hP-rIY"/>
                         <outlet property="sheetIdField" destination="A5P-1S-vJB" id="Klr-z4-IdU"/>
+                        <outlet property="updateALaCarteButton" destination="jfI-fI-Mp1" id="Odg-If-wKa"/>
+                        <outlet property="updateItemsButton" destination="VJM-Nd-ck9" id="2La-CO-zKZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaX-L2-ndW" userLabel="First Responder" sceneMemberID="firstResponder"/>
