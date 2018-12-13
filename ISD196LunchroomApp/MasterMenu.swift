@@ -41,9 +41,11 @@ class MasterMenu {
                         index: (document.get("Item index")) as! String,
                         name: document.documentID))
                 }
+                /*
                 for x in 0..<aLaCarteItems.count {
                     print("Added menu item with index: \(aLaCarteItems[x].index)")
                 }
+                */
             }
         }
     }
@@ -66,9 +68,11 @@ class MasterMenu {
                         name: document.documentID,
                         price: (document.get("Cost")) as! String))
                 }
+                /*
                 for x in 0..<aLaCarteItems.count {
                     print("Added a la carte item with index: \(aLaCarteItems[x].index)")
                 }
+                */
             }
         }
     }

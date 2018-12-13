@@ -11,12 +11,12 @@ import Foundation
 class Line {
     
     var name: String
-    var price: String
+    var price: Double
     var items = [String]()
     
     init (name: String, price: String) {
         self.name = name
-        self.price = price
+        self.price = Double(price)!
     }
     
 }
