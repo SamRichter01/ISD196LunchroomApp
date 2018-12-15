@@ -30,6 +30,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     let pickerData = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
     
+    var days = [[String]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -104,11 +106,13 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
             return
         }
         
-        let month = Month(name: "\(pickerData[monthPicker.selectedRow(inComponent: 0)])")
+        let selectedMonth = pickerData[monthPicker.selectedRow(inComponent: 0)]
+        
+        getSchoolDays()
         
         // Add a new document in collection "cities"
         let menus = db.collection("menus")
-        menus.document(month.name).setData(["name": "\(month.name)"]) { err in
+        menus.document(selectedMonth).setData(["name": selectedMonth]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
@@ -118,6 +122,47 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let batch = db.batch()
         
+        for x in 0..<days.count {
+            
+            if (days[x][0].contains(selectedMonth)) {
+                
+                let week = Int(days[x][1])!
+                let rotationDay = Int(days[x][2])!
+                let startDate = Int(days[x][3])!
+                let numberOfDays = Int(days[x][4])!
+                var menuIndex = (((week - 1) * 5) + (rotationDay) - 1)
+                
+                for y in startDate..<(startDate + numberOfDays) {
+                    
+                    let day = Day(day: "\(y)")
+                    
+                    for i in 2..<rows[menuIndex].count {
+                        
+                        if (rows[menuIndex][i] as! String).contains("Line") {
+                            let line = Line(name: (rows[menuIndex][i] as! String), price: (rows[menuIndex][i+1] as! String))
+                            for z in i..<i+8 {
+                                if !(rows[menuIndex][z] as! String).contains("none") {
+                                    line.items.append(rows[menuIndex][z] as! String)
+                                }
+                            }
+                            day.lines.append(line)
+                        }
+                    }
+            
+                    menuIndex += 1
+                    
+                    let dayRef = db.collection("menus").document(selectedMonth)
+                        .collection("days").document("\(day.day)")
+                    
+                    batch.setData(["1": day.lines[0].items, "2": day.lines[1].items,
+                                   "3": day.lines[2].items, "4": day.lines[3].items,
+                                   "5": day.lines[4].items, "6": day.lines[5].items,
+                                   "7": day.lines[6].items], forDocument: dayRef)
+                }
+            }
+        }
+       
+        /*
         for x in 0..<rows.count {
             
             var day = Day(day: "\(x+1)")
@@ -145,6 +190,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                            "5": day.lines[4].items, "6": day.lines[5].items,
                            "7": day.lines[6].items], forDocument: dayRef)
         }
+        */
         
         batch.commit() { err in
             if let err = err {
@@ -293,7 +339,36 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         getALaCarteItems()
     }
     
+    // Display the data within the spreadsheet from the range
+    // spreadsheet:
+    // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
+    func getSchoolDays() {
+        
+        let range = "'School Days'!A2:E43"
+        
+        let defaultSpreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
+        
+        let query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: defaultSpreadsheetId, range: range)
+        query.valueRenderOption = "FORMATTED_VALUE"
+        service.authorizer = GIDSignIn.sharedInstance().currentUser.authentication.fetcherAuthorizer()
+        service.executeQuery(query, delegate: self,
+                             didFinish: #selector(createCalendar(ticket:finishedWithObject:error:)))
+    }
     
+    // Process the response and display output
+    @objc func createCalendar(ticket: GTLRServiceTicket,
+                           finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
+        
+        if let error = error {
+            return
+        }
+        
+        days = result.values as! [[String]]
+        
+        if days.isEmpty {
+            return
+        }
+    }
     
     /*
     // MARK: - Navigation

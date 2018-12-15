@@ -12,19 +12,13 @@ import FirebaseAuth
 import FirebaseFirestore
 import Foundation
 
-var months = [Month]()
-var menuItems = [MenuItem]()
-var aLaCarteItems = [MenuItem]()
+var monthlyMenus: [Month] = [Month]()
+var menuItems: [MenuItem] = [MenuItem]()
+var aLaCarteItems: [MenuItem] = [MenuItem]()
 
 class MasterMenu {
     
-    init () {
-        downloadMenuItems()
-        downloadALaCarteItems()
-        downloadMonthlyMenus()
-    }
-    
-    func downloadMenuItems() {
+    static func downloadMenuItems() {
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -50,7 +44,7 @@ class MasterMenu {
         }
     }
     
-    func downloadALaCarteItems() {
+    static func downloadALaCarteItems() {
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -77,7 +71,7 @@ class MasterMenu {
         }
     }
     
-    func downloadMonthlyMenus() {
+    static func downloadMonthlyMenus() {
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -103,6 +97,7 @@ class MasterMenu {
                             for x in 1..<8 {
                                 
                                 let lineDoc = (document.get("\(x)") as! [String])
+                                
                                 let tempLine = Line(
                                     name: lineDoc[0],
                                     price: lineDoc[1])
@@ -117,7 +112,7 @@ class MasterMenu {
                                 tempDay.lines.append(tempLine)
                             }
                             tempMonth.days.append(tempDay)
-                            months.append(tempMonth)
+                            monthlyMenus.append(tempMonth)
                     }
                 }
             }

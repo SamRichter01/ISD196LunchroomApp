@@ -22,6 +22,8 @@
 		22ACA8C421C029EA00069A70 /* bridging header.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C321C029EA00069A70 /* bridging header.m */; };
 		22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C921C171BC00069A70 /* MenuItem.swift */; };
 		22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8CA21C171BC00069A70 /* MasterMenu.swift */; };
+		22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8CD21C2CB1B00069A70 /* mainOrderViewController.swift */; };
+		22ACA8D221C2D77700069A70 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */; };
 		22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C321BED70500114D53 /* StudentMenuViewController.swift */; };
 		22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C521BED71400114D53 /* AdminMenuViewController.swift */; };
 		22F858C421BB082000C20293 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F858C321BB082000C20293 /* ViewController.swift */; };
@@ -70,6 +72,8 @@
 		22ACA8C321C029EA00069A70 /* bridging header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "bridging header.m"; sourceTree = "<group>"; };
 		22ACA8C921C171BC00069A70 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		22ACA8CA21C171BC00069A70 /* MasterMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMenu.swift; sourceTree = "<group>"; };
+		22ACA8CD21C2CB1B00069A70 /* mainOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainOrderViewController.swift; sourceTree = "<group>"; };
+		22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		22C415C321BED70500114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
 		22C415C521BED71400114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
 		22F858C321BB082000C20293 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,11 +146,13 @@
 				22C415C321BED70500114D53 /* StudentMenuViewController.swift */,
 				22C415C521BED71400114D53 /* AdminMenuViewController.swift */,
 				22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */,
+				22ACA8CD21C2CB1B00069A70 /* mainOrderViewController.swift */,
 				22ACA8BC21C0291800069A70 /* month.swift */,
 				22ACA8BE21C0292700069A70 /* day.swift */,
 				22ACA8C021C0293100069A70 /* line.swift */,
 				22ACA8C921C171BC00069A70 /* MenuItem.swift */,
 				22ACA8CA21C171BC00069A70 /* MasterMenu.swift */,
+				22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
 				221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */,
@@ -486,12 +492,14 @@
 			files = (
 				22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */,
 				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
+				22ACA8D221C2D77700069A70 /* MenuTableViewCell.swift in Sources */,
 				22ACA8BD21C0291800069A70 /* month.swift in Sources */,
 				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
 				22ACA8BF21C0292700069A70 /* day.swift in Sources */,
 				22ACA8C121C0293100069A70 /* line.swift in Sources */,
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
 				22ACA8C421C029EA00069A70 /* bridging header.m in Sources */,
+				22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 				22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */,
 				22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */,

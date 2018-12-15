@@ -13,11 +13,17 @@ class StudentMenuViewController: UIViewController {
     @IBAction func logOutPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "toLoginMenu", sender: self)
     }
+
+    @IBAction func quickOrderPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "quickOrder", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MasterMenu.init()
+        MasterMenu.downloadALaCarteItems()
+        MasterMenu.downloadMenuItems()
+        MasterMenu.downloadMonthlyMenus()
         // Do any additional setup after loading the view.
     }
 
