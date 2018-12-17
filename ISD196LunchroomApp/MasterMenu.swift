@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import Foundation
 
-var monthlyMenus: [Month] = [Month]()
+var monthlyMenus = Dictionary<String,Month>()
 var menuItems: [MenuItem] = [MenuItem]()
 var aLaCarteItems: [MenuItem] = [MenuItem]()
 
@@ -81,6 +81,9 @@ class MasterMenu {
         let monthNames = ["September", "October", "November", "December", "January",
                           "February", "March", "April", "May", "June"]
         
+        let lineNames = ["Line 1", "Line 2", "Line 3", "Line 4",
+                         "Soup Bar", "Farm 2 School", "Sides"]
+        
         for month in monthNames {
             db.collection("menus").document(month)
                 .collection("days").getDocuments() { (querySnapshot, err) in
@@ -94,12 +97,12 @@ class MasterMenu {
                             
                             let tempDay = Day(day: document.documentID)
                             
-                            for x in 1..<8 {
+                            for line in lineNames {
                                 
-                                let lineDoc = (document.get("\(x)") as! [String])
+                                let lineDoc = (document.get(line) as! [String])
                                 
-                                let tempLine = Line(
-                                    name: lineDoc[0],
+                                let tempLine = Line (
+                                    name: line,
                                     price: lineDoc[1])
                                 
                                 if lineDoc.count > 3 {
@@ -109,10 +112,10 @@ class MasterMenu {
                                         tempLine.items.append(lineDoc[y])
                                     }
                                 }
-                                tempDay.lines.append(tempLine)
+                                tempDay.lines[tempLine.name] = tempLine
                             }
-                            tempMonth.days.append(tempDay)
-                            monthlyMenus.append(tempMonth)
+                            tempMonth.days[tempDay.day] = tempDay
+                            monthlyMenus[tempMonth.name] = tempMonth
                     }
                 }
             }

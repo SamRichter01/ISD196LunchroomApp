@@ -11,17 +11,84 @@ import UIKit
 class mainOrderViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var cancelOrderButton: UIButton!
+    
+    var monthName = "September"
+    var day = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        MasterMenu.downloadALaCarteItems()
+        MasterMenu.downloadMenuItems()
+        MasterMenu.downloadMonthlyMenus()
+        
         menuTableView.dataSource = self
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        monthName = monthToString(month: month)
+        
+        while (monthlyMenus[self.monthName]!.days[self.day] == nil) {
+            if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
+                if (month == 12) {
+                    monthName = monthToString(month: 1)
+                } else {
+                    monthName = monthToString(month: month + 1)
+                }
+                day = 0
+            }
+            day += 1
+        }
+        
+        dateLabel.text = "\(monthName) \(day), \(year)"
         // Do any additional setup after loading the view.
+    }
+    
+    func monthToString (month: Int) -> String {
+        
+        var monthName = "September"
+        
+        switch month {
+        case 9 :
+            monthName = "September"
+        case 10 :
+            monthName = "October"
+        case 11 :
+            monthName = "November"
+        case 12 :
+            monthName = "December"
+        case 1 :
+            monthName = "January"
+        case 2 :
+            monthName = "February"
+        case 3 :
+            monthName = "March"
+        case 4 :
+            monthName = "April"
+        case 5 :
+            monthName = "May"
+        case 6 :
+            monthName = "June"
+        default :
+            break
+        }
+        
+        return monthName
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "cancelOrder", sender: self)
     }
     
     // MARK: - Table view data source
@@ -31,7 +98,9 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return monthlyMenus[0].days[0].lines.count
+        //print("\(self.monthName)")
+        //print("\(self.day)")
+        return monthlyMenus[self.monthName]!.days[self.day]!.lines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,11 +112,13 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
             fatalError("The dequeued cell is not an instance of MenuTableViewCell.")
         }
         
-        let lines = monthlyMenus[0].days[0].lines
-        
-        cell.priceLabel.text = lines[0].price
-        cell.lineNameLabel.text = lines[0].name
-        cell.itemOneLabel.text = lines[0].items[0]
+        let todaysLines = monthlyMenus[self.monthName]!.days[self.day]!.lines
+        print(todaysLines.count)
+    
+        cell.priceLabel.text = todaysLines["Line 1"]!.price
+        cell.lineNameLabel.text = todaysLines["Line 1"]!.name
+        cell.itemOneLabel.text = todaysLines["Line 1"]!.items[0]
+        cell.itemTwoLabel.text = todaysLines["Line 1"]!.items[1]
         
         return cell
     }

@@ -11,7 +11,7 @@ import Foundation
 class Day {
     
     var day: Int
-    var lines = [Line]()
+    var lines = Dictionary<String,Line>()
     
     init (day: String) {
         self.day = Int(day)!

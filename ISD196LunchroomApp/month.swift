@@ -11,7 +11,7 @@ import Foundation
 class Month {
     
     var name: String
-    var days = [Day]()
+    var days = Dictionary<Int,Day>()
     
     init (name: String) {
         self.name = name
