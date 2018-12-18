@@ -26,6 +26,9 @@
 		22ACA8D221C2D77700069A70 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */; };
 		22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C321BED70500114D53 /* StudentMenuViewController.swift */; };
 		22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C521BED71400114D53 /* AdminMenuViewController.swift */; };
+		22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */; };
+		22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */; };
+		22E918F821C81EBB004B60D6 /* MenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F721C81EBB004B60D6 /* MenuItemCollectionViewCell.swift */; };
 		22F858C421BB082000C20293 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F858C321BB082000C20293 /* ViewController.swift */; };
 		2A5FD482F110986530353F15 /* Pods_ISD196LunchroomApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */; };
 		A28BB2D02B89CB2C85787003 /* Pods_ISD196LunchroomAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7671651E122AB4F6D2494A1 /* Pods_ISD196LunchroomAppUITests.framework */; };
@@ -76,6 +79,9 @@
 		22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		22C415C321BED70500114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
 		22C415C521BED71400114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
+		22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteViewController.swift; sourceTree = "<group>"; };
+		22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteTableViewCell.swift; sourceTree = "<group>"; };
+		22E918F721C81EBB004B60D6 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		22F858C321BB082000C20293 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISD196LunchroomApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F90115164A48B5FCCA4A5DE /* Pods_ISD196LunchroomAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISD196LunchroomAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,12 +153,15 @@
 				22C415C521BED71400114D53 /* AdminMenuViewController.swift */,
 				22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */,
 				22ACA8CD21C2CB1B00069A70 /* mainOrderViewController.swift */,
+				22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */,
 				22ACA8BC21C0291800069A70 /* month.swift */,
 				22ACA8BE21C0292700069A70 /* day.swift */,
 				22ACA8C021C0293100069A70 /* line.swift */,
 				22ACA8C921C171BC00069A70 /* MenuItem.swift */,
 				22ACA8CA21C171BC00069A70 /* MasterMenu.swift */,
 				22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */,
+				22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */,
+				22E918F721C81EBB004B60D6 /* MenuItemCollectionViewCell.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
 				221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */,
@@ -493,13 +502,16 @@
 				22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */,
 				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
 				22ACA8D221C2D77700069A70 /* MenuTableViewCell.swift in Sources */,
+				22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */,
 				22ACA8BD21C0291800069A70 /* month.swift in Sources */,
 				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
 				22ACA8BF21C0292700069A70 /* day.swift in Sources */,
 				22ACA8C121C0293100069A70 /* line.swift in Sources */,
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
+				22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */,
 				22ACA8C421C029EA00069A70 /* bridging header.m in Sources */,
 				22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */,
+				22E918F821C81EBB004B60D6 /* MenuItemCollectionViewCell.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 				22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */,
 				22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */,

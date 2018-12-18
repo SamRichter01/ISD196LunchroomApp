@@ -1,18 +1,18 @@
 //
-//  mainOrderViewController.swift
+//  ALaCarteViewController.swift
 //  ISD196LunchroomApp
 //
-//  Created by Sam on 12/13/18.
+//  Created by Sam on 12/17/18.
 //  Copyright © 2018 district196.org. All rights reserved.
 //
 
 import UIKit
 
-class mainOrderViewController: UIViewController, UITableViewDataSource {
-    
-    @IBOutlet weak var menuTableView: UITableView!
+class ALaCarteViewController: UIViewController, UITableViewDataSource {
+
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cancelOrderButton: UIButton!
+    @IBOutlet weak var aLaCarteTableView: UITableView!
     
     var monthName = "September"
     var day = 1
@@ -20,7 +20,7 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        menuTableView.dataSource = self
+        aLaCarteTableView.dataSource = self
         
         let date = Date()
         let calendar = Calendar.current
@@ -30,22 +30,10 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         let year = calendar.component(.year, from: date)
         monthName = monthToString(month: month)
         
-        while (monthlyMenus[self.monthName]!.days[self.day] == nil) {
-            if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
-                if (month == 12) {
-                    monthName = monthToString(month: 1)
-                } else {
-                    monthName = monthToString(month: month + 1)
-                }
-                day = 0
-            }
-            day += 1
-        }
-        
         dateLabel.text = "\(monthName) \(day), \(year)"
         // Do any additional setup after loading the view.
     }
-    
+
     func monthToString (month: Int) -> String {
         
         var monthName = "September"
@@ -96,27 +84,20 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("\(self.monthName)")
         //print("\(self.day)")
-        
-        return monthlyMenus[self.monthName]!.days[self.day]!.lines.count
+        return aLaCarteItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "menuTableViewCell"
+        let cellIdentifier = "ALaCarteTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MenuTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MenuTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ALaCarteTableViewCell else {
+            fatalError("The dequeued cell is not an instance of ALaCarteTableViewCell.")
         }
         
-        let todaysLines = monthlyMenus[self.monthName]!.days[self.day]!.lines
-        
-        let lineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
-        let currentKey = lineKeys[indexPath.row]
-        
-        cell.items = todaysLines[currentKey]!.items
-        cell.priceLabel.text = todaysLines[currentKey]!.price
-        cell.lineNameLabel.text = todaysLines[currentKey]!.name
+        cell.priceLabel.text = "\(aLaCarteItems[indexPath.row].price)"
+        cell.itemLabel.text = aLaCarteItems[indexPath.row].name
         
         return cell
     }

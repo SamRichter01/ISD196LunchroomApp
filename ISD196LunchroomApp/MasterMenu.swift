@@ -20,6 +20,10 @@ class MasterMenu {
     
     static func downloadMenuItems() {
         
+        if menuItems.count > 0 {
+            return
+        }
+        
         let db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -45,6 +49,10 @@ class MasterMenu {
     }
     
     static func downloadALaCarteItems() {
+        
+        if aLaCarteItems.count > 0 {
+            return
+        }
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -72,6 +80,10 @@ class MasterMenu {
     }
     
     static func downloadMonthlyMenus() {
+        
+        if monthlyMenus.count > 0 {
+            return
+        }
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -111,8 +123,8 @@ class MasterMenu {
                                         
                                         tempLine.items.append(lineDoc[y])
                                     }
+                                    tempDay.lines[tempLine.name] = tempLine
                                 }
-                                tempDay.lines[tempLine.name] = tempLine
                             }
                             tempMonth.days[tempDay.day] = tempDay
                             monthlyMenus[tempMonth.name] = tempMonth
