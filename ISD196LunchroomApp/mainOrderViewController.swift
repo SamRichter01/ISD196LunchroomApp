@@ -16,6 +16,7 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     
     var monthName = "September"
     var day = 1
+    var lineKeys = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +98,9 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         //print("\(self.monthName)")
         //print("\(self.day)")
         
-        return monthlyMenus[self.monthName]!.days[self.day]!.lines.count
+        lineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
+        print("Number of lines: \(lineKeys.count)")
+        return lineKeys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,7 +114,8 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         
         let todaysLines = monthlyMenus[self.monthName]!.days[self.day]!.lines
         
-        let lineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
+        print(lineKeys.count)
+        print(indexPath.count)
         let currentKey = lineKeys[indexPath.row]
         
         cell.items = todaysLines[currentKey]!.items

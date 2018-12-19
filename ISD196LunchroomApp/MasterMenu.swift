@@ -93,9 +93,6 @@ class MasterMenu {
         let monthNames = ["September", "October", "November", "December", "January",
                           "February", "March", "April", "May", "June"]
         
-        let lineNames = ["Line 1", "Line 2", "Line 3", "Line 4",
-                         "Soup Bar", "Farm 2 School", "Sides"]
-        
         for month in monthNames {
             db.collection("menus").document(month)
                 .collection("days").getDocuments() { (querySnapshot, err) in
@@ -108,20 +105,21 @@ class MasterMenu {
                         for document in querySnapshot!.documents {
                             
                             let tempDay = Day(day: document.documentID)
+                            let tempDict = document.data()
                             
-                            for line in lineNames {
+                            for (index, lineArray) in tempDict {
                                 
-                                let lineDoc = (document.get(line) as! [String])
+                                let lineItems = lineArray as! [String]
                                 
                                 let tempLine = Line (
-                                    name: line,
-                                    price: lineDoc[1])
+                                    name: index,
+                                    price: lineItems[1])
                                 
-                                if lineDoc.count > 3 {
+                                if lineItems.count > 2 {
                                     
-                                    for y in 2..<lineDoc.count {
+                                    for y in 2..<lineItems.count {
                                         
-                                        tempLine.items.append(lineDoc[y])
+                                        tempLine.items.append(lineItems[y])
                                     }
                                     tempDay.lines[tempLine.name] = tempLine
                                 }
