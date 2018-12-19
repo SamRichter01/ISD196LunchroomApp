@@ -22,6 +22,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource {
 
         aLaCarteTableView.dataSource = self
         
+        //Because A La Carte menus don't change, the date is only used to display at the top of the screen
         let date = Date()
         let calendar = Calendar.current
         

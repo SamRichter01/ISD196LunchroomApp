@@ -14,8 +14,11 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cancelOrderButton: UIButton!
     
+    // The default month and day
     var monthName = "September"
     var day = 1
+    
+    // An array of keys for the line dictionary, will be explained late
     var lineKeys = [String]()
     
     override func viewDidLoad() {
@@ -26,11 +29,13 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         let date = Date()
         let calendar = Calendar.current
         
+        // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
         monthName = monthToString(month: month)
         
+        // If the current date is not a valid school day, this while loop will increment the school day until it finds the next one. If it's december, it sets the month to january. I don't know what would happen if you set the date to after school ended but it might just run forever so that needs to be fixed.
         while (monthlyMenus[self.monthName]!.days[self.day] == nil) {
             if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
                 if (month == 12) {
@@ -47,6 +52,7 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view.
     }
     
+    // Just a switch statement that converts the number of the month to the name
     func monthToString (month: Int) -> String {
         
         var monthName = "September"
@@ -95,11 +101,12 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("\(self.monthName)")
-        //print("\(self.day)")
         
+        // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         lineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
         print("Number of lines: \(lineKeys.count)")
+        
+        // Returns the number of keys as the number of lines to create in the view
         return lineKeys.count
     }
     
@@ -116,6 +123,8 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         
         print(lineKeys.count)
         print(indexPath.count)
+        
+        //Sets currentKey to be the key at the index of the cell being created, so cell 5 would have the 5th key in the array
         let currentKey = lineKeys[indexPath.row]
         
         cell.items = todaysLines[currentKey]!.items

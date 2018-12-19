@@ -1,9 +1,9 @@
 //
-//  AppDelegate.swift
-//  ISD196LunchroomApp
+// AppDelegate.swift
+// ISD196LunchroomApp
 //
-//  Created by Sam on 12/7/18.
-//  Copyright © 2018 district196.org. All rights reserved.
+// Created by Sam on 12/7/18.
+// Copyright © 2018 district196.org. All rights reserved.
 //
 
 import UIKit
@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Configures the firebase client
         FirebaseApp.configure()
         
+        // Sets up the client ID to be used when communicating with the server
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
@@ -50,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // User is signed in
             // ...
         }
+        // ensures that the user that just logged in is using an approved email account, logs out if not.
+        // Again, we probably want the users saved in the database so we don't have to hardcode admins in.
         if (user.profile.email.contains("@apps.district196.org")) ||
             (user.profile.email == "isd196lunchroomapp@gmail.com") {
             NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
@@ -59,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
     }
     
+    // Signs the user out upon closing the app.
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         let firebaseAuth = Auth.auth()

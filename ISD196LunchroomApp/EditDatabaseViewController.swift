@@ -1,9 +1,9 @@
 //
-//  EditDatabaseViewController.swift
-//  ISD196LunchroomApp
+// EditDatabaseViewController.swift
+// ISD196LunchroomApp
 //
-//  Created by Sam on 12/11/18.
-//  Copyright © 2018 district196.org. All rights reserved.
+// Created by Sam on 12/11/18.
+// Copyright © 2018 district196.org. All rights reserved.
 //
 
 import UIKit
@@ -21,15 +21,19 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var updateItemsButton: UIButton!
     @IBOutlet weak var updateALaCarteButton: UIButton!
     
+    // A service object that acts like a client for the sheets api
     private let service = GTLRSheetsService()
     
+    // The default spreadsheet ID we're using, copied from the URL
     var spreadsheetId: String = "1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo"
     
+    // The database reference we're using, the lazy tag ensures that the variable is only created the first time it's used, instead of when the screen loads.
     lazy var db = Firestore.firestore()
     
     let pickerData = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
     
+    // The two dimensional array of valid school days used to create the monthly menus
     var days = [[String]]()
     
     override func viewDidLoad() {
@@ -37,12 +41,15 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
 
         sheetIdField.text = spreadsheetId
         
+        // I dunno what this does, or how to fix it any other way, but the app crashes without it because the service object has a bad default URL
         service.rootURLString += "/"
         
+        // Setting up the database
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
         
+        // Establishing EditDatabaseViewController as the class from which handles the monthpicker
         monthPicker.delegate = self
         monthPicker.dataSource = self
         
@@ -58,6 +65,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Dispose of any resources that can be recreated.
     }
     
+    // The number of columns in the month picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -67,27 +75,36 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         return pickerData.count
     }
     
-    // The data to return fopr the row and component (column) that's being passed in
+    // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
     
     // Display the data within the spreadsheet from the range
     // spreadsheet:
-    // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
+    // https:// docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
     func getMenu() {
         
+        // The range, including the name of the spreadsheet, and the section of cells we're getting
         let range = "'Monthly Menu'!A2:BM21"
         
+        // If the field to input a new sheet ID isn't blank, use that new ID
         if (sheetIdField.text != nil) {
             if ((sheetIdField.text?.count)! >= spreadsheetId.count) {
                 spreadsheetId = sheetIdField.text!
             }
         }
         
+        // A query object that the service object executes, certain types of queries read or write, and they all contain a range of cells to read.
         let query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetId, range: range)
+        
+        // Makes it so that all the data is returned as a string
         query.valueRenderOption = "FORMATTED_VALUE"
+        
+        // The authorizer, that lets the google servers know which user is making the query
         service.authorizer = GIDSignIn.sharedInstance().currentUser.authentication.fetcherAuthorizer()
+        
+        // Executes the query and calls the importItems function to handle the data
         service.executeQuery(query, delegate: self,
                              didFinish: #selector(importItems(ticket:finishedWithObject:error:)))
     }
@@ -100,6 +117,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
             return
         }
         
+        // Creates a 2d array with the values the query returned
         let rows = result.values!
         
         if rows.isEmpty {
@@ -120,24 +138,39 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
         
+        // A batch update, it lets us set multiple parts of the database with a single commit
         let batch = db.batch()
         
+        // For x in the array of school days that getSchoolDays created
         for x in 0..<days.count {
             
+            // Check out how the school days spreadsheet is layed out, this checks if the a row in column A corresponds to the user's selected month, and then uses the data in that row to fill in the valid school days
             if (days[x][0].contains(selectedMonth)) {
                 
+                // The week 1 through 4 in the four week menu rotation for this specific week
                 let week = Int(days[x][1])!
+                
+                // The day in the rotation that the week starts on, mondays are 1, tuesdays are 2, and so on
                 let rotationDay = Int(days[x][2])!
+                
+                // The day of the month of the first day of the week
                 let startDate = Int(days[x][3])!
+                
+                // The number of days in the week
                 let numberOfDays = Int(days[x][4])!
+                
+                // Since the days in the four week rotation is stored in a 20 row 2d array, this figures out which day should be used
                 var menuIndex = (((week - 1) * 5) + (rotationDay) - 1)
                 
                 for y in startDate..<(startDate + numberOfDays) {
                     
+                    // Creates a day object and sets the day to the day of the month
                     let day = Day(day: "\(y)")
                     
+                    // Steps through the row of data at the menu index it calculated earlier
                     for i in 2..<rows[menuIndex].count {
                         
+                        // If the word line is present at the index, it creates a line object with the name, price, and items. All of which are at set points in the array.
                         if (rows[menuIndex][i] as! String).contains("Line") {
                             let line = Line(name: (rows[menuIndex][i] as! String), price: (rows[menuIndex][i+1] as! String))
                             for z in i..<i+8 {
@@ -145,15 +178,18 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                                     line.items.append(rows[menuIndex][z] as! String)
                                 }
                             }
+                            // Adds the line it created to the dictionary stored by the current day
                             day.lines[line.name] = line
                         }
                     }
             
                     menuIndex += 1
                     
+                    // The path in the database to the corresponding day that's being created/edited
                     let dayRef = db.collection("menus").document(selectedMonth)
                         .collection("days").document("\(day.day)")
                     
+                    // Adds the data from the day to the batch query
                     batch.setData(["Line 1": day.lines["Line: 1"]!.items,
                                    "Line 2": day.lines["Line: 2"]!.items,
                                    "Line 3": day.lines["Line: 3"]!.items,
@@ -175,9 +211,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    // Display the data within the spreadsheet from the range
-    // spreadsheet:
-    // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
+    // The comments from the code in getMenu should explain all the functions of this function
+    // https:// docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
     func getMenuItems() {
         
         let range = "'Daily Menu'!A2:A106"
@@ -238,9 +273,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    // Display the data within the spreadsheet from the range
-    // spreadsheet:
-    // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
+    // The comments from the code in getMenu should explain all the functions of this function
+    // https:// docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
     func getALaCarteItems() {
         
         let range = "'A La Carte Menu'!A2:B83"
@@ -313,9 +347,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         getALaCarteItems()
     }
     
-    // Display the data within the spreadsheet from the range
-    // spreadsheet:
-    // https://docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
+    // Gets the spreadsheet containing the days of the month for getMenu to use, and stores them in a global array
+    // https:// docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
     func getSchoolDays() {
         
         let range = "'School Days'!A2:E43"

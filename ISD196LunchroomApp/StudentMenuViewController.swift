@@ -9,13 +9,15 @@
 import UIKit
 
 class StudentMenuViewController: UIViewController {
-
+    
     @IBAction func logOutPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "toLoginMenu", sender: self)
     }
 
     @IBAction func quickOrderPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "quickOrder", sender: self)
+        if (monthlyMenus.count != 0) {
+            performSegue(withIdentifier: "quickOrder", sender: self)
+        }
     }
     
     override func viewDidLoad() {
@@ -31,7 +33,6 @@ class StudentMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

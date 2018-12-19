@@ -21,7 +21,6 @@ class AdminMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MasterMenu.init()
         // Do any additional setup after loading the view.
     }
 

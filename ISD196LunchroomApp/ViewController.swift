@@ -23,18 +23,21 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        // Disable sign out buttons and only allow the user to sign in.
         mainMenuButton.isEnabled = false
         signOutButton.isEnabled = false
         signInButton.isEnabled = true
         
+        // Creates listener that calls a method to change the name label when the user logs in.
         NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn),
             name: Notification.Name("userLoggedIn"), object: nil)
     
+        // Setup of the default google user settings and auto-signin
         GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
         GIDSignIn.sharedInstance().signInSilently()
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        // Do any additional setup after loading the view, typically from a nib.
+        //  Do any additional setup after loading the view, typically from a nib.
     }
     
     @IBAction func signOutButtonPressed(_ sender: UIButton) {
@@ -52,9 +55,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //  Dispose of any resources that can be recreated.
     }
     
+    // Checks the email of the currently signed in user and then goes to either the student or admin main menu
+    // We probably want this to be integerated into the database so we don't have to hardcode admin users
     @IBAction func mainMenuPressed(_ sender: UIButton) {
         if (GIDSignIn.sharedInstance().currentUser.profile.email.contains("@apps.district196.org")) {
             performSegue(withIdentifier: "studentMainMenu", sender: self)
@@ -63,6 +68,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         }
     }
     
+    // The function called by the listener created up top
     @objc func userLoggedIn() {
         nameLabel.text = "Signed in as: " + GIDSignIn.sharedInstance().currentUser.profile.name
         
