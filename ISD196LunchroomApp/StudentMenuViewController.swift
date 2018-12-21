@@ -22,10 +22,19 @@ class StudentMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
+        //Creates a dispatch group to be used to stop code. enter() function starts the pause of the code.
+        let group = DispatchGroup()
+        group.enter()
         
-        MasterMenu.downloadALaCarteItems()
-        MasterMenu.downloadMenuItems()
-        MasterMenu.downloadMonthlyMenus()
+        //This function allows the code inside to be run while all other code is paused. leave() function resumes all code.
+        DispatchQueue.main.async {
+            MasterMenu.downloadALaCarteItems()
+            MasterMenu.downloadMenuItems()
+            MasterMenu.downloadMonthlyMenus()
+            group.leave()
+        }
+        
         // Do any additional setup after loading the view.
     }
 
