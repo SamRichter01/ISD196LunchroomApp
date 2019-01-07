@@ -13,19 +13,20 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cancelOrderButton: UIButton!
+    @IBOutlet weak var menuItemCollectionView: UICollectionView!
     
     // The default month and day
     var monthName = "September"
     var day = 1
     
     // An array of keys for the line dictionary, will be explained late
-    var lineKeys = [String]()
+    var todaysLines = [Line]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         menuTableView.dataSource = self
-        
+    
         let date = Date()
         let calendar = Calendar.current
         
@@ -50,6 +51,18 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         
         dateLabel.text = "\(monthName) \(day), \(year)"
         // Do any additional setup after loading the view.
+        
+        // Sets the lineKeys array to contain all the keys for the lines in the dictionary
+        todaysLines = [Line]()
+        let tempLineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
+        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4",
+                              "Sides", "Farm 2 School", "Soup Bar"]
+        
+        for str in linePriorities {
+            if tempLineKeys.contains(str) {
+                todaysLines.append(monthlyMenus[self.monthName]!.days[self.day]!.lines[str]!)
+            }
+        }
     }
     
     // Just a switch statement that converts the number of the month to the name
@@ -102,34 +115,20 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // Sets the lineKeys array to contain all the keys for the lines in the dictionary
-        lineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
-        print("Number of lines: \(lineKeys.count)")
-        
         // Returns the number of keys as the number of lines to create in the view
-        return lineKeys.count
+        return todaysLines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Table view cells are reused and should be dequeued using a cell identifier.
+        //Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "menuTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MenuTableViewCell else {
             fatalError("The dequeued cell is not an instance of MenuTableViewCell.")
         }
         
-        let todaysLines = monthlyMenus[self.monthName]!.days[self.day]!.lines
-        
-        print(lineKeys.count)
-        print(indexPath.count)
-        
-        //Sets currentKey to be the key at the index of the cell being created, so cell 5 would have the 5th key in the array
-        let currentKey = lineKeys[indexPath.row]
-        
-        cell.items = todaysLines[currentKey]!.items
-        cell.priceLabel.text = todaysLines[currentKey]!.price
-        cell.lineNameLabel.text = todaysLines[currentKey]!.name
+        cell.line = todaysLines[indexPath.row]
         
         return cell
     }
@@ -138,6 +137,18 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return false
+    }
+    
+    @IBAction func finalizeOrderPressed(_ sender: UIButton) {
+        if mealOrdered.count < 1 && itemsOrdered.count < 1 {
+            let alertController = UIAlertController(title: "Order incomplete", message:
+                "Please order at least one item before continuing", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "finalizeOrder1", sender: self)
+        }
     }
     
     /*

@@ -117,7 +117,6 @@ class MasterMenu {
                             
                             // For each loop that goes through the lines and gets their data, then creates line objects, fills them with data, and appends them to the tempDay
                             for (index, lineArray) in tempDict {
-                                
 
                                 let lineItems = lineArray as! [String]
                                 

@@ -8,14 +8,18 @@
 
 import UIKit
 
-class ALaCarteViewController: UIViewController, UITableViewDataSource {
+class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var finalizeOrderButton: UIButton!
+    @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cancelOrderButton: UIButton!
     @IBOutlet weak var aLaCarteTableView: UITableView!
+    @IBOutlet weak var searchButton: UIButton!
     
     var monthName = "September"
     var day = 1
+    var matchingItems = [MenuItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +80,26 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource {
         performSegue(withIdentifier: "cancelOrder", sender: self)
     }
     
+    @IBAction func searchPressed(_ sender: UIButton) {
+        aLaCarteTableView.reloadData()
+    }
+    
+    @IBAction func finalizeOrderPressed(_ sender: UIButton) {
+        if mealOrdered.count < 1 && itemsOrdered.count < 1 {
+            let alertController = UIAlertController(title: "LunchRoom", message:
+                "Please order at least one item", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "finalizeOrder2", sender: self)
+        }
+    }
+    
+    @IBAction func searchBarEdited(_ sender: UITextField) {
+        aLaCarteTableView.reloadData()
+    }
+    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,7 +109,28 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("\(self.monthName)")
         //print("\(self.day)")
-        return aLaCarteItems.count
+        matchingItems = aLaCarteItems
+        if let text = searchBar.text {
+            if text.count > 0 {
+                for x in stride(from: matchingItems.count - 1, to: -1, by: -1) {
+                    
+                    let itemName = matchingItems[x].name.lowercased()
+                    let key = text.lowercased()
+                    
+                    if itemName.components(separatedBy: key).count < 2 {
+                        matchingItems.remove(at: x)
+                    }
+                }
+            }
+        }
+        if matchingItems.count >= 1 {
+            
+            return matchingItems.count
+            
+        } else {
+            
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,8 +142,17 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource {
             fatalError("The dequeued cell is not an instance of ALaCarteTableViewCell.")
         }
         
-        cell.priceLabel.text = "\(aLaCarteItems[indexPath.row].price)"
-        cell.itemLabel.text = aLaCarteItems[indexPath.row].name
+        if matchingItems.count < 1 {
+            
+            cell.itemLabel.text = "No items found"
+            cell.priceLabel.text = ""
+            
+        } else {
+            
+            cell.priceLabel.text = "\(matchingItems[indexPath.row].price)"
+            cell.itemLabel.text = matchingItems[indexPath.row].name
+            
+        }
         
         return cell
     }

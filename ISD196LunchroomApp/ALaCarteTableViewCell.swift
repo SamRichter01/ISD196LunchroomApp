@@ -12,6 +12,7 @@ class ALaCarteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var addItemButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,4 +25,12 @@ class ALaCarteTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func addItemToOrder(_ sender: UIButton) {
+        self.isSelected = true
+        let item = MenuItem(index: "0", name: itemLabel.text!, price: priceLabel.text!)
+        itemsOrdered.append(item)
+        let price = Double(item.price.suffix(4))
+        totalPrice += price!
+        
+    }
 }

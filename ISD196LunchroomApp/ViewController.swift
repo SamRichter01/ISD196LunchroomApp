@@ -75,6 +75,20 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         mainMenuButton.isEnabled = true
         signOutButton.isEnabled = true
         signInButton.isEnabled = false
+        
+        if let _ = GIDSignIn.sharedInstance().currentUser {
+            
+            let email = GIDSignIn.sharedInstance().currentUser.profile.email!
+            
+            if email.contains("@apps.district196.org") {
+                
+                performSegue(withIdentifier: "studentMainMenu", sender: self)
+                
+            } else if email == "isd196lunchroomapp@gmail.com" {
+                
+                performSegue(withIdentifier: "adminMainMenu", sender: self)
+            }
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {

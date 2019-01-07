@@ -12,6 +12,7 @@ class Line {
     
     var name: String
     var price: String
+    var priority = 0
     var items = [String]()
     
     init (name: String, price: String) {

@@ -99,7 +99,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         let query = GTLRSheetsQuery_SpreadsheetsValuesGet.query(withSpreadsheetId: spreadsheetId, range: range)
         
         // Makes it so that all the data is returned as a string
-        query.valueRenderOption = "FORMATTED_VALUE"
+        query.valueRenderOption = kGTLRSheetsValueRenderOptionFormattedValue
         
         // The authorizer, that lets the google servers know which user is making the query
         service.authorizer = GIDSignIn.sharedInstance().currentUser.authentication.fetcherAuthorizer()
@@ -113,7 +113,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     @objc func importItems(ticket: GTLRServiceTicket,
                             finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
         
-        if let error = error {
+        if let _ = error {
             return
         }
         
@@ -171,33 +171,34 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                     for i in 2..<rows[menuIndex].count {
                         
                         // If the word line is present at the index, it creates a line object with the name, price, and items. All of which are at set points in the array.
-                        if (rows[menuIndex][i] as! String).contains("Line") {
-                            let line = Line(name: (rows[menuIndex][i] as! String), price: (rows[menuIndex][i+1] as! String))
+                        let tempLineName = rows[menuIndex][i] as! String
+                        
+                        if isLine(name: tempLineName) {
+                            print(tempLineName)
+                            
+                            let line = Line(name: tempLineName, price: (rows[menuIndex][i+1] as! String))
+                            
                             for z in i..<i+8 {
+                                
                                 if !(rows[menuIndex][z] as! String).contains("none") {
+                                    
                                     line.items.append(rows[menuIndex][z] as! String)
                                 }
                             }
+                            
+                            // The path in the database to the corresponding day that's being created/edited
+                            let dayRef = db.collection("menus").document(selectedMonth)
+                                .collection("days").document("\(day.day)")
+                            
+                            // Adds the data from the line to the batch query
+                            batch.updateData(["\(line.name)": line.items], forDocument: dayRef)
+                            
                             // Adds the line it created to the dictionary stored by the current day
                             day.lines[line.name] = line
                         }
                     }
             
                     menuIndex += 1
-                    
-                    // The path in the database to the corresponding day that's being created/edited
-                    let dayRef = db.collection("menus").document(selectedMonth)
-                        .collection("days").document("\(day.day)")
-                    
-                    // Adds the data from the day to the batch query
-                    batch.setData(["Line 1": day.lines["Line: 1"]!.items,
-                                   "Line 2": day.lines["Line: 2"]!.items,
-                                   "Line 3": day.lines["Line: 3"]!.items,
-                                   "Line 4": day.lines["Line: 4"]!.items,
-                                   "Soup Bar": day.lines["Line: Soup Bar"]!.items,
-                                   "Farm 2 School": day.lines["Line: Farm 2 School"]!.items,
-                                   "Sides": day.lines["Line: Sides"]!.items],
-                                  forDocument: dayRef)
                 }
             }
         }
@@ -234,7 +235,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     @objc func importMenuItems(ticket: GTLRServiceTicket,
                            finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
         
-        if let error = error {
+        if let _ = error {
             return
         }
         
@@ -296,7 +297,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     @objc func importALaCarteItems(ticket: GTLRServiceTicket,
                                finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
         
-        if let error = error {
+        if let _ = error {
             return
         }
         
@@ -366,7 +367,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     @objc func createCalendar(ticket: GTLRServiceTicket,
                            finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
         
-        if let error = error {
+        if let _ = error {
             return
         }
         
@@ -375,6 +376,17 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         if days.isEmpty {
             return
         }
+    }
+    
+    func isLine (name: String) -> Bool {
+        let lineList = ["Line 1", "Line 2", "Line 3", "Line 4",
+                        "Sides", "Farm 2 School", "Soup Bar"]
+        for x in 0..<lineList.count {
+            if name == lineList[x] {
+                return true
+            }
+        }
+        return false
     }
     
     /*
