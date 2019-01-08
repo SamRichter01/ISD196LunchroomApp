@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "arrowhead-thin-outline-to-the-left (1).png",
+      "filename" : "arrow-point-to-right.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "arrowhead-thin-outline-to-the-left (1) copy.png",
+      "filename" : "arrow-point-to-right (1).png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "arrowhead-thin-outline-to-the-left (1) copy 2.png",
+      "filename" : "arrow-point-to-right (2).png",
       "scale" : "3x"
     }
   ],

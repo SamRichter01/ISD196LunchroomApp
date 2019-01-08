@@ -104,7 +104,11 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "cancelOrder", sender: self)
+        let alertController = UIAlertController(title: "Cancel Order", message: "Are you sure you want to cancel your order", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source

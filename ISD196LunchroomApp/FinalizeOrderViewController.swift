@@ -96,7 +96,7 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     @IBAction func discardOrder(_ sender: UIButton) {
-        performSegue(withIdentifier: "discardOrder", sender: self)
+        performSegue(withIdentifier: "returnToEditOrder", sender: self)
     }
     
     /*

@@ -613,17 +613,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvB-W6-UhP">
-                                <rect key="frame" x="0.0" y="20" width="100" height="67"/>
+                                <rect key="frame" x="0.0" y="20" width="68" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Delete"/>
+                                <state key="normal" image="Left Arrow"/>
                                 <connections>
                                     <action selector="discardOrder:" destination="L9Z-2l-dYj" eventType="touchUpInside" id="oTx-fB-g3R"/>
+                                    <segue destination="Tak-UI-8My" kind="show" identifier="returnToEditOrder" id="tvo-HU-hsG"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62352941179999999" green="0.81960784310000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="7qO-AS-j6f"/>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="768" height="1024"/>
                     <connections>
                         <outlet property="aLaCarteOrderTableView" destination="HRW-Zh-s73" id="RhM-3E-glO"/>
                         <outlet property="discardOrderButton" destination="CvB-W6-UhP" id="4gu-hA-Zmb"/>
@@ -805,14 +807,16 @@
     <resources>
         <image name="Delete" width="32" height="32"/>
         <image name="Finalize Order" width="32" height="32"/>
+        <image name="Left Arrow" width="30" height="30"/>
         <image name="Logo" width="128" height="128"/>
         <image name="Order" width="64" height="64"/>
         <image name="Search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nvJ-Th-ZPg"/>
-        <segue reference="1cP-7O-2La"/>
+        <segue reference="tvo-HU-hsG"/>
+        <segue reference="yFX-17-F55"/>
+        <segue reference="3vs-WS-jOK"/>
         <segue reference="mES-Go-1Ed"/>
-        <segue reference="ssW-Ed-HdV"/>
+        <segue reference="CE3-uR-hbH"/>
     </inferredMetricsTieBreakers>
 </document>
