@@ -31,6 +31,5 @@ class ALaCarteTableViewCell: UITableViewCell {
         itemsOrdered.append(item)
         let price = Double(item.price.suffix(4))
         totalPrice += price!
-        
     }
 }

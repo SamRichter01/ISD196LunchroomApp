@@ -6,9 +6,15 @@
 //  Copyright © 2019 district196.org. All rights reserved.
 //
 
+
 import UIKit
 
 class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func changePrice() {
+        totalPriceLabel.text = "$\(String(format: "%.2f", totalPrice))"
+    }
+    
 
     @IBOutlet weak var discardOrderButton: UIButton!
     @IBOutlet weak var mealCollectionView: UICollectionView!
@@ -16,7 +22,6 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var mealLineLabel: UILabel!
     @IBOutlet weak var aLaCarteOrderTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +37,8 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
         
         mealPriceLabel.text = mealPrice
         mealLineLabel.text = mealName
-        totalPriceLabel.text = "$\(totalPrice)"
+        totalPriceLabel.text = "$\(String(format: "%.2f", totalPrice))"
+        //totalPriceLabel.text = "$\(totalPrice)"
         // Do any additional setup after loading the view.
     }
 
@@ -43,6 +49,7 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     
     @objc func itemRemoved () {
         aLaCarteOrderTableView.reloadData()
+        changePrice()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

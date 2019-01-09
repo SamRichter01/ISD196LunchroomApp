@@ -10,6 +10,8 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell, UICollectionViewDataSource {
 
+
+    
     @IBOutlet weak var addToOrderButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var lineNameLabel: UILabel!

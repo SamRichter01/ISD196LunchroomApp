@@ -104,11 +104,21 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Cancel Order", message: "Are you sure you want to cancel your order", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
+        if mealOrdered.count > 0 || itemsOrdered.count > 0 {
+            let alertController = UIAlertController(title: "Cancel Order", message: "Are you sure you want to cancel your order?", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
         
-        self.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
+            
+            mealOrdered.removeAll()
+            itemsOrdered.removeAll()
+        } else {
+            performSegue(withIdentifier: "cancelOrder", sender: self)
+            
+            mealOrdered.removeAll()
+            itemsOrdered.removeAll()
+        }
     }
     
     // MARK: - Table view data source
