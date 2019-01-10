@@ -37,7 +37,7 @@ class MenuTableViewCell: UITableViewCell, UICollectionViewDataSource {
     @IBAction func addToOrderPressed(_ sender: UIButton) {
         self.isSelected = true
         
-        if mealName == "" {
+        if mealOrdered == [String]() {
             let price = Double(line.price.suffix(4))
             totalPrice += price!
         }
