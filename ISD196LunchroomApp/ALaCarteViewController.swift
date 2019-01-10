@@ -77,13 +77,23 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        
         if mealOrdered.count > 0 || itemsOrdered.count > 0 {
+            
             let alertController = UIAlertController(title: "Cancel Order", message: "Are you sure you want to cancel your order?", preferredStyle: UIAlertControllerStyle.alert)
+            
             alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
-            alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
+            
+            alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                mealOrdered.removeAll()
+                itemsOrdered.removeAll()
+                totalPrice = 0
+                self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
             
             self.present(alertController, animated: true, completion: nil)
+            
         } else {
+            
             performSegue(withIdentifier: "cancelOrder", sender: self)
         }
     }
@@ -99,7 +109,9 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
+            
         } else {
+            
             performSegue(withIdentifier: "finalizeOrder2", sender: self)
         }
     }

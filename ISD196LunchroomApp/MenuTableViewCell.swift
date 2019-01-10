@@ -36,9 +36,17 @@ class MenuTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
     @IBAction func addToOrderPressed(_ sender: UIButton) {
         self.isSelected = true
+        
+        if mealName == "" {
+            let price = Double(line.price.suffix(4))
+            totalPrice += price!
+        }
+        
         mealName = lineNameLabel.text!
         mealPrice = priceLabel.text!
         mealOrdered = line.items
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
