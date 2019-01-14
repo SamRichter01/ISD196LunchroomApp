@@ -111,7 +111,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            
+            tabIndex = 1
             performSegue(withIdentifier: "finalizeOrder2", sender: self)
         }
     }

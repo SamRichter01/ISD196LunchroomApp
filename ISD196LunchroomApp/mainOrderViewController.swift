@@ -170,6 +170,7 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
             self.present(alertController, animated: true, completion: nil)
         } else {
             performSegue(withIdentifier: "finalizeOrder1", sender: self)
+            tabIndex = 0
         }
     }
     

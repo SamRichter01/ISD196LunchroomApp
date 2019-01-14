@@ -47,6 +47,20 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "returnToEditOrder" {
+            
+            if let tabVC = segue.destination as? UITabBarController {
+                
+                if tabIndex == 1 {
+                    
+                    tabVC.selectedIndex = 1
+                }
+            }
+        }
+    }
+    
     @objc func itemRemoved () {
         aLaCarteOrderTableView.reloadData()
         changePrice()
@@ -103,7 +117,7 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     @IBAction func discardOrder(_ sender: UIButton) {
-        performSegue(withIdentifier: "returnToEditOrder", sender: self)
+            performSegue(withIdentifier: "returnToEditOrder", sender: self)
     }
     
     /*
