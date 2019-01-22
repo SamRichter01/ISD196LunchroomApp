@@ -138,6 +138,15 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
         
+        let orders = db.collection("orders")
+        orders.document(selectedMonth).setData([:]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
         // A batch update, it lets us set multiple parts of the database with a single commit
         let batch = db.batch()
         
@@ -190,8 +199,14 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                             let dayRef = db.collection("menus").document(selectedMonth)
                                 .collection("days").document("\(day.day)")
                             
+                            let orderDayRef = db.collection("orders").document(selectedMonth)
+                                .collection("days").document("\(day.day)")
+                            
                             // Adds the data from the line to the batch query
                             batch.updateData(["\(line.name)": line.items], forDocument: dayRef)
+                            
+                            // Adds the document for orders to the batch
+                            batch.setData(["Order count": 0], forDocument: orderDayRef)
                             
                             // Adds the line it created to the dictionary stored by the current day
                             day.lines[line.name] = line

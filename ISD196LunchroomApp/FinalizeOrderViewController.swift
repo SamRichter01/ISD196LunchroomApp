@@ -8,13 +8,10 @@
 
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func changePrice() {
-        totalPriceLabel.text = "$\(String(format: "%.2f", totalPrice))"
-    }
-    
 
     @IBOutlet weak var discardOrderButton: UIButton!
     @IBOutlet weak var mealCollectionView: UICollectionView!
@@ -22,6 +19,8 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var mealLineLabel: UILabel!
     @IBOutlet weak var aLaCarteOrderTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    
+    lazy var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +39,20 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
         totalPriceLabel.text = "$\(String(format: "%.2f", totalPrice))"
         //totalPriceLabel.text = "$\(totalPrice)"
         // Do any additional setup after loading the view.
+        
+        // Setting up the database
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func changePrice() {
+        totalPriceLabel.text = "$\(String(format: "%.2f", totalPrice))"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,6 +126,214 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBAction func discardOrder(_ sender: UIButton) {
             performSegue(withIdentifier: "returnToEditOrder", sender: self)
+    }
+    
+    @IBAction func sendOrder (_ sender: UIButton) {
+        
+        // Add a new document in collection "orders"
+        let orderRef = db.collection("orders").document(getDate(format: 0))
+            .collection("days").document(getDate(format: 1))
+        
+        print("Previous order before deletion \(previousOrder)")
+        if previousOrder.count > 0 {
+            
+            // Delete the old order
+            db.runTransaction({ (transaction, errorPointer) -> Any? in
+                let orderDeletionDoc: DocumentSnapshot
+                do {
+                    try orderDeletionDoc = transaction.getDocument(orderRef)
+                } catch let fetchError as NSError {
+                    errorPointer?.pointee = fetchError
+                    return nil
+                }
+            
+                for x in 0..<previousOrder.count {
+                
+                    if let previousItem = orderDeletionDoc.data()?[previousOrder[x]] as? Int {
+                        
+                        print("Deleting item: \(previousOrder[x])")
+                        transaction.updateData([previousOrder[x]: previousItem - 1], forDocument: orderRef)
+                    
+                    } else {
+                    
+                        continue
+                    }
+                }
+            
+                if let oldOrderCount = orderDeletionDoc.data()?["Order count"] as? Int {
+                
+                        transaction.updateData(["Order count": oldOrderCount - 1], forDocument: orderRef)
+                
+                } else {
+                
+                    let error = NSError(
+                        domain: "AppErrorDomain",
+                        code: -1,
+                        userInfo: [
+                            NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDeletionDoc)"])
+                    errorPointer?.pointee = error
+                }
+            
+                return nil
+            
+            }) { (object, error) in
+                if let error = error {
+                    print("Delete Transaction failed: \(error)")
+                } else {
+                    print("Transaction successfully committed!")
+                }
+            }
+        }
+        
+        // Make the new order
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let orderDoc: DocumentSnapshot
+            do {
+                try orderDoc = transaction.getDocument(orderRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            if let oldOrderCount = orderDoc.data()?["Order count"] as? Int {
+                
+                transaction.updateData(["Order count": oldOrderCount + 1], forDocument: orderRef)
+                
+            } else {
+                
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDoc)"])
+                errorPointer?.pointee = error
+            }
+            
+            print("Items in order before ordering \(itemsOrdered)")
+            print("Previous order before ordering \(previousOrder)")
+            for x in 0..<itemsOrdered.count {
+                
+                if let oldItem = orderDoc.data()?[itemsOrdered[x].name] as? Int {
+                    
+                    transaction.updateData([itemsOrdered[x].name: oldItem + 1], forDocument: orderRef)
+                    
+                } else {
+                    
+                    transaction.updateData([itemsOrdered[x].name: 1], forDocument: orderRef)
+                        /*{ err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Item not yet ordered, new doc created")
+                        }
+                    } */
+                }
+            }
+            
+            if mealName != "" {
+                
+                if let oldOrder = orderDoc.data()?[mealName] as? Int {
+                
+                    transaction.updateData([mealName: oldOrder + 1], forDocument: orderRef)
+                
+                } else {
+                
+                    orderRef.updateData([mealName: 1]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Item not yet ordered, new doc created")
+                        }
+                    }
+                }
+            }
+            return nil
+            
+        }) { (object, error) in
+            if let error = error {
+                print("Write Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+                print("Previous order before resetting \(previousOrder)")
+                Order.removePrevious()
+                Order.saveOrder()
+                print("Previous order after resetting \(previousOrder)")
+            }
+        }
+    }
+    
+    func getDate(format: Int) -> String {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        var monthName = "September"
+        var day = 1
+        
+        day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        monthName = monthToString(month: month)
+        
+        while (monthlyMenus[monthName]!.days[day] == nil) {
+            if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
+                if (month == 12) {
+                    monthName = monthToString(month: 1)
+                } else {
+                    monthName = monthToString(month: month + 1)
+                }
+                day = 0
+            }
+            day += 1
+        }
+        
+        switch format {
+            
+        case 0:
+            return monthName
+            
+        case 1:
+            return "\(day)"
+            
+        case 2:
+            return "\(year)"
+            
+        default:
+            return ""
+        }
+        
+    }
+    
+    func monthToString (month: Int) -> String {
+        
+        var monthName = "September"
+        
+        switch month {
+        case 9 :
+            monthName = "September"
+        case 10 :
+            monthName = "October"
+        case 11 :
+            monthName = "November"
+        case 12 :
+            monthName = "December"
+        case 1 :
+            monthName = "January"
+        case 2 :
+            monthName = "February"
+        case 3 :
+            monthName = "March"
+        case 4 :
+            monthName = "April"
+        case 5 :
+            monthName = "May"
+        case 6 :
+            monthName = "June"
+        default :
+            break
+        }
+        
+        return monthName
     }
     
     /*

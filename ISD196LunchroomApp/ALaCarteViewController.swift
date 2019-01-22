@@ -85,9 +85,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
             alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
             
             alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-                mealOrdered.removeAll()
-                itemsOrdered.removeAll()
-                totalPrice = 0
+                Order.deleteOrder()
                 self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
             
             self.present(alertController, animated: true, completion: nil)
