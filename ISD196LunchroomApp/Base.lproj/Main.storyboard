@@ -338,7 +338,7 @@
                                     <color key="titleColor" red="0.4823529411764706" green="0.62745098039215685" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="aLaCarteMenuPressed:" destination="IbH-vS-0Pl" eventType="touchUpInside" id="hWb-Nk-GR4"/>
+                                    <action selector="aLaCarteMenuPressed:" destination="IbH-vS-0Pl" eventType="touchUpInside" id="pUY-ML-QYQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -415,6 +415,11 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="WWp-Mw-qxn"/>
+                                    <action selector="returnButtonPressed:" destination="ecU-yW-SgF" eventType="primaryActionTriggered" id="bWV-1h-uGc"/>
+                                    <action selector="searchBarEdited:" destination="ecU-yW-SgF" eventType="editingChanged" id="Fmg-nE-fdj"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZE-0y-Eom">
                                 <rect key="frame" x="0.0" y="18" width="67" height="67"/>
@@ -428,6 +433,9 @@
                                 <rect key="frame" x="689" y="85" width="59" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Search"/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="ecU-yW-SgF" eventType="touchUpInside" id="EjR-Gt-eIb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62352941176470589" green="0.81960784313725488" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
@@ -436,10 +444,12 @@
                     <connections>
                         <outlet property="aLaCarteMenuTableView" destination="Gm1-tl-rQR" id="hzL-Ql-T75"/>
                         <outlet property="backButton" destination="aZE-0y-Eom" id="3Cm-CL-B8s"/>
-                        <segue destination="IbH-vS-0Pl" kind="show" identifier="returnFromALaCarteMenu" id="tja-Ce-WzL"/>
+                        <outlet property="searchBar" destination="cgO-3K-sb4" id="yRI-t6-4Vd"/>
+                        <segue destination="IbH-vS-0Pl" kind="show" identifier="returnFromALaCarteMenu" id="h4C-Be-XSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7M-hb-CKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ii8-sK-ybY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1342.96875" y="1838.6718749999998"/>
         </scene>
@@ -496,6 +506,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
+                                    <action selector="returnPressed:" destination="Rbz-Zg-jmf" eventType="primaryActionTriggered" id="nWg-d9-tZb"/>
                                     <action selector="searchBarEdited:" destination="Rbz-Zg-jmf" eventType="editingChanged" id="afU-KW-Lqq"/>
                                 </connections>
                             </textField>
@@ -915,9 +926,9 @@
         <image name="Search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CXD-rp-XAL"/>
+        <segue reference="CLu-TM-FIg"/>
         <segue reference="yFX-17-F55"/>
-        <segue reference="tja-Ce-WzL"/>
+        <segue reference="3vs-WS-jOK"/>
         <segue reference="mES-Go-1Ed"/>
         <segue reference="CE3-uR-hbH"/>
     </inferredMetricsTieBreakers>

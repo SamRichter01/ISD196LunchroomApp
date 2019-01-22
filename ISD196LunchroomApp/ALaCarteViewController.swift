@@ -99,7 +99,11 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func searchPressed(_ sender: UIButton) {
-        aLaCarteTableView.reloadData()
+        aLaCarteTableView.resignFirstResponder()
+    }
+    
+    @IBAction func returnPressed(_ sender: UITextField) {
+        aLaCarteTableView.resignFirstResponder()
     }
     
     @IBAction func finalizeOrderPressed(_ sender: UIButton) {

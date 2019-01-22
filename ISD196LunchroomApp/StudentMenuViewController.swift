@@ -22,6 +22,10 @@ class StudentMenuViewController: UIViewController {
         }
     }
     
+    @IBAction func aLaCarteMenuPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "toALaCarteMenu", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  

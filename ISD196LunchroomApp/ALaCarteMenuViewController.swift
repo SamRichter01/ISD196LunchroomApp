@@ -15,6 +15,7 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var searchBar: UITextField!
     
     @IBOutlet weak var aLaCarteMenuTableView: UITableView!
     
@@ -35,12 +36,38 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         performSegue(withIdentifier: "returnFromALaCarteMenu", sender: self)
     }
     
+    @IBAction func searchBarEdited(_ sender: UITextField) {
+        aLaCarteMenuTableView.reloadData()
+    }
+    
+    @IBAction func searchButtonPressed(_ sender: UIButton) {
+        searchBar.resignFirstResponder()
+    }
+    
+    @IBAction func returnButtonPressed(_ sender: UITextField) {
+        searchBar.resignFirstResponder()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         matchingItems = aLaCarteItems
+        
+        if let text = searchBar.text {
+            if text.count > 0 {
+                for x in stride(from: matchingItems.count - 1, to: -1, by: -1) {
+                    
+                    let itemName = matchingItems[x].name.lowercased()
+                    let key = text.lowercased()
+                    
+                    if itemName.components(separatedBy: key).count < 2 {
+                        matchingItems.remove(at: x)
+                    }
+                }
+            }
+        }
         
         if matchingItems.count >= 1 {
             
@@ -74,7 +101,7 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-    func tableView(_ tableView: UITableView, canEditAtRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     
