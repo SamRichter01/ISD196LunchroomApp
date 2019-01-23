@@ -86,13 +86,12 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
             
             alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
                 Order.deleteOrder()
-                self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
+                self.dismiss(animated: true, completion: nil)}))
             
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            
-            performSegue(withIdentifier: "cancelOrder", sender: self)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -113,7 +112,6 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            tabIndex = 1
             performSegue(withIdentifier: "finalizeOrder2", sender: self)
         }
     }

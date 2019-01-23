@@ -22,6 +22,7 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        aLaCarteMenuTableView.delegate = self
         aLaCarteMenuTableView.dataSource = self
         
         // Do any additional setup after loading the view.
@@ -33,7 +34,7 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func returnToMainMenu(_ sender: UIButton) {
-        performSegue(withIdentifier: "returnFromALaCarteMenu", sender: self)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func searchBarEdited(_ sender: UITextField) {
@@ -103,6 +104,12 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        aLaCarteMenuTableView.deselectRow(at: indexPath, animated: true)
+        print(aLaCarteItems[indexPath.row].name)
+        print(aLaCarteItems[indexPath.row].price)
     }
     
     

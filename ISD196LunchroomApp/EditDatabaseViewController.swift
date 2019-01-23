@@ -57,7 +57,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
 
     @IBAction func backToMain(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "toMain", sender: self)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

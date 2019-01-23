@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -189,7 +189,6 @@
                                             <color key="tintColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="backToMain:" destination="BFG-gK-5zY" id="xPY-Sh-Ksd"/>
-                                                <segue destination="cog-fp-Xus" kind="show" identifier="toMain" id="CaX-KG-pIc"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -445,7 +444,6 @@
                         <outlet property="aLaCarteMenuTableView" destination="Gm1-tl-rQR" id="hzL-Ql-T75"/>
                         <outlet property="backButton" destination="aZE-0y-Eom" id="3Cm-CL-B8s"/>
                         <outlet property="searchBar" destination="cgO-3K-sb4" id="yRI-t6-4Vd"/>
-                        <segue destination="IbH-vS-0Pl" kind="show" identifier="returnFromALaCarteMenu" id="h4C-Be-XSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7M-hb-CKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -575,7 +573,6 @@
                         <outlet property="finalizeOrderButton" destination="FwE-XD-5SQ" id="26O-yc-iUC"/>
                         <outlet property="searchBar" destination="OAg-qf-4Ub" id="7I7-Ji-WRJ"/>
                         <outlet property="searchButton" destination="36a-uT-RVt" id="x2Z-4s-Dgy"/>
-                        <segue destination="IbH-vS-0Pl" kind="show" identifier="cancelOrder" id="3vs-WS-jOK"/>
                         <segue destination="L9Z-2l-dYj" kind="show" identifier="finalizeOrder2" id="yFX-17-F55"/>
                     </connections>
                 </viewController>
@@ -730,7 +727,6 @@
                                 <state key="normal" image="Left Arrow"/>
                                 <connections>
                                     <action selector="discardOrder:" destination="L9Z-2l-dYj" eventType="touchUpInside" id="oTx-fB-g3R"/>
-                                    <segue destination="Tak-UI-8My" kind="show" identifier="returnToEditOrder" id="CXD-rp-XAL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlB-pi-imz">
@@ -753,7 +749,6 @@
                         <outlet property="mealLineLabel" destination="qTK-xt-ub2" id="7ah-pY-qdF"/>
                         <outlet property="mealPriceLabel" destination="ia9-6V-e58" id="uKc-cn-JX6"/>
                         <outlet property="totalPriceLabel" destination="esa-Nc-wAO" id="dWD-eT-cz1"/>
-                        <segue destination="IbH-vS-0Pl" kind="show" identifier="discardOrder" id="Kim-Ur-0QN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jf2-SP-HUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -895,7 +890,6 @@
                         <outlet property="cancelOrderButton" destination="2d6-RE-NMg" id="pIx-lC-jO8"/>
                         <outlet property="dateLabel" destination="CYC-Qc-tHS" id="kLh-ea-Lxl"/>
                         <outlet property="menuTableView" destination="yDG-1H-VPG" id="tgO-8A-Vhp"/>
-                        <segue destination="IbH-vS-0Pl" kind="show" identifier="cancelOrder" id="1cP-7O-2La"/>
                         <segue destination="L9Z-2l-dYj" kind="show" identifier="finalizeOrder1" id="nvJ-Th-ZPg"/>
                     </connections>
                 </viewController>
@@ -934,10 +928,7 @@
         <image name="Search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CLu-TM-FIg"/>
         <segue reference="nvJ-Th-ZPg"/>
-        <segue reference="1cP-7O-2La"/>
-        <segue reference="CaX-KG-pIc"/>
         <segue reference="CE3-uR-hbH"/>
     </inferredMetricsTieBreakers>
 </document>

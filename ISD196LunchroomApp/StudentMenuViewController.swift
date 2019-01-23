@@ -8,8 +8,6 @@
 
 import UIKit
 
-var tabIndex: Int = 0
-
 class StudentMenuViewController: UIViewController {
     
     @IBAction func logOutPressed(_ sender: UIButton) {

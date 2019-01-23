@@ -113,17 +113,12 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
             
             alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
                 Order.deleteOrder()
-                self.performSegue(withIdentifier: "cancelOrder", sender: self)}))
+                self.dismiss(animated: true, completion: nil)}))
         
             self.present(alertController, animated: true, completion: nil)
         
         } else {
-            
-            mealOrdered.removeAll()
-            itemsOrdered.removeAll()
-            totalPrice = 0
-            
-            performSegue(withIdentifier: "cancelOrder", sender: self)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -168,7 +163,6 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
             self.present(alertController, animated: true, completion: nil)
         } else {
             performSegue(withIdentifier: "finalizeOrder1", sender: self)
-            tabIndex = 0
         }
     }
     
