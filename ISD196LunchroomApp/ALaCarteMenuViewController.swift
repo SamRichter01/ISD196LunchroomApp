@@ -12,11 +12,8 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     var matchingItems = [MenuItem]()
     
-    
-    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchBar: UITextField!
-    
     @IBOutlet weak var aLaCarteMenuTableView: UITableView!
     
     override func viewDidLoad() {

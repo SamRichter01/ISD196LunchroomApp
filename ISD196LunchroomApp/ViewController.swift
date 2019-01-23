@@ -90,13 +90,5 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
             }
         }
     }
-    
-    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
-        
-    }
-    
-    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-        
-    }
 }
 

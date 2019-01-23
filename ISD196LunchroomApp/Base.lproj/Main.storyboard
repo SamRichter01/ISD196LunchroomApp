@@ -410,11 +410,11 @@
                                 <color key="textColor" red="0.33333333333333331" green="0.37254901960784315" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-3K-sb4">
-                                <rect key="frame" x="20" y="91" width="674" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-3K-sb4">
+                                <rect key="frame" x="20" y="91" width="674" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="WWp-Mw-qxn"/>
@@ -497,8 +497,8 @@
                                     <action selector="searchPressed:" destination="Rbz-Zg-jmf" eventType="touchUpInside" id="5Uv-oQ-SvV"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAg-qf-4Ub">
-                                <rect key="frame" x="20" y="91" width="674" height="33"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OAg-qf-4Ub">
+                                <rect key="frame" x="20" y="91" width="674" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
@@ -959,7 +959,7 @@
         <image name="Search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nvJ-Th-ZPg"/>
+        <segue reference="yFX-17-F55"/>
         <segue reference="CE3-uR-hbH"/>
     </inferredMetricsTieBreakers>
 </document>
