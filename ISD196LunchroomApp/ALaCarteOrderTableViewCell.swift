@@ -32,6 +32,7 @@ class ALaCarteOrderTableViewCell: UITableViewCell {
         let item = MenuItem(index: "0", name: self.itemLabel.text!, price: self.priceLabel.text!)
         let price = Double(item.price.suffix(4))
         totalPrice -= price!
-        NotificationCenter.default.post(name: Notification.Name("itemRemoved"), object: nil)
+        
+        Order.reloadItemCount()
     }
 }
