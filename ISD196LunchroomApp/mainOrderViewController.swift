@@ -14,6 +14,7 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cancelOrderButton: UIButton!
     @IBOutlet weak var menuItemCollectionView: UICollectionView!
+    @IBOutlet weak var itemCountLabel: UILabel!
     
     // The default month and day
     var monthName = "September"
@@ -50,7 +51,13 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
         }
         
         dateLabel.text = "\(monthName) \(day), \(year)"
+        itemCountLabel.text = "\(itemCount)"
         // Do any additional setup after loading the view.
+        
+        // Creates a listener to update the item count when a new item is added
+        NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
+            name: Notification.Name("itemOrdered"), object: nil)
+
         
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
@@ -63,6 +70,11 @@ class mainOrderViewController: UIViewController, UITableViewDataSource {
                 todaysLines.append(monthlyMenus[self.monthName]!.days[self.day]!.lines[str]!)
             }
         }
+    }
+    
+    @objc func itemOrdered () {
+        
+        itemCountLabel.text = "\(itemCount)"
     }
     
     // Just a switch statement that converts the number of the month to the name

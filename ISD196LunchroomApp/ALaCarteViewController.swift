@@ -16,6 +16,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var cancelOrderButton: UIButton!
     @IBOutlet weak var aLaCarteTableView: UITableView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var itemCountLabel: UILabel!
     
     var monthName = "September"
     var day = 1
@@ -36,9 +37,19 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         monthName = monthToString(month: month)
         
         dateLabel.text = "\(monthName) \(day), \(year)"
+        itemCountLabel.text = "\(itemCount)"
         // Do any additional setup after loading the view.
+        
+        // Creates a listener to update the item count when a new item is added
+        NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
+            name: Notification.Name("itemOrdered"), object: nil)
     }
 
+    @objc func itemOrdered () {
+        
+        itemCountLabel.text = "\(itemCount)"
+    }
+    
     func monthToString (month: Int) -> String {
         
         var monthName = "September"

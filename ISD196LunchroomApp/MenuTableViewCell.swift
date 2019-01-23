@@ -46,7 +46,7 @@ class MenuTableViewCell: UITableViewCell, UICollectionViewDataSource {
         mealPrice = priceLabel.text!
         mealOrdered = line.items
         
-        
+        Order.reloadItemCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

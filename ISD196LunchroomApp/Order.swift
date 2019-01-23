@@ -16,6 +16,7 @@ var mealPrice = ""
 var orderDate = ""
 var totalPrice = 0.0
 var haveOrdered = false
+var itemCount = 0
 
 class Order {
     
@@ -26,6 +27,7 @@ class Order {
         mealPrice = ""
         orderDate = ""
         totalPrice = 0.0
+        itemCount = 0
     }
     
     static func removePrevious () {
@@ -41,5 +43,20 @@ class Order {
             previousOrder.append(mealName)
         }
         haveOrdered = true
+        itemCount = 0
+    }
+    
+    static func reloadItemCount () {
+        
+        itemCount = 0
+        
+        for _ in 0..<itemsOrdered.count {
+            itemCount += 1
+        }
+        if mealName != "" {
+            itemCount += 1
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name("itemOrdered"), object: nil)
     }
 }
