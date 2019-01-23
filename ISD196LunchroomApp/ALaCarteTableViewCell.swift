@@ -31,7 +31,7 @@ class ALaCarteTableViewCell: UITableViewCell {
         itemsOrdered.append(item)
         let price = Double(item.price.suffix(4))
         totalPrice += price!
-        
+        NotificationCenter.default.post(name: Notification.Name("itemRemoved"), object: nil)
         Order.reloadItemCount()
     }
 }
