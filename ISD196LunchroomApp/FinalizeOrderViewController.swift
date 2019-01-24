@@ -116,6 +116,8 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func sendOrder (_ sender: UIButton) {
         
+        performSegue(withIdentifier: "displaySendPopup", sender: self)
+        
         // Add a new document in collection "orders"
         let orderRef = db.collection("orders").document(getDate(format: 0))
             .collection("days").document(getDate(format: 1))
@@ -206,13 +208,7 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
                 } else {
                     
                     transaction.updateData([itemsOrdered[x].name: 1], forDocument: orderRef)
-                        /*{ err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("Item not yet ordered, new doc created")
-                        }
-                    } */
+        
                 }
             }
             
@@ -224,13 +220,8 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 } else {
                 
-                    orderRef.updateData([mealName: 1]) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("Item not yet ordered, new doc created")
-                        }
-                    }
+                    transaction.updateData([mealName: 1], forDocument: orderRef)
+ 
                 }
             }
             return nil
@@ -241,8 +232,11 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
             } else {
                 print("Transaction successfully committed!")
                 print("Previous order before resetting \(previousOrder)")
-                Order.removePrevious()
+                
                 Order.saveOrder()
+                
+                NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
+                
                 print("Previous order after resetting \(previousOrder)")
             }
         }

@@ -767,11 +767,61 @@
                         <outlet property="mealLineLabel" destination="qTK-xt-ub2" id="7ah-pY-qdF"/>
                         <outlet property="mealPriceLabel" destination="ia9-6V-e58" id="uKc-cn-JX6"/>
                         <outlet property="totalPriceLabel" destination="esa-Nc-wAO" id="dWD-eT-cz1"/>
+                        <segue destination="OQT-xL-gPN" kind="presentation" identifier="displaySendPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="oBa-sx-osC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jf2-SP-HUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3452.34375" y="985.54687499999989"/>
+        </scene>
+        <!--Send Popup View Controller-->
+        <scene sceneID="oAH-Xi-MIW">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="OQT-xL-gPN" customClass="SendPopupViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="dn8-e4-LQi">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sxm-nv-Igt">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="2ju-ck-6ua">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMQ-TW-Tbw">
+                                <rect key="frame" x="175" y="398" width="418" height="228"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sending order..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of3-9s-243">
+                                        <rect key="frame" x="127" y="100" width="164" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" red="0.4823529412" green="0.62745098040000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IjL-5j-XWG"/>
+                    </view>
+                    <size key="freeformSize" width="768" height="1024"/>
+                    <connections>
+                        <outlet property="sendingOrderLabel" destination="of3-9s-243" id="5kq-Dq-dyk"/>
+                        <segue destination="IbH-vS-0Pl" kind="show" identifier="returnAfterOrder" id="BRG-8i-ca7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XUP-Zt-Yci" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4227.34375" y="985.54687499999989"/>
         </scene>
         <!--Main menu-->
         <scene sceneID="AoQ-pZ-Jlf">
@@ -959,7 +1009,8 @@
         <image name="Search" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yFX-17-F55"/>
+        <segue reference="nvJ-Th-ZPg"/>
+        <segue reference="BRG-8i-ca7"/>
         <segue reference="CE3-uR-hbH"/>
     </inferredMetricsTieBreakers>
 </document>

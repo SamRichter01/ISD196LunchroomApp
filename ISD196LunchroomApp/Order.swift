@@ -30,11 +30,8 @@ class Order {
         itemCount = 0
     }
     
-    static func removePrevious () {
-        previousOrder.removeAll()
-    }
-    
     static func saveOrder () {
+        previousOrder.removeAll()
         
         for item in itemsOrdered {
             previousOrder.append(item.name)

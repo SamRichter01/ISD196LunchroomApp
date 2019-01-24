@@ -26,6 +26,7 @@
 		22ACA8D221C2D77700069A70 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */; };
 		22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C321BED70500114D53 /* StudentMenuViewController.swift */; };
 		22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C521BED71400114D53 /* AdminMenuViewController.swift */; };
+		22E490B921FA347B00D3D90C /* SendPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490B821FA347B00D3D90C /* SendPopupViewController.swift */; };
 		22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */; };
 		22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */; };
 		22E918F821C81EBB004B60D6 /* MenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F721C81EBB004B60D6 /* MenuItemCollectionViewCell.swift */; };
@@ -58,7 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		221FAD3821BAE0B8005AE7AE /* ISD196LunchroomApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISD196LunchroomApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		221FAD3821BAE0B8005AE7AE /* LunchRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunchRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		221FAD4021BAE0B8005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		221FAD4221BAE0C0005AE7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		22ACA8D121C2D77700069A70 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		22C415C321BED70500114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
 		22C415C521BED71400114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
+		22E490B821FA347B00D3D90C /* SendPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPopupViewController.swift; sourceTree = "<group>"; };
 		22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteViewController.swift; sourceTree = "<group>"; };
 		22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteTableViewCell.swift; sourceTree = "<group>"; };
 		22E918F721C81EBB004B60D6 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -147,7 +149,7 @@
 		221FAD3921BAE0B8005AE7AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				221FAD3821BAE0B8005AE7AE /* ISD196LunchroomApp.app */,
+				221FAD3821BAE0B8005AE7AE /* LunchRoom.app */,
 				221FAD4C21BAE0C0005AE7AE /* ISD196LunchroomAppTests.xctest */,
 				221FAD5721BAE0C0005AE7AE /* ISD196LunchroomAppUITests.xctest */,
 			);
@@ -166,6 +168,7 @@
 				22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */,
 				22E918F921DE894A004B60D6 /* FinalizeOrderViewController.swift */,
 				958DA4A921EE497400F36E65 /* ALaCarteMenuViewController.swift */,
+				22E490B821FA347B00D3D90C /* SendPopupViewController.swift */,
 				22E918FB21DE897D004B60D6 /* Order.swift */,
 				22ACA8BC21C0291800069A70 /* month.swift */,
 				22ACA8BE21C0292700069A70 /* day.swift */,
@@ -250,7 +253,7 @@
 			);
 			name = ISD196LunchroomApp;
 			productName = ISD196LunchroomApp;
-			productReference = 221FAD3821BAE0B8005AE7AE /* ISD196LunchroomApp.app */;
+			productReference = 221FAD3821BAE0B8005AE7AE /* LunchRoom.app */;
 			productType = "com.apple.product-type.application";
 		};
 		221FAD4B21BAE0C0005AE7AE /* ISD196LunchroomAppTests */ = {
@@ -515,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				958DA4AA21EE497400F36E65 /* ALaCarteMenuViewController.swift in Sources */,
+				22E490B921FA347B00D3D90C /* SendPopupViewController.swift in Sources */,
 				22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */,
 				952B3D8721EF987300B0C381 /* ALaCarteMenuTableViewCell.swift in Sources */,
 				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
@@ -718,7 +722,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LunchRoom;
 				SWIFT_OBJC_BRIDGING_HEADER = "ISD196LunchroomApp/ISD196LunchroomApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -741,7 +745,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LunchRoom;
 				SWIFT_OBJC_BRIDGING_HEADER = "ISD196LunchroomApp/ISD196LunchroomApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
