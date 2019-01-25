@@ -37,6 +37,8 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         monthName = monthToString(month: month)
         
         dateLabel.text = "\(monthName) \(day), \(year)"
+        
+        Order.reloadItemCount()
         itemCountLabel.text = "\(itemCount)"
         // Do any additional setup after loading the view.
         
