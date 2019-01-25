@@ -8,6 +8,9 @@
 
 import UIKit
 
+var selectedName = "Name"
+var selectedPrice = "$0.00"
+
 class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var matchingItems = [MenuItem]()
@@ -105,8 +108,9 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         aLaCarteMenuTableView.deselectRow(at: indexPath, animated: true)
-        print(aLaCarteItems[indexPath.row].name)
-        print(aLaCarteItems[indexPath.row].price)
+        selectedName = aLaCarteItems[indexPath.row].name
+        selectedPrice = aLaCarteItems[indexPath.row].price
+        performSegue(withIdentifier: "itemPopup", sender: self)
     }
     
     

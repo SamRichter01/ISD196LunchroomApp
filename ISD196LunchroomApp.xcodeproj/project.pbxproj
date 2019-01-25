@@ -15,6 +15,7 @@
 		221FAD5C21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */; };
 		221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6921BAE1AD005AE7AE /* Podfile */; };
 		221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */; };
+		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
 		22ACA8BD21C0291800069A70 /* month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BC21C0291800069A70 /* month.swift */; };
 		22ACA8BF21C0292700069A70 /* day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BE21C0292700069A70 /* day.swift */; };
@@ -73,6 +74,7 @@
 		221FAD5D21BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
 		22ACA8BC21C0291800069A70 /* month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = month.swift; sourceTree = "<group>"; };
 		22ACA8BE21C0292700069A70 /* day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				22E918F921DE894A004B60D6 /* FinalizeOrderViewController.swift */,
 				958DA4A921EE497400F36E65 /* ALaCarteMenuViewController.swift */,
 				22E490B821FA347B00D3D90C /* SendPopupViewController.swift */,
+				225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */,
 				22E918FB21DE897D004B60D6 /* Order.swift */,
 				22ACA8BC21C0291800069A70 /* month.swift */,
 				22ACA8BE21C0292700069A70 /* day.swift */,
@@ -536,6 +539,7 @@
 				22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */,
 				22E918F821C81EBB004B60D6 /* MenuItemCollectionViewCell.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
+				225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */,
 				22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */,
 				22E9190021DFCCEF004B60D6 /* ALaCarteOrderTableViewCell.swift in Sources */,
 				22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */,
