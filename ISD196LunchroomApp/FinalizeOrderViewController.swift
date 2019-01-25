@@ -137,10 +137,20 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
             
                 for x in 0..<previousOrder.count {
                 
+                    var numberOrdered = 0
+                    
+                    for y in (0)..<previousOrder.count {
+                        
+                        if previousOrder[y] == previousOrder[x] {
+                            
+                            numberOrdered += 1
+                        }
+                    }
+                    
                     if let previousItem = orderDeletionDoc.data()?[previousOrder[x]] as? Int {
                         
                         print("Deleting item: \(previousOrder[x])")
-                        transaction.updateData([previousOrder[x]: previousItem - 1], forDocument: orderRef)
+                        transaction.updateData([previousOrder[x]: previousItem - numberOrdered], forDocument: orderRef)
                     
                     } else {
                     
@@ -201,13 +211,23 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
             print("Previous order before ordering \(previousOrder)")
             for x in 0..<itemsOrdered.count {
                 
+                var numberOrdered = 0
+                
+                for y in (0)..<itemsOrdered.count {
+                    
+                    if itemsOrdered[y].name == itemsOrdered[x].name {
+                        
+                        numberOrdered += 1
+                    }
+                }
+                
                 if let oldItem = orderDoc.data()?[itemsOrdered[x].name] as? Int {
                     
-                    transaction.updateData([itemsOrdered[x].name: oldItem + 1], forDocument: orderRef)
+                    transaction.updateData([itemsOrdered[x].name: oldItem + numberOrdered], forDocument: orderRef)
                     
                 } else {
                     
-                    transaction.updateData([itemsOrdered[x].name: 1], forDocument: orderRef)
+                    transaction.updateData([itemsOrdered[x].name: numberOrdered], forDocument: orderRef)
         
                 }
             }
