@@ -110,19 +110,6 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         aLaCarteMenuTableView.deselectRow(at: indexPath, animated: true)
         selectedName = aLaCarteItems[indexPath.row].name
         selectedPrice = aLaCarteItems[indexPath.row].price
-        performSegue(withIdentifier: "itemPopup", sender: self)
+        performSegue(withIdentifier: "popupItem", sender: self)
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
