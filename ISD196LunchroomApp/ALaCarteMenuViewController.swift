@@ -12,12 +12,15 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     var matchingItems = [MenuItem]()
     
+    @IBOutlet weak var emptyViewLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var aLaCarteMenuTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emptyViewLabel.isHidden = true
         
         aLaCarteMenuTableView.delegate = self
         aLaCarteMenuTableView.dataSource = self
@@ -69,11 +72,15 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         
         if matchingItems.count >= 1 {
             
+            emptyViewLabel.isHidden = true
+            
             return matchingItems.count
             
         } else {
             
-            return 1
+            emptyViewLabel.isHidden = false
+            
+            return 0
         }
     }
     
@@ -85,16 +92,9 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
             fatalError("The dequeued cell is not an instance of ALaCarteTableViewCell.")
         }
         
-        if matchingItems.count < 1 {
-            
-            cell.itemLabel.text = "No items found"
-            cell.priceLabel.text = ""
-        } else {
-            
-            cell.itemLabel.text = matchingItems[indexPath.row].name
-            cell.priceLabel.text = matchingItems[indexPath.row].price
-        }
-        
+        cell.itemLabel.text = matchingItems[indexPath.row].name
+        cell.priceLabel.text = matchingItems[indexPath.row].price
+
         return cell
         
     }

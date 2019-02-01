@@ -17,6 +17,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var aLaCarteTableView: UITableView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var itemCountLabel: UILabel!
+    @IBOutlet weak var emptyViewLabel: UILabel!
     
     var monthName = "September"
     var day = 1
@@ -25,6 +26,8 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        emptyViewLabel.isHidden = true
+        
         aLaCarteTableView.dataSource = self
         
         //Because A La Carte menus don't change, the date is only used to display at the top of the screen
@@ -158,11 +161,15 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         if matchingItems.count >= 1 {
             
+            emptyViewLabel.isHidden = true
+            
             return matchingItems.count
             
         } else {
             
-            return 1
+            emptyViewLabel.isHidden = false
+            
+            return 0
         }
     }
     
@@ -175,17 +182,8 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
             fatalError("The dequeued cell is not an instance of ALaCarteTableViewCell.")
         }
         
-        if matchingItems.count < 1 {
-            
-            cell.itemLabel.text = "No items found"
-            cell.priceLabel.text = ""
-            
-        } else {
-            
-            cell.priceLabel.text = "\(matchingItems[indexPath.row].price)"
-            cell.itemLabel.text = matchingItems[indexPath.row].name
-            
-        }
+        cell.priceLabel.text = "\(matchingItems[indexPath.row].price)"
+        cell.itemLabel.text = matchingItems[indexPath.row].name
         
         return cell
     }

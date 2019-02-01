@@ -1,43 +1,43 @@
 //
-//  mainOrderViewController.swift
+//  LunchMenuViewController.swift
 //  ISD196LunchroomApp
 //
-//  Created by Sam on 12/13/18.
-//  Copyright © 2018 district196.org. All rights reserved.
+//  Created by Sam on 1/25/19.
+//  Copyright © 2019 district196.org. All rights reserved.
 //
 
 import UIKit
 
-class mainOrderViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    @IBOutlet weak var datePicker: UIPickerView!
     @IBOutlet weak var menuCollectionView: UICollectionView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var cancelOrderButton: UIButton!
-    @IBOutlet weak var itemCountLabel: UILabel!
     @IBOutlet weak var emptyViewLabel: UILabel!
     
-    // The default month and day
+    let monthNames = ["September", "October", "November", "December", "January",
+                      "February", "March", "April", "May", "June"]
+    
+    var monthIndex = 0
     var monthName = "September"
     var day = 1
+    var dayIndex = 0
     
-    // An array of keys for the line dictionary, will be explained late
     var todaysLines = [Line]()
+    
+    var days = [Int]()
+    var dates = Dictionary<String,[Int]>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         emptyViewLabel.isHidden = true
         
-        menuCollectionView.delegate = self
-        menuCollectionView.dataSource = self
-    
         let date = Date()
         let calendar = Calendar.current
         
         // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
-        let year = calendar.component(.year, from: date)
         monthName = monthToString(month: month)
         
         // If the current date is not a valid school day, this while loop will increment the school day until it finds the next one. If it's december, it sets the month to january. I don't know what would happen if you set the date to after school ended but it might just run forever so that needs to be fixed.
@@ -53,32 +53,53 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
             day += 1
         }
         
-        dateLabel.text = "\(monthName) \(day), \(year)"
+        for x in 0..<monthNames.count {
+            
+            for y in 1..<32 {
+            
+                if (monthlyMenus[monthNames[x]]!.days[y] == nil) {
+                    
+                    continue
+                    
+                } else {
+                    
+                    days.append(y)
+                }
+            }
+            dates[monthNames[x]] = days
+            days.removeAll()
+        }
         
-        Order.reloadItemCount()
-        itemCountLabel.text = "\(itemCount)"
-        // Do any additional setup after loading the view.
-        
-        // Creates a listener to update the item count when a new item is added
-        NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
-            name: Notification.Name("itemOrdered"), object: nil)
-
-        // Sets the lineKeys array to contain all the keys for the lines in the dictionary
-        todaysLines = [Line]()
-        let tempLineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
-        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4",
-                              "Sides", "Farm 2 School", "Soup Bar"]
-        
-        for str in linePriorities {
-            if tempLineKeys.contains(str) {
-                todaysLines.append(monthlyMenus[self.monthName]!.days[self.day]!.lines[str]!)
+        for x in 0..<monthNames.count {
+            
+            if monthNames[x] == monthName {
+                
+                monthIndex = x
+                break
             }
         }
-    }
-    
-    @objc func itemOrdered () {
         
-        itemCountLabel.text = "\(itemCount)"
+        for x in 0..<dates[monthName]!.count {
+            
+            if dates[monthName]![x] == day {
+                
+                dayIndex = x
+                break
+            }
+        }
+        
+        datePicker.delegate = self
+        datePicker.dataSource = self
+        
+        menuCollectionView.delegate = self
+        menuCollectionView.dataSource = self
+        
+        datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
+        datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
+        
+        reloadLines()
+    
+        // Do any additional setup after loading the view.
     }
     
     // Just a switch statement that converts the number of the month to the name
@@ -113,32 +134,10 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         return monthName
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        
-        if mealOrdered.count > 0 || itemsOrdered.count > 0 {
-            
-            let alertController = UIAlertController(title: "Cancel Order", message: "Are you sure you want to cancel your order?", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
-            
-            alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-                Order.deleteOrder()
-                self.dismiss(animated: true, completion: nil)}))
-        
-            self.present(alertController, animated: true, completion: nil)
-        
-        } else {
-            self.dismiss(animated: true, completion: nil)
-        }
+    @IBAction func backToMainMenu(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    // MARK: - collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -159,8 +158,8 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-
-        if  todaysLines.count < 1 {
+        
+        if todaysLines.count < 1 {
             
             emptyViewLabel.isHidden = false
             
@@ -183,14 +182,13 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
             
         case UICollectionElementKindSectionHeader:
             
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewHeader", for: indexPath) as? OrderCollectionViewReusableView else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewHeader", for: indexPath) as? MenuCollectionViewReusableView else {
                 fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
             }
-            
+        
             header.lineLabel.text = todaysLines[indexPath.section].name
             header.priceLabel.text = todaysLines[indexPath.section].price
-            header.line = todaysLines[indexPath.section]
-            
+        
             return header
             
         case UICollectionElementKindSectionFooter:
@@ -208,24 +206,64 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    @IBAction func finalizeOrderPressed(_ sender: UIButton) {
-        if mealOrdered.count < 1 && itemsOrdered.count < 1 {
-            let alertController = UIAlertController(title: "Order incomplete", message:
-                "Please order at least one item before continuing", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return monthNames.count
         } else {
-            performSegue(withIdentifier: "finalizeOrder1", sender: self)
+            
+            let days = dates[monthNames[datePicker.selectedRow(inComponent: 0)]]
+            return days!.count
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if component == 0 {
+            
+            return monthNames[row]
+            
+        } else {
+            
+            let days = dates[monthNames[datePicker.selectedRow(inComponent: 0)]]
+            return String(days![row])
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0 {
+            datePicker.reloadComponent(1)
+        }
+        reloadLines()
+        menuCollectionView.reloadData()
+    }
+    
+    func reloadLines () {
+        // Sets the lineKeys array to contain all the keys for the lines in the dictionary
+        todaysLines = [Line]()
+        let month = monthNames[datePicker.selectedRow(inComponent: 0)]
+        let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
+        
+        let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
+        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4",
+                              "Sides", "Farm 2 School", "Soup Bar"]
+        
+        for str in linePriorities {
+            if tempLineKeys.contains(str) {
+                todaysLines.append(monthlyMenus[month]!.days[day]!.lines[str]!)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */

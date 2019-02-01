@@ -11,32 +11,26 @@ import UIKit
 import FirebaseFirestore
 import Firebase
 
-class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var discardOrderButton: UIButton!
-    @IBOutlet weak var mealCollectionView: UICollectionView!
-    @IBOutlet weak var mealPriceLabel: UILabel!
-    @IBOutlet weak var mealLineLabel: UILabel!
-    @IBOutlet weak var aLaCarteOrderTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var orderCollectionView: UICollectionView!
+    @IBOutlet weak var emptyViewLabel: UILabel!
     
     lazy var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(itemRemoved),
+       emptyViewLabel.isHidden = true
+    NotificationCenter.default.addObserver(self, selector: #selector(itemRemoved),
             name: Notification.Name("itemRemoved"), object: nil)
-
-        aLaCarteOrderTableView.delegate = self
-        aLaCarteOrderTableView.dataSource = self
         
-        mealCollectionView.delegate = self
-        mealCollectionView.dataSource = self
+        orderCollectionView.delegate = self
+        orderCollectionView.dataSource = self
         
-        mealPriceLabel.text = mealPrice
-        mealLineLabel.text = mealName
-        totalPriceLabel.text = "$\(String(format: "%.2f", totalPrice))"
+        changePrice()
         //totalPriceLabel.text = "$\(totalPrice)"
         // Do any additional setup after loading the view.
         
@@ -52,62 +46,112 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func changePrice() {
-        totalPriceLabel.text = "$\(String(format: "%.2f", totalPrice))"
+        totalPriceLabel.text = "Total: $\(String(format: "%.2f", totalPrice))"
     }
     
     @objc func itemRemoved () {
-        aLaCarteOrderTableView.reloadData()
+        orderCollectionView.reloadData()
         changePrice()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(itemsOrdered.count)
-        return itemsOrdered.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "ALaCarteOrderTableViewCell"
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ALaCarteOrderTableViewCell else {
-            fatalError("The dequeued cell is not an instance of ALaCarteOrderTableViewCell.")
-        }
-        
-        print(indexPath.count)
-        print(itemsOrdered.count)
-        
-        if itemsOrdered.count < 1 {
-            
-            cell.itemLabel.text = "No items ordered"
-            cell.priceLabel.text = ""
-            
-        } else {
-            
-            cell.priceLabel.text = "\(itemsOrdered[indexPath.row].price)"
-            cell.itemLabel.text = itemsOrdered[indexPath.row].name
-            cell.cellIndex = indexPath.row
-            
-        }
-        
-        return cell
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mealOrdered.count
+        
+        switch section {
+            
+        case 0:
+            
+            if mealName != "" {
+                return mealOrdered.count
+            } else {
+                return 0
+            }
+            
+        case 1:
+            
+            return 0
+            
+        default:
+            
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cellIdentifier = "menuItemCollectionViewCell"
+        let cellIdentifier = "menuCollectionViewCell"
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? MenuItemCollectionViewCell else {
-            fatalError("The dequeued cell is not an instance of MenuTableViewCell.")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? MenuCollectionViewCell else {
+            fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
         }
         
         cell.itemLabel.text = mealOrdered[indexPath.row]
         
         return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        if mealName != "" {
+            return (itemsOrdered.count + 1)
+        } else {
+            
+            if itemsOrdered.count < 1 {
+                
+                emptyViewLabel.isHidden = false
+            
+            } else {
+                
+                emptyViewLabel.isHidden = true
+            }
+            return itemsOrdered.count
+            
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+            
+        case UICollectionElementKindSectionHeader:
+            
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewHeader", for: indexPath) as? FinalizeViewCollectionReusableView else {
+                fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
+            }
+            
+            if (mealName != "") && (indexPath.section == 0) {
+                
+                header.backgroundView.isHidden = true
+                header.lineLabel.text = mealName
+                header.priceLabel.text = mealPrice
+                
+            } else if (mealName == "") {
+                
+                header.backgroundView.isHidden = false
+                header.lineLabel.text = itemsOrdered[indexPath.section].name
+                header.priceLabel.text = itemsOrdered[indexPath.section].price
+                
+            } else {
+                
+                header.backgroundView.isHidden = false
+                header.lineLabel.text = itemsOrdered[indexPath.section - 1].name
+                header.priceLabel.text = itemsOrdered[indexPath.section - 1].price
+            }
+            
+            return header
+            
+        case UICollectionElementKindSectionFooter:
+            
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewFooter", for: indexPath) as? UICollectionReusableView else {
+                fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
+            }
+            
+            return footer
+            
+        default:
+            
+            let reusableView = UICollectionReusableView()
+            return reusableView
+        }
     }
 
     @IBAction func discardOrder(_ sender: UIButton) {
@@ -115,6 +159,16 @@ class FinalizeOrderViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func sendOrder (_ sender: UIButton) {
+        
+        if mealOrdered.count < 1 && itemsOrdered.count < 1 {
+            let alertController = UIAlertController(title: "Order incomplete", message:
+                "Please order at least one item before sending your order", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
         
         performSegue(withIdentifier: "displaySendPopup", sender: self)
         

@@ -24,6 +24,10 @@ class StudentMenuViewController: UIViewController {
         performSegue(withIdentifier: "toALaCarteMenu", sender: self)
     }
     
+    @IBAction func lunchMenuPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "toLunchMenu", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  
