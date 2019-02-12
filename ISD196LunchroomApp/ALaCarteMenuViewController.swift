@@ -8,6 +8,9 @@
 
 import UIKit
 
+var selectedName = "Name"
+var selectedPrice = "$0.00"
+
 class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var matchingItems = [MenuItem]()
@@ -105,20 +108,8 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         aLaCarteMenuTableView.deselectRow(at: indexPath, animated: true)
-        print(aLaCarteItems[indexPath.row].name)
-        print(aLaCarteItems[indexPath.row].price)
+        selectedName = aLaCarteItems[indexPath.row].name
+        selectedPrice = aLaCarteItems[indexPath.row].price
+        performSegue(withIdentifier: "popupItem", sender: self)
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
