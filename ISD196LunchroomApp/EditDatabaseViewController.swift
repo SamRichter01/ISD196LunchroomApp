@@ -55,8 +55,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func backToMain(_ sender: UIBarButtonItem) {
+    
+    @IBAction func backPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
