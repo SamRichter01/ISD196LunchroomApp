@@ -12,13 +12,15 @@ class ItemPopupViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var itemView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         titleLabel.text = selectedName
         priceLabel.text = selectedPrice
-        // Do any additional setup after loading the view.
+        
+        itemView.layer.cornerRadius = 15
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {

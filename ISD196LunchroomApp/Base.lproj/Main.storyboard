@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,6 +27,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TgZ-oj-jhV"/>
+                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not signed in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWk-uT-3aV">
                                 <rect key="frame" x="105" y="474" width="558" height="29"/>
@@ -85,11 +88,16 @@
                                     <action selector="signOutButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tFT-2g-eQr"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aza-MR-B8W">
+                                <rect key="frame" x="374" y="511" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="aza-MR-B8W" id="xiU-lc-5J4"/>
                         <outlet property="mainMenuButton" destination="WpH-fh-Gos" id="V5Q-4y-lte"/>
                         <outlet property="nameLabel" destination="AWk-uT-3aV" id="xHQ-Xq-LE9"/>
                         <outlet property="signInButton" destination="mYr-Lw-9Fu" id="tzA-UW-ANv"/>
@@ -617,6 +625,14 @@
                                 <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GG-Ps-dRD">
+                                <rect key="frame" x="670" y="96" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Cancel"/>
+                                <connections>
+                                    <action selector="deleteText:" destination="ecU-yW-SgF" eventType="touchUpInside" id="lgO-HP-iuK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62352941176470589" green="0.81960784313725488" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="apk-P5-eNa"/>
@@ -624,14 +640,78 @@
                     <connections>
                         <outlet property="aLaCarteMenuTableView" destination="Gm1-tl-rQR" id="hzL-Ql-T75"/>
                         <outlet property="backButton" destination="aZE-0y-Eom" id="3Cm-CL-B8s"/>
+                        <outlet property="deleteTextButton" destination="6GG-Ps-dRD" id="S3j-Om-9AA"/>
                         <outlet property="emptyViewLabel" destination="E4z-81-iUL" id="JsX-R7-8Yf"/>
                         <outlet property="searchBar" destination="cgO-3K-sb4" id="yRI-t6-4Vd"/>
+                        <segue destination="lc7-vw-Ugl" kind="presentation" identifier="popupItem" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="rxM-Bi-TuL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7M-hb-CKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ii8-sK-ybY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1342.96875" y="1838.6718749999998"/>
+        </scene>
+        <!--Item Popup View Controller-->
+        <scene sceneID="0ii-wU-dTG">
+            <objects>
+                <viewController id="lc7-vw-Ugl" customClass="ItemPopupViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wuG-Ru-AVc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ux-hd-9AP">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="PaM-BU-UPL">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkD-TE-Mqk">
+                                            <rect key="frame" x="158" y="233" width="452" height="539"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaN-NW-Q07">
+                                                    <rect key="frame" x="46" y="8" width="361" height="74"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4p-Jw-31V">
+                                                    <rect key="frame" x="13" y="33" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Left Arrow"/>
+                                                    <connections>
+                                                        <action selector="backButtonPressed:" destination="lc7-vw-Ugl" eventType="touchUpInside" id="QC3-Mc-be1"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcq-Ol-GeD">
+                                                    <rect key="frame" x="153" y="90" width="147" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.62352941176470589" green="0.81960784313725488" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ind-di-LKL"/>
+                    </view>
+                    <connections>
+                        <outlet property="itemView" destination="bkD-TE-Mqk" id="VcL-RU-a0u"/>
+                        <outlet property="priceLabel" destination="hcq-Ol-GeD" id="OPj-v4-E8V"/>
+                        <outlet property="titleLabel" destination="OaN-NW-Q07" id="LHO-Oj-okR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4US-jv-r9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2008.59375" y="2493.75"/>
         </scene>
         <!--A La Carte-->
         <scene sceneID="YU3-GA-FrC">
@@ -777,6 +857,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX0-OM-mPv">
+                                <rect key="frame" x="668" y="97" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Cancel"/>
+                                <connections>
+                                    <action selector="deleteText:" destination="Rbz-Zg-jmf" eventType="touchUpInside" id="nlL-Nk-qpN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62352941179999999" green="0.81960784310000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="QX7-5k-gQm"/>
@@ -786,6 +874,7 @@
                         <outlet property="aLaCarteTableView" destination="F0c-5q-idN" id="VQb-zc-Opg"/>
                         <outlet property="cancelOrderButton" destination="txV-tQ-XmI" id="0hV-Nr-kKI"/>
                         <outlet property="dateLabel" destination="xIx-mD-nWX" id="uKd-bR-ebP"/>
+                        <outlet property="deleteTextButton" destination="qX0-OM-mPv" id="tbl-yt-RMN"/>
                         <outlet property="emptyViewLabel" destination="1nj-VW-KK8" id="TcY-xQ-G70"/>
                         <outlet property="finalizeOrderButton" destination="FwE-XD-5SQ" id="26O-yc-iUC"/>
                         <outlet property="itemCountLabel" destination="2bG-JW-P7W" id="Mqz-VB-71x"/>
@@ -1257,6 +1346,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Cancel" width="32" height="32"/>
         <image name="Delete" width="32" height="32"/>
         <image name="Finalize Order" width="32" height="32"/>
         <image name="Left Arrow" width="30" height="30"/>
@@ -1266,7 +1356,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yFX-17-F55"/>
-        <segue reference="BRG-8i-ca7"/>
+        <segue reference="k20-i8-JeH"/>
         <segue reference="ssW-Ed-HdV"/>
     </inferredMetricsTieBreakers>
 </document>

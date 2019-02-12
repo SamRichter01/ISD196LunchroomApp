@@ -18,6 +18,8 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var itemCountLabel: UILabel!
     @IBOutlet weak var emptyViewLabel: UILabel!
+    @IBOutlet weak var deleteTextButton: UIButton!
+    
     
     var monthName = "September"
     var day = 1
@@ -29,6 +31,8 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         emptyViewLabel.isHidden = true
         
         aLaCarteTableView.dataSource = self
+        
+        deleteTextButton.isHidden = true
         
         //Because A La Carte menus don't change, the date is only used to display at the top of the screen
         let date = Date()
@@ -112,11 +116,16 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func searchPressed(_ sender: UIButton) {
-        aLaCarteTableView.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
     
     @IBAction func returnPressed(_ sender: UITextField) {
-        aLaCarteTableView.resignFirstResponder()
+        searchBar.resignFirstResponder()
+    }
+    
+    @IBAction func deleteText(_ sender: UIButton) {
+        searchBar.text = ""
+        aLaCarteTableView.reloadData()
     }
     
     @IBAction func finalizeOrderPressed(_ sender: UIButton) {
@@ -159,6 +168,13 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
         }
+        
+        if searchBar.text != "" {
+            deleteTextButton.isHidden = false
+        } else {
+            deleteTextButton.isHidden = true
+        }
+        
         if matchingItems.count >= 1 {
             
             emptyViewLabel.isHidden = true

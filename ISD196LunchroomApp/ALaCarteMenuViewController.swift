@@ -19,6 +19,8 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var aLaCarteMenuTableView: UITableView!
+    @IBOutlet weak var deleteTextButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,7 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         aLaCarteMenuTableView.delegate = self
         aLaCarteMenuTableView.dataSource = self
         
+        deleteTextButton.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -52,6 +55,11 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         searchBar.resignFirstResponder()
     }
     
+    @IBAction func deleteText(_ sender: UIButton) {
+        searchBar.text = ""
+        aLaCarteMenuTableView.reloadData()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -71,6 +79,12 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
                     }
                 }
             }
+        }
+        
+        if searchBar.text != "" {
+            deleteTextButton.isHidden = false
+        } else {
+            deleteTextButton.isHidden = true
         }
         
         if matchingItems.count >= 1 {
@@ -108,8 +122,9 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         aLaCarteMenuTableView.deselectRow(at: indexPath, animated: true)
-        selectedName = aLaCarteItems[indexPath.row].name
-        selectedPrice = aLaCarteItems[indexPath.row].price
+        searchBar.resignFirstResponder()
+        selectedName = matchingItems[indexPath.row].name
+        selectedPrice = matchingItems[indexPath.row].price
         performSegue(withIdentifier: "popupItem", sender: self)
     }
 }

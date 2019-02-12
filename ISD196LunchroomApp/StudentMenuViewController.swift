@@ -15,9 +15,7 @@ class StudentMenuViewController: UIViewController {
     }
 
     @IBAction func quickOrderPressed(_ sender: UIButton) {
-        if (monthlyMenus.count != 0) {
             performSegue(withIdentifier: "quickOrder", sender: self)
-        }
     }
     
     @IBAction func aLaCarteMenuPressed(_ sender: UIButton) {
@@ -30,35 +28,12 @@ class StudentMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        //Creates a dispatch group to be used to stop code. enter() function starts the pause of the code.
-        let group = DispatchGroup()
-        group.enter()
         
-        //This function allows the code inside to be run while all other code is paused. leave() function resumes all code.
-        DispatchQueue.main.async {
-            MasterMenu.downloadALaCarteItems()
-            MasterMenu.downloadMenuItems()
-            MasterMenu.downloadMonthlyMenus()
-            group.leave()
-        }
-        
-        // Do any additional setup after loading the view.
+        shouldSignOut = true //App will now sign out user after pressing the Log Out button
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

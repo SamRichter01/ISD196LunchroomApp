@@ -25,11 +25,7 @@ class AdminMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MasterMenu.downloadOrderData()
-        MasterMenu.downloadALaCarteItems()
-        MasterMenu.downloadMenuItems()
-        MasterMenu.downloadMonthlyMenus()
-        // Do any additional setup after loading the view.
+        shouldSignOut = true //App will now sign out user after pressing the Log Out button
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +33,6 @@ class AdminMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -47,5 +42,4 @@ class AdminMenuViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
