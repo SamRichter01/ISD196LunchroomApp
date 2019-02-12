@@ -16,6 +16,7 @@ import Foundation
 var monthlyMenus = Dictionary<String,Month>()
 var menuItems: [MenuItem] = [MenuItem]()
 var aLaCarteItems: [MenuItem] = [MenuItem]()
+var orderData = Dictionary<String, Dictionary<String, Dictionary<String,Int>>>()
 
 class MasterMenu {
     
@@ -137,6 +138,49 @@ class MasterMenu {
                             monthlyMenus[tempMonth.name] = tempMonth
                     }
                 }
+            }
+        }
+    }
+    
+    static func downloadOrderData() {
+        
+        if orderData.count > 0 {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
+        // The list of month names that act as keys to get the database documents relating to each one
+        let monthNames = ["September", "October", "November", "December", "January",
+                          "February", "March", "April", "May", "June"]
+        
+        for month in monthNames {
+            db.collection("orders").document(month).collection("days").getDocuments
+                { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        
+                        var tempDict = Dictionary<String, Dictionary<String, Int>>()
+                        // A for each loop that goes through every day document that it downloaded
+                        for document in querySnapshot!.documents {
+                            
+                            var tempDoc = document.data()
+                            
+                            if let count = tempDoc["Order count"] {
+                                print("\(month) \(document.documentID) \(count)")
+                            } else {
+                                print("No order count for \(month) \(document.documentID)")
+                            }
+                            
+                            tempDict[document.documentID] = tempDoc as? Dictionary<String, Int>
+                        }
+                        
+                        orderData[month] = tempDict
+                    }
             }
         }
     }

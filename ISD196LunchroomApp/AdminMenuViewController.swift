@@ -18,9 +18,17 @@ class AdminMenuViewController: UIViewController {
         performSegue(withIdentifier: "editDatabase", sender: self)
     }
     
+    @IBAction func viewOrderDataPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "viewOrderData", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MasterMenu.downloadOrderData()
+        MasterMenu.downloadALaCarteItems()
+        MasterMenu.downloadMenuItems()
+        MasterMenu.downloadMonthlyMenus()
         // Do any additional setup after loading the view.
     }
 

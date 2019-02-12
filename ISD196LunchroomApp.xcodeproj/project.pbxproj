@@ -31,6 +31,8 @@
 		22E490C121FE795A00D3D90C /* MenuCollectionViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */; };
 		22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490C222036FF900D3D90C /* OrderCollectionViewReusableView.swift */; };
 		22E490C522037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490C422037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift */; };
+		22E490CB2204B6A200D3D90C /* OrderDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */; };
+		22E490CD2204C56300D3D90C /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490CC2204C56300D3D90C /* GraphView.swift */; };
 		22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */; };
 		22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */; };
 		22E918FA21DE894A004B60D6 /* FinalizeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F921DE894A004B60D6 /* FinalizeOrderViewController.swift */; };
@@ -92,6 +94,8 @@
 		22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewReusableView.swift; sourceTree = "<group>"; };
 		22E490C222036FF900D3D90C /* OrderCollectionViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCollectionViewReusableView.swift; sourceTree = "<group>"; };
 		22E490C422037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeViewCollectionReusableView.swift; sourceTree = "<group>"; };
+		22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewController.swift; sourceTree = "<group>"; };
+		22E490CC2204C56300D3D90C /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteViewController.swift; sourceTree = "<group>"; };
 		22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteTableViewCell.swift; sourceTree = "<group>"; };
 		22E918F921DE894A004B60D6 /* FinalizeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeOrderViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				958DA4A921EE497400F36E65 /* ALaCarteMenuViewController.swift */,
 				22E490B821FA347B00D3D90C /* SendPopupViewController.swift */,
 				22E490BA21FB7B7300D3D90C /* LunchMenuViewController.swift */,
+				22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */,
+				22E490CC2204C56300D3D90C /* GraphView.swift */,
 				22E918FB21DE897D004B60D6 /* Order.swift */,
 				22ACA8BC21C0291800069A70 /* month.swift */,
 				22ACA8BE21C0292700069A70 /* day.swift */,
@@ -531,6 +537,7 @@
 				22E918FA21DE894A004B60D6 /* FinalizeOrderViewController.swift in Sources */,
 				22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */,
 				22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */,
+				22E490CB2204B6A200D3D90C /* OrderDataViewController.swift in Sources */,
 				22E490BB21FB7B7600D3D90C /* LunchMenuViewController.swift in Sources */,
 				22ACA8BD21C0291800069A70 /* month.swift in Sources */,
 				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
@@ -541,6 +548,7 @@
 				22E490C522037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift in Sources */,
 				22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */,
 				22ACA8C421C029EA00069A70 /* bridging header.m in Sources */,
+				22E490CD2204C56300D3D90C /* GraphView.swift in Sources */,
 				22E918FC21DE897D004B60D6 /* Order.swift in Sources */,
 				22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */,
 				22E490C121FE795A00D3D90C /* MenuCollectionViewReusableView.swift in Sources */,
