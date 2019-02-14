@@ -512,6 +512,7 @@
                         <outlet property="datePicker" destination="fFU-va-7lo" id="T7N-Ay-GQC"/>
                         <outlet property="emptyViewLabel" destination="1eV-vc-S0O" id="PW7-Zg-m2X"/>
                         <outlet property="menuCollectionView" destination="ue7-YR-e4z" id="s33-QP-XHq"/>
+                        <segue destination="lc7-vw-Ugl" kind="presentation" identifier="itemPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Buy-qB-CHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLL-09-LYX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1356,6 +1357,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yFX-17-F55"/>
+        <segue reference="Buy-qB-CHq"/>
         <segue reference="k20-i8-JeH"/>
         <segue reference="ssW-Ed-HdV"/>
     </inferredMetricsTieBreakers>

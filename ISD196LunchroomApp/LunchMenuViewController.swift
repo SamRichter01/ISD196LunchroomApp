@@ -206,6 +206,12 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedName = todaysLines[indexPath.section].items[indexPath.row]
+        selectedPrice = ""
+        performSegue(withIdentifier: "itemPopup", sender: self)
+    }
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2

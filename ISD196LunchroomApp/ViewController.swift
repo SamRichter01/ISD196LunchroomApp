@@ -167,6 +167,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                         
                         MasterMenu.downloadALaCarteItems()
                         MasterMenu.downloadMonthlyMenus()
+                        MasterMenu.downloadOrderData()
                         self.downloadMenuItems()
                     } else {
                         NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
