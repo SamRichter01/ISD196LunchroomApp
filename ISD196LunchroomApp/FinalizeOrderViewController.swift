@@ -10,6 +10,7 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import Reachability
 
 class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -17,8 +18,10 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var orderCollectionView: UICollectionView!
     @IBOutlet weak var emptyViewLabel: UILabel!
+    @IBOutlet weak var sendOrderButton: UIButton!
     
     lazy var db = Firestore.firestore()
+    let network = NetworkManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,24 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
+        
+        NetworkManager.isUnreachable { _ in
+            DispatchQueue.main.async {
+                self.sendOrderButton.isHidden = true
+            }
+        }
+        
+        network.reachability.whenUnreachable = { _ in
+            DispatchQueue.main.async {
+                self.sendOrderButton.isHidden = true
+            }
+        }
+        
+        network.reachability.whenReachable = { _ in
+            DispatchQueue.main.async {
+                self.sendOrderButton.isHidden = false
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

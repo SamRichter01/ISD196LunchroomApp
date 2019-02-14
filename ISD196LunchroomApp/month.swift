@@ -16,5 +16,4 @@ class Month {
     init (name: String) {
         self.name = name
     }
-    
 }

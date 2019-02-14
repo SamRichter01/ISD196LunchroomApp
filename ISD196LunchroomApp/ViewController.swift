@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import GoogleAPIClientForREST
 import GoogleSignIn
+import Reachability
 
 var shouldSignOut = false //variable which allows user to be automatically signed out when returning to this view controller
 
@@ -23,6 +24,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    let network = NetworkManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,33 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
             startLoading()
             nameLabel.text = "Signing in"
+        }
+        
+        //Gets called if device is offline when this view controller loads
+        NetworkManager.isUnreachable { _ in
+            DispatchQueue.main.async {
+                self.nameLabel.text = "Please connect to internet before signing in"
+                self.nameLabel.textColor = UIColor.red
+                self.signInButton.isEnabled = false
+            }
+        }
+        
+        //Gets called when device goes offline
+        network.reachability.whenUnreachable = { _ in
+            DispatchQueue.main.async {
+                self.nameLabel.text = "Please connect to internet before signing in"
+                self.nameLabel.textColor = UIColor.red
+                self.signInButton.isEnabled = false
+            }
+        }
+        
+        //Gets called when device comes online
+        network.reachability.whenReachable = { _ in
+            DispatchQueue.main.async {
+                self.stopLoading()
+                self.signInButton.isEnabled = true
+            }
+            
         }
     }
     

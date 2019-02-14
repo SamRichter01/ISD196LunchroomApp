@@ -9,6 +9,7 @@ target 'ISD196LunchroomApp' do
   pod 'Firebase'
   pod 'FirebaseUI'
   pod 'GoogleAPIClientForREST/Sheets'
+  pod 'ReachabilitySwift'
 
   target 'ISD196LunchroomAppTests' do
     inherit! :search_paths

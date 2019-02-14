@@ -19,5 +19,4 @@ class Line {
         self.name = name
         self.price = price
     }
-    
 }
