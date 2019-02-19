@@ -19,7 +19,11 @@ class AdminMenuViewController: UIViewController {
     }
     
     @IBAction func viewOrderDataPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "viewOrderData", sender: self)
+        performSegue(withIdentifier: "viewOrderDataPressed", sender: self)
+    }
+    
+    @IBAction func editLunchMenusPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "EditLunchMenuPressed", sender: self)
     }
     
     override func viewDidLoad() {
