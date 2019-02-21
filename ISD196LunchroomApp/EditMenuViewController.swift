@@ -1,14 +1,14 @@
 //
-//  OrderDataViewController.swift
+//  EditMenuViewController.swift
 //  ISD196LunchroomApp
 //
-//  Created by Sam on 2/1/19.
+//  Created by Sam on 2/13/19.
 //  Copyright © 2019 district196.org. All rights reserved.
 //
 
 import UIKit
 
-class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var datePicker: UIPickerView!
     @IBOutlet weak var menuCollectionView: UICollectionView!
