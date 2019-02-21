@@ -16,5 +16,4 @@ class Day {
     init (day: String) {
         self.day = Int(day)!
     }
-    
 }

@@ -523,6 +523,7 @@
                         <outlet property="datePicker" destination="fFU-va-7lo" id="T7N-Ay-GQC"/>
                         <outlet property="emptyViewLabel" destination="1eV-vc-S0O" id="PW7-Zg-m2X"/>
                         <outlet property="menuCollectionView" destination="ue7-YR-e4z" id="s33-QP-XHq"/>
+                        <segue destination="lc7-vw-Ugl" kind="presentation" identifier="itemPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Buy-qB-CHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLL-09-LYX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1067,6 +1068,7 @@
                         <outlet property="discardOrderButton" destination="CvB-W6-UhP" id="4gu-hA-Zmb"/>
                         <outlet property="emptyViewLabel" destination="jct-NJ-XVa" id="0TE-IO-GbX"/>
                         <outlet property="orderCollectionView" destination="cqZ-m2-w6i" id="iX5-Gs-y9X"/>
+                        <outlet property="sendOrderButton" destination="HlB-pi-imz" id="WJC-Lu-0GI"/>
                         <outlet property="totalPriceLabel" destination="esa-Nc-wAO" id="dWD-eT-cz1"/>
                         <segue destination="OQT-xL-gPN" kind="presentation" identifier="displaySendPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="oBa-sx-osC"/>
                     </connections>
@@ -1599,6 +1601,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yFX-17-F55"/>
+        <segue reference="Buy-qB-CHq"/>
         <segue reference="k20-i8-JeH"/>
         <segue reference="ssW-Ed-HdV"/>
     </inferredMetricsTieBreakers>

@@ -413,5 +413,4 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Pass the selected object to the new view controller.
     }
     */
-
 }
