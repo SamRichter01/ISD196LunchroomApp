@@ -13,6 +13,8 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var datePicker: UIPickerView!
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var emptyViewLabel: UILabel!
+    @IBOutlet weak var totalOrderLabel: UILabel!
+    @IBOutlet weak var orderCountLabel: UILabel!
     
     let monthNames = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
@@ -26,6 +28,7 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var days = [Int]()
     var dates = Dictionary<String,[Int]>()
+    var tempDay = Dictionary<String,Int>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,12 +185,24 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             
         case UICollectionElementKindSectionHeader:
             
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewHeader", for: indexPath) as? MenuCollectionViewReusableView else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "orderDataCollectionViewHeader", for: indexPath) as? OrderDataViewReusableView else {
                 fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
             }
             
             header.lineLabel.text = todaysLines[indexPath.section].name
-            header.priceLabel.text = todaysLines[indexPath.section].price
+            
+            let orderCount = tempDay[header.lineLabel.text!]
+                    
+            if orderCount == nil {
+                            
+                header.orderCountLabel.text = "Number ordered: 0"
+                            
+            } else {
+                    
+                header.orderCountLabel.text = "Number ordered: \(orderCount!)"
+            }
+            
+            //header.orderCountLabel.text = todaysLines[indexPath.section].price
             
             return header
             
@@ -248,9 +263,32 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let month = monthNames[datePicker.selectedRow(inComponent: 0)]
         let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
         
+        tempDay = orderData[month]!["\(day)"]!
+        
         let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
-        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4",
-                              "Sides", "Farm 2 School", "Soup Bar"]
+        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4"]
+        
+        var totalOrders = 0
+        
+        for str in linePriorities {
+            
+            let orderCount = tempDay[str]
+            
+            if orderCount == nil {
+                
+                totalOrders += 0
+                
+            } else {
+                
+                totalOrders += orderCount!
+            }
+        }
+        
+        totalOrderLabel.text = "Meals ordered today: \(totalOrders)"
+        
+        let orderCount: Int = tempDay["Order count"]!
+        
+        orderCountLabel.text = "Total orders recieved: \(orderCount)"
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {
