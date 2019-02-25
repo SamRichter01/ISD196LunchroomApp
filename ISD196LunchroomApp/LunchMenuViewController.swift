@@ -94,6 +94,11 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         menuCollectionView.delegate = self
         menuCollectionView.dataSource = self
         
+        datePicker.layer.cornerRadius = 15
+        datePicker.layer.masksToBounds = false
+        datePicker.layer.shadowRadius = 5
+        datePicker.layer.shadowOpacity = 0.15
+        
         datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
         datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
         

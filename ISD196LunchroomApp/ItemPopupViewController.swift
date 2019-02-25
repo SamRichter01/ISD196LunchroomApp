@@ -21,6 +21,9 @@ class ItemPopupViewController: UIViewController {
         priceLabel.text = selectedPrice
         
         itemView.layer.cornerRadius = 15
+        itemView.layer.masksToBounds = false
+        itemView.layer.shadowRadius = 10
+        itemView.layer.shadowOpacity = 0.1
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {

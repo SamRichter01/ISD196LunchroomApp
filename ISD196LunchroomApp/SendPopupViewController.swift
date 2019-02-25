@@ -11,6 +11,7 @@ import UIKit
 class SendPopupViewController: UIViewController {
 
     @IBOutlet weak var sendingOrderLabel: UILabel!
+    @IBOutlet weak var itemView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,10 @@ class SendPopupViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(orderSent),
             name: Notification.Name("orderSent"), object: nil)
 
+        itemView.layer.cornerRadius = 15
+        itemView.layer.masksToBounds = false
+        itemView.layer.shadowRadius = 10
+        itemView.layer.shadowOpacity = 0.1
         // Do any additional setup after loading the view.
     }
     

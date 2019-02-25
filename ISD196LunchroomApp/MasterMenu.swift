@@ -23,9 +23,8 @@ class MasterMenu {
     static func downloadMenuItems() {
         
         // Checks to make sure that the dictionary hasn't already been created.
-        if menuItems.count > 0 {
-            return
-        }
+        menuItems.removeAll()
+        menuItems = [MenuItem]()
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -54,9 +53,8 @@ class MasterMenu {
     
     static func downloadALaCarteItems() {
         
-        if aLaCarteItems.count > 0 {
-            return
-        }
+        aLaCarteItems.removeAll()
+        aLaCarteItems = [MenuItem]()
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -85,9 +83,8 @@ class MasterMenu {
     
     static func downloadMonthlyMenus() {
         
-        if monthlyMenus.count > 0 {
-            return
-        }
+        monthlyMenus.removeAll()
+        monthlyMenus = Dictionary<String,Month>()
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -144,9 +141,8 @@ class MasterMenu {
     
     static func downloadOrderData() {
         
-        if orderData.count > 0 {
-            return
-        }
+        orderData.removeAll()
+        orderData = Dictionary<String, Dictionary<String, Dictionary<String,Int>>>()
         
         let db = Firestore.firestore()
         let settings = db.settings
