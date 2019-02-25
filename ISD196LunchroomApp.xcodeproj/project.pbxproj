@@ -16,6 +16,10 @@
 		221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6921BAE1AD005AE7AE /* Podfile */; };
 		221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */; };
 		223438DD221F1365005EB3D0 /* OrderDataViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */; };
+		223438DF22205E41005EB3D0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438DE22205E41005EB3D0 /* AddItemViewController.swift */; };
+		223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */; };
+		223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */; };
+		223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */; };
 		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
@@ -82,6 +86,10 @@
 		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewReusableView.swift; sourceTree = "<group>"; };
+		223438DE22205E41005EB3D0 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
+		223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionReusableView.swift; sourceTree = "<group>"; };
+		223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
@@ -187,19 +195,23 @@
 				22E490B821FA347B00D3D90C /* SendPopupViewController.swift */,
 				22E490BA21FB7B7300D3D90C /* LunchMenuViewController.swift */,
 				22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */,
-				22E490CC2204C56300D3D90C /* GraphView.swift */,
 				225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */,
 				22E490CE22147FED00D3D90C /* EditMenuViewController.swift */,
+				223438DE22205E41005EB3D0 /* AddItemViewController.swift */,
+				22E490CC2204C56300D3D90C /* GraphView.swift */,
 				22E918FB21DE897D004B60D6 /* Order.swift */,
 				22ACA8BC21C0291800069A70 /* month.swift */,
 				22ACA8BE21C0292700069A70 /* day.swift */,
 				22ACA8C021C0293100069A70 /* line.swift */,
 				22ACA8C921C171BC00069A70 /* MenuItem.swift */,
 				22ACA8CA21C171BC00069A70 /* MasterMenu.swift */,
+				223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */,
 				22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */,
 				952B3D8621EF987200B0C381 /* ALaCarteMenuTableViewCell.swift */,
-				22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */,
 				22E490BE21FE728100D3D90C /* MenuCollectionViewCell.swift */,
+				223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */,
+				223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */,
+				22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */,
 				22E490C222036FF900D3D90C /* OrderCollectionViewReusableView.swift */,
 				22E490C422037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift */,
 				223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */,
@@ -549,6 +561,7 @@
 				22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */,
 				952B3D8721EF987300B0C381 /* ALaCarteMenuTableViewCell.swift in Sources */,
 				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
+				223438DF22205E41005EB3D0 /* AddItemViewController.swift in Sources */,
 				22E918FA21DE894A004B60D6 /* FinalizeOrderViewController.swift in Sources */,
 				22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */,
 				22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */,
@@ -558,6 +571,7 @@
 				22ACA8BD21C0291800069A70 /* month.swift in Sources */,
 				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
 				22E490BF21FE728100D3D90C /* MenuCollectionViewCell.swift in Sources */,
+				223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */,
 				22ACA8BF21C0292700069A70 /* day.swift in Sources */,
 				22ACA8C121C0293100069A70 /* line.swift in Sources */,
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
@@ -567,6 +581,8 @@
 				22E490CD2204C56300D3D90C /* GraphView.swift in Sources */,
 				22E918FC21DE897D004B60D6 /* Order.swift in Sources */,
 				22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */,
+				223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */,
+				223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */,
 				22E490C121FE795A00D3D90C /* MenuCollectionViewReusableView.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 				22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */,

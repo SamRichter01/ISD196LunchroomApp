@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var datePicker: UIPickerView!
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var emptyViewLabel: UILabel!
+    
+    lazy var db = Firestore.firestore()
     
     let monthNames = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
@@ -21,6 +25,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var monthName = "September"
     var day = 1
     var dayIndex = 0
+    var line = "Line 1"
     
     var todaysLines = [Line]()
     
@@ -88,6 +93,10 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.addItem(_:)), name: NSNotification.Name(rawValue: "addItemPressed"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.removeItem(_:)), name: NSNotification.Name(rawValue: "removeItemPressed"), object: nil)
+        
         datePicker.delegate = self
         datePicker.dataSource = self
         
@@ -96,10 +105,15 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
         datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
-        
+
         reloadLines()
-        
+        menuCollectionView.reloadData()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        reloadLines()
+        menuCollectionView.reloadData()
     }
     
     // Just a switch statement that converts the number of the month to the name
@@ -135,8 +149,99 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return monthName
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addItemPressed" {
+            let addItemViewController = segue.destination as! AddItemViewController
+            
+            let month = monthNames[datePicker.selectedRow(inComponent: 0)]
+            
+            addItemViewController.editingLine = line
+            addItemViewController.editingMonth = month
+            addItemViewController.editingDay = String(day)
+        }
+    }
+    
     @IBAction func backToMainMenu(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func addItem (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            
+            if let str = dict["lineName"] as? String {
+                
+                line = str
+                
+                self.performSegue(withIdentifier: "addItemPressed", sender: self)
+            }
+        }
+    }
+    
+    @objc func removeItem (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let itemName = dict["itemName"] as? String {
+                
+                let items = monthlyMenus[monthName]!.days[Int(day)]!
+                    .lines[line]!.items
+                
+                for x in 0..<items.count {
+                    
+                    if items[x] == itemName {
+                        
+                        monthlyMenus[monthName]!.days[Int(day)]!
+                            .lines[line]!.items.remove(at: x)
+                    }
+                }
+                
+                let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
+                
+                db.runTransaction({ (transaction, errorPointer) -> Any? in
+                    let dbDocument: DocumentSnapshot
+                    do {
+                        try dbDocument = transaction.getDocument(docReference)
+                    } catch let fetchError as NSError {
+                        errorPointer?.pointee = fetchError
+                        return nil
+                    }
+                    
+                    guard let oldItems = dbDocument.data()?[self.line] as? [String] else {
+                        let error = NSError(
+                            domain: "AppErrorDomain",
+                            code: -1,
+                            userInfo: [
+                                NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
+                            ]
+                        )
+                        errorPointer?.pointee = error
+                        return nil
+                    }
+                    
+                    var newItems = oldItems
+                    
+                    for x in 0..<newItems.count {
+                        
+                        if newItems[x] == itemName {
+
+                            newItems.remove(at: x)
+                        }
+                    }
+
+                    transaction.updateData([self.line: newItems], forDocument: docReference)
+                    return nil
+                }) { (object, error) in
+                    if let error = error {
+                        print("Transaction failed: \(error)")
+                    } else {
+                        print("Transaction successfully committed!")
+                    }
+                }
+            }
+        }
+        
+        reloadLines()
+        menuCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -148,7 +253,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         let cellIdentifier = "menuCollectionViewCell"
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? MenuCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EditMenuCollectionViewCell else {
             fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
         }
         
@@ -182,12 +287,11 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
         case UICollectionElementKindSectionHeader:
             
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewHeader", for: indexPath) as? MenuCollectionViewReusableView else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewHeader", for: indexPath) as? EditMenuCollectionReusableView else {
                 fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
             }
             
             header.lineLabel.text = todaysLines[indexPath.section].name
-            header.priceLabel.text = todaysLines[indexPath.section].price
             
             return header
             
