@@ -25,8 +25,11 @@ class OrderCollectionViewReusableView: UICollectionReusableView {
         
         if priceLabel.text != "Prices vary" {
             
-            let price = Double(line.price.suffix(4))
-            totalPrice += price!
+            if mealName == "" {
+            
+                let price = Double(line.price.suffix(4))
+                totalPrice += price!
+            }
             
         } else if priceLabel.text == "Prices vary" && mealPrice != "Prices vary" {
             

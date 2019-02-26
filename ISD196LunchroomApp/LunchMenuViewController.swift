@@ -17,6 +17,9 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     let monthNames = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
     
+    let textColor = UIColor(red:0.49, green:0.71, blue:0.16, alpha:1.0)
+    let textFont = UIFont.systemFont(ofSize: CGFloat(15))
+    
     var monthIndex = 0
     var monthName = "September"
     var day = 1
@@ -232,16 +235,18 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         if component == 0 {
             
-            return monthNames[row]
+            return NSAttributedString(string: monthNames[row], attributes: [NSAttributedStringKey.foregroundColor: textColor])
             
         } else {
             
             let days = dates[monthNames[datePicker.selectedRow(inComponent: 0)]]
-            return String(days![row])
+            
+            return NSAttributedString(string: String(days![row]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont])
+            
         }
     }
     
