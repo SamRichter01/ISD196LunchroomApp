@@ -20,6 +20,7 @@
 		223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */; };
 		223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */; };
 		223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */; };
+		223438E92225A241005EB3D0 /* Open_Sans in Resources */ = {isa = PBXBuildFile; fileRef = 223438E82225A241005EB3D0 /* Open_Sans */; };
 		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
@@ -90,6 +91,7 @@
 		223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
 		223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionReusableView.swift; sourceTree = "<group>"; };
 		223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Open_Sans; path = ISD196LunchroomApp/Open_Sans; sourceTree = SOURCE_ROOT; };
 		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				22873A65221483D5002D5F64 /* NetworkManager.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
+				223438E82225A241005EB3D0 /* Open_Sans */,
 				221FAD4421BAE0C0005AE7AE /* LaunchScreen.storyboard */,
 				221FAD4721BAE0C0005AE7AE /* Info.plist */,
 				221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */,
@@ -384,6 +387,7 @@
 				221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */,
 				221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */,
 				221FAD4121BAE0B8005AE7AE /* Main.storyboard in Resources */,
+				223438E92225A241005EB3D0 /* Open_Sans in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,7 +22,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                       "February", "March", "April", "May", "June"]
     
     let textColor = UIColor(red:0.49, green:0.71, blue:0.16, alpha:1.0)
-    let textFont = UIFont.systemFont(ofSize: CGFloat(15))
+    let textFont = UIFont(name: "OpenSans-Regular", size: 17)
     
     var monthIndex = 0
     var monthName = "September"
