@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220333362225B65400AF29AC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333302225B65200AF29AC /* OpenSans-Light.ttf */; };
+		220333372225B65400AF29AC /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333312225B65300AF29AC /* OpenSans-Italic.ttf */; };
+		220333382225B65400AF29AC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */; };
+		220333392225B65400AF29AC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333332225B65300AF29AC /* OpenSans-Bold.ttf */; };
+		2203333A2225B65400AF29AC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333342225B65300AF29AC /* OpenSans-Regular.ttf */; };
+		2203333B2225B65400AF29AC /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */; };
 		221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */; };
 		221FAD4121BAE0B8005AE7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD3F21BAE0B8005AE7AE /* Main.storyboard */; };
 		221FAD4321BAE0C0005AE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD4221BAE0C0005AE7AE /* Assets.xcassets */; };
@@ -21,12 +27,6 @@
 		223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */; };
 		223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */; };
 		223438E92225A241005EB3D0 /* Open_Sans in Resources */ = {isa = PBXBuildFile; fileRef = 223438E82225A241005EB3D0 /* Open_Sans */; };
-		223438F12225AD32005EB3D0 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223438EA2225AD31005EB3D0 /* OpenSans-Bold.ttf */; };
-		223438F22225AD32005EB3D0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223438EB2225AD31005EB3D0 /* OpenSans-Regular.ttf */; };
-		223438F42225AD32005EB3D0 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223438ED2225AD31005EB3D0 /* OpenSans-SemiBold.ttf */; };
-		223438F52225AD32005EB3D0 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223438EE2225AD31005EB3D0 /* OpenSans-Light.ttf */; };
-		223438F62225AD32005EB3D0 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223438EF2225AD32005EB3D0 /* OpenSans-LightItalic.ttf */; };
-		223438F72225AD32005EB3D0 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 223438F02225AD32005EB3D0 /* OpenSans-Italic.ttf */; };
 		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
@@ -78,6 +78,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		220333302225B65200AF29AC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		220333312225B65300AF29AC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		220333332225B65300AF29AC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		220333342225B65300AF29AC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		221FAD3821BAE0B8005AE7AE /* LunchRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunchRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		221FAD4021BAE0B8005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,12 +104,6 @@
 		223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionReusableView.swift; sourceTree = "<group>"; };
 		223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Open_Sans; path = ISD196LunchroomApp/Open_Sans; sourceTree = SOURCE_ROOT; };
-		223438EA2225AD31005EB3D0 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		223438EB2225AD31005EB3D0 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		223438ED2225AD31005EB3D0 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		223438EE2225AD31005EB3D0 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		223438EF2225AD32005EB3D0 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		223438F02225AD32005EB3D0 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
@@ -175,13 +175,13 @@
 		221FAD2F21BAE0B8005AE7AE = {
 			isa = PBXGroup;
 			children = (
-				223438EA2225AD31005EB3D0 /* OpenSans-Bold.ttf */,
-				223438F02225AD32005EB3D0 /* OpenSans-Italic.ttf */,
-				223438EE2225AD31005EB3D0 /* OpenSans-Light.ttf */,
-				223438EF2225AD32005EB3D0 /* OpenSans-LightItalic.ttf */,
-				223438EB2225AD31005EB3D0 /* OpenSans-Regular.ttf */,
-				223438ED2225AD31005EB3D0 /* OpenSans-SemiBold.ttf */,
 				221FAD3A21BAE0B8005AE7AE /* ISD196LunchroomApp */,
+				220333332225B65300AF29AC /* OpenSans-Bold.ttf */,
+				220333312225B65300AF29AC /* OpenSans-Italic.ttf */,
+				220333302225B65200AF29AC /* OpenSans-Light.ttf */,
+				220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */,
+				220333342225B65300AF29AC /* OpenSans-Regular.ttf */,
+				220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */,
 				221FAD4F21BAE0C0005AE7AE /* ISD196LunchroomAppTests */,
 				221FAD5A21BAE0C0005AE7AE /* ISD196LunchroomAppUITests */,
 				221FAD3921BAE0B8005AE7AE /* Products */,
@@ -400,12 +400,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223438F12225AD32005EB3D0 /* OpenSans-Bold.ttf in Resources */,
-				223438F22225AD32005EB3D0 /* OpenSans-Regular.ttf in Resources */,
-				223438F42225AD32005EB3D0 /* OpenSans-SemiBold.ttf in Resources */,
-				223438F52225AD32005EB3D0 /* OpenSans-Light.ttf in Resources */,
-				223438F62225AD32005EB3D0 /* OpenSans-LightItalic.ttf in Resources */,
-				223438F72225AD32005EB3D0 /* OpenSans-Italic.ttf in Resources */,
+				220333362225B65400AF29AC /* OpenSans-Light.ttf in Resources */,
+				220333372225B65400AF29AC /* OpenSans-Italic.ttf in Resources */,
+				220333382225B65400AF29AC /* OpenSans-LightItalic.ttf in Resources */,
+				220333392225B65400AF29AC /* OpenSans-Bold.ttf in Resources */,
+				2203333A2225B65400AF29AC /* OpenSans-Regular.ttf in Resources */,
+				2203333B2225B65400AF29AC /* OpenSans-SemiBold.ttf in Resources */,
 				221FAD4621BAE0C0005AE7AE /* LaunchScreen.storyboard in Resources */,
 				221FAD4321BAE0C0005AE7AE /* Assets.xcassets in Resources */,
 				221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */,
