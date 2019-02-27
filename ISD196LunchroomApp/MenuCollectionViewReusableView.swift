@@ -13,4 +13,8 @@ class MenuCollectionViewReusableView: UICollectionReusableView {
     @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBAction func commentButtonPressed(_ sender: UIButton) {
+        
+        NotificationCenter.default.post(name: NSNotification.Name("commentPressed"), object: nil, userInfo: ["lineName": lineLabel.text!])
+    }
 }

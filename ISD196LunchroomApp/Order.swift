@@ -13,7 +13,6 @@ var itemsOrdered = [MenuItem]()
 var mealOrdered = [String]()
 var mealName = ""
 var mealPrice = ""
-var orderDate = ""
 var totalPrice = 0.0
 var haveOrdered = false
 var itemCount = 0
@@ -25,7 +24,6 @@ class Order {
         mealOrdered.removeAll()
         mealName = ""
         mealPrice = ""
-        orderDate = ""
         totalPrice = 0.0
         itemCount = 0
     }

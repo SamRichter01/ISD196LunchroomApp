@@ -7,31 +7,93 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 class ItemPopupViewController: UIViewController {
     
+    @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var itemView: UIView!
+    @IBOutlet weak var ratingSlider: UISlider!
+    @IBOutlet weak var commentTextView: UITextView!
+    
+    lazy var db = Firestore.firestore()
+    
+    var month = ""
+    var day = ""
+    var lineName = ""
+    
+    let borderColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.text = selectedName
-        priceLabel.text = selectedPrice
-        
         itemView.layer.cornerRadius = 15
         itemView.layer.masksToBounds = false
         itemView.layer.shadowRadius = 10
         itemView.layer.shadowOpacity = 0.1
+        
+        commentView.layer.cornerRadius = 8
+        commentView.layer.borderColor = borderColor.cgColor
+        commentView.layer.borderWidth = 2.0
+        
+        ratingSlider.value = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        
+        titleLabel.text = "Feedback for \(lineName)"
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func newRatingPicked(_ sender: UISlider) {
+        
+        let step: Float = 1
+        
+        let roundedValue = round(sender.value / step) * step
+        
+        sender.value = roundedValue
+    }
     
-
+    @IBAction func sendFeedbackPressed(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Send Feedback", message:
+            "Are you sure you want to send your comment?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default,handler: { (action: UIAlertAction!) in
+            self.dismiss(animated: true, completion: nil)}))
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            self.sendComment()
+            self.dismiss(animated: true, completion: nil)}))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func sendComment () {
+        
+        let feedbackRef = db.collection("feedback").document(month)
+            .collection("days").document(day).collection("comments")
+        
+        var commentText = "No comment"
+        if commentTextView.text != "" {
+            
+            commentText = commentTextView.text
+        }
+        
+        let rating = Int(ratingSlider.value)
+        
+        let line = lineName
+        
+        feedbackRef.addDocument(data: ["commentText": commentText, "rating": rating, "line": line])
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

@@ -25,6 +25,8 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var day = 1
     var dayIndex = 0
     
+    var lineName = "Line 1"
+    
     var todaysLines = [Line]()
     
     var days = [Int]()
@@ -37,6 +39,8 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         let date = Date()
         let calendar = Calendar.current
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.commentPressed(_:)), name: NSNotification.Name(rawValue: "commentPressed"), object: nil)
         
         // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
@@ -98,9 +102,12 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         menuCollectionView.dataSource = self
         
         datePicker.layer.cornerRadius = 15
+        
+        /*
         datePicker.layer.masksToBounds = false
         datePicker.layer.shadowRadius = 5
         datePicker.layer.shadowOpacity = 0.15
+        */
         
         datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
         datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
@@ -143,8 +150,28 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         return monthName
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commentPopup" {
+            let destination = segue.destination as! ItemPopupViewController
+            
+            destination.lineName = lineName
+            destination.day = String(day)
+            destination.month = monthName
+        }
+    }
+    
     @IBAction func backToMainMenu(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func commentPressed (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            
+            lineName = dict["lineName"] as! String
+                
+            performSegue(withIdentifier: "commentPopup", sender: self)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -219,7 +246,6 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         selectedPrice = ""
         performSegue(withIdentifier: "itemPopup", sender: self)
     }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2

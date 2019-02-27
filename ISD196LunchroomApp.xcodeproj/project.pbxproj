@@ -13,6 +13,7 @@
 		220333392225B65400AF29AC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333332225B65300AF29AC /* OpenSans-Bold.ttf */; };
 		2203333A2225B65400AF29AC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333342225B65300AF29AC /* OpenSans-Regular.ttf */; };
 		2203333B2225B65400AF29AC /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */; };
+		2203333D222739ED00AF29AC /* DetailPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2203333C222739ED00AF29AC /* DetailPopupViewController.swift */; };
 		221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */; };
 		221FAD4121BAE0B8005AE7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD3F21BAE0B8005AE7AE /* Main.storyboard */; };
 		221FAD4321BAE0C0005AE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD4221BAE0C0005AE7AE /* Assets.xcassets */; };
@@ -84,6 +85,7 @@
 		220333332225B65300AF29AC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		220333342225B65300AF29AC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		2203333C222739ED00AF29AC /* DetailPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopupViewController.swift; sourceTree = "<group>"; };
 		221FAD3821BAE0B8005AE7AE /* LunchRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunchRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		221FAD4021BAE0B8005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				22E490BA21FB7B7300D3D90C /* LunchMenuViewController.swift */,
 				22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */,
 				225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */,
+				2203333C222739ED00AF29AC /* DetailPopupViewController.swift */,
 				22E490CE22147FED00D3D90C /* EditMenuViewController.swift */,
 				223438DE22205E41005EB3D0 /* AddItemViewController.swift */,
 				22E490CC2204C56300D3D90C /* GraphView.swift */,
@@ -590,6 +593,7 @@
 				952B3D8721EF987300B0C381 /* ALaCarteMenuTableViewCell.swift in Sources */,
 				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
 				223438DF22205E41005EB3D0 /* AddItemViewController.swift in Sources */,
+				2203333D222739ED00AF29AC /* DetailPopupViewController.swift in Sources */,
 				22E918FA21DE894A004B60D6 /* FinalizeOrderViewController.swift in Sources */,
 				22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */,
 				22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */,
