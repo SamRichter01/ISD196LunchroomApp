@@ -33,6 +33,8 @@ class ItemPopupViewController: UIViewController {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
+        
+        titleLabel.text = "Feedback for \(lineName)"
 
         itemView.layer.cornerRadius = 15
         itemView.layer.masksToBounds = false
@@ -47,25 +49,29 @@ class ItemPopupViewController: UIViewController {
         ratingSlider.thumbTintColor = thumbColor
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        
-        titleLabel.text = "Feedback for \(lineName)"
-    }
-    
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func newRatingPicked(_ sender: UISlider) {
         
-        let colorValue = CGFloat(sender.value / 2)
+        let colorValue = CGFloat(ratingSlider.value / 2)
+        
+        let red = (0.88 - (0.195 * colorValue) - (0.335 * (colorValue * colorValue)))
+        let green = (0.88 + (0.3 * colorValue) - (0.5 * (colorValue * colorValue)))
+        let blue = (0.88 + (0.03 * colorValue) - (0.75 * (colorValue * colorValue)))
+        
+        ratingSlider.thumbTintColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        
+        /*
+        let colorValue = CGFloat(sender.value / 4)
         
         ratingSlider.thumbTintColor = UIColor(
-            red:(0.88 + (0 - colorValue)),
-            green:(0.88 + (0 + colorValue)),
-            blue:(0.88 - abs(colorValue * 0.5)),
+            red:(0.88 * (1 - colorValue)),
+            green:(0.88 * (1 + colorValue)),
+            blue:(0.88 - abs(colorValue)),
             alpha:1.0)
+        */
         
         let step: Float = 1
         
