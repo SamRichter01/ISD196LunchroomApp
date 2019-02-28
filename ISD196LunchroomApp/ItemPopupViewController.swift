@@ -110,6 +110,10 @@ class ItemPopupViewController: UIViewController {
         if commentTextView.text != "" {
             
             commentText = commentTextView.text
+            
+            commentText = ProfanityFilter.removeProfanity(str: commentText)
+            
+            print(commentText)
         }
         
         let rating = Int(ratingSlider.value)

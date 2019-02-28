@@ -30,6 +30,8 @@ class StudentMenuViewController: UIViewController {
         super.viewDidLoad()
         
         shouldSignOut = true //App will now sign out user after pressing the Log Out button
+        
+        ProfanityFilter.loadData()
     }
 
     override func didReceiveMemoryWarning() {
