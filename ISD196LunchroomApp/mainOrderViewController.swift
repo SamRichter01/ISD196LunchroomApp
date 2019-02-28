@@ -208,6 +208,12 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedName = todaysLines[indexPath.section].items[indexPath.row]
+        selectedPrice = ""
+        performSegue(withIdentifier: "itemPopup", sender: self)
+    }
+    
     @IBAction func finalizeOrderPressed(_ sender: UIButton) {
         if mealOrdered.count < 1 && itemsOrdered.count < 1 {
             let alertController = UIAlertController(title: "Order incomplete", message:

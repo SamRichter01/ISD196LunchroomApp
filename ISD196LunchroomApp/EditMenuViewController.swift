@@ -40,6 +40,10 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         emptyViewLabel.isHidden = true
         
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
         let date = Date()
         let calendar = Calendar.current
         

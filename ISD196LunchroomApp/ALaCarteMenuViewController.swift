@@ -125,6 +125,6 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         searchBar.resignFirstResponder()
         selectedName = matchingItems[indexPath.row].name
         selectedPrice = matchingItems[indexPath.row].price
-        performSegue(withIdentifier: "popupItem", sender: self)
+        performSegue(withIdentifier: "itemPopup", sender: self)
     }
 }

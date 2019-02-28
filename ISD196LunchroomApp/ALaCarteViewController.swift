@@ -30,6 +30,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
 
         emptyViewLabel.isHidden = true
         
+        aLaCarteTableView.delegate = self
         aLaCarteTableView.dataSource = self
         
         deleteTextButton.isHidden = true
@@ -204,10 +205,12 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    // Override to support conditional editing of the table view.
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return false
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        aLaCarteTableView.deselectRow(at: indexPath, animated: true)
+        searchBar.resignFirstResponder()
+        selectedName = matchingItems[indexPath.row].name
+        selectedPrice = matchingItems[indexPath.row].price
+        performSegue(withIdentifier: "itemPopup", sender: self)
     }
     
     /*

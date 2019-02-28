@@ -26,12 +26,11 @@ class ALaCarteTableViewCell: UITableViewCell {
     }
 
     @IBAction func addItemToOrder(_ sender: UIButton) {
-        self.isSelected = true
         let item = MenuItem(index: "0", name: itemLabel.text!, price: priceLabel.text!)
         itemsOrdered.append(item)
         let price = Double(item.price.suffix(4))
         totalPrice += price!
-        NotificationCenter.default.post(name: Notification.Name("itemRemoved"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("itemOrdered"), object: nil)
         Order.reloadItemCount()
     }
 }

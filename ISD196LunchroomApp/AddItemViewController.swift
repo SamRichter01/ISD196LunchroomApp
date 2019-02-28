@@ -37,6 +37,10 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         emptyViewLabel.isHidden = true
         
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
         aLaCarteMenuTableView.delegate = self
         aLaCarteMenuTableView.dataSource = self
         

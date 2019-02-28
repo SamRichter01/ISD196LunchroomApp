@@ -25,9 +25,14 @@ class ItemPopupViewController: UIViewController {
     var lineName = ""
     
     let borderColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
+    let thumbColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
 
         itemView.layer.cornerRadius = 15
         itemView.layer.masksToBounds = false
@@ -39,6 +44,7 @@ class ItemPopupViewController: UIViewController {
         commentView.layer.borderWidth = 2.0
         
         ratingSlider.value = 0
+        ratingSlider.thumbTintColor = thumbColor
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,11 +59,20 @@ class ItemPopupViewController: UIViewController {
     
     @IBAction func newRatingPicked(_ sender: UISlider) {
         
+        let colorValue = CGFloat(sender.value / 2)
+        
+        ratingSlider.thumbTintColor = UIColor(
+            red:(0.88 + (0 - colorValue)),
+            green:(0.88 + (0 + colorValue)),
+            blue:(0.88 - abs(colorValue * 0.5)),
+            alpha:1.0)
+        
         let step: Float = 1
         
         let roundedValue = round(sender.value / step) * step
         
         sender.value = roundedValue
+        
     }
     
     @IBAction func sendFeedbackPressed(_ sender: UIButton) {
@@ -80,6 +95,11 @@ class ItemPopupViewController: UIViewController {
         let feedbackRef = db.collection("feedback").document(month)
             .collection("days").document(day).collection("comments")
         
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd, yyyy"
+        let sentDate = dateFormatter.string(from: date)
+        
         var commentText = "No comment"
         if commentTextView.text != "" {
             
@@ -90,7 +110,7 @@ class ItemPopupViewController: UIViewController {
         
         let line = lineName
         
-        feedbackRef.addDocument(data: ["commentText": commentText, "rating": rating, "line": line])
+        feedbackRef.addDocument(data: ["commentText": commentText, "rating": rating, "line": line, "sentDate": sentDate])
         
         self.dismiss(animated: true, completion: nil)
     }
