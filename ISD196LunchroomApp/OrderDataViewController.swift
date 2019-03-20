@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+
+var loadedComments = [feedback]()
 
 class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -27,6 +31,8 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var day = 1
     var dayIndex = 0
     
+    var lineName = "Line 1"
+    
     var todaysLines = [Line]()
     
     var days = [Int]()
@@ -37,6 +43,8 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         super.viewDidLoad()
         
         emptyViewLabel.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.viewCommentsPressed(_:)), name: NSNotification.Name(rawValue: "viewCommentsPressed"), object: nil)
         
         let date = Date()
         let calendar = Calendar.current
@@ -106,6 +114,70 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         reloadLines()
         
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func viewCommentsPressed (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            
+            lineName = dict["lineName"] as! String
+            
+            performSegue(withIdentifier: "commentPopup", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commentPopup" {
+            let destination = segue.destination as! CommentPopupViewController
+            
+            loadedComments = [feedback]()
+            
+            destination.line = lineName
+            destination.month = monthName
+            destination.day = String(day)
+            OrderDataViewController.downloadFeedbackData(forMonth: monthName, forDay: String(day), forLine: lineName)
+            destination.comments = loadedComments
+        }
+    }
+    
+    static func downloadFeedbackData(forMonth: String, forDay: String, forLine: String) {
+        
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
+        db.collection("feedback").document(forMonth).collection("days")
+            .document(forDay).collection("comments").getDocuments()
+        { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+                    
+                    var tempDoc = document.data()
+                    var comment = feedback()
+                    
+                    if tempDoc["line"] as! String == forLine {
+                        
+                        comment.commentDate = tempDoc["sentDate"] as! String
+                        
+                        if tempDoc["rating"] != nil {
+                            
+                            comment.rating = String(tempDoc["rating"] as! Int)
+                        }
+                        
+                        if tempDoc["commentText"] != nil {
+                            
+                            comment.text = tempDoc["commentText"] as! String
+                        }
+                        
+                        loadedComments.append(comment)
+                    }
+                }
+            }
+        }
     }
     
     // Just a switch statement that converts the number of the month to the name
@@ -255,9 +327,15 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        monthName = monthNames[datePicker.selectedRow(inComponent: 0)]
+        day = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
+        
         if component == 0 {
+
             datePicker.reloadComponent(1)
         }
+        
         reloadLines()
         menuCollectionView.reloadData()
     }
@@ -271,7 +349,6 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         tempDay = orderData[month]!["\(day)"]!
         
         let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
-        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4"]
         
         var totalOrders = 0
         

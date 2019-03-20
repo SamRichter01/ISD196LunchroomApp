@@ -25,17 +25,23 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     lazy var db = Firestore.firestore()
     
-    @IBOutlet weak var emptyViewLabel: UILabel!
+    @IBOutlet weak var itemView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var aLaCarteMenuTableView: UITableView!
     @IBOutlet weak var deleteTextButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var itemDescriptionTextField: UITextField!
+    @IBOutlet weak var saveAndUploadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emptyViewLabel.isHidden = true
+        itemView.layer.cornerRadius = 15
+        itemView.layer.masksToBounds = false
+        itemView.layer.shadowRadius = 10
+        itemView.layer.shadowOpacity = 0.1
         
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -45,6 +51,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         aLaCarteMenuTableView.dataSource = self
         
         deleteTextButton.isHidden = true
+        
+        saveAndUploadButton.isEnabled = false
         // Do any additional setup after loading the view.
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.addItem(_:)), name: NSNotification.Name(rawValue: "addedItem"), object: nil)
@@ -59,6 +67,90 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func returnToMainMenu(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveAndUploadPressed(_ sender: UIButton) {
+        
+        let itemIndex = menuItems.count
+        
+        let newItem = MenuItem(index: String(itemIndex), name: itemNameTextField.text!)
+        
+        monthlyMenus[editingMonth]!.days[Int(editingDay)!]!
+            .lines[editingLine]!.items.append(newItem.name)
+        
+        db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Item index": String(newItem.index)])
+        
+        let docReference = db.collection("menus").document(editingMonth).collection("days").document(editingDay)
+        
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let dbDocument: DocumentSnapshot
+            do {
+                try dbDocument = transaction.getDocument(docReference)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            guard let oldItems = dbDocument.data()?[self.editingLine] as? [String] else {
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
+                    ]
+                )
+                errorPointer?.pointee = error
+                return nil
+            }
+            
+            var newItems = oldItems
+            newItems.append(newItem.name)
+            
+            transaction.updateData([self.editingLine: newItems], forDocument: docReference)
+            return nil
+        }) { (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+            }
+        }
+    }
+    
+    @IBAction func checkForName(_ sender: UITextField) {
+        
+        if let _ = itemNameTextField.text {
+            
+            if let _ = itemDescriptionTextField.text {
+                
+                saveAndUploadButton.isEnabled = true
+                
+            } else {
+                
+                saveAndUploadButton.isEnabled = false
+            }
+        } else {
+            
+            saveAndUploadButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func checkForDescription(_ sender: UITextField) {
+        
+        if let _ = itemNameTextField.text {
+            
+            if let _ = itemDescriptionTextField.text {
+                
+                saveAndUploadButton.isEnabled = true
+                
+            } else {
+                
+                saveAndUploadButton.isEnabled = false
+            }
+        } else {
+            
+            saveAndUploadButton.isEnabled = false
+        }
     }
     
     @IBAction func searchBarEdited(_ sender: UITextField) {
@@ -154,13 +246,9 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if matchingItems.count >= 1 {
             
-            emptyViewLabel.isHidden = true
-            
             return matchingItems.count
             
         } else {
-            
-            emptyViewLabel.isHidden = false
             
             return 0
         }

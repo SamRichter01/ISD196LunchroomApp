@@ -104,6 +104,11 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.removeItem(_:)), name: NSNotification.Name(rawValue: "removeItemPressed"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.removeLine(_:)), name: NSNotification.Name(rawValue: "removeLinePressed"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadView),
+            name: Notification.Name("reloadView"), object: nil)
+        
         datePicker.delegate = self
         datePicker.dataSource = self
         
@@ -165,11 +170,31 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             addItemViewController.editingLine = line
             addItemViewController.editingMonth = month
             addItemViewController.editingDay = String(day)
+            
+        } else if segue.identifier == "newLinePressed" {
+            
+            let newLineViewController = segue.destination as! NewLineViewController
+            
+            let month = monthNames[datePicker.selectedRow(inComponent: 0)]
+            
+            newLineViewController.editingMonth = month
+            newLineViewController.editingDay = day
         }
     }
     
     @IBAction func backToMainMenu(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func newLinePressed(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "newLinePressed", sender: self)
+    }
+    
+    @objc func reloadView() {
+        
+        reloadLines()
+        menuCollectionView.reloadData()
     }
     
     @objc func addItem (_ notification: NSNotification) {
@@ -255,22 +280,90 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         menuCollectionView.reloadData()
     }
     
+    @objc func removeLine (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let lineName = dict["lineName"] as? String {
+                
+                //let lines = monthlyMenus[monthName]!.days[Int(day)]!.lines
+                
+                monthlyMenus[monthName]!.days[Int(day)]!
+                    .lines.removeValue(forKey: lineName)
+                
+                let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
+                
+                db.runTransaction({ (transaction, errorPointer) -> Any? in
+                    let dbDocument: DocumentSnapshot
+                    do {
+                        try dbDocument = transaction.getDocument(docReference)
+                    } catch let fetchError as NSError {
+                        errorPointer?.pointee = fetchError
+                        return nil
+                    }
+                    
+                    guard let oldLines = dbDocument.data() else {
+                        let error = NSError(
+                            domain: "AppErrorDomain",
+                            code: -1,
+                            userInfo: [
+                                NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
+                            ]
+                        )
+                        errorPointer?.pointee = error
+                        return nil
+                    }
+                    
+                    var newLines = oldLines
+                    
+                    newLines.removeValue(forKey: lineName)
+                    
+                    transaction.setData(newLines, forDocument: docReference)
+                    return nil
+                }) { (object, error) in
+                    if let error = error {
+                        print("Transaction failed: \(error)")
+                    } else {
+                        print("Transaction successfully committed!")
+                    }
+                }
+            }
+        }
+        
+        reloadLines()
+        menuCollectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return todaysLines[section].items.count
+        return (todaysLines[section].items.count + 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cellIdentifier = "menuCollectionViewCell"
+        if (indexPath.row == (todaysLines[indexPath.section].items.count)) {
+            
+            let cellIdentifier = "addItemCell"
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? NewItemCollectionViewCell else {
+                fatalError("The dequeued cell is not an instance of NewItemCollectionViewCell.")
+            }
+            
+            cell.lineName = todaysLines[indexPath.section].name
+            
+            return cell
+            
+        } else {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EditMenuCollectionViewCell else {
-            fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
+            let cellIdentifier = "menuCollectionViewCell"
+        
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EditMenuCollectionViewCell else {
+                fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
+            }
+        
+            cell.itemLabel.text = todaysLines[indexPath.section].items[indexPath.row]
+            
+            return cell
         }
-        
-        cell.itemLabel.text = todaysLines[indexPath.section].items[indexPath.row]
-        
-        return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -366,12 +459,11 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
         
         let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
-        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4",
-                              "Sides", "Farm 2 School", "Soup Bar"]
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {
                 todaysLines.append(monthlyMenus[month]!.days[day]!.lines[str]!)
+                print("Line count: \(todaysLines.count)")
             }
         }
     }

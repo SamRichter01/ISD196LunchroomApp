@@ -66,8 +66,6 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
         let tempLineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
-        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4",
-                              "Sides", "Farm 2 School", "Soup Bar"]
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {

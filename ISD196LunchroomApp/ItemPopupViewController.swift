@@ -83,11 +83,22 @@ class ItemPopupViewController: UIViewController {
     
     @IBAction func sendFeedbackPressed(_ sender: UIButton) {
         
+        if commentTextView.text.count > 140 {
+            
+            let alertController = UIAlertController(title: "Character limit exceeded", message:
+                "Can't send comment, text exceeds the 140 character limit.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+        
         let alertController = UIAlertController(title: "Send Feedback", message:
             "Are you sure you want to send your comment?", preferredStyle: UIAlertControllerStyle.alert)
         
         alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default,handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true, completion: nil)}))
+            return}))
         
         alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
             self.sendComment()

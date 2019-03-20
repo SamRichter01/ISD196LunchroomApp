@@ -10,10 +10,10 @@ import UIKit
 
 class EditMenuCollectionReusableView: UICollectionReusableView {
     
-    @IBOutlet weak var addItemButton: UIButton!
     @IBOutlet weak var lineLabel: UILabel!
     
-    @IBAction func addItemPressed(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name("addItemPressed"), object: nil, userInfo: ["lineName": lineLabel.text!])
+    @IBAction func removeLinePressed(_ sender: UIButton) {
+        
+        NotificationCenter.default.post(name: NSNotification.Name("removeLinePressed"), object: nil, userInfo: ["lineName": lineLabel.text!])
     }
 }

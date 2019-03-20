@@ -17,6 +17,7 @@ var monthlyMenus = Dictionary<String,Month>()
 var menuItems: [MenuItem] = [MenuItem]()
 var aLaCarteItems: [MenuItem] = [MenuItem]()
 var orderData = Dictionary<String, Dictionary<String, Dictionary<String,Int>>>()
+var linePriorities = [String]()
 
 class MasterMenu {
     
@@ -137,6 +138,19 @@ class MasterMenu {
                 }
             }
         }
+        
+        db.collection("basicData").document("lines").getDocument { (document, err) in
+            if let document = document, document.exists {
+                
+                let data = document.data()
+                
+                linePriorities = data!["lineList"] as! [String]
+                
+            } else {
+                
+                print("Document does not exist")
+            }
+        }
     }
     
     static func downloadOrderData() {
@@ -167,7 +181,7 @@ class MasterMenu {
                             var tempDoc = document.data()
                             
                             if let count = tempDoc["Order count"] {
-                                print("\(month) \(document.documentID) \(count)")
+                                //print("\(month) \(document.documentID) \(count)")
                             } else {
                                 print("No order count for \(month) \(document.documentID)")
                             }
@@ -181,3 +195,6 @@ class MasterMenu {
         }
     }
 }
+
+
+

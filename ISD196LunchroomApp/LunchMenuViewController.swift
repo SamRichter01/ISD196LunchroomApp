@@ -267,12 +267,15 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             
             return NSAttributedString(string: monthNames[row], attributes: [NSAttributedStringKey.foregroundColor: textColor])
             
-        } else {
+        } else if component == 1 {
             
             let days = dates[monthNames[datePicker.selectedRow(inComponent: 0)]]
             
             return NSAttributedString(string: String(days![row]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont])
             
+        } else {
+            
+            return NSAttributedString(string: "", attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont])
         }
     }
     
@@ -291,8 +294,6 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
         
         let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
-        let linePriorities = ["Line 1", "Line 2", "Line 3", "Line 4",
-                              "Sides", "Farm 2 School", "Soup Bar"]
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {

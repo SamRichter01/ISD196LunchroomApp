@@ -16,6 +16,8 @@
 		2203333D222739ED00AF29AC /* DetailPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2203333C222739ED00AF29AC /* DetailPopupViewController.swift */; };
 		2203334522287D2000AF29AC /* ProfanityFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2203334422287D2000AF29AC /* ProfanityFilter.swift */; };
 		2203334722288C4E00AF29AC /* Profanity.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2203334622288C4D00AF29AC /* Profanity.txt */; };
+		22033383222D916A00AF29AC /* CommentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22033382222D916900AF29AC /* CommentPopupViewController.swift */; };
+		2203338522304CD400AF29AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2203338422304CD400AF29AC /* CommentTableViewCell.swift */; };
 		221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */; };
 		221FAD4121BAE0B8005AE7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD3F21BAE0B8005AE7AE /* Main.storyboard */; };
 		221FAD4321BAE0C0005AE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD4221BAE0C0005AE7AE /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */; };
 		223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */; };
 		223438E92225A241005EB3D0 /* Open_Sans in Resources */ = {isa = PBXBuildFile; fileRef = 223438E82225A241005EB3D0 /* Open_Sans */; };
+		22457196223AD94B00D7B02A /* NewItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */; };
+		22457198223C024000D7B02A /* NewLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22457197223C024000D7B02A /* NewLineViewController.swift */; };
 		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
@@ -90,6 +94,8 @@
 		2203333C222739ED00AF29AC /* DetailPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopupViewController.swift; sourceTree = "<group>"; };
 		2203334422287D2000AF29AC /* ProfanityFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfanityFilter.swift; sourceTree = "<group>"; };
 		2203334622288C4D00AF29AC /* Profanity.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Profanity.txt; sourceTree = "<group>"; };
+		22033382222D916900AF29AC /* CommentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPopupViewController.swift; sourceTree = "<group>"; };
+		2203338422304CD400AF29AC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		221FAD3821BAE0B8005AE7AE /* LunchRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunchRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		221FAD4021BAE0B8005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 		223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionReusableView.swift; sourceTree = "<group>"; };
 		223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Open_Sans; path = ISD196LunchroomApp/Open_Sans; sourceTree = SOURCE_ROOT; };
+		22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		22457197223C024000D7B02A /* NewLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLineViewController.swift; sourceTree = "<group>"; };
 		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +233,8 @@
 				2203333C222739ED00AF29AC /* DetailPopupViewController.swift */,
 				22E490CE22147FED00D3D90C /* EditMenuViewController.swift */,
 				223438DE22205E41005EB3D0 /* AddItemViewController.swift */,
+				22033382222D916900AF29AC /* CommentPopupViewController.swift */,
+				22457197223C024000D7B02A /* NewLineViewController.swift */,
 				22E490CC2204C56300D3D90C /* GraphView.swift */,
 				22E918FB21DE897D004B60D6 /* Order.swift */,
 				22ACA8BC21C0291800069A70 /* month.swift */,
@@ -236,6 +246,8 @@
 				22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */,
 				952B3D8621EF987200B0C381 /* ALaCarteMenuTableViewCell.swift */,
 				22E490BE21FE728100D3D90C /* MenuCollectionViewCell.swift */,
+				22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */,
+				2203338422304CD400AF29AC /* CommentTableViewCell.swift */,
 				223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */,
 				223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */,
 				22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */,
@@ -244,7 +256,6 @@
 				223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */,
 				22873A65221483D5002D5F64 /* NetworkManager.swift */,
 				2203334422287D2000AF29AC /* ProfanityFilter.swift */,
-				2203334622288C4D00AF29AC /* Profanity.txt */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
 				221FAD4221BAE0C0005AE7AE /* Assets.xcassets */,
 				223438E82225A241005EB3D0 /* Open_Sans */,
@@ -254,6 +265,7 @@
 				221FAD6921BAE1AD005AE7AE /* Podfile */,
 				22ACA8C321C029EA00069A70 /* bridging header.m */,
 				22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */,
+				2203334622288C4D00AF29AC /* Profanity.txt */,
 			);
 			path = ISD196LunchroomApp;
 			sourceTree = "<group>";
@@ -602,6 +614,7 @@
 				223438DF22205E41005EB3D0 /* AddItemViewController.swift in Sources */,
 				2203333D222739ED00AF29AC /* DetailPopupViewController.swift in Sources */,
 				22E918FA21DE894A004B60D6 /* FinalizeOrderViewController.swift in Sources */,
+				22033383222D916A00AF29AC /* CommentPopupViewController.swift in Sources */,
 				22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */,
 				22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */,
 				22E490CB2204B6A200D3D90C /* OrderDataViewController.swift in Sources */,
@@ -623,10 +636,13 @@
 				2203334522287D2000AF29AC /* ProfanityFilter.swift in Sources */,
 				223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */,
 				223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */,
+				22457198223C024000D7B02A /* NewLineViewController.swift in Sources */,
 				22E490C121FE795A00D3D90C /* MenuCollectionViewReusableView.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 				22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */,
 				225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */,
+				22457196223AD94B00D7B02A /* NewItemCollectionViewCell.swift in Sources */,
+				2203338522304CD400AF29AC /* CommentTableViewCell.swift in Sources */,
 				22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */,
 				22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */,
 			);

@@ -12,4 +12,10 @@ class OrderDataViewReusableView: UICollectionReusableView {
     
     @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var orderCountLabel: UILabel!
+    
+    
+    @IBAction func viewCommentsPressed(_ sender: UIButton) {
+        
+        NotificationCenter.default.post(name: NSNotification.Name("viewCommentsPressed"), object: nil, userInfo: ["lineName": lineLabel.text!])
+    }
 }
