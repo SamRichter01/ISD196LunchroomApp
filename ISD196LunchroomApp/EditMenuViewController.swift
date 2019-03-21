@@ -222,6 +222,8 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         let dayKey = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
         
+        dates[monthName]!.remove(at: datePicker.selectedRow(inComponent: 1))
+        
         monthlyMenus[monthName]!.days.removeValue(forKey: dayKey)
         
         db.collection("menus").document(monthName).collection("days")
