@@ -129,8 +129,8 @@ class MasterMenu {
                                         
                                         tempLine.items.append(lineItems[y])
                                     }
-                                    tempDay.lines[tempLine.name] = tempLine
                                 }
+                                tempDay.lines[tempLine.name] = tempLine
                             }
                             tempMonth.days[tempDay.day] = tempDay
                             monthlyMenus[tempMonth.name] = tempMonth

@@ -297,7 +297,10 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {
-                todaysLines.append(monthlyMenus[month]!.days[day]!.lines[str]!)
+                if monthlyMenus[self.monthName]!.days[self.day]!
+                    .lines[str]!.items.count > 0 {
+                    todaysLines.append(monthlyMenus[self.monthName]!.days[self.day]!.lines[str]!)
+                }
             }
         }
     }

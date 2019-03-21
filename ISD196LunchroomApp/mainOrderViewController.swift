@@ -69,7 +69,10 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {
-                todaysLines.append(monthlyMenus[self.monthName]!.days[self.day]!.lines[str]!)
+                if monthlyMenus[self.monthName]!.days[self.day]!
+                    .lines[str]!.items.count > 0 {
+                    todaysLines.append(monthlyMenus[self.monthName]!.days[self.day]!.lines[str]!)
+                }
             }
         }
     }
