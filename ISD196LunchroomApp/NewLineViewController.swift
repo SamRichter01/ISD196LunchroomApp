@@ -35,6 +35,9 @@ class NewLineViewController: UIViewController {
         itemView.layer.shadowOpacity = 0.1
         
         saveLineButton.isEnabled = false
+        
+        print(editingMonth)
+        print(editingDay)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {

@@ -27,6 +27,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var monthIndex = 0
     var monthName = "September"
     var day = 1
+    var month = 9
     var dayIndex = 0
     var line = "Line 1"
     
@@ -44,12 +45,39 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
         
+        reloadDates()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.addItem(_:)), name: NSNotification.Name(rawValue: "addItemPressed"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.removeItem(_:)), name: NSNotification.Name(rawValue: "removeItemPressed"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.removeLine(_:)), name: NSNotification.Name(rawValue: "removeLinePressed"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadView),
+            name: Notification.Name("reloadView"), object: nil)
+        
+        datePicker.delegate = self
+        datePicker.dataSource = self
+        
+        menuCollectionView.delegate = self
+        menuCollectionView.dataSource = self
+        
+        datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
+        datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
+
+        reloadLines()
+        menuCollectionView.reloadData()
+        // Do any additional setup after loading the view.
+    }
+    
+    func reloadDates () {
+        
         let date = Date()
         let calendar = Calendar.current
         
         // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
-        let month = calendar.component(.month, from: date)
+        month = calendar.component(.month, from: date)
         monthName = monthToString(month: month)
         
         // If the current date is not a valid school day, this while loop will increment the school day until it finds the next one. If it's december, it sets the month to january. I don't know what would happen if you set the date to after school ended but it might just run forever so that needs to be fixed.
@@ -99,33 +127,6 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 break
             }
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.addItem(_:)), name: NSNotification.Name(rawValue: "addItemPressed"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.removeItem(_:)), name: NSNotification.Name(rawValue: "removeItemPressed"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.removeLine(_:)), name: NSNotification.Name(rawValue: "removeLinePressed"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadView),
-            name: Notification.Name("reloadView"), object: nil)
-        
-        datePicker.delegate = self
-        datePicker.dataSource = self
-        
-        menuCollectionView.delegate = self
-        menuCollectionView.dataSource = self
-        
-        datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
-        datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
-
-        reloadLines()
-        menuCollectionView.reloadData()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        reloadLines()
-        menuCollectionView.reloadData()
     }
     
     // Just a switch statement that converts the number of the month to the name
@@ -166,6 +167,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             let addItemViewController = segue.destination as! AddItemViewController
             
             let month = monthNames[datePicker.selectedRow(inComponent: 0)]
+            let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
             
             addItemViewController.editingLine = line
             addItemViewController.editingMonth = month
@@ -176,6 +178,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             let newLineViewController = segue.destination as! NewLineViewController
             
             let month = monthNames[datePicker.selectedRow(inComponent: 0)]
+            let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
             
             newLineViewController.editingMonth = month
             newLineViewController.editingDay = day
@@ -186,6 +189,10 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func newSchoolDayPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "newSchoolDay", sender: self)
+    }
+    
     @IBAction func newLinePressed(_ sender: UIButton) {
         
         self.performSegue(withIdentifier: "newLinePressed", sender: self)
@@ -193,6 +200,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @objc func reloadView() {
         
+        datePicker.reloadAllComponents()
         reloadLines()
         menuCollectionView.reloadData()
     }
@@ -208,6 +216,25 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 self.performSegue(withIdentifier: "addItemPressed", sender: self)
             }
         }
+    }
+    
+    @IBAction func deleteDayPressed(_ sender: UIButton) {
+        
+        let dayKey = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
+        
+        monthlyMenus[monthName]!.days.removeValue(forKey: dayKey)
+        
+        db.collection("menus").document(monthName).collection("days")
+            .document(String(dayKey))
+            .delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+        
+        datePicker.selectRow(datePicker.selectedRow(inComponent: 1) - 1, inComponent: 1, animated: false)
     }
     
     @objc func removeItem (_ notification: NSNotification) {
@@ -438,22 +465,30 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         } else {
             
             let days = dates[monthNames[datePicker.selectedRow(inComponent: 0)]]
+    
+            var lowRow = row
             
-            return NSAttributedString(string: String(days![row]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont])
+            while lowRow > days!.count - 1 {
+                
+                lowRow -= 1
+            }
+            
+            return NSAttributedString(string: String(days![lowRow]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont!])
             
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if component == 0 {
-            datePicker.reloadComponent(1)
-        }
+        
+        reloadDates()
+        datePicker.reloadAllComponents()
         reloadLines()
         menuCollectionView.reloadData()
     }
     
     func reloadLines () {
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
+        
         todaysLines = [Line]()
         let month = monthNames[datePicker.selectedRow(inComponent: 0)]
         let day = dates[month]![datePicker.selectedRow(inComponent: 1)]

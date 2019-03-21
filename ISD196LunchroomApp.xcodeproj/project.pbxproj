@@ -34,6 +34,7 @@
 		223438E92225A241005EB3D0 /* Open_Sans in Resources */ = {isa = PBXBuildFile; fileRef = 223438E82225A241005EB3D0 /* Open_Sans */; };
 		22457196223AD94B00D7B02A /* NewItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */; };
 		22457198223C024000D7B02A /* NewLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22457197223C024000D7B02A /* NewLineViewController.swift */; };
+		2245719A2242C5D600D7B02A /* NewSchoolDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */; };
 		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
@@ -118,6 +119,7 @@
 		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Open_Sans; path = ISD196LunchroomApp/Open_Sans; sourceTree = SOURCE_ROOT; };
 		22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		22457197223C024000D7B02A /* NewLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLineViewController.swift; sourceTree = "<group>"; };
+		224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSchoolDayViewController.swift; sourceTree = "<group>"; };
 		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */,
 				2203333C222739ED00AF29AC /* DetailPopupViewController.swift */,
 				22E490CE22147FED00D3D90C /* EditMenuViewController.swift */,
+				224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */,
 				223438DE22205E41005EB3D0 /* AddItemViewController.swift */,
 				22033382222D916900AF29AC /* CommentPopupViewController.swift */,
 				22457197223C024000D7B02A /* NewLineViewController.swift */,
@@ -622,6 +625,7 @@
 				22E490BB21FB7B7600D3D90C /* LunchMenuViewController.swift in Sources */,
 				22ACA8BD21C0291800069A70 /* month.swift in Sources */,
 				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
+				2245719A2242C5D600D7B02A /* NewSchoolDayViewController.swift in Sources */,
 				22E490BF21FE728100D3D90C /* MenuCollectionViewCell.swift in Sources */,
 				223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */,
 				22ACA8BF21C0292700069A70 /* day.swift in Sources */,
