@@ -321,7 +321,14 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             
             let days = dates[monthNames[datePicker.selectedRow(inComponent: 0)]]
             
-            return NSAttributedString(string: String(days![row]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont])
+            var lowRow = row
+            
+            while lowRow > days!.count - 1 {
+                
+                lowRow -= 1
+            }
+            
+            return NSAttributedString(string: String(days![lowRow]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont!])
             
         }
     }
@@ -329,7 +336,7 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         monthName = monthNames[datePicker.selectedRow(inComponent: 0)]
-        day = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
+        day = dates[monthName]![0]
         
         if component == 0 {
 
@@ -344,7 +351,7 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
         let month = monthNames[datePicker.selectedRow(inComponent: 0)]
-        let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
+        let day = dates[month]![0]
         
         tempDay = orderData[month]!["\(day)"]!
         

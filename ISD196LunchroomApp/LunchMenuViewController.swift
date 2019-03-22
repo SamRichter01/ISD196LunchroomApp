@@ -267,15 +267,19 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             
             return NSAttributedString(string: monthNames[row], attributes: [NSAttributedStringKey.foregroundColor: textColor])
             
-        } else if component == 1 {
+        } else {
             
             let days = dates[monthNames[datePicker.selectedRow(inComponent: 0)]]
             
-            return NSAttributedString(string: String(days![row]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont])
+            var lowRow = row
             
-        } else {
+            while lowRow > days!.count - 1 {
+                
+                lowRow -= 1
+            }
             
-            return NSAttributedString(string: "", attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont])
+            return NSAttributedString(string: String(days![lowRow]), attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: textFont!])
+            
         }
     }
     
@@ -291,16 +295,13 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
         let month = monthNames[datePicker.selectedRow(inComponent: 0)]
-        let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
+        let day = dates[month]![0]
         
         let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {
-                if monthlyMenus[self.monthName]!.days[self.day]!
-                    .lines[str]!.items.count > 0 {
-                    todaysLines.append(monthlyMenus[self.monthName]!.days[self.day]!.lines[str]!)
-                }
+                todaysLines.append(monthlyMenus[month]!.days[day]!.lines[str]!)
             }
         }
     }
