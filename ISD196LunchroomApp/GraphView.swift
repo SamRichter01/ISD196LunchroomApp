@@ -120,9 +120,9 @@ import UIKit
         
             let graphPoints = dataPoints[x]
             
-            let r = CGFloat.random(in: 0.5..<1)
-            let g = CGFloat.random(in: 0.5..<1)
-            let b = CGFloat.random(in: 0.5..<1)
+            let r = CGFloat.init(0.5)
+            let g = CGFloat.init(0.5)
+            let b = CGFloat.init(0.5)
             let color = UIColor(red: r, green: g, blue: b, alpha: 1.0)
         
             let columnXPoint = { (column: Int) -> CGFloat in

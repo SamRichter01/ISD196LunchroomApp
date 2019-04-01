@@ -11,8 +11,13 @@ import UIKit
 import FirebaseFirestore
 import Firebase
 import Reachability
+import CoreData
 
 class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    //These two arrays are stored with the data fetched from CoreData
+    var mealItems: [NSManagedObject] = []
+    var aLaCarteItems: [NSManagedObject] = []
 
     @IBOutlet weak var discardOrderButton: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!

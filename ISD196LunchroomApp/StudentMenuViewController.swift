@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import CoreData
+
+var lineData: [NSManagedObject] = []
+var mealItemsData: [NSManagedObject] = []
+var aLaCarteData: [NSManagedObject] = []
 
 class StudentMenuViewController: UIViewController {
     
@@ -29,9 +34,32 @@ class StudentMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shouldSignOut = true //App will now sign out user after pressing the Log Out button
+        shouldSignOut = true //App will now sign out user after pressing the Log Out button.
         
         ProfanityFilter.loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //These two lines create a managedContext whcih stores the data you fetch from CoreData.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Creates a fetch request for all entities in CoreData.
+        let lineRequest = NSFetchRequest<NSManagedObject>(entityName: "LineOrdered")
+        let mealItemRequest = NSFetchRequest<NSManagedObject>(entityName: "LineItem")
+        let aLaCarteRequest = NSFetchRequest<NSManagedObject>(entityName: "ALaCarteItem")
+        
+        do {
+            //Sets the following arrays to the array of ManagedObjects that is fetched from CoreData.
+            lineData = try managedContext.fetch(lineRequest)
+            mealItemsData = try managedContext.fetch(mealItemRequest)
+            aLaCarteData = try managedContext.fetch(aLaCarteRequest)
+            print("Data recovered successfully")
+        } catch let error as NSError {
+            print("Could not recover data. \(error), \(error.userInfo)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
