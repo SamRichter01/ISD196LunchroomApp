@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 var lineData: [NSManagedObject] = []
-var mealItemsData: [NSManagedObject] = []
 var aLaCarteData: [NSManagedObject] = []
 
 class StudentMenuViewController: UIViewController {
@@ -48,14 +47,14 @@ class StudentMenuViewController: UIViewController {
         
         //Creates a fetch request for all entities in CoreData.
         let lineRequest = NSFetchRequest<NSManagedObject>(entityName: "LineOrdered")
-        let mealItemRequest = NSFetchRequest<NSManagedObject>(entityName: "LineItem")
         let aLaCarteRequest = NSFetchRequest<NSManagedObject>(entityName: "ALaCarteItem")
         
         do {
             //Sets the following arrays to the array of ManagedObjects that is fetched from CoreData.
             lineData = try managedContext.fetch(lineRequest)
-            mealItemsData = try managedContext.fetch(mealItemRequest)
             aLaCarteData = try managedContext.fetch(aLaCarteRequest)
+            let lineName = lineData[0].value(forKeyPath: "name") as? String
+            print(lineData[0].value(forKeyPath: "name") as? String)
             print("Data recovered successfully")
         } catch let error as NSError {
             print("Could not recover data. \(error), \(error.userInfo)")

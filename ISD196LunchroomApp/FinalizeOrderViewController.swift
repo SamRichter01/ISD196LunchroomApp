@@ -14,10 +14,6 @@ import Reachability
 import CoreData
 
 class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    //These two arrays are stored with the data fetched from CoreData
-    var mealItems: [NSManagedObject] = []
-    var aLaCarteItems: [NSManagedObject] = []
 
     @IBOutlet weak var discardOrderButton: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -339,6 +335,55 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                 
                 print("Previous order after resetting \(previousOrder)")
             }
+        }
+        
+        self.saveLine(label: mealName)
+        for item in aLaCarteItems {
+            self.saveALaCarteItem(label: item.name, cost: Double(item.price)!)
+        }
+    }
+    
+    func saveALaCarteItem(label: String, cost: Double) {
+        //These two lines create a managedContext which stores the data you want to save to CoreData.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //These lines create a name and price managed objects and inserts them into the managed context to be saved to CoreData.
+        let entity = NSEntityDescription.entity(forEntityName: "ALaCarteItem", in: managedContext)!
+        let name = NSManagedObject(entity: entity, insertInto: managedContext)
+        let price = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        //Using the managed objects, this sets the name and price parameters to their respective attributes to be saved.
+        name.setValue(label, forKeyPath: "name")
+        price.setValue(cost, forKeyPath: "price")
+        
+        do {
+            //This saves the data in the managed context to CoreData.
+            try managedContext.save()
+            print("Data saved successfully")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveLine(label: String) {
+        //These two lines create a managedContext which stores the data you want to save to CoreData.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //These two lines create a managed object and inserts it into the managed context to be saved to CoreData.
+        let entity = NSEntityDescription.entity(forEntityName: "ALaCarteItem", in: managedContext)!
+        let name = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        //Using the managed object, this sets the name parameter to the attribute "name" to be saved.
+        name.setValue(label, forKeyPath: "name")
+        
+        do {
+            //This saves the data in the managed context to CoreData.
+            try managedContext.save()
+            print("Data saved successfully")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     

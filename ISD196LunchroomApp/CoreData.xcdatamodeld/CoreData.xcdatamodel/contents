@@ -4,16 +4,11 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="LineItem" representedClassName="LineItem" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="LineOrdered" representedClassName="LineOrdered" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LineOrdered" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="ALaCarteItem" positionX="-54" positionY="-9" width="128" height="75"/>
-        <element name="LineItem" positionX="-36" positionY="18" width="128" height="60"/>
+        <element name="LineOrdered" positionX="-63" positionY="-18" width="128" height="60"/>
     </elements>
 </model>
