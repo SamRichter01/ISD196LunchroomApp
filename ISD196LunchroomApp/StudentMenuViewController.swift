@@ -53,8 +53,17 @@ class StudentMenuViewController: UIViewController {
             //Sets the following arrays to the array of ManagedObjects that is fetched from CoreData.
             lineData = try managedContext.fetch(lineRequest)
             aLaCarteData = try managedContext.fetch(aLaCarteRequest)
-            let lineName = lineData[0].value(forKeyPath: "name") as? String
-            print(lineData[0].value(forKeyPath: "name") as? String)
+            
+            if lineData.count > 0 {
+                mealName = (lineData[0].value(forKeyPath: "name") as? String)!
+            }
+            
+            for item in aLaCarteData {
+                let index = item.value(forKeyPath: "index") as! String
+                let name = item.value(forKeyPath: "name") as! String
+                let price = item.value(forKeyPath: "price") as! String
+                aLaCarteItems.append(MenuItem(index: index, name: name, price: price))
+            }
             print("Data recovered successfully")
         } catch let error as NSError {
             print("Could not recover data. \(error), \(error.userInfo)")
