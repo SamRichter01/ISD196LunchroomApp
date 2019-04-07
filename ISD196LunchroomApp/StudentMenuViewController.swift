@@ -56,13 +56,16 @@ class StudentMenuViewController: UIViewController {
             
             if lineData.count > 0 {
                 mealName = (lineData[0].value(forKeyPath: "name") as? String)!
+                print(mealName)
             }
             
             for item in aLaCarteData {
                 let index = item.value(forKeyPath: "index") as! String
                 let name = item.value(forKeyPath: "name") as! String
                 let price = item.value(forKeyPath: "price") as! String
-                aLaCarteItems.append(MenuItem(index: index, name: name, price: price))
+                
+                let newItem = MenuItem(index: index, name: name, price: price)
+                aLaCarteItems.append(newItem)
             }
             print("Data recovered successfully")
         } catch let error as NSError {
