@@ -46,13 +46,13 @@ class StudentMenuViewController: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         
         //Creates a fetch request for all entities in CoreData.
-        let lineRequest = NSFetchRequest<NSManagedObject>(entityName: "LineOrdered")
-        let aLaCarteRequest = NSFetchRequest<NSManagedObject>(entityName: "ALaCarteItem")
+        let lineRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
+        let aLaCarteRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
         
         do {
             //Sets the following arrays to the array of ManagedObjects that is fetched from CoreData.
-            lineData = try managedContext.fetch(lineRequest)
-            aLaCarteData = try managedContext.fetch(aLaCarteRequest)
+            lineData = try managedContext.fetch(lineRequest) as! [NSManagedObject]
+            aLaCarteData = try managedContext.fetch(aLaCarteRequest) as! [NSManagedObject]
             
             if lineData.count > 0 {
                 mealName = (lineData[0].value(forKeyPath: "name") as? String)!
@@ -69,8 +69,8 @@ class StudentMenuViewController: UIViewController {
             }
             
             print("Data recovered successfully")
-        } catch let error as NSError {
-            print("Could not recover data. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not recover data.")
         }
     }
 

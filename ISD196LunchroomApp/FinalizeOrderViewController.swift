@@ -331,7 +331,10 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                 
                 Order.saveOrder()
                 
-                NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+                    NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
+                })
+                
                 
                 print("Previous order after resetting \(previousOrder)")
             }
@@ -391,7 +394,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         let managedContext = appDelegate.persistentContainer.viewContext
         
         //These two lines create a managed object and inserts it into the managed context to be saved to CoreData.
-        let entity = NSEntityDescription.entity(forEntityName: "ALaCarteItem", in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "LineOrdered", in: managedContext)!
         let name = NSManagedObject(entity: entity, insertInto: managedContext)
         
         //Using the managed object, this sets the name parameter to the attribute "name" to be saved.
