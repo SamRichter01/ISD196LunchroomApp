@@ -337,23 +337,42 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             }
         }
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+         let batchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
+         let deleteRequest = NSBatchDeleteRequest(fetchRequest: batchRequest)
+         let lineBatchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
+         let lineDeleteRequest = NSBatchDeleteRequest(fetchRequest: lineBatchRequest)
+         
+         do {
+         try managedContext.execute(deleteRequest)
+         try managedContext.execute(lineDeleteRequest)
+         
+         print("Data deleted successfully")
+         } catch {
+         print("Failed to delete data")
+         }
+        
         self.saveLine(label: mealName)
         for item in aLaCarteItems {
-            self.saveALaCarteItem(label: item.name, cost: Double(item.price)!)
+            self.saveALaCarteItem(i: String(item.index), label: item.name, cost: item.price)
         }
     }
     
-    func saveALaCarteItem(label: String, cost: Double) {
+    func saveALaCarteItem(i: String, label: String, cost: String) {
         //These two lines create a managedContext which stores the data you want to save to CoreData.
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         
         //These lines create a name and price managed objects and inserts them into the managed context to be saved to CoreData.
         let entity = NSEntityDescription.entity(forEntityName: "ALaCarteItem", in: managedContext)!
+        let index = NSManagedObject(entity: entity, insertInto: managedContext)
         let name = NSManagedObject(entity: entity, insertInto: managedContext)
         let price = NSManagedObject(entity: entity, insertInto: managedContext)
         
         //Using the managed objects, this sets the name and price parameters to their respective attributes to be saved.
+        index.setValue(i, forKey: "index")
         name.setValue(label, forKeyPath: "name")
         price.setValue(cost, forKeyPath: "price")
         
