@@ -370,14 +370,14 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         
         //These lines create a name and price managed objects and inserts them into the managed context to be saved to CoreData.
         let entity = NSEntityDescription.entity(forEntityName: "ALaCarteItem", in: managedContext)!
-        let index = NSManagedObject(entity: entity, insertInto: managedContext)
-        let name = NSManagedObject(entity: entity, insertInto: managedContext)
-        let price = NSManagedObject(entity: entity, insertInto: managedContext)
+        let object = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        object.setValue(i, forKey: "index")
+        object.setValue(label, forKey: "name")
+        object.setValue(cost, forKey: "price")
+        
         
         //Using the managed objects, this sets the name and price parameters to their respective attributes to be saved.
-        index.setValue(i, forKey: "index")
-        name.setValue(label, forKeyPath: "name")
-        price.setValue(cost, forKeyPath: "price")
         
         do {
             //This saves the data in the managed context to CoreData.

@@ -49,6 +49,20 @@ class StudentMenuViewController: UIViewController {
         let lineRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
         let aLaCarteRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
         
+        let batchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: batchRequest)
+        let lineBatchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
+        let lineDeleteRequest = NSBatchDeleteRequest(fetchRequest: lineBatchRequest)
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.execute(lineDeleteRequest)
+            
+            print("Data deleted successfully")
+        } catch {
+            print("Failed to delete data")
+        }
+        
         do {
             //Sets the following arrays to the array of ManagedObjects that is fetched from CoreData.
             lineData = try managedContext.fetch(lineRequest) as! [NSManagedObject]
