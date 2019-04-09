@@ -75,9 +75,27 @@ class StudentMenuViewController: UIViewController {
             print("Data recovered successfully")
             
             if previousOrder.count > 0 {
+                
                 print("Previous Order ")
+                for x in 0..<previousOrder.count {
+                    
+                    if menuItems.keys.contains(previousOrder[x]) {
+                        
+                        itemsOrdered.append(menuItems[previousOrder[x]]!)
+                        
+                    } else {
+                        
+                        mealName = previousOrder[x]
+                    }
+                }
+                
+            } else {
+                
+                print("No previous order")
             }
+            
         } catch {
+            
             print("Could not recover data.")
         }
     }

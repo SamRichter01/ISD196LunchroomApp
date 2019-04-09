@@ -358,12 +358,12 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
          }
         
         self.saveLine(label: mealName)
-        for item in aLaCarteItems {
-            self.saveALaCarteItem(i: String(item.index), label: item.name, cost: item.price)
+        for item in aLaCarteItems.values {
+            self.saveALaCarteItem(label: item.name, cost: item.price)
         }
     }
     
-    func saveALaCarteItem(i: String, label: String, cost: String) {
+    func saveALaCarteItem(label: String, cost: String) {
         //These two lines create a managedContext which stores the data you want to save to CoreData.
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -372,7 +372,6 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         let entity = NSEntityDescription.entity(forEntityName: "ALaCarteItem", in: managedContext)!
         let object = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        object.setValue(i, forKeyPath: "index")
         object.setValue(label, forKeyPath: "name")
         object.setValue(cost, forKeyPath: "price")
         
