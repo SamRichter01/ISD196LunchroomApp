@@ -49,40 +49,34 @@ class StudentMenuViewController: UIViewController {
         let lineRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
         let aLaCarteRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
         
-        let batchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: batchRequest)
-        let lineBatchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
-        let lineDeleteRequest = NSBatchDeleteRequest(fetchRequest: lineBatchRequest)
-        
-        do {
-            try managedContext.execute(deleteRequest)
-            try managedContext.execute(lineDeleteRequest)
-            
-            print("Data deleted successfully")
-        } catch {
-            print("Failed to delete data")
-        }
-        
         do {
             //Sets the following arrays to the array of ManagedObjects that is fetched from CoreData.
             lineData = try managedContext.fetch(lineRequest) as! [NSManagedObject]
             aLaCarteData = try managedContext.fetch(aLaCarteRequest) as! [NSManagedObject]
             
-            if lineData.count > 0 {
-                mealName = (lineData[0].value(forKeyPath: "name") as? String)!
-                print(mealName)
-            }
-            
             for item in aLaCarteData {
-                let index = item.value(forKeyPath: "index") as! String
+                /*let index = item.value(forKeyPath: "index") as! String
                 let name = item.value(forKeyPath: "name") as! String
                 let price = item.value(forKeyPath: "price") as! String
                     
                 let newItem = MenuItem(index: index, name: name, price: price)
-                aLaCarteItems.append(newItem)
+                aLaCarteItems.append(newItem)*/
+                
+                let itemName = item.value(forKeyPath: "name") as! String
+                previousOrder.append(itemName)
+                print(itemName)
+            }
+            
+            if lineData.count > 0 {
+                let lineName = lineData[0].value(forKey: "name") as! String
+                previousOrder.append(lineName)
             }
             
             print("Data recovered successfully")
+            
+            if previousOrder.count > 0 {
+                print("Previous Order ")
+            }
         } catch {
             print("Could not recover data.")
         }

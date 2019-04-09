@@ -372,9 +372,9 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         let entity = NSEntityDescription.entity(forEntityName: "ALaCarteItem", in: managedContext)!
         let object = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        object.setValue(i, forKey: "index")
-        object.setValue(label, forKey: "name")
-        object.setValue(cost, forKey: "price")
+        object.setValue(i, forKeyPath: "index")
+        object.setValue(label, forKeyPath: "name")
+        object.setValue(cost, forKeyPath: "price")
         
         
         //Using the managed objects, this sets the name and price parameters to their respective attributes to be saved.
