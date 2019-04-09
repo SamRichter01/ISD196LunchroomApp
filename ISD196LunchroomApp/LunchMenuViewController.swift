@@ -295,13 +295,16 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
         let month = monthNames[datePicker.selectedRow(inComponent: 0)]
-        let day = dates[month]![0]
+        let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
         
         let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
         
         for str in linePriorities {
             if tempLineKeys.contains(str) {
-                todaysLines.append(monthlyMenus[month]!.days[day]!.lines[str]!)
+                if monthlyMenus[month]!.days[day]!.lines[str]!.items.count > 0 {
+                        
+                    todaysLines.append(monthlyMenus[month]!.days[day]!.lines[str]!)
+                }
             }
         }
     }

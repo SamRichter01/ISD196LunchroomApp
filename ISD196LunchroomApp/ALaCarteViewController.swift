@@ -20,7 +20,6 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var emptyViewLabel: UILabel!
     @IBOutlet weak var deleteTextButton: UIButton!
     
-    
     var monthName = "September"
     var day = 1
     var matchingItems = [MenuItem]()
@@ -155,7 +154,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("\(self.monthName)")
         //print("\(self.day)")
-        matchingItems = aLaCarteItems
+        matchingItems = Array(aLaCarteItems.values)
         if let text = searchBar.text {
             if text.count > 0 {
                 for x in stride(from: matchingItems.count - 1, to: -1, by: -1) {

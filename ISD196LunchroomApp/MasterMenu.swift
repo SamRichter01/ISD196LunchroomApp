@@ -14,8 +14,8 @@ import Foundation
 
 // By default, all variables are global and accessible by any class, functions however are not, so the functions that we use to set these up have "static" in the declaration
 var monthlyMenus = Dictionary<String,Month>()
-var menuItems: [MenuItem] = [MenuItem]()
-var aLaCarteItems: [MenuItem] = [MenuItem]()
+var menuItems = Dictionary<String,MenuItem>()
+var aLaCarteItems = Dictionary<String,MenuItem>()
 var orderData = Dictionary<String, Dictionary<String, Dictionary<String,Int>>>()
 var linePriorities = [String]()
 
@@ -25,7 +25,7 @@ class MasterMenu {
         
         // Checks to make sure that the dictionary hasn't already been created.
         menuItems.removeAll()
-        menuItems = [MenuItem]()
+        menuItems = Dictionary<String,MenuItem>()
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -39,15 +39,13 @@ class MasterMenu {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    menuItems.append(MenuItem.init(
-                        index: (document.get("Item index")) as! String,
-                        name: document.documentID))
+                    
+                    print(document.data().keys)
+                    
+                    menuItems[document.documentID] =
+                        MenuItem(name: document.documentID,
+                        description: (document.get("Description")) as! String)
                 }
-                /*
-                for x in 0..<aLaCarteItems.count {
-                    print("Added menu item with index: \(aLaCarteItems[x].index)")
-                }
-                */
             }
         }
     }
@@ -55,7 +53,7 @@ class MasterMenu {
     static func downloadALaCarteItems() {
         
         aLaCarteItems.removeAll()
-        aLaCarteItems = [MenuItem]()
+        aLaCarteItems = Dictionary<String,MenuItem>()
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -68,16 +66,11 @@ class MasterMenu {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    aLaCarteItems.append(MenuItem.init(
-                        index: (document.get("Item index")) as! String,
+                    
+                    aLaCarteItems[document.documentID] = (MenuItem(
                         name: document.documentID,
                         price: (document.get("Cost")) as! String))
                 }
-                /*
-                for x in 0..<aLaCarteItems.count {
-                    print("Added a la carte item with index: \(aLaCarteItems[x].index)")
-                }
-                */
             }
         }
     }

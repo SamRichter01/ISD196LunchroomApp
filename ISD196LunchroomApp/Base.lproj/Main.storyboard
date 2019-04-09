@@ -1440,7 +1440,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKq-6s-ZCL">
-                                        <rect key="frame" x="102" y="136" width="113" height="30"/>
+                                        <rect key="frame" x="168" y="135" width="113" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Create New Line">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1450,7 +1450,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOm-xr-O65">
-                                        <rect key="frame" x="393" y="136" width="141" height="30"/>
+                                        <rect key="frame" x="459" y="135" width="141" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Delete School Day">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1459,16 +1459,8 @@
                                             <action selector="deleteDayPressed:" destination="r1y-tQ-G1S" eventType="touchUpInside" id="Vdb-QG-hSS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwL-tu-KBu">
-                                        <rect key="frame" x="542" y="135" width="144" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
-                                        <state key="normal" title="AutoFill Menu">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEJ-MP-dDr">
-                                        <rect key="frame" x="234" y="137" width="144" height="30"/>
+                                        <rect key="frame" x="300" y="136" width="144" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Add New School Day">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2031,6 +2023,13 @@
                                                     <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ida-Qq-zTc">
+                                                    <rect key="frame" x="32" y="140" width="471" height="205"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
+                                                    <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
@@ -2043,6 +2042,7 @@
                         <viewLayoutGuide key="safeArea" id="nNX-7I-F2x"/>
                     </view>
                     <connections>
+                        <outlet property="itemDescriptionLabel" destination="ida-Qq-zTc" id="fdE-Xa-mng"/>
                         <outlet property="itemView" destination="Il0-Kb-Af0" id="rxf-gI-IiQ"/>
                         <outlet property="priceLabel" destination="5eF-Mj-aVz" id="xC6-iE-Hv2"/>
                         <outlet property="titleLabel" destination="8EC-B2-Hsg" id="Sym-hZ-r3w"/>
@@ -2050,7 +2050,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5Y-85-TAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="2153"/>
+            <point key="canvasLocation" x="2235.9375" y="2152.734375"/>
         </scene>
         <!--Comment Popup View Controller-->
         <scene sceneID="dNb-Gh-qlB">
@@ -2348,9 +2348,9 @@
         <image name="View Menu" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IS0-kx-Bth"/>
-        <segue reference="yFX-17-F55"/>
-        <segue reference="k20-i8-JeH"/>
+        <segue reference="epm-Lw-Qsb"/>
+        <segue reference="nvJ-Th-ZPg"/>
+        <segue reference="BRG-8i-ca7"/>
         <segue reference="ssW-Ed-HdV"/>
     </inferredMetricsTieBreakers>
 </document>

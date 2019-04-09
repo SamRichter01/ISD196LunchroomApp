@@ -246,7 +246,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     // https:// docs.google.com/spreadsheets/d/1BzwR51oDGJsW9VgSK0LvCaFMuRrE2W0Zbmkrzm_XFmo/edit#gid=0
     func getMenuItems() {
         
-        let range = "'Daily Menu'!A2:A106"
+        let range = "'Daily Menu'!A2:B106"
         
         if (sheetIdField.text != nil) {
             if ((sheetIdField.text?.count)! >= spreadsheetId.count) {
@@ -292,7 +292,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
             let dayRef = db.collection("menus").document("Menu Items")
                 .collection("Items").document("\(rows[x][0])")
             
-            batch.setData(["Item index": "\(x)"], forDocument: dayRef)
+            batch.setData(["Description": rows[x][1]], forDocument: dayRef)
         }
         
         batch.commit() { err in

@@ -73,12 +73,12 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let itemIndex = menuItems.count
         
-        let newItem = MenuItem(index: String(itemIndex), name: itemNameTextField.text!)
+        let newItem = MenuItem(name: itemNameTextField.text!, description: "")
         
         monthlyMenus[editingMonth]!.days[Int(editingDay)!]!
             .lines[editingLine]!.items.append(newItem.name)
         
-        db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Item index": String(newItem.index)])
+        db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": itemDescriptionTextField.text!])
         
         let docReference = db.collection("menus").document(editingMonth).collection("days").document(editingDay)
         
@@ -222,7 +222,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        matchingItems = menuItems
+        matchingItems = Array(menuItems.values)
         
         if let text = searchBar.text {
             if text.count > 0 {

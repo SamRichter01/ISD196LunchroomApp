@@ -26,7 +26,7 @@ class ALaCarteTableViewCell: UITableViewCell {
     }
 
     @IBAction func addItemToOrder(_ sender: UIButton) {
-        let item = MenuItem(index: "0", name: itemLabel.text!, price: priceLabel.text!)
+        let item = MenuItem(name: itemLabel.text!, price: priceLabel.text!)
         itemsOrdered.append(item)
         let price = Double(item.price.suffix(4))
         totalPrice += price!

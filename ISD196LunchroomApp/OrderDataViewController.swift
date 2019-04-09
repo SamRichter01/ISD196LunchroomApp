@@ -351,7 +351,7 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
         let month = monthNames[datePicker.selectedRow(inComponent: 0)]
-        let day = dates[month]![0]
+        let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
         
         tempDay = orderData[month]!["\(day)"]!
         

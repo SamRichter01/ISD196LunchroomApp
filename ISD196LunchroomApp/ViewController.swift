@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import GoogleAPIClientForREST
@@ -222,9 +221,18 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 } else {
                     //Menus have finished downloading and will now be added to the array and the user will be sent to the main menu
                     for document in querySnapshot!.documents {
-                        menuItems.append(MenuItem.init(
-                            index: (document.get("Item index")) as! String,
-                            name: document.documentID))
+                        
+                        if let desc = document.get("Description") as? String {
+                            
+                            menuItems[document.documentID] = (MenuItem.init(
+                                name: document.documentID,
+                                description: desc))
+                        } else {
+                            
+                            menuItems[document.documentID] = (MenuItem.init(
+                                name: document.documentID,
+                                description: ""))
+                        }
                     }
                     
                     NotificationCenter.default.post(name: NSNotification.Name("userLoggedIn"), object: nil)

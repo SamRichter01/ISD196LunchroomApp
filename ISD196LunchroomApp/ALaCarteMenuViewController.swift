@@ -65,7 +65,7 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        matchingItems = aLaCarteItems
+        matchingItems = Array(aLaCarteItems.values)
         
         if let text = searchBar.text {
             if text.count > 0 {

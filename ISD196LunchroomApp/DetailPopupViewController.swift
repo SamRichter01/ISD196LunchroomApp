@@ -13,18 +13,24 @@ class DetailPopupViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var itemView: UIView!
+    @IBOutlet weak var itemDescriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleLabel.text = selectedName
         priceLabel.text = selectedPrice
+        itemDescriptionLabel.text = "No Description Available"
+        
+        if menuItems.keys.contains(selectedName) {
+                
+            itemDescriptionLabel.text = menuItems[selectedName]!.description
+        }
         
         itemView.layer.cornerRadius = 15
         itemView.layer.masksToBounds = false
         itemView.layer.shadowRadius = 10
         itemView.layer.shadowOpacity = 0.1
-        
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {

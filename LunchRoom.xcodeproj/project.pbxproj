@@ -104,13 +104,13 @@
 		221FAD4221BAE0C0005AE7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		221FAD4521BAE0C0005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		221FAD4721BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		221FAD4C21BAE0C0005AE7AE /* ISD196LunchroomAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISD196LunchroomAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		221FAD4C21BAE0C0005AE7AE /* LunchRoomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LunchRoomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD5021BAE0C0005AE7AE /* ISD196LunchroomAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISD196LunchroomAppTests.swift; sourceTree = "<group>"; };
 		221FAD5221BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		221FAD5721BAE0C0005AE7AE /* ISD196LunchroomAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISD196LunchroomAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		221FAD5721BAE0C0005AE7AE /* LunchRoomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LunchRoomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISD196LunchroomAppUITests.swift; sourceTree = "<group>"; };
 		221FAD5D21BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewReusableView.swift; sourceTree = "<group>"; };
 		223438DE22205E41005EB3D0 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
@@ -212,8 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				221FAD3821BAE0B8005AE7AE /* LunchRoom.app */,
-				221FAD4C21BAE0C0005AE7AE /* ISD196LunchroomAppTests.xctest */,
-				221FAD5721BAE0C0005AE7AE /* ISD196LunchroomAppUITests.xctest */,
+				221FAD4C21BAE0C0005AE7AE /* LunchRoomTests.xctest */,
+				221FAD5721BAE0C0005AE7AE /* LunchRoomUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,9 +320,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		221FAD3721BAE0B8005AE7AE /* ISD196LunchroomApp */ = {
+		221FAD3721BAE0B8005AE7AE /* LunchRoom */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 221FAD6021BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomApp" */;
+			buildConfigurationList = 221FAD6021BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "LunchRoom" */;
 			buildPhases = (
 				6B4300FD046FDC518D46ED05 /* [CP] Check Pods Manifest.lock */,
 				221FAD3421BAE0B8005AE7AE /* Sources */,
@@ -335,14 +335,14 @@
 			);
 			dependencies = (
 			);
-			name = ISD196LunchroomApp;
+			name = LunchRoom;
 			productName = ISD196LunchroomApp;
 			productReference = 221FAD3821BAE0B8005AE7AE /* LunchRoom.app */;
 			productType = "com.apple.product-type.application";
 		};
-		221FAD4B21BAE0C0005AE7AE /* ISD196LunchroomAppTests */ = {
+		221FAD4B21BAE0C0005AE7AE /* LunchRoomTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 221FAD6321BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomAppTests" */;
+			buildConfigurationList = 221FAD6321BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "LunchRoomTests" */;
 			buildPhases = (
 				97E3C72B7C1D26C4F61E05FA /* [CP] Check Pods Manifest.lock */,
 				221FAD4821BAE0C0005AE7AE /* Sources */,
@@ -354,14 +354,14 @@
 			dependencies = (
 				221FAD4E21BAE0C0005AE7AE /* PBXTargetDependency */,
 			);
-			name = ISD196LunchroomAppTests;
+			name = LunchRoomTests;
 			productName = ISD196LunchroomAppTests;
-			productReference = 221FAD4C21BAE0C0005AE7AE /* ISD196LunchroomAppTests.xctest */;
+			productReference = 221FAD4C21BAE0C0005AE7AE /* LunchRoomTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		221FAD5621BAE0C0005AE7AE /* ISD196LunchroomAppUITests */ = {
+		221FAD5621BAE0C0005AE7AE /* LunchRoomUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 221FAD6621BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomAppUITests" */;
+			buildConfigurationList = 221FAD6621BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "LunchRoomUITests" */;
 			buildPhases = (
 				4F6188614279F36FA08193ED /* [CP] Check Pods Manifest.lock */,
 				221FAD5321BAE0C0005AE7AE /* Sources */,
@@ -373,9 +373,9 @@
 			dependencies = (
 				221FAD5921BAE0C0005AE7AE /* PBXTargetDependency */,
 			);
-			name = ISD196LunchroomAppUITests;
+			name = LunchRoomUITests;
 			productName = ISD196LunchroomAppUITests;
-			productReference = 221FAD5721BAE0C0005AE7AE /* ISD196LunchroomAppUITests.xctest */;
+			productReference = 221FAD5721BAE0C0005AE7AE /* LunchRoomUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -402,7 +402,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 221FAD3321BAE0B8005AE7AE /* Build configuration list for PBXProject "ISD196LunchroomApp" */;
+			buildConfigurationList = 221FAD3321BAE0B8005AE7AE /* Build configuration list for PBXProject "LunchRoom" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -415,9 +415,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				221FAD3721BAE0B8005AE7AE /* ISD196LunchroomApp */,
-				221FAD4B21BAE0C0005AE7AE /* ISD196LunchroomAppTests */,
-				221FAD5621BAE0C0005AE7AE /* ISD196LunchroomAppUITests */,
+				221FAD3721BAE0B8005AE7AE /* LunchRoom */,
+				221FAD4B21BAE0C0005AE7AE /* LunchRoomTests */,
+				221FAD5621BAE0C0005AE7AE /* LunchRoomUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -677,12 +677,12 @@
 /* Begin PBXTargetDependency section */
 		221FAD4E21BAE0C0005AE7AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 221FAD3721BAE0B8005AE7AE /* ISD196LunchroomApp */;
+			target = 221FAD3721BAE0B8005AE7AE /* LunchRoom */;
 			targetProxy = 221FAD4D21BAE0C0005AE7AE /* PBXContainerItemProxy */;
 		};
 		221FAD5921BAE0C0005AE7AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 221FAD3721BAE0B8005AE7AE /* ISD196LunchroomApp */;
+			target = 221FAD3721BAE0B8005AE7AE /* LunchRoom */;
 			targetProxy = 221FAD5821BAE0C0005AE7AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -883,7 +883,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISD196LunchroomApp.app/ISD196LunchroomApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LunchRoom.app/LunchRoom";
 			};
 			name = Debug;
 		};
@@ -904,7 +904,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISD196LunchroomApp.app/ISD196LunchroomApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LunchRoom.app/LunchRoom";
 			};
 			name = Release;
 		};
@@ -951,7 +951,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		221FAD3321BAE0B8005AE7AE /* Build configuration list for PBXProject "ISD196LunchroomApp" */ = {
+		221FAD3321BAE0B8005AE7AE /* Build configuration list for PBXProject "LunchRoom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				221FAD5E21BAE0C0005AE7AE /* Debug */,
@@ -960,7 +960,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		221FAD6021BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomApp" */ = {
+		221FAD6021BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "LunchRoom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				221FAD6121BAE0C0005AE7AE /* Debug */,
@@ -969,7 +969,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		221FAD6321BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomAppTests" */ = {
+		221FAD6321BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "LunchRoomTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				221FAD6421BAE0C0005AE7AE /* Debug */,
@@ -978,7 +978,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		221FAD6621BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "ISD196LunchroomAppUITests" */ = {
+		221FAD6621BAE0C0005AE7AE /* Build configuration list for PBXNativeTarget "LunchRoomUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				221FAD6721BAE0C0005AE7AE /* Debug */,
