@@ -5,10 +5,12 @@
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="LineOrdered" representedClassName="LineOrdered" syncable="YES" codeGenerationType="class">
+        <attribute name="items" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="ALaCarteItem" positionX="-54" positionY="-9" width="128" height="75"/>
-        <element name="LineOrdered" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="LineOrdered" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

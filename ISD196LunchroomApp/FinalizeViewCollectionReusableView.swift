@@ -23,21 +23,21 @@ class FinalizeViewCollectionReusableView: UICollectionReusableView {
     
     @IBAction func removeLinePressed(_ sender: UIButton) {
         
-        if lineLabel.text == mealName {
+        for x in 0..<mealsOrdered.count {
             
-            mealOrdered = [String]()
-            mealName = ""
-            mealPrice = ""
-            
-        } else {
-            
-            for x in 0..<itemsOrdered.count {
+            if lineLabel.text == mealsOrdered[x].name {
                 
-                if lineLabel.text == itemsOrdered[x].name {
+                mealsOrdered.remove(at: x)
+                break
+            }
+        }
+        
+        for x in 0..<itemsOrdered.count {
+                
+            if lineLabel.text == itemsOrdered[x].name {
                     
-                    itemsOrdered.remove(at: x)
-                    break
-                }
+                itemsOrdered.remove(at: x)
+                break
             }
         }
         

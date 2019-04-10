@@ -25,22 +25,14 @@ class OrderCollectionViewReusableView: UICollectionReusableView {
         
         if priceLabel.text != "Prices vary" {
             
-            if mealName == "" {
+            let price = Double(line.price.suffix(4))
+            totalPrice += price!
             
-                let price = Double(line.price.suffix(4))
-                totalPrice += price!
-            }
-            
-        } else if priceLabel.text == "Prices vary" && mealPrice != "Prices vary" {
-            
-            if let price = Double(mealPrice.suffix(4)) {
-                totalPrice -= price
-            }
         }
-
-        mealName = lineLabel.text!
-        mealPrice = priceLabel.text!
-        mealOrdered = line.items
+        
+        let meal = Line(name: lineLabel.text!, price: priceLabel.text!)
+        meal.items = line.items
+        mealsOrdered.append(meal)
         
         Order.reloadItemCount()
     }

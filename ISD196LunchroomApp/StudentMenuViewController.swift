@@ -63,36 +63,27 @@ class StudentMenuViewController: UIViewController {
                 aLaCarteItems.append(newItem)*/
                 
                 let itemName = item.value(forKeyPath: "name") as! String
-                previousOrder.append(itemName)
+                let itemPrice = item.value(forKeyPath: "price") as! String
+                previousItems.append(MenuItem(name: itemName, price: itemPrice))
+                itemsOrdered.append(MenuItem(name: itemName, price: itemPrice))
                 print(itemName)
             }
             
-            if lineData.count > 0 {
-                let lineName = lineData[0].value(forKey: "name") as! String
-                previousOrder.append(lineName)
+            for line in lineData {
+                
+                let lineName = line.value(forKey: "name") as! String
+                let linePrice = line.value(forKey: "price") as! String
+                let lineItems = Line.stringToItems(str: line.value(forKey: "items") as! String)
+                
+                let line = Line(name: lineName, price: linePrice)
+                line.items = lineItems
+                
+                previousMeals.append(line)
+                mealsOrdered.append(line)
             }
             
             print("Data recovered successfully")
             
-            if previousOrder.count > 0 {
-                
-                print("Previous Order ")
-                for x in 0..<previousOrder.count {
-                    
-                    if menuItems.keys.contains(previousOrder[x]) {
-                        
-                        itemsOrdered.append(menuItems[previousOrder[x]]!)
-                        
-                    } else {
-                        
-                        mealName = previousOrder[x]
-                    }
-                }
-                
-            } else {
-                
-                print("No previous order")
-            }
             
         } catch {
             

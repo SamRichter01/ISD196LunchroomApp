@@ -98,7 +98,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         
-        if mealOrdered.count > 0 || itemsOrdered.count > 0 {
+        if mealsOrdered.count > 0 || itemsOrdered.count > 0 {
             
             let alertController = UIAlertController(title: "Cancel Order", message: "Are you sure you want to cancel your order?", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -129,7 +129,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func finalizeOrderPressed(_ sender: UIButton) {
-        if mealOrdered.count < 1 && itemsOrdered.count < 1 {
+        if mealsOrdered.count < 1 && itemsOrdered.count < 1 {
             let alertController = UIAlertController(title: "LunchRoom", message:
                 "Please order at least one item", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))

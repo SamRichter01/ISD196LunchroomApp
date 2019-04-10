@@ -78,23 +78,14 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        switch section {
+        if section < mealsOrdered.count  {
             
-        case 0:
+            return mealsOrdered[section].items.count
             
-            if mealName != "" {
-                return mealOrdered.count
-            } else {
-                return 0
-            }
-            
-        case 1:
+        } else {
             
             return 0
             
-        default:
-            
-            return 0
         }
     }
     
@@ -106,28 +97,14 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
         }
         
-        cell.itemLabel.text = mealOrdered[indexPath.row]
+        cell.itemLabel.text = mealsOrdered[indexPath.section].items[indexPath.row]
         
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        if mealName != "" {
-            return (itemsOrdered.count + 1)
-        } else {
-            
-            if itemsOrdered.count < 1 {
-                
-                emptyViewLabel.isHidden = false
-            
-            } else {
-                
-                emptyViewLabel.isHidden = true
-            }
-            return itemsOrdered.count
-            
-        }
+        return (mealsOrdered.count + itemsOrdered.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -140,23 +117,17 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                 fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
             }
             
-            if (mealName != "") && (indexPath.section == 0) {
+            if indexPath.section < mealsOrdered.count {
                 
                 header.backgroundView.isHidden = true
-                header.lineLabel.text = mealName
-                header.priceLabel.text = mealPrice
-                
-            } else if (mealName == "") {
-                
-                header.backgroundView.isHidden = false
-                header.lineLabel.text = itemsOrdered[indexPath.section].name
-                header.priceLabel.text = itemsOrdered[indexPath.section].price
+                header.lineLabel.text = mealsOrdered[indexPath.section].name
+                header.priceLabel.text = mealsOrdered[indexPath.section].price
                 
             } else {
                 
                 header.backgroundView.isHidden = false
-                header.lineLabel.text = itemsOrdered[indexPath.section - 1].name
-                header.priceLabel.text = itemsOrdered[indexPath.section - 1].price
+                header.lineLabel.text = itemsOrdered[indexPath.section - mealsOrdered.count].name
+                header.priceLabel.text = itemsOrdered[indexPath.section - mealsOrdered.count].price
             }
             
             return header
@@ -182,7 +153,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
     
     @IBAction func sendOrder (_ sender: UIButton) {
         
-        if mealOrdered.count < 1 && itemsOrdered.count < 1 {
+        if mealsOrdered.count < 1 && itemsOrdered.count < 1 {
             let alertController = UIAlertController(title: "Order incomplete", message:
                 "Please order at least one item before sending your order", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
@@ -197,65 +168,117 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         // Add a new document in collection "orders"
         let orderRef = db.collection("orders").document(getDate(format: 0))
             .collection("days").document(getDate(format: 1))
-        
-        print("Previous order before deletion \(previousOrder)")
-        if previousOrder.count > 0 {
             
-            // Delete the old order
-            db.runTransaction({ (transaction, errorPointer) -> Any? in
-                let orderDeletionDoc: DocumentSnapshot
-                do {
-                    try orderDeletionDoc = transaction.getDocument(orderRef)
-                } catch let fetchError as NSError {
-                    errorPointer?.pointee = fetchError
-                    return nil
-                }
-            
-                for x in 0..<previousOrder.count {
-                
-                    var numberOrdered = 0
-                    
-                    for y in (0)..<previousOrder.count {
-                        
-                        if previousOrder[y] == previousOrder[x] {
-                            
-                            numberOrdered += 1
-                        }
-                    }
-                    
-                    if let previousItem = orderDeletionDoc.data()?[previousOrder[x]] as? Int {
-                        
-                        print("Deleting item: \(previousOrder[x])")
-                        transaction.updateData([previousOrder[x]: previousItem - numberOrdered], forDocument: orderRef)
-                    
-                    } else {
-                    
-                        continue
-                    }
-                }
-            
-                if let oldOrderCount = orderDeletionDoc.data()?["Order count"] as? Int {
-                
-                        transaction.updateData(["Order count": oldOrderCount - 1], forDocument: orderRef)
-                
-                } else {
-                
-                    let error = NSError(
-                        domain: "AppErrorDomain",
-                        code: -1,
-                        userInfo: [
-                            NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDeletionDoc)"])
-                    errorPointer?.pointee = error
-                }
-            
+        // Delete the old order
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let orderDeletionDoc: DocumentSnapshot
+            do {
+                try orderDeletionDoc = transaction.getDocument(orderRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
                 return nil
+            }
+        
+            for x in 0..<previousItems.count {
             
-            }) { (object, error) in
-                if let error = error {
-                    print("Delete Transaction failed: \(error)")
-                } else {
-                    print("Transaction successfully committed!")
+                var numberOrdered = 0
+                
+                for y in (0)..<previousItems.count {
+                    
+                    if previousItems[y].name == previousItems[x].name {
+                            
+                        numberOrdered += 1
+                    }
                 }
+                    
+                if let previousItem = orderDeletionDoc.data()?[previousItems[x].name] as? Int {
+                        
+                    print("Deleting item: \(previousItems[x])")
+                    transaction.updateData([previousItems[x].name: previousItem - numberOrdered], forDocument: orderRef)
+                    
+                } else {
+                    
+                    continue
+                }
+            }
+            
+            if let oldOrderCount = orderDeletionDoc.data()?["Order count"] as? Int {
+                
+                transaction.updateData(["Order count": oldOrderCount - 1], forDocument: orderRef)
+                
+            } else {
+                
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDeletionDoc)"])
+                    errorPointer?.pointee = error
+            }
+            
+            return nil
+            
+        }) { (object, error) in
+            if let error = error {
+                print("Delete Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+            }
+        }
+        
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let orderDeletionDoc: DocumentSnapshot
+            do {
+                try orderDeletionDoc = transaction.getDocument(orderRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            for x in 0..<previousMeals.count {
+                
+                var numberOrdered = 0
+                
+                for y in (0)..<previousMeals.count {
+                    
+                    if previousMeals[y].name == previousMeals[x].name {
+                        
+                        numberOrdered += 1
+                    }
+                }
+                
+                if let previousItem = orderDeletionDoc.data()?[previousMeals[x].name] as? Int {
+                    
+                    print("Deleting meal: \(previousMeals[x])")
+                    transaction.updateData([previousMeals[x].name: previousItem - numberOrdered], forDocument: orderRef)
+                    
+                } else {
+                    
+                    continue
+                }
+            }
+            
+            if let oldOrderCount = orderDeletionDoc.data()?["Order count"] as? Int {
+                
+                transaction.updateData(["Order count": oldOrderCount - 1], forDocument: orderRef)
+                
+            } else {
+                
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDeletionDoc)"])
+                errorPointer?.pointee = error
+            }
+            
+            return nil
+            
+        }) { (object, error) in
+            if let error = error {
+                print("Delete Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
             }
         }
         
@@ -283,8 +306,6 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                 errorPointer?.pointee = error
             }
             
-            print("Items in order before ordering \(itemsOrdered)")
-            print("Previous order before ordering \(previousOrder)")
             for x in 0..<itemsOrdered.count {
                 
                 var numberOrdered = 0
@@ -308,18 +329,29 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                 }
             }
             
-            if mealName != "" {
+            for x in 0..<mealsOrdered.count {
                 
-                if let oldOrder = orderDoc.data()?[mealName] as? Int {
+                var numberOrdered = 0
                 
-                    transaction.updateData([mealName: oldOrder + 1], forDocument: orderRef)
+                for y in (0)..<mealsOrdered.count {
+                    
+                    if mealsOrdered[y].name == mealsOrdered[x].name {
+                        
+                        numberOrdered += 1
+                    }
+                }
                 
+                if let oldItem = orderDoc.data()?[mealsOrdered[x].name] as? Int {
+                    
+                    transaction.updateData([mealsOrdered[x].name: oldItem + numberOrdered], forDocument: orderRef)
+                    
                 } else {
-                
-                    transaction.updateData([mealName: 1], forDocument: orderRef)
- 
+                    
+                    transaction.updateData([mealsOrdered[x].name: numberOrdered], forDocument: orderRef)
+                    
                 }
             }
+            
             return nil
             
         }) { (object, error) in
@@ -327,16 +359,12 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                 print("Write Transaction failed: \(error)")
             } else {
                 print("Transaction successfully committed!")
-                print("Previous order before resetting \(previousOrder)")
                 
                 Order.saveOrder()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
                     NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
                 })
-                
-                
-                print("Previous order after resetting \(previousOrder)")
             }
         }
         
@@ -357,8 +385,12 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
          print("Failed to delete data")
          }
         
-        self.saveLine(label: mealName)
-        for item in aLaCarteItems.values {
+        for meal in mealsOrdered {
+            
+            self.saveLine(label: meal.name, price: meal.price, items: meal.itemsToString())
+        }
+        
+        for item in itemsOrdered {
             self.saveALaCarteItem(label: item.name, cost: item.price)
         }
     }
@@ -387,17 +419,19 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         }
     }
     
-    func saveLine(label: String) {
+    func saveLine(label: String, price: String, items: String) {
         //These two lines create a managedContext which stores the data you want to save to CoreData.
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         
         //These two lines create a managed object and inserts it into the managed context to be saved to CoreData.
         let entity = NSEntityDescription.entity(forEntityName: "LineOrdered", in: managedContext)!
-        let name = NSManagedObject(entity: entity, insertInto: managedContext)
-        
+        let object = NSManagedObject(entity: entity, insertInto: managedContext)
+
         //Using the managed object, this sets the name parameter to the attribute "name" to be saved.
-        name.setValue(label, forKeyPath: "name")
+        object.setValue(label, forKeyPath: "name")
+        object.setValue(price, forKeyPath: "price")
+        object.setValue(items, forKeyPath: "items")
         
         do {
             //This saves the data in the managed context to CoreData.

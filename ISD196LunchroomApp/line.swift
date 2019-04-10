@@ -19,4 +19,28 @@ class Line {
         self.name = name
         self.price = price
     }
+    
+    func itemsToString () -> String {
+        
+        var str = ""
+        
+        for x in 0..<items.count {
+            
+            if x < items.count - 1 {
+                
+                str.append("\(items[x]),")
+                
+            } else {
+                
+                str.append("\(items[x])")
+            }
+        }
+        
+        return str
+    }
+    
+    static func stringToItems (str: String) -> [String] {
+        
+        return str.components(separatedBy: ",")
+    }
 }
