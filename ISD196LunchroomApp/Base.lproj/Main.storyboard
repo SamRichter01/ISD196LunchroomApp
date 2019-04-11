@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +21,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                                 <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LunchRoom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMQ-4r-Eie">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISD196LunchroomApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMQ-4r-Eie">
                                 <rect key="frame" x="268" y="328" width="247" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="44"/>
@@ -121,7 +121,7 @@
         <!--Admin Menu View Controller-->
         <scene sceneID="gOU-qz-TsC">
             <objects>
-                <viewController id="cog-fp-Xus" customClass="AdminMenuViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cog-fp-Xus" customClass="AdminMenuViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h2U-Bf-odI">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
                                     <action selector="editDatabasePressed:" destination="cog-fp-Xus" eventType="touchUpInside" id="b8B-EJ-yDw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LunchRoom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tO-p1-Fl0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISD196LunchroomApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tO-p1-Fl0">
                                 <rect key="frame" x="261" y="328" width="247" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="44"/>
@@ -216,7 +216,7 @@
         <!--Edit Database View Controller-->
         <scene sceneID="bp3-tZ-oQz">
             <objects>
-                <viewController id="OVd-QR-Wnc" customClass="EditDatabaseViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OVd-QR-Wnc" customClass="EditDatabaseViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZeZ-U3-uVy">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,7 +316,7 @@
         <!--Student Menu View Controller-->
         <scene sceneID="7Ma-Cq-reb">
             <objects>
-                <viewController id="IbH-vS-0Pl" customClass="StudentMenuViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IbH-vS-0Pl" customClass="StudentMenuViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lu3-l3-iVE">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +341,7 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="toLoginMenu" id="CE3-uR-hbH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LunchRoom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwd-o3-IgV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISD196LunchroomApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwd-o3-IgV">
                                 <rect key="frame" x="268" y="328" width="247" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="44"/>
@@ -462,7 +462,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="MMW-3X-ICK" customClass="MenuCollectionViewCell" customModule="LunchRoom">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="MMW-3X-ICK" customClass="MenuCollectionViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="74" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -496,7 +496,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="tfa-2a-XB1" customClass="MenuCollectionViewReusableView" customModule="LunchRoom">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="tfa-2a-XB1" customClass="MenuCollectionViewReusableView" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="730" height="74"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -566,7 +566,7 @@
         <!--La Carte Menu View Controller-->
         <scene sceneID="bIX-Py-1JN">
             <objects>
-                <viewController id="ecU-yW-SgF" customClass="ALaCarteMenuViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ecU-yW-SgF" customClass="ALaCarteMenuViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PtD-Vq-psF">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -577,7 +577,7 @@
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="11"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="aLaCarteMenuCell" rowHeight="86" id="LgR-kJ-z5C" customClass="ALaCarteMenuTableViewCell" customModule="LunchRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="aLaCarteMenuCell" rowHeight="86" id="LgR-kJ-z5C" customClass="ALaCarteMenuTableViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="768" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LgR-kJ-z5C" id="eCT-Lx-tVh">
@@ -691,7 +691,7 @@
         <!--Item Popup View Controller-->
         <scene sceneID="0ii-wU-dTG">
             <objects>
-                <viewController id="lc7-vw-Ugl" customClass="ItemPopupViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lc7-vw-Ugl" customClass="ItemPopupViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wuG-Ru-AVc">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -804,7 +804,7 @@
         <!--A La Carte-->
         <scene sceneID="YU3-GA-FrC">
             <objects>
-                <viewController id="Rbz-Zg-jmf" customClass="ALaCarteViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rbz-Zg-jmf" customClass="ALaCarteViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A26-Sg-StT">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -814,7 +814,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ALaCarteTableViewCell" rowHeight="86" id="6Tf-F2-c1J" customClass="ALaCarteTableViewCell" customModule="LunchRoom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ALaCarteTableViewCell" rowHeight="86" id="6Tf-F2-c1J" customClass="ALaCarteTableViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="768" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Tf-F2-c1J" id="3uQ-cI-FgT">
@@ -980,7 +980,7 @@
         <!--Finalize Order View Controller-->
         <scene sceneID="gzD-Ca-WPF">
             <objects>
-                <viewController id="L9Z-2l-dYj" customClass="FinalizeOrderViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L9Z-2l-dYj" customClass="FinalizeOrderViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uBi-jh-Cyu">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1043,7 +1043,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="rQe-hg-bqK" customClass="MenuCollectionViewCell" customModule="LunchRoom">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="rQe-hg-bqK" customClass="MenuCollectionViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="78" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1082,7 +1082,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="tCl-3p-6hx" customClass="FinalizeViewCollectionReusableView" customModule="LunchRoom">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="tCl-3p-6hx" customClass="FinalizeViewCollectionReusableView" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="730" height="78"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -1161,7 +1161,7 @@
         <!--Send Popup View Controller-->
         <scene sceneID="oAH-Xi-MIW">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="OQT-xL-gPN" customClass="SendPopupViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="OQT-xL-gPN" customClass="SendPopupViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="dn8-e4-LQi">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1206,12 +1206,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUP-Zt-Yci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4227.34375" y="985.54687499999989"/>
+            <point key="canvasLocation" x="4277" y="971"/>
         </scene>
         <!--Main menu-->
         <scene sceneID="AoQ-pZ-Jlf">
             <objects>
-                <viewController id="6Jk-QS-uG8" customClass="mainOrderViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6Jk-QS-uG8" customClass="mainOrderViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dzG-s3-Kc5">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1275,7 +1275,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="aHW-uB-Yud" customClass="MenuCollectionViewCell" customModule="LunchRoom">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="aHW-uB-Yud" customClass="MenuCollectionViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="74" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1305,11 +1305,11 @@
                                         </view>
                                         <size key="customSize" width="240" height="128"/>
                                         <connections>
-                                            <outlet property="itemLabel" destination="Fo3-Sg-bzO" id="Osz-Ma-Bzw"/>
+                                            <outlet property="itemLabel" destination="Fo3-Sg-bzO" id="LDJ-kl-qhB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="Goy-Rg-Qjc" customClass="OrderCollectionViewReusableView" customModule="LunchRoom">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="Goy-Rg-Qjc" customClass="OrderCollectionViewReusableView" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="730" height="74"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -1405,7 +1405,7 @@
         <!--Edit Menu View Controller-->
         <scene sceneID="TX3-Pt-cze">
             <objects>
-                <viewController id="r1y-tQ-G1S" customClass="EditMenuViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="r1y-tQ-G1S" customClass="EditMenuViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="38i-hV-E28">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1490,7 +1490,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="Bur-b9-INn" customClass="EditMenuCollectionViewCell" customModule="LunchRoom" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="Bur-b9-INn" customClass="EditMenuCollectionViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="66" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1534,7 +1534,7 @@
                                             <outlet property="removeItemPressed" destination="HSh-c1-cxs" id="3Pc-Pa-TPO"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addItemCell" id="Ce7-Ue-Sxs" customClass="NewItemCollectionViewCell" customModule="LunchRoom" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addItemCell" id="Ce7-Ue-Sxs" customClass="NewItemCollectionViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="245" y="66" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1569,7 +1569,7 @@
                                         <size key="customSize" width="240" height="128"/>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="XJN-3u-vS8" customClass="EditMenuCollectionReusableView" customModule="LunchRoom" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewHeader" id="XJN-3u-vS8" customClass="EditMenuCollectionReusableView" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="730" height="66"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -1637,7 +1637,7 @@
         <!--Order Data View Controller-->
         <scene sceneID="DIc-nd-Ezx">
             <objects>
-                <viewController id="ZHG-mu-L9B" customClass="OrderDataViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZHG-mu-L9B" customClass="OrderDataViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UGs-Ul-I4g">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1699,7 +1699,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="3Pa-T4-zRg" customClass="MenuCollectionViewCell" customModule="LunchRoom">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCollectionViewCell" id="3Pa-T4-zRg" customClass="MenuCollectionViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="74" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1733,7 +1733,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="orderDataCollectionViewHeader" id="3Xk-wu-yXK" customClass="OrderDataViewReusableView" customModule="LunchRoom" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="orderDataCollectionViewHeader" id="3Xk-wu-yXK" customClass="OrderDataViewReusableView" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="730" height="74"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -1804,7 +1804,7 @@
         <!--Add Item View Controller-->
         <scene sceneID="AAd-WI-a2V">
             <objects>
-                <viewController id="jLu-3Q-5ec" customClass="AddItemViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jLu-3Q-5ec" customClass="AddItemViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eoe-8z-ky2">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1862,7 +1862,7 @@
                                                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="11"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addItemCell" rowHeight="66" id="Cho-nT-qrq" customClass="AddItemTableViewCell" customModule="LunchRoom" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addItemCell" rowHeight="66" id="Cho-nT-qrq" customClass="AddItemTableViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="485" height="66"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cho-nT-qrq" id="F81-1v-UxR">
@@ -1985,7 +1985,7 @@
         <!--Detail Popup View Controller-->
         <scene sceneID="gL5-OK-PUn">
             <objects>
-                <viewController id="H6o-yT-LXd" customClass="DetailPopupViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="H6o-yT-LXd" customClass="DetailPopupViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BJu-4m-89J">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2055,7 +2055,7 @@
         <!--Comment Popup View Controller-->
         <scene sceneID="dNb-Gh-qlB">
             <objects>
-                <viewController id="c4v-Xx-Xjd" customClass="CommentPopupViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="c4v-Xx-Xjd" customClass="CommentPopupViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sZs-98-2Ua">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2091,7 +2091,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentTableViewCell" rowHeight="204" id="0wl-nA-CRS" customClass="CommentTableViewCell" customModule="LunchRoom" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentTableViewCell" rowHeight="204" id="0wl-nA-CRS" customClass="CommentTableViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="485" height="204"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0wl-nA-CRS" id="Ur2-g0-zfa">
@@ -2153,7 +2153,7 @@
         <!--New Line View Controller-->
         <scene sceneID="jX4-A1-hEw">
             <objects>
-                <viewController id="SVq-iP-wRk" customClass="NewLineViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SVq-iP-wRk" customClass="NewLineViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="apI-iY-cvu">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2243,7 +2243,7 @@
         <!--New School Day View Controller-->
         <scene sceneID="fil-Jp-wDh">
             <objects>
-                <viewController id="SGQ-Fx-lKD" customClass="NewSchoolDayViewController" customModule="LunchRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SGQ-Fx-lKD" customClass="NewSchoolDayViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jHo-tJ-f88">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2348,7 +2348,8 @@
         <image name="View Menu" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="epm-Lw-Qsb"/>
+        <segue reference="oBa-sx-osC"/>
+        <segue reference="PcR-hv-sJT"/>
         <segue reference="nvJ-Th-ZPg"/>
         <segue reference="BRG-8i-ca7"/>
         <segue reference="ssW-Ed-HdV"/>

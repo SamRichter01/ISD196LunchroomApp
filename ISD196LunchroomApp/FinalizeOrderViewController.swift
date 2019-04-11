@@ -178,29 +178,6 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                 errorPointer?.pointee = fetchError
                 return nil
             }
-        
-            for x in 0..<previousItems.count {
-            
-                var numberOrdered = 0
-                
-                for y in (0)..<previousItems.count {
-                    
-                    if previousItems[y].name == previousItems[x].name {
-                            
-                        numberOrdered += 1
-                    }
-                }
-                    
-                if let previousItem = orderDeletionDoc.data()?[previousItems[x].name] as? Int {
-                        
-                    print("Deleting item: \(previousItems[x])")
-                    transaction.updateData([previousItems[x].name: previousItem - numberOrdered], forDocument: orderRef)
-                    
-                } else {
-                    
-                    continue
-                }
-            }
             
             if let oldOrderCount = orderDeletionDoc.data()?["Order count"] as? Int {
                 
@@ -216,23 +193,27 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                     errorPointer?.pointee = error
             }
             
-            return nil
-            
-        }) { (object, error) in
-            if let error = error {
-                print("Delete Transaction failed: \(error)")
-            } else {
-                print("Transaction successfully committed!")
-            }
-        }
-        
-        db.runTransaction({ (transaction, errorPointer) -> Any? in
-            let orderDeletionDoc: DocumentSnapshot
-            do {
-                try orderDeletionDoc = transaction.getDocument(orderRef)
-            } catch let fetchError as NSError {
-                errorPointer?.pointee = fetchError
-                return nil
+            for x in 0..<previousItems.count {
+                
+                var numberOrdered = 0
+                
+                for y in (0)..<previousItems.count {
+                    
+                    if previousItems[y].name == previousItems[x].name {
+                        
+                        numberOrdered += 1
+                    }
+                }
+                
+                if let previousItem = orderDeletionDoc.data()?[previousItems[x].name] as? Int {
+                    
+                    print("Deleting item: \(previousItems[x])")
+                    transaction.updateData([previousItems[x].name: previousItem - numberOrdered], forDocument: orderRef)
+                    
+                } else {
+                    
+                    continue
+                }
             }
             
             for x in 0..<previousMeals.count {
@@ -256,20 +237,6 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                     
                     continue
                 }
-            }
-            
-            if let oldOrderCount = orderDeletionDoc.data()?["Order count"] as? Int {
-                
-                transaction.updateData(["Order count": oldOrderCount - 1], forDocument: orderRef)
-                
-            } else {
-                
-                let error = NSError(
-                    domain: "AppErrorDomain",
-                    code: -1,
-                    userInfo: [
-                        NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDeletionDoc)"])
-                errorPointer?.pointee = error
             }
             
             return nil
