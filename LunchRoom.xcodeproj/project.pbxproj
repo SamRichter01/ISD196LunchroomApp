@@ -87,12 +87,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		220333302225B65200AF29AC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		220333312225B65300AF29AC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		220333332225B65300AF29AC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		220333342225B65300AF29AC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		220333302225B65200AF29AC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "LunchRoom/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		220333312225B65300AF29AC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "LunchRoom/Open_Sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "LunchRoom/Open_Sans/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		220333332225B65300AF29AC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "LunchRoom/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		220333342225B65300AF29AC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "LunchRoom/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "LunchRoom/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		2203333C222739ED00AF29AC /* DetailPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopupViewController.swift; sourceTree = "<group>"; };
 		2203334422287D2000AF29AC /* ProfanityFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfanityFilter.swift; sourceTree = "<group>"; };
 		2203334622288C4D00AF29AC /* Profanity.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Profanity.txt; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
 		223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionReusableView.swift; sourceTree = "<group>"; };
 		223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionViewCell.swift; sourceTree = "<group>"; };
-		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Open_Sans; path = ISD196LunchroomApp/Open_Sans; sourceTree = SOURCE_ROOT; };
+		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Open_Sans; path = LunchRoom/Open_Sans; sourceTree = SOURCE_ROOT; };
 		22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		22457197223C024000D7B02A /* NewLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLineViewController.swift; sourceTree = "<group>"; };
 		224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSchoolDayViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		22ACA8BC21C0291800069A70 /* month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = month.swift; sourceTree = "<group>"; };
 		22ACA8BE21C0292700069A70 /* day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day.swift; sourceTree = "<group>"; };
 		22ACA8C021C0293100069A70 /* line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = line.swift; sourceTree = "<group>"; };
-		22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISD196LunchroomApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ISD196LunchroomApp-Bridging-Header.h"; path = "/Users/sam/Desktop/ISD196LunchroomApp/LunchRoom/ISD196LunchroomApp-Bridging-Header.h"; sourceTree = "<absolute>"; };
 		22ACA8C321C029EA00069A70 /* bridging header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "bridging header.m"; sourceTree = "<group>"; };
 		22ACA8C921C171BC00069A70 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		22ACA8CA21C171BC00069A70 /* MasterMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMenu.swift; sourceTree = "<group>"; };
@@ -193,15 +193,15 @@
 		221FAD2F21BAE0B8005AE7AE = {
 			isa = PBXGroup;
 			children = (
-				221FAD3A21BAE0B8005AE7AE /* ISD196LunchroomApp */,
+				221FAD3A21BAE0B8005AE7AE /* LunchRoom */,
 				220333332225B65300AF29AC /* OpenSans-Bold.ttf */,
 				220333312225B65300AF29AC /* OpenSans-Italic.ttf */,
 				220333302225B65200AF29AC /* OpenSans-Light.ttf */,
 				220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */,
 				220333342225B65300AF29AC /* OpenSans-Regular.ttf */,
 				220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */,
-				221FAD4F21BAE0C0005AE7AE /* ISD196LunchroomAppTests */,
-				221FAD5A21BAE0C0005AE7AE /* ISD196LunchroomAppUITests */,
+				221FAD4F21BAE0C0005AE7AE /* LunchRoomTests */,
+				221FAD5A21BAE0C0005AE7AE /* LunchRoomUITests */,
 				221FAD3921BAE0B8005AE7AE /* Products */,
 				457AD6F1F6F955E5F72E83C2 /* Pods */,
 				EB91B74FDDE404EE439D24EE /* Frameworks */,
@@ -218,7 +218,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		221FAD3A21BAE0B8005AE7AE /* ISD196LunchroomApp */ = {
+		221FAD3A21BAE0B8005AE7AE /* LunchRoom */ = {
 			isa = PBXGroup;
 			children = (
 				22F858C321BB082000C20293 /* ViewController.swift */,
@@ -273,25 +273,25 @@
 				2203334622288C4D00AF29AC /* Profanity.txt */,
 				95176D1B2252653E009DB6A4 /* CoreData.xcdatamodeld */,
 			);
-			path = ISD196LunchroomApp;
+			path = LunchRoom;
 			sourceTree = "<group>";
 		};
-		221FAD4F21BAE0C0005AE7AE /* ISD196LunchroomAppTests */ = {
+		221FAD4F21BAE0C0005AE7AE /* LunchRoomTests */ = {
 			isa = PBXGroup;
 			children = (
 				221FAD5021BAE0C0005AE7AE /* ISD196LunchroomAppTests.swift */,
 				221FAD5221BAE0C0005AE7AE /* Info.plist */,
 			);
-			path = ISD196LunchroomAppTests;
+			path = LunchRoomTests;
 			sourceTree = "<group>";
 		};
-		221FAD5A21BAE0C0005AE7AE /* ISD196LunchroomAppUITests */ = {
+		221FAD5A21BAE0C0005AE7AE /* LunchRoomUITests */ = {
 			isa = PBXGroup;
 			children = (
 				221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */,
 				221FAD5D21BAE0C0005AE7AE /* Info.plist */,
 			);
-			path = ISD196LunchroomAppUITests;
+			path = LunchRoomUITests;
 			sourceTree = "<group>";
 		};
 		457AD6F1F6F955E5F72E83C2 /* Pods */ = {
@@ -829,7 +829,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96L2Y94678;
-				INFOPLIST_FILE = ISD196LunchroomApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LunchRoom/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -837,7 +837,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196;
 				PRODUCT_NAME = LunchRoom;
-				SWIFT_OBJC_BRIDGING_HEADER = "ISD196LunchroomApp/ISD196LunchroomApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./LunchRoom/ISD196LunchroomApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -852,7 +852,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96L2Y94678;
-				INFOPLIST_FILE = ISD196LunchroomApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LunchRoom/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -860,7 +860,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.district196;
 				PRODUCT_NAME = LunchRoom;
-				SWIFT_OBJC_BRIDGING_HEADER = "ISD196LunchroomApp/ISD196LunchroomApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./LunchRoom/ISD196LunchroomApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
