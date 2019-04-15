@@ -247,7 +247,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         mainMenuButton.isHidden = true
         activityIndicator.startAnimating()
         nameLabel.text = "Signing in"
-        nameLabel.textColor = #colorLiteral(red: 0.4823529412, green: 0.6274509804, blue: 0.2588235294, alpha: 1)
+        nameLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     //Shows previously hidden button and labels and stops the activity indicator
@@ -257,7 +257,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         mainMenuButton.isHidden = false
         activityIndicator.stopAnimating()
         nameLabel.text = "Not signed in"
-        nameLabel.textColor = #colorLiteral(red: 0.4823529412, green: 0.6274509804, blue: 0.2588235294, alpha: 1)
+        nameLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
 }
 
