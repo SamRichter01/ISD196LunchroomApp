@@ -110,14 +110,14 @@
 		221FAD5721BAE0C0005AE7AE /* ISD196LunchroomAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISD196LunchroomAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISD196LunchroomAppUITests.swift; sourceTree = "<group>"; };
 		221FAD5D21BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewReusableView.swift; sourceTree = "<group>"; };
 		223438DE22205E41005EB3D0 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
 		223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionReusableView.swift; sourceTree = "<group>"; };
 		223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionViewCell.swift; sourceTree = "<group>"; };
-		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Open_Sans; path = ISD196LunchroomApp/Open_Sans; sourceTree = SOURCE_ROOT; };
+		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Open_Sans; sourceTree = "<group>"; };
 		22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		22457197223C024000D7B02A /* NewLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLineViewController.swift; sourceTree = "<group>"; };
 		224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSchoolDayViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		22ACA8BC21C0291800069A70 /* month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = month.swift; sourceTree = "<group>"; };
 		22ACA8BE21C0292700069A70 /* day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day.swift; sourceTree = "<group>"; };
 		22ACA8C021C0293100069A70 /* line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = line.swift; sourceTree = "<group>"; };
-		22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ISD196LunchroomApp-Bridging-Header.h"; path = "ISD196LunchroomApp/ISD196LunchroomApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISD196LunchroomApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		22ACA8C321C029EA00069A70 /* bridging header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "bridging header.m"; sourceTree = "<group>"; };
 		22ACA8C921C171BC00069A70 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		22ACA8CA21C171BC00069A70 /* MasterMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMenu.swift; sourceTree = "<group>"; };
