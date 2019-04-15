@@ -30,14 +30,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         //Checks to see if the person is returning from the main menu after pressing the Log Out button
         if shouldSignOut {
-            signOutButtonPressed(signOutButton)
+            signOutButtonPressed()
         }
         
         activityIndicator.hidesWhenStopped = true
     
         // Disable sign out buttons and only allow the user to sign in.
-        mainMenuButton.isEnabled = false
-        signOutButton.isEnabled = false
+        
         signInButton.isEnabled = true
         
         // Creates listener that calls a method to change the name label when the user logs in.
@@ -89,7 +88,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         nameLabel.text = "Signing in"
     }
     
-    @IBAction func signOutButtonPressed(_ sender: UIButton) {
+    func signOutButtonPressed() {
         nameLabel.text = "Signing out..."
         
         GIDSignIn.sharedInstance().disconnect()
@@ -97,8 +96,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         nameLabel.text = "Not signed in"
         
-        mainMenuButton.isEnabled = false
-        signOutButton.isEnabled = false
         signInButton.isEnabled = true
     }
     
@@ -107,22 +104,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         //  Dispose of any resources that can be recreated.
     }
     
-    // Checks the email of the currently signed in user and then goes to either the student or admin main menu
-    // We probably want this to be integerated into the database so we don't have to hardcode admin users
-    @IBAction func mainMenuPressed(_ sender: UIButton) {
-        if (GIDSignIn.sharedInstance().currentUser.profile.email.contains("@apps.district196.org")) {
-            performSegue(withIdentifier: "studentMainMenu", sender: self)
-        } else if (GIDSignIn.sharedInstance().currentUser.profile.email == "isd196lunchroomapp@gmail.com") {
-            performSegue(withIdentifier: "adminMainMenu", sender: self)
-        }
-    }
     
     // The function called by the listener created up top
     @objc func userLoggedIn() {
         //nameLabel.text = "Signed in as: " + GIDSignIn.sharedInstance().currentUser.profile.name
         
-        mainMenuButton.isEnabled = true
-        signOutButton.isEnabled = true
         signInButton.isEnabled = false
         
         if let _ = GIDSignIn.sharedInstance().currentUser {
@@ -243,8 +229,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     //Hides uneccesary buttons and labels and starts the activity indicator
     func startLoading() {
         signInButton.isHidden = true
-        signOutButton.isHidden = true
-        mainMenuButton.isHidden = true
         activityIndicator.startAnimating()
         nameLabel.text = "Signing in"
         nameLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -253,8 +237,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     //Shows previously hidden button and labels and stops the activity indicator
     func stopLoading() {
         signInButton.isHidden = false
-        signOutButton.isHidden = false
-        mainMenuButton.isHidden = false
         activityIndicator.stopAnimating()
         nameLabel.text = "Not signed in"
         nameLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
