@@ -26,19 +26,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mYr-Lw-9Fu" customClass="GIDSignInButton">
-                                <rect key="frame" x="266" y="623" width="236" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not signed in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWk-uT-3aV">
+                                <rect key="frame" x="105" y="488" width="558" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="googleButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TgZ-oj-jhV"/>
-                                </connections>
-                            </view>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LunchRoom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMQ-4r-Eie">
                                 <rect key="frame" x="268" y="328" width="247" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -57,17 +51,23 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not signed in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWk-uT-3aV">
-                                <rect key="frame" x="105" y="488" width="558" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aza-MR-B8W">
                                 <rect key="frame" x="366" y="525" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mYr-Lw-9Fu" customClass="GIDSignInButton">
+                                <rect key="frame" x="266" y="578" width="236" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TgZ-oj-jhV"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -278,6 +278,7 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="backPressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="dL5-V0-OmR"/>
                                             <action selector="cancelButtonPressed:" destination="6Jk-QS-uG8" eventType="touchUpInside" id="BRI-9P-rEx"/>
                                         </connections>
                                     </button>
@@ -420,7 +421,7 @@
         <!--Lunch Menu View Controller-->
         <scene sceneID="nEQ-87-3tj">
             <objects>
-                <viewController id="xzY-lc-Q5p" customClass="LunchMenuViewController" customModule="LunchRoom" sceneMemberID="viewController">
+                <viewController id="xzY-lc-Q5p" customClass="LunchMenuViewController" customModule="ISD196LunchroomApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bwh-tl-Qbg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -558,7 +559,7 @@
                         <viewLayoutGuide key="safeArea" id="fBV-gs-7Nn"/>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="fFU-va-7lo" id="T7N-Ay-GQC"/>
+                        <outlet property="datePicker" destination="fFU-va-7lo" id="6wS-fO-Jeh"/>
                         <outlet property="emptyViewLabel" destination="1eV-vc-S0O" id="PW7-Zg-m2X"/>
                         <outlet property="menuCollectionView" destination="ue7-YR-e4z" id="s33-QP-XHq"/>
                         <segue destination="lc7-vw-Ugl" kind="presentation" identifier="commentPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Buy-qB-CHq"/>
@@ -2348,7 +2349,7 @@
         <image name="White Logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="epm-Lw-Qsb"/>
+        <segue reference="PcR-hv-sJT"/>
         <segue reference="nvJ-Th-ZPg"/>
         <segue reference="k20-i8-JeH"/>
         <segue reference="CE3-uR-hbH"/>

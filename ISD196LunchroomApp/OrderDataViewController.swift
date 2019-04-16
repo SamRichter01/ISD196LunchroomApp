@@ -336,7 +336,7 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         monthName = monthNames[datePicker.selectedRow(inComponent: 0)]
-        day = dates[monthName]![0]
+        day = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
         
         if component == 0 {
 
