@@ -78,9 +78,9 @@ class StudentMenuViewController: UIViewController {
             
             for line in lineData {
                 
-                let lineName = line.value(forKey: "name") as! String
-                let linePrice = line.value(forKey: "price") as! String
-                let lineItems = Line.stringToItems(str: line.value(forKey: "items") as! String)
+                let lineName = line.value(forKeyPath: "name") as! String
+                let linePrice = line.value(forKeyPath: "price") as! String
+                let lineItems = Line.stringToItems(str: line.value(forKeyPath: "items") as! String)
                 
                 let line = Line(name: lineName, price: linePrice)
                 line.items = lineItems
