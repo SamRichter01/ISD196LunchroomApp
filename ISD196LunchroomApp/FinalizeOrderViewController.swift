@@ -168,88 +168,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         // Add a new document in collection "orders"
         let orderRef = db.collection("orders").document(getDate(format: 0))
             .collection("days").document(getDate(format: 1))
-            
-        // Delete the old order
-        db.runTransaction({ (transaction, errorPointer) -> Any? in
-            let orderDeletionDoc: DocumentSnapshot
-            do {
-                try orderDeletionDoc = transaction.getDocument(orderRef)
-            } catch let fetchError as NSError {
-                errorPointer?.pointee = fetchError
-                return nil
-            }
-            
-            if let oldOrderCount = orderDeletionDoc.data()?["Order count"] as? Int {
-                
-                transaction.updateData(["Order count": oldOrderCount - 1], forDocument: orderRef)
-                
-            } else {
-                
-                let error = NSError(
-                    domain: "AppErrorDomain",
-                    code: -1,
-                    userInfo: [
-                        NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDeletionDoc)"])
-                    errorPointer?.pointee = error
-            }
-            
-            for x in 0..<previousItems.count {
-                
-                var numberOrdered = 0
-                
-                for y in (0)..<previousItems.count {
-                    
-                    if previousItems[y].name == previousItems[x].name {
-                        
-                        numberOrdered += 1
-                    }
-                }
-                
-                if let previousItem = orderDeletionDoc.data()?[previousItems[x].name] as? Int {
-                    
-                    print("Deleting item: \(previousItems[x])")
-                    transaction.updateData([previousItems[x].name: previousItem - numberOrdered], forDocument: orderRef)
-                    
-                } else {
-                    
-                    continue
-                }
-            }
-            
-            for x in 0..<previousMeals.count {
-                
-                var numberOrdered = 0
-                
-                for y in (0)..<previousMeals.count {
-                    
-                    if previousMeals[y].name == previousMeals[x].name {
-                        
-                        numberOrdered += 1
-                    }
-                }
-                
-                if let previousItem = orderDeletionDoc.data()?[previousMeals[x].name] as? Int {
-                    
-                    print("Deleting meal: \(previousMeals[x])")
-                    transaction.updateData([previousMeals[x].name: previousItem - numberOrdered], forDocument: orderRef)
-                    
-                } else {
-                    
-                    continue
-                }
-            }
-            
-            return nil
-            
-        }) { (object, error) in
-            if let error = error {
-                print("Delete Transaction failed: \(error)")
-            } else {
-                print("Transaction successfully committed!")
-            }
-        }
         
-        // Make the new order
         db.runTransaction({ (transaction, errorPointer) -> Any? in
             let orderDoc: DocumentSnapshot
             do {
@@ -270,70 +189,160 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                     code: -1,
                     userInfo: [
                         NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDoc)"])
-                errorPointer?.pointee = error
+                    errorPointer?.pointee = error
             }
             
-            for x in 0..<itemsOrdered.count {
+            var totalItems = [String]()
+            var tempItems = [String]()
+            
+            for item in itemsOrdered {
+                
+                totalItems.append(item.name)
+            }
+            
+            for item in previousItems {
+                
+                totalItems.append(item.name)
+            }
+            
+            for str in totalItems {
+                
+                if !tempItems.contains(str) {
+                    
+                    tempItems.append(str)
+                }
+            }
+            
+            totalItems = tempItems
+            
+            for x in 0..<totalItems.count {
                 
                 var numberOrdered = 0
                 
-                for y in (0)..<itemsOrdered.count {
+                for y in 0..<previousItems.count {
                     
-                    if itemsOrdered[y].name == itemsOrdered[x].name {
+                    if previousItems[y].name == totalItems[x] {
+                        
+                        numberOrdered -= 1
+                    }
+                }
+                
+                for y in 0..<itemsOrdered.count {
+                    
+                    if itemsOrdered[y].name == totalItems[x] {
                         
                         numberOrdered += 1
                     }
                 }
-                
-                if let oldItem = orderDoc.data()?[itemsOrdered[x].name] as? Int {
+            
+                if let previousItem = orderDoc.data()?[totalItems[x]] as? Int {
                     
-                    transaction.updateData([itemsOrdered[x].name: oldItem + numberOrdered], forDocument: orderRef)
+                    if (previousItem + numberOrdered) >= 0 {
+                        
+                        transaction.updateData([totalItems[x]: previousItem + numberOrdered], forDocument: orderRef)
+                        
+                    } else {
+                        
+                        transaction.updateData([totalItems[x]: 0], forDocument: orderRef)
+                    }
                     
                 } else {
                     
-                    transaction.updateData([itemsOrdered[x].name: numberOrdered], forDocument: orderRef)
+                    if numberOrdered >= 0 {
+                        
+                        transaction.updateData([totalItems[x]: numberOrdered], forDocument: orderRef)
+                        
+                    } else {
+                        
+                        continue
+                    }
+                }
+            }
+            
+            var totalMeals = [String]()
+            var tempMeals = [String]()
+                
+            for item in mealsOrdered {
+                    
+                totalMeals.append(item.name)
+            }
+            
+            for item in previousMeals {
+                    
+                totalMeals.append(item.name)
+            }
+                
+            for str in totalMeals {
+                    
+                if !tempMeals.contains(str) {
+                        
+                    tempMeals.append(str)
+                }
+            }
+
+            totalMeals = tempMeals
         
-                }
-            }
-            
-            for x in 0..<mealsOrdered.count {
-                
-                var numberOrdered = 0
-                
-                for y in (0)..<mealsOrdered.count {
+            for x in 0..<totalMeals.count {
                     
-                    if mealsOrdered[y].name == mealsOrdered[x].name {
+                var numberOrdered = 0
+                    
+                for y in 0..<previousMeals.count {
                         
+                    if previousMeals[y].name == totalMeals[x] {
+                            
+                        numberOrdered -= 1
+                
+                    }
+                }
+                    
+                for y in 0..<mealsOrdered.count {
+                        
+                    if mealsOrdered[y].name == totalMeals[x] {
+                            
                         numberOrdered += 1
+                        
                     }
                 }
                 
-                if let oldItem = orderDoc.data()?[mealsOrdered[x].name] as? Int {
+                if let previousItem = orderDoc.data()?[totalMeals[x]] as? Int {
                     
-                    transaction.updateData([mealsOrdered[x].name: oldItem + numberOrdered], forDocument: orderRef)
+                    if (previousItem + numberOrdered) >= 0 {
+                        
+                        transaction.updateData([totalMeals[x]: previousItem + numberOrdered], forDocument: orderRef)
+                        
+                    } else {
+                        
+                        transaction.updateData([totalMeals[x]: 0], forDocument: orderRef)
+                    }
                     
                 } else {
                     
-                    transaction.updateData([mealsOrdered[x].name: numberOrdered], forDocument: orderRef)
-                    
+                    if numberOrdered >= 0 {
+                        
+                        transaction.updateData([totalMeals[x]: numberOrdered], forDocument: orderRef)
+                        
+                    } else {
+                        
+                        continue
+                    }
                 }
             }
             
             return nil
             
-        }) { (object, error) in
-            if let error = error {
-                print("Write Transaction failed: \(error)")
-            } else {
-                print("Transaction successfully committed!")
+            }) { (object, error) in
+                if let error = error {
+                    print("Transaction failed: \(error)")
+                } else {
+                    print("Transaction successfully committed!")
                 
-                Order.saveOrder()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-                    NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
-                })
+                    Order.saveOrder()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+                        NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
+                    })
+                }
             }
-        }
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext

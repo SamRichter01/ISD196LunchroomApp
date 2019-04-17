@@ -54,8 +54,11 @@ class StudentMenuViewController: UIViewController {
             lineData = try managedContext.fetch(lineRequest) as! [NSManagedObject]
             aLaCarteData = try managedContext.fetch(aLaCarteRequest) as! [NSManagedObject]
             
-            itemsOrdered = [MenuItem]()
-            mealsOrdered = [Line]()
+            itemsOrdered.removeAll()
+            mealsOrdered.removeAll()
+            previousMeals.removeAll()
+            previousItems.removeAll()
+            totalPrice = 0.0
             
             for item in aLaCarteData {
                 /*let index = item.value(forKeyPath: "index") as! String
@@ -89,7 +92,9 @@ class StudentMenuViewController: UIViewController {
                 mealsOrdered.append(line)
                 var price = line.price
                 price.removeFirst()
-                totalPrice += Double(price)!
+                if let _ = Double(price) {
+                    totalPrice += Double(price)!
+                }
                 
             }
             
