@@ -37,7 +37,6 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
-        let year = calendar.component(.year, from: date)
         let hour = calendar.component(.hour, from: date)
         monthName = monthToString(month: month)
         
@@ -61,7 +60,7 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         }
         
         
-        dateLabel.text = "\(monthName) \(day), \(year)"
+        dateLabel.text = "My order for \(monthName) \(day)"
         
         Order.reloadItemCount()
         itemCountLabel.text = "\(itemCount)"
