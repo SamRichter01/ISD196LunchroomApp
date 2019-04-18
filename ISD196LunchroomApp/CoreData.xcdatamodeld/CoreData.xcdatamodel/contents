@@ -9,8 +9,12 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="OrderDate" representedClassName="OrderDate" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
     <elements>
         <element name="ALaCarteItem" positionX="-54" positionY="-9" width="128" height="75"/>
         <element name="LineOrdered" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="OrderDate" positionX="-54" positionY="9" width="128" height="60"/>
     </elements>
 </model>

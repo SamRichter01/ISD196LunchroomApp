@@ -369,6 +369,8 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         for item in itemsOrdered {
             self.saveALaCarteItem(label: item.name, cost: item.price)
         }
+        
+        self.updateOrderDate()
     }
     
     func saveALaCarteItem(label: String, cost: String) {
@@ -418,6 +420,41 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         }
     }
     
+    func updateOrderDate() {
+        
+        var previousDate: [NSManagedObject] = []
+        
+        //These two lines create a managedContext which stores the data you want to save to CoreData.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let orderDateRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "OrderDate")
+        
+        do {
+            
+            previousDate = try managedContext.fetch(orderDateRequest) as! [NSManagedObject]
+            
+            if previousDate.count > 0 {
+                
+                let oldDate = previousDate[0]
+                oldDate.setValue(Date(), forKeyPath: "date")
+                
+            } else {
+                
+                let entity = NSEntityDescription.entity(forEntityName: "OrderDate", in: managedContext)!
+                let object = NSManagedObject(entity: entity, insertInto: managedContext)
+                
+                object.setValue(Date(), forKeyPath: "date")
+            }
+            
+            try managedContext.save()
+            
+            print("Data saved successfully")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     func getDate(format: Int) -> String {
         
         let date = Date()
@@ -426,10 +463,19 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         var monthName = "September"
         var day = 1
         
+        // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
+        let hour = calendar.component(.hour, from: date)
         monthName = monthToString(month: month)
+        
+        // If the current date is not a valid school day, this while loop will increment the school day until it finds the next one. If it's december, it sets the month to january. I don't know what would happen if you set the date to after school ended but it might just run forever so that needs to be fixed.
+        
+        if (hour > 10) {
+            
+            day += 1
+        }
         
         while (monthlyMenus[monthName]!.days[day] == nil) {
             if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
@@ -442,6 +488,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             }
             day += 1
         }
+    
         
         switch format {
             

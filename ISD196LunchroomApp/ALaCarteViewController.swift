@@ -38,10 +38,31 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         let date = Date()
         let calendar = Calendar.current
         
+        // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
+        let hour = calendar.component(.hour, from: date)
         monthName = monthToString(month: month)
+        
+        // If the current date is not a valid school day, this while loop will increment the school day until it finds the next one. If it's december, it sets the month to january. I don't know what would happen if you set the date to after school ended but it might just run forever so that needs to be fixed.
+        
+        if (hour > 10) {
+            
+            day += 1
+        }
+        
+        while (monthlyMenus[self.monthName]!.days[self.day] == nil) {
+            if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
+                if (month == 12) {
+                    monthName = monthToString(month: 1)
+                } else {
+                    monthName = monthToString(month: month + 1)
+                }
+                day = 0
+            }
+            day += 1
+        }
         
         dateLabel.text = "\(monthName) \(day), \(year)"
         
