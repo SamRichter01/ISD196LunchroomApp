@@ -70,6 +70,9 @@ class StudentMenuViewController: UIViewController {
                 let pastDay = calendar.component(.day, from: pastDate)
                 let pastHour = calendar.component(.hour, from: pastDate)
                 
+                print("Last Order: \(pastDay) \(pastHour)")
+                print("Current Order: \(day) \(hour)")
+                
                 if (day - pastDay) > 1 {
                     
                     Order.resetOrder()
@@ -78,63 +81,62 @@ class StudentMenuViewController: UIViewController {
                     
                 } else if (day - pastDay) == 1 {
                     
-                    if (pastHour < 11) {
+                    if (pastHour < 11) || (hour > 10) {
                         
                         Order.resetOrder()
                         
                         return
                     }
+                    
+                } else if (pastHour < 11) && (hour > 10) {
+        
+                    Order.resetOrder()
+                        
+                    return
                     
                 } else {
                     
-                    if (pastHour < 11) && (hour > 11) {
+                    itemsOrdered.removeAll()
+                    mealsOrdered.removeAll()
+                    previousMeals.removeAll()
+                    previousItems.removeAll()
+                    totalPrice = 0.0
+                    
+                    for item in aLaCarteData {
                         
-                        Order.resetOrder()
+                        let itemName = item.value(forKeyPath: "name") as! String
+                        let itemPrice = item.value(forKeyPath: "price") as! String
+                        let item = MenuItem(name: itemName, price: itemPrice)
                         
-                        return
+                        previousItems.append(item)
+                        itemsOrdered.append(item)
+                        var price = item.price
+                        price.removeFirst()
+                        totalPrice += Double(price)!
                     }
+                    
+                    for line in lineData {
+                        
+                        let lineName = line.value(forKeyPath: "name") as! String
+                        let linePrice = line.value(forKeyPath: "price") as! String
+                        let lineItems = Line.stringToItems(str: line.value(forKeyPath: "items") as! String)
+                        
+                        let line = Line(name: lineName, price: linePrice)
+                        line.items = lineItems
+                        
+                        previousMeals.append(line)
+                        mealsOrdered.append(line)
+                        var price = line.price
+                        price.removeFirst()
+                        if let _ = Double(price) {
+                            totalPrice += Double(price)!
+                        }
+                    }
+                    
+                    print("Data recovered successfully")
+                    
                 }
             }
-            
-            itemsOrdered.removeAll()
-            mealsOrdered.removeAll()
-            previousMeals.removeAll()
-            previousItems.removeAll()
-            totalPrice = 0.0
-            
-            for item in aLaCarteData {
-            
-                let itemName = item.value(forKeyPath: "name") as! String
-                let itemPrice = item.value(forKeyPath: "price") as! String
-                let item = MenuItem(name: itemName, price: itemPrice)
-                
-                previousItems.append(item)
-                itemsOrdered.append(item)
-                var price = item.price
-                price.removeFirst()
-                totalPrice += Double(price)!
-            }
-            
-            for line in lineData {
-                
-                let lineName = line.value(forKeyPath: "name") as! String
-                let linePrice = line.value(forKeyPath: "price") as! String
-                let lineItems = Line.stringToItems(str: line.value(forKeyPath: "items") as! String)
-                
-                let line = Line(name: lineName, price: linePrice)
-                line.items = lineItems
-                
-                previousMeals.append(line)
-                mealsOrdered.append(line)
-                var price = line.price
-                price.removeFirst()
-                if let _ = Double(price) {
-                    totalPrice += Double(price)!
-                }
-            }
-            
-            print("Data recovered successfully")
-            
             
         } catch {
             

@@ -132,7 +132,7 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         if mealsOrdered.count > 0 || itemsOrdered.count > 0 {
             
-            let alertController = UIAlertController(title: "Cancel Order", message: "Are you sure you want to cancel your order?", preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: "Return to menu", message: "Your changes will not be saved, continue to the main menu?", preferredStyle: UIAlertControllerStyle.alert)
             
             alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
             
