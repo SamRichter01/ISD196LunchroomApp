@@ -73,28 +73,8 @@ class StudentMenuViewController: UIViewController {
                 print("Last Order: \(pastDay) \(pastHour)")
                 print("Current Order: \(day) \(hour)")
                 
-                if (day - pastDay) > 1 {
-                    
-                    Order.resetOrder()
-                    
-                    return
-                    
-                } else if (day - pastDay) == 1 {
-                    
-                    if (pastHour < 11) || (hour > 10) {
-                        
-                        Order.resetOrder()
-                        
-                        return
-                    }
-                    
-                } else if (pastHour < 11) && (hour > 10) {
-        
-                    Order.resetOrder()
-                        
-                    return
-                    
-                } else {
+                if ((pastDay == getLast() && pastHour > 10) || (pastDay > getLast()))
+                    && ((day == getNext() && hour < 11) || (day < getNext())) {
                     
                     itemsOrdered.removeAll()
                     mealsOrdered.removeAll()
@@ -135,6 +115,14 @@ class StudentMenuViewController: UIViewController {
                     
                     print("Data recovered successfully")
                     
+                } else {
+                    
+                     print("Order reset")
+                    
+                    Order.resetOrder()
+                    
+                    return
+                    
                 }
             }
             
@@ -147,5 +135,94 @@ class StudentMenuViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getLast() -> Int {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        var monthName = "September"
+        var day = 1
+        
+        // Gets the currennt date and calls monthToString to convert the integer month to an actual word
+        day = calendar.component(.day, from: date) - 1
+        let month = calendar.component(.month, from: date)
+        monthName = monthToString(month: month)
+        
+        while (monthlyMenus[monthName]!.days[day] == nil) {
+            if (day >= 0) {
+                if (month == 1) {
+                    monthName = monthToString(month: 12)
+                } else {
+                    monthName = monthToString(month: month - 1)
+                }
+                day = calendar.range(of: .day, in: .month, for: date)!.count
+            }
+            day -= 1
+        }
+        
+        return day
+    }
+    
+    func getNext() -> Int {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        var monthName = "September"
+        var day = 1
+        
+        // Gets the currennt date and calls monthToString to convert the integer month to an actual word
+        day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        monthName = monthToString(month: month)
+        
+        while (monthlyMenus[monthName]!.days[day] == nil) {
+            if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
+                if (month == 12) {
+                    monthName = monthToString(month: 1)
+                } else {
+                    monthName = monthToString(month: month + 1)
+                }
+                day = 0
+            }
+            day += 1
+        }
+        
+        return day
+    }
+    
+    
+    func monthToString (month: Int) -> String {
+        
+        var monthName = "September"
+        
+        switch month {
+        case 9 :
+            monthName = "September"
+        case 10 :
+            monthName = "October"
+        case 11 :
+            monthName = "November"
+        case 12 :
+            monthName = "December"
+        case 1 :
+            monthName = "January"
+        case 2 :
+            monthName = "February"
+        case 3 :
+            monthName = "March"
+        case 4 :
+            monthName = "April"
+        case 5 :
+            monthName = "May"
+        case 6 :
+            monthName = "June"
+        default :
+            break
+        }
+        
+        return monthName
     }
 }

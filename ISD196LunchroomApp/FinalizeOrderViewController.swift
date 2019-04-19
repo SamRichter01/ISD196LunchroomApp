@@ -134,9 +134,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             
         case UICollectionElementKindSectionFooter:
             
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewFooter", for: indexPath) as? UICollectionReusableView else {
-                fatalError("The dequeued cell is not an instance of UICollectionViewCell.")
-            }
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "menuCollectionViewFooter", for: indexPath)
             
             return footer
             

@@ -537,6 +537,7 @@
                                         </button>
                                     </subviews>
                                     <connections>
+                                        <outlet property="commentButton" destination="CxO-Ks-zRE" id="BZy-vG-RAh"/>
                                         <outlet property="lineLabel" destination="OTg-hC-9xp" id="q2z-6M-tN6"/>
                                         <outlet property="priceLabel" destination="ur7-tv-PJK" id="dHv-9D-xPl"/>
                                     </connections>
@@ -2361,7 +2362,7 @@
         <image name="White Logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IS0-kx-Bth"/>
+        <segue reference="PcR-hv-sJT"/>
         <segue reference="yFX-17-F55"/>
         <segue reference="k20-i8-JeH"/>
         <segue reference="CE3-uR-hbH"/>

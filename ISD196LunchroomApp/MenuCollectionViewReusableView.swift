@@ -12,6 +12,7 @@ class MenuCollectionViewReusableView: UICollectionReusableView {
         
     @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var commentButton: UIButton!
     
     @IBAction func commentButtonPressed(_ sender: UIButton) {
         

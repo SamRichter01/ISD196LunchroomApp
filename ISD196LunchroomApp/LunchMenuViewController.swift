@@ -223,6 +223,18 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
             header.lineLabel.text = todaysLines[indexPath.section].name
             header.priceLabel.text = todaysLines[indexPath.section].price
+            
+            let date = Date()
+            let calendar = Calendar.current
+            
+            let month = calendar.component(.month, from: date)
+            let day = calendar.component(.day, from: date)
+            
+            if (month < (datePicker.selectedRow(inComponent: 0) + 1))
+                || (day < dates[monthToString(month: month)]![datePicker.selectedRow(inComponent: 1)]) {
+                
+                header.commentButton.isEnabled = false
+            }
         
             return header
             
