@@ -16,6 +16,7 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     let monthNames = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
+    let months = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6]
     
     let textColor = UIColor(red:0.49, green:0.71, blue:0.16, alpha:1.0)
     let textFont = UIFont(name: "OpenSans-Regular", size: 17)
@@ -224,18 +225,6 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             header.lineLabel.text = todaysLines[indexPath.section].name
             header.priceLabel.text = todaysLines[indexPath.section].price
             
-            let date = Date()
-            let calendar = Calendar.current
-            
-            let month = calendar.component(.month, from: date)
-            let day = calendar.component(.day, from: date)
-            
-            if (month < (datePicker.selectedRow(inComponent: 0) + 1))
-                || (day < dates[monthToString(month: month)]![datePicker.selectedRow(inComponent: 1)]) {
-                
-                header.commentButton.isEnabled = false
-            }
-        
             return header
             
         case UICollectionElementKindSectionFooter:
@@ -318,6 +307,48 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                     todaysLines.append(monthlyMenus[month]!.days[day]!.lines[str]!)
                 }
             }
+        }
+    }
+    
+    func getNext(type: Int) -> Int {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        var monthName = "September"
+        var day = 1
+        
+        // Gets the currennt date and calls monthToString to convert the integer month to an actual word
+        day = calendar.component(.day, from: date)
+        var month = calendar.component(.month, from: date)
+        monthName = monthToString(month: month)
+        
+        while (monthlyMenus[monthName]!.days[day] == nil) {
+            if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
+                if (month == 12) {
+                    
+                    month = 1
+                    
+                    monthName = monthToString(month: month)
+                    
+                } else {
+                    
+                    month += 1
+                    
+                    monthName = monthToString(month: month)
+                }
+                day = 0
+            }
+            day += 1
+        }
+        
+        if type == 0 {
+            
+            return day
+            
+        } else {
+            
+            return month
         }
     }
     /*

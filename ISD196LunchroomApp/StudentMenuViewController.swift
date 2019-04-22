@@ -72,6 +72,8 @@ class StudentMenuViewController: UIViewController {
                 
                 print("Last Order: \(pastDay) \(pastHour)")
                 print("Current Order: \(day) \(hour)")
+                print(getLast())
+                print(getNext())
                 
                 if ((pastDay == getLast() && pastHour > 10) || (pastDay > getLast()))
                     && ((day == getNext() && hour < 11) || (day < getNext())) {
@@ -117,7 +119,7 @@ class StudentMenuViewController: UIViewController {
                     
                 } else {
                     
-                     print("Order reset")
+                    print("Order reset")
                     
                     Order.resetOrder()
                     
@@ -151,7 +153,7 @@ class StudentMenuViewController: UIViewController {
         monthName = monthToString(month: month)
         
         while (monthlyMenus[monthName]!.days[day] == nil) {
-            if (day >= 0) {
+            if (day <= 0) {
                 if (month == 1) {
                     monthName = monthToString(month: 12)
                 } else {

@@ -531,6 +531,7 @@
                                             <rect key="frame" x="652" y="11" width="60" height="56"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="Comment"/>
+                                            <state key="disabled" image="Disabled Comment"/>
                                             <connections>
                                                 <action selector="commentButtonPressed:" destination="tfa-2a-XB1" eventType="touchUpInside" id="DiB-ZR-jfg"/>
                                             </connections>
@@ -2350,6 +2351,7 @@
         <image name="Add" width="32" height="32"/>
         <image name="Comment" width="32" height="32"/>
         <image name="Dark Back Arrow" width="32" height="32"/>
+        <image name="Disabled Comment" width="32" height="32"/>
         <image name="Edit Menu" width="64" height="64"/>
         <image name="Finalize Order" width="32" height="32"/>
         <image name="Light Back Arrow" width="32" height="32"/>
