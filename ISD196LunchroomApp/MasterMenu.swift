@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import Foundation
+import UserNotifications
 
 // By default, all variables are global and accessible by any class, functions however are not, so the functions that we use to set these up have "static" in the declaration
 var monthlyMenus = Dictionary<String,Month>()
@@ -88,8 +89,12 @@ class MasterMenu {
         // The list of month names that act as keys to get the database documents relating to each one
         let monthNames = ["September", "October", "November", "December", "January",
                           "February", "March", "April", "May", "June"]
+        let monthNums = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6]
         
-        for month in monthNames {
+        for x in 0..<monthNames.count {
+            
+            let month = monthNames[x]
+            
             db.collection("menus").document(month)
                 .collection("days").getDocuments() { (querySnapshot, err) in
                     if let err = err {
@@ -125,8 +130,11 @@ class MasterMenu {
                                 }
                                 tempDay.lines[tempLine.name] = tempLine
                             }
-                            tempMonth.days[tempDay.day] = tempDay
-                            monthlyMenus[tempMonth.name] = tempMonth
+                            
+                        tempMonth.days[tempDay.day] = tempDay
+                        monthlyMenus[tempMonth.name] = tempMonth
+                            
+                        setupNotifications(month: monthNums[x], day: tempDay.day)
                     }
                 }
             }
@@ -187,7 +195,45 @@ class MasterMenu {
             }
         }
     }
+    
+    static func setupNotifications (month: Int, day: Int) {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .authorized {
+                
+                //Notifications allowed
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Order Lunch"
+                content.body = "Don't forget to order lunch today!"
+                content.sound = UNNotificationSound.default()
+                
+                var dateInfo = DateComponents()
+                    dateInfo.month = month
+                    dateInfo.day = day
+                    dateInfo.hour = 9
+                    dateInfo.minute = 10
+                    dateInfo.second = 0
+                    dateInfo.timeZone = .current
+                        
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    center.add(request) { (error : Error?) in
+                            
+                    if let theError = error {
+                        print(theError.localizedDescription)
+                    } else {
+                        print("Set reminder for: \(month)/\(day)")
+                    }
+                }
+            }
+        }
+    }
 }
+
+
 
 
 

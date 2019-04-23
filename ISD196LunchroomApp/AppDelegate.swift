@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import GoogleSignIn
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,8 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         //GIDSignIn.sharedInstance().delegate = self
         
+        let center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        center.removeAllPendingNotificationRequests()
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
+        }
+        
         return true
     }
+
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
         -> Bool {
