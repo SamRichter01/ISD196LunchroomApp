@@ -15,6 +15,7 @@ struct feedback {
     var commentDate = ""
     var rating = ""
     var text = ""
+    var studentName = ""
 }
 
 class CommentPopupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -43,7 +44,7 @@ class CommentPopupViewController: UIViewController, UITableViewDelegate, UITable
         
         
         
-        titleLabel.text = line
+        titleLabel.text = "Feedback for \(line)"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,9 +86,30 @@ class CommentPopupViewController: UIViewController, UITableViewDelegate, UITable
             fatalError("The dequeued cell is not an instance of CommentTableViewCell.")
         }
         
-        cell.ratingLabel.text = "Rating: \(comments[indexPath.row].rating)"
+        switch Int(comments[indexPath.row].rating)! {
+            
+        case -2:
+            cell.ratingLabel.text = "Bad"
+            
+        case -1:
+            cell.ratingLabel.text = "Poor"
+            
+        case 0:
+            cell.ratingLabel.text = "No Opinion"
+            
+        case 1:
+            cell.ratingLabel.text = "Good"
+            
+        case 2:
+            cell.ratingLabel.text = "Great"
+            
+        default:
+            cell.ratingLabel.text = "No Opinion"
+        }
+        
         cell.commentTextLabel.text = comments[indexPath.row].text
         cell.dateLabel.text = comments[indexPath.row].commentDate
+        cell.studentNameLabel.text = comments[indexPath.row].studentName
         
         return cell
         

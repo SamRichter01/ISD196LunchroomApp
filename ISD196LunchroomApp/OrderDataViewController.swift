@@ -163,6 +163,8 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                         
                         comment.commentDate = tempDoc["sentDate"] as! String
                         
+                        comment.studentName = tempDoc["studentName"] as! String
+                        
                         if tempDoc["rating"] != nil {
                             
                             comment.rating = String(tempDoc["rating"] as! Int)

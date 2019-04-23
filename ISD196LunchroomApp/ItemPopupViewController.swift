@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import GoogleSignIn
 
 class ItemPopupViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class ItemPopupViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var itemView: UIView!
     @IBOutlet weak var ratingSlider: UISlider!
+    @IBOutlet weak var nameSwitch: UISwitch!
     @IBOutlet weak var commentTextView: UITextView!
     
     lazy var db = Firestore.firestore()
@@ -131,7 +133,13 @@ class ItemPopupViewController: UIViewController {
         
         let line = lineName
         
-        feedbackRef.addDocument(data: ["commentText": commentText, "rating": rating, "line": line, "sentDate": sentDate])
+        var studentName = "Anonymous"
+        if nameSwitch.isOn {
+            
+            studentName = GIDSignIn.sharedInstance()!.currentUser.profile.name
+        }
+        
+        feedbackRef.addDocument(data: ["commentText": commentText, "rating": rating, "line": line, "sentDate": sentDate, "studentName": studentName])
         
         self.dismiss(animated: true, completion: nil)
     }

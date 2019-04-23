@@ -16,7 +16,6 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     let monthNames = ["September", "October", "November", "December", "January",
                       "February", "March", "April", "May", "June"]
-    let months = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6]
     
     let textColor = UIColor(red:0.49, green:0.71, blue:0.16, alpha:1.0)
     let textFont = UIFont(name: "OpenSans-Regular", size: 17)
