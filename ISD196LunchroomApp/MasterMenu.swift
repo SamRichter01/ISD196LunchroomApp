@@ -140,7 +140,8 @@ class MasterMenu {
                         let currentDay = calendar.component(.day, from: date)
                             
                         if (x > monthNums.firstIndex(of: currentMonth)!
-                            || (monthNums.firstIndex(of: currentMonth) == x && tempDay.day >= currentDay)) {
+                            || (monthNums.firstIndex(of: currentMonth) == x
+                            && tempDay.day >= currentDay)) {
                             
                             setupNotifications(month: monthNums[x], day: tempDay.day)
                         }

@@ -316,6 +316,9 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 
                 //let lines = monthlyMenus[monthName]!.days[Int(day)]!.lines
                 
+                monthName = monthNames[datePicker.selectedRow(inComponent: 0)]
+                day = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
+                
                 monthlyMenus[monthName]!.days[Int(day)]!
                     .lines.removeValue(forKey: lineName)
                 
