@@ -67,6 +67,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func returnToMainMenu(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("reloadView"), object: nil)
     }
     
     @IBAction func saveAndUploadPressed(_ sender: UIButton) {
