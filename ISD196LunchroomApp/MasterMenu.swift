@@ -133,8 +133,15 @@ class MasterMenu {
                             
                         tempMonth.days[tempDay.day] = tempDay
                         monthlyMenus[tempMonth.name] = tempMonth
-                            
-                        setupNotifications(month: monthNums[x], day: tempDay.day)
+                          
+                        let date = Date()
+                        let calendar = Calendar.current
+                        let currentMonth = calendar.component(.month, from: date)
+                        let currentDay = calendar.component(.month, from: date)
+                        if x > monthNums.firstIndex(of: currentMonth)!
+                            || (monthNums.firstIndex(of: currentMonth) == x && tempDay.day >= currentDay) {
+                            setupNotifications(month: monthNums[x], day: tempDay.day)
+                        }
                     }
                 }
             }
