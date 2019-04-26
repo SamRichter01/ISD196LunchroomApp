@@ -112,6 +112,7 @@ class LunchMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
         datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
         
+        print(dates[monthName])
         reloadLines()
     
         // Do any additional setup after loading the view.
