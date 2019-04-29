@@ -220,6 +220,21 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func deleteDayPressed(_ sender: UIButton) {
         
+        let month = monthNames[datePicker.selectedRow(inComponent: 0)]
+        let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
+        
+        let alertController = UIAlertController(title: "Delete school day", message: "Are you sure you want to remove \(month) \(day) from the menu?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            self.deleteDay()}))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteDay() {
+        
         let dayKey = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
         
         dates[monthName]!.remove(at: datePicker.selectedRow(inComponent: 1))
@@ -229,14 +244,18 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         db.collection("menus").document(monthName).collection("days")
             .document(String(dayKey))
             .delete() { err in
-            if let err = err {
-                print("Error removing document: \(err)")
-            } else {
-                print("Document successfully removed!")
-            }
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
         }
         
-        datePicker.selectRow(datePicker.selectedRow(inComponent: 1) - 1, inComponent: 1, animated: false)
+        datePicker.selectRow(monthIndex, inComponent: 0, animated: true)
+        datePicker.selectRow(dayIndex, inComponent: 1, animated: true)
+        
+        reloadLines()
+        menuCollectionView.reloadData()
     }
     
     @objc func removeItem (_ notification: NSNotification) {

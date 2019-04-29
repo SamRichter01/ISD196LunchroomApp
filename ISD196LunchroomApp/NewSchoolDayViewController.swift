@@ -10,17 +10,21 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class NewSchoolDayViewController: UIViewController {
+class NewSchoolDayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var itemView: UIView!
-    @IBOutlet weak var monthTextField: UITextField!
-    @IBOutlet weak var dayTextField: UITextField!
+    @IBOutlet weak var datePicker: UIPickerView!
     @IBOutlet weak var saveDayButton: UIButton!
     
     lazy var db = Firestore.firestore()
     
     var editingDay = 1
     var editingMonth = ""
+    
+    var range = [Int]()
+    
+    var monthNames = ["September", "October", "November", "December", "January", "February", "March", "April", "May", "June"]
+    var monthNums = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +38,9 @@ class NewSchoolDayViewController: UIViewController {
         itemView.layer.shadowRadius = 10
         itemView.layer.shadowOpacity = 0.1
         
-        saveDayButton.isEnabled = false
+        datePicker.delegate = self
+        datePicker.dataSource = self
+        
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -43,57 +49,96 @@ class NewSchoolDayViewController: UIViewController {
     
     @IBAction func saveDayPressed(_ sender: UIButton) {
         
-        if let day = dayTextField.text {
+        let day = range[datePicker.selectedRow(inComponent: 1)]
+        let month = monthNames[datePicker.selectedRow(inComponent: 0)]
+                
+        monthlyMenus[month]!.days[day] = Day(day: String(day))
+        
+        let batch = db.batch()
+                
+        var newDayRef = db.collection("menus").document(month)
+            .collection("days").document(String(day))
+        
+        batch.setData([:], forDocument: newDayRef)
+        
+        newDayRef = db.collection("orders").document(month)
+            .collection("days").document(String(day))
+        
+        batch.setData(["Order count": 0], forDocument: newDayRef)
+        
+        newDayRef = db.collection("feedback").document(month)
+            .collection("days").document(String(day))
+        
+        batch.setData(["Comment count": 0], forDocument: newDayRef)
+        
+        batch.commit() { err in
+            if let err = err {
+                print("Error writing batch \(err)")
+            } else {
+                print("Batch write succeeded.")
+            }
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name("reloadView"), object: nil)
+    }
+    
+    func reloadRange() {
+        
+        let dateComponents = DateComponents(month: monthNums[datePicker.selectedRow(inComponent: 0)])
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        
+        range = Array(calendar.range(of: .day, in: .month, for: date)!)
+        
+        for x in stride(from: range.count - 1, to: 0, by: -1) {
             
-            if let month = monthTextField.text {
+            if monthlyMenus[monthNames[datePicker.selectedRow(inComponent: 0)]]!.days[range[x]] != nil {
                 
-                monthlyMenus[month]!.days[Int(day)!] = Day(day: day)
-                
-                let newDayRef = db.collection("menus").document(month)
-                    .collection("days")
-                
-                newDayRef.document(day).setData([:])
-                
-                NotificationCenter.default.post(name: Notification.Name("reloadView"), object: nil)
+                range.remove(at: x)
             }
         }
     }
     
-    @IBAction func checkForMonth(_ sender: UITextField) {
-        
-        if let _ = dayTextField.text {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
             
-            if let _ = monthTextField.text {
-                
-                saveDayButton.isEnabled = true
-                
-            } else {
-                
-                saveDayButton.isEnabled = false
-            }
+            return monthNames.count
+            
         } else {
+         
+            reloadRange()
             
-            saveDayButton.isEnabled = false
+            return range.count
         }
     }
     
-    @IBAction func checkForDay(_ sender: UITextField) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if let _ = dayTextField.text {
+        if component == 0 {
             
-            if let _ = monthTextField.text {
-                
-                saveDayButton.isEnabled = true
-                
-            } else {
-                
-                saveDayButton.isEnabled = false
-            }
-        } else {
-            
-            saveDayButton.isEnabled = false
+            datePicker.reloadAllComponents()
         }
     }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if component == 0 {
+            
+            return monthNames[row]
+            
+        } else {
+            
+            reloadRange()
+            
+            return String(range[row])
+            
+        }
+    }
+    
     /*
      // MARK: - Navigation
      
