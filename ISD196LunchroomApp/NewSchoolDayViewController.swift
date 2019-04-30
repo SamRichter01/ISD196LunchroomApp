@@ -80,6 +80,8 @@ class NewSchoolDayViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         
         NotificationCenter.default.post(name: Notification.Name("reloadView"), object: nil)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func reloadRange() {

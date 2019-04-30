@@ -515,7 +515,12 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         todaysLines = [Line]()
         let month = monthNames[datePicker.selectedRow(inComponent: 0)]
-        let day = dates[month]![datePicker.selectedRow(inComponent: 1)]
+        var day = dates[month]![0]
+        if datePicker.selectedRow(inComponent: 1) < dates[month]!.count {
+            
+            day = dates[month]![datePicker.selectedRow(inComponent: 1)]
+            
+        }
         
         let tempLineKeys = Array(monthlyMenus[month]!.days[day]!.lines.keys)
         

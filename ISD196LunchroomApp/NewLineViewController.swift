@@ -74,6 +74,8 @@ class NewLineViewController: UIViewController {
                 prioritiesRef.updateData(["lineList" : linePriorities])
             
                 NotificationCenter.default.post(name: Notification.Name("reloadView"), object: nil)
+                
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
