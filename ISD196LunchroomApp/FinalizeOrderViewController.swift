@@ -14,12 +14,13 @@ import Reachability
 import CoreData
 
 class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     @IBOutlet weak var discardOrderButton: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var orderCollectionView: UICollectionView!
     @IBOutlet weak var emptyViewLabel: UILabel!
     @IBOutlet weak var sendOrderButton: UIButton!
+    @IBOutlet weak var wifiLabel: UILabel!
     
     lazy var db = Firestore.firestore()
     let network = NetworkManager.sharedInstance
@@ -27,9 +28,9 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       emptyViewLabel.isHidden = true
-    NotificationCenter.default.addObserver(self, selector: #selector(itemRemoved),
-            name: Notification.Name("itemRemoved"), object: nil)
+        emptyViewLabel.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(itemRemoved),
+                                               name: Notification.Name("itemRemoved"), object: nil)
         
         orderCollectionView.delegate = self
         orderCollectionView.dataSource = self
@@ -43,25 +44,45 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
         
+        wifiLabel.center.x += view.bounds.width / 2
+        
         NetworkManager.isUnreachable { _ in
             DispatchQueue.main.async {
-                self.sendOrderButton.isHidden = true
+                self.sendOrderButton.isEnabled = false
             }
         }
         
         network.reachability.whenUnreachable = { _ in
             DispatchQueue.main.async {
-                self.sendOrderButton.isHidden = true
+                self.sendOrderButton.isEnabled = false
+                
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+                    self.wifiLabel.center.x -= self.view.bounds.width / 2
+                }, completion: nil)
             }
         }
         
         network.reachability.whenReachable = { _ in
             DispatchQueue.main.async {
-                self.sendOrderButton.isHidden = false
+                self.sendOrderButton.isEnabled = true
+                
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+                    self.wifiLabel.center.x += self.view.bounds.width / 2
+                }, completion: nil)
             }
         }
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NetworkManager.isUnreachable { _ in
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+                    self.wifiLabel.center.x -= self.view.bounds.width / 2
+                }, completion: nil)
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -144,9 +165,9 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             return reusableView
         }
     }
-
+    
     @IBAction func discardOrder(_ sender: UIButton) {
-            self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func sendOrder (_ sender: UIButton) {
@@ -187,7 +208,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                     code: -1,
                     userInfo: [
                         NSLocalizedDescriptionKey: "Unable to retrieve order count data from snapshot \(orderDoc)"])
-                    errorPointer?.pointee = error
+                errorPointer?.pointee = error
             }
             
             var totalItems = [String]()
@@ -232,7 +253,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
                         numberOrdered += 1
                     }
                 }
-            
+                
                 if let previousItem = orderDoc.data()?[totalItems[x]] as? Int {
                     
                     if (previousItem + numberOrdered) >= 0 {
@@ -259,44 +280,44 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             
             var totalMeals = [String]()
             var tempMeals = [String]()
-                
+            
             for item in mealsOrdered {
-                    
+                
                 totalMeals.append(item.name)
             }
             
             for item in previousMeals {
-                    
+                
                 totalMeals.append(item.name)
             }
-                
+            
             for str in totalMeals {
-                    
+                
                 if !tempMeals.contains(str) {
-                        
+                    
                     tempMeals.append(str)
                 }
             }
-
+            
             totalMeals = tempMeals
-        
+            
             for x in 0..<totalMeals.count {
-                    
-                var numberOrdered = 0
-                    
-                for y in 0..<previousMeals.count {
-                        
-                    if previousMeals[y].name == totalMeals[x] {
-                            
-                        numberOrdered -= 1
                 
+                var numberOrdered = 0
+                
+                for y in 0..<previousMeals.count {
+                    
+                    if previousMeals[y].name == totalMeals[x] {
+                        
+                        numberOrdered -= 1
+                        
                     }
                 }
-                    
+                
                 for y in 0..<mealsOrdered.count {
-                        
+                    
                     if mealsOrdered[y].name == totalMeals[x] {
-                            
+                        
                         numberOrdered += 1
                         
                     }
@@ -328,36 +349,36 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             
             return nil
             
-            }) { (object, error) in
-                if let error = error {
-                    print("Transaction failed: \(error)")
-                } else {
-                    print("Transaction successfully committed!")
+        }) { (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
                 
-                    Order.saveOrder()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-                        NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
-                    })
-                }
+                Order.saveOrder()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+                    NotificationCenter.default.post(name: Notification.Name("orderSent"), object: nil)
+                })
             }
+        }
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         
-         let batchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
-         let deleteRequest = NSBatchDeleteRequest(fetchRequest: batchRequest)
-         let lineBatchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
-         let lineDeleteRequest = NSBatchDeleteRequest(fetchRequest: lineBatchRequest)
-         
-         do {
-         try managedContext.execute(deleteRequest)
-         try managedContext.execute(lineDeleteRequest)
-         
-         print("Data deleted successfully")
-         } catch {
-         print("Failed to delete data")
-         }
+        let batchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ALaCarteItem")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: batchRequest)
+        let lineBatchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LineOrdered")
+        let lineDeleteRequest = NSBatchDeleteRequest(fetchRequest: lineBatchRequest)
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.execute(lineDeleteRequest)
+            
+            print("Data deleted successfully")
+        } catch {
+            print("Failed to delete data")
+        }
         
         for meal in mealsOrdered {
             
@@ -403,7 +424,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         //These two lines create a managed object and inserts it into the managed context to be saved to CoreData.
         let entity = NSEntityDescription.entity(forEntityName: "LineOrdered", in: managedContext)!
         let object = NSManagedObject(entity: entity, insertInto: managedContext)
-
+        
         //Using the managed object, this sets the name parameter to the attribute "name" to be saved.
         object.setValue(label, forKeyPath: "name")
         object.setValue(price, forKeyPath: "price")
@@ -486,7 +507,6 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             }
             day += 1
         }
-    
         
         switch format {
             
@@ -536,15 +556,4 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
         
         return monthName
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

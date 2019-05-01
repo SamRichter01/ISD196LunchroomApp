@@ -1045,6 +1045,13 @@
                                             <action selector="sendOrder:" destination="L9Z-2l-dYj" eventType="touchUpInside" id="rii-up-AUp"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Internet Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2b-4Y-k9K">
+                                        <rect key="frame" x="561" y="55" width="179" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.70196078431372544" green="0.90980392156862744" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -1196,6 +1203,7 @@
                         <outlet property="orderCollectionView" destination="cqZ-m2-w6i" id="iX5-Gs-y9X"/>
                         <outlet property="sendOrderButton" destination="HlB-pi-imz" id="WJC-Lu-0GI"/>
                         <outlet property="totalPriceLabel" destination="esa-Nc-wAO" id="dWD-eT-cz1"/>
+                        <outlet property="wifiLabel" destination="P2b-4Y-k9K" id="WHf-iJ-Lhc"/>
                         <segue destination="OQT-xL-gPN" kind="presentation" identifier="displaySendPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="oBa-sx-osC"/>
                     </connections>
                 </viewController>
