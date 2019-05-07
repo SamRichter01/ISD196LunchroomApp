@@ -1,5 +1,5 @@
 //
-//  EditALaCarteViewController.swift
+//  EditItemListsViewController.swift
 //  ISD196LunchroomApp
 //
 //  Created by Sam on 5/7/19.
@@ -10,9 +10,12 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EditItemListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var matchingItems = [MenuItem]()
+    
+    var editingType = ""
+    var editingName = ""
     
     @IBOutlet weak var emptyViewLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
@@ -34,13 +37,34 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
         deleteTextButton.isHidden = true
         // Do any additional setup after loading the view.
         
-         NotificationCenter.default.addObserver(self, selector: #selector(self.removeItem(_:)), name: NSNotification.Name(rawValue: "removeItemPressed"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deleteItem(_:)), name: NSNotification.Name(rawValue: "deleteItemPressed"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.editItem(_:)), name: NSNotification.Name(rawValue: "editItemPressed"), object: nil)
+        
+        if editingType == "aLaCarte" {
+            
+            titleLabel.text = "Editing A La Carte Items"
+            
+        } else if editingType == "mainMenu" {
+            
+            titleLabel.text = "Editing Main Menu Items"
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        aLaCarteMenuTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let editItemViewController = segue.destination as! EditItemViewController
+        
+        editItemViewController.editingType = editingType
     }
     
     @IBAction func returnToMainMenu(_ sender: UIButton) {
@@ -52,7 +76,7 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func createNewItemPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "addItemPressed", sender: nil)
+        performSegue(withIdentifier: "editItemPressed", sender: nil)
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
@@ -67,8 +91,8 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
         searchBar.text = ""
         aLaCarteMenuTableView.reloadData()
     }
-
-    @objc func removeItem (_ notification: NSNotification) {
+    
+    @objc func deleteItem (_ notification: NSNotification) {
         
         if let dict = notification.userInfo as NSDictionary? {
             if let itemName = dict["itemName"] as? String {
@@ -78,21 +102,45 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
                 alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
                 
                 alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-                    self.removeItem(itemName: itemName)}))
+                    self.deleteItem(itemName: itemName)}))
                 
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
-        aLaCarteMenuTableView.reloadData()
     }
     
-    func removeItem (itemName: String) {
+    func deleteItem (itemName: String) {
         
-        aLaCarteItems.removeValue(forKey: itemName)
-        
-        db.collection("menus").document("A La Carte Menus").collection("Items").document(itemName).delete()
+        if editingType == "aLaCarte" {
+            
+            aLaCarteItems.removeValue(forKey: itemName)
+            
+            db.collection("menus").document("A La Carte Items").collection("Items").document(itemName).delete()
+            
+            searchBar.text = ""
+            aLaCarteMenuTableView.reloadData()
+            
+        } else if editingType == "mainMenu" {
+            
+            menuItems.removeValue(forKey: itemName)
+            
+            db.collection("menus").document("Menu Items").collection("Items").document(itemName).delete()
+            
+            searchBar.text = ""
+            aLaCarteMenuTableView.reloadData()
+        }
+    }
     
+    @objc func editItem (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let itemName = dict["itemName"] as? String {
+                
+                editingName = itemName
+                
+                performSegue(withIdentifier: "editItemPressed", sender: self)
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,7 +149,14 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        matchingItems = Array(aLaCarteMenu.values)
+        if editingType == "aLaCarte" {
+            
+            matchingItems = Array(aLaCarteItems.values)
+            
+        } else if editingType == "mainMenu" {
+            
+            matchingItems = Array(menuItems.values)
+        }
         
         if let text = searchBar.text {
             
@@ -144,14 +199,25 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "editALaCarteMenuCell"
+        let cellIdentifier = "editItemTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EditALaCarteTableViewCell else {
-            fatalError("The dequeued cell is not an instance of EditALaCarteTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EditItemTableViewCell else {
+            fatalError("The dequeued cell is not an instance of EditItemTableViewCell.")
         }
         
-        cell.itemLabel.text = matchingItems[indexPath.row].name
-        cell.priceLabel.text = matchingItems[indexPath.row].price
+        if editingType == "aLaCarte" {
+            
+            cell.itemLabel.text = matchingItems[indexPath.row].name
+            cell.priceLabel.text = matchingItems[indexPath.row].price
+            cell.itemDescriptionLabel.text = "No Description Provided"
+            
+        } else if editingType == "mainMenu" {
+            
+            cell.itemLabel.text = matchingItems[indexPath.row].name
+            cell.priceLabel.text = ""
+            cell.itemDescriptionLabel.text = matchingItems[indexPath.row].description
+            
+        }
         
         return cell
         

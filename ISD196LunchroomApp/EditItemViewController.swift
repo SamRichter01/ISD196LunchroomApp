@@ -15,14 +15,15 @@ class EditItemViewController: UIViewController {
     @IBOutlet weak var itemView: UIView!
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var saveItemButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
     lazy var db = Firestore.firestore()
     
-    var editingDay = 1
-    var editingMonth = ""
-    
+    var editingName = ""
+    var editingType = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,8 +38,32 @@ class EditItemViewController: UIViewController {
         
         saveItemButton.isEnabled = false
         
-        print(editingMonth)
-        print(editingDay)
+        if editingType == "aLaCarte" {
+            
+            titleLabel.text = "Edit A La Carte Item"
+            
+            descriptionTextField.isEnabled = false
+            
+            if editingName != "" {
+                
+                itemNameTextField.text = aLaCarteItems[editingName]!.name
+                priceTextField.text = aLaCarteItems[editingName]!.price
+                
+            }
+            
+        } else if editingType == "mainMenu" {
+            
+            titleLabel.text = "Edit Menu Item"
+            
+            priceTextField.isEnabled = false
+            
+            if editingName != "" {
+                
+                itemNameTextField.text = menuItems[editingName]!.name
+                descriptionTextField.text = menuItems[editingName]!.description
+                
+            }
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -47,43 +72,51 @@ class EditItemViewController: UIViewController {
     
     @IBAction func saveLinePressed(_ sender: UIButton) {
         
-        if let price = priceTextField.text {
+        if editingType == "aLaCarte" {
             
-            if let name = itemNameTextField.text {
-                
-                let newLine = Line(name: name, price: String(price))
-                
-                monthlyMenus[editingMonth]!.days[editingDay]!.lines[newLine.name] = newLine
-                
-                let newLineRef = db.collection("menus").document(editingMonth)
-                    .collection("days").document(String(editingDay))
-                
-                if let _ = Double(newLine.price) {
-                    
-                    newLine.price = "$\(newLine.price)"
-                }
-                
-                newLineRef.updateData([newLine.name : [newLine.name, newLine.price]])
-                
-                let prioritiesRef = db.collection("basicData").document("lines")
-                
-                if !linePriorities.contains(newLine.name) {
-                    
-                    linePriorities.append(newLine.name)
-                }
-                
-                prioritiesRef.updateData(["lineList" : linePriorities])
-                
-                NotificationCenter.default.post(name: Notification.Name("reloadView"), object: nil)
-                
-                self.dismiss(animated: true, completion: nil)
-            }
+            let newItem = MenuItem(name: itemNameTextField.text!, price: priceTextField.text!)
+            aLaCarteItems[itemNameTextField.text!] = newItem
+            
+            db.collection("menus").document("A La Carte Items").collection("Items").document(newItem.name).setData(["Cost": newItem.price], merge: true)
+            
+        } else if editingType == "mainMenu" {
+            
+            let newItem = MenuItem(name: itemNameTextField.text!, description: descriptionTextField.text!)
+            menuItems[itemNameTextField.text!] = newItem
+            
+            db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": newItem.description], merge: true)
+            
         }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func checkForName(_ sender: UITextField) {
         
-        if let _ = priceTextField.text {
+        if let _ = itemNameTextField.text {
+            
+            if let _ = descriptionTextField.text {
+                
+                saveItemButton.isEnabled = true
+                
+            } else if let _ = priceTextField.text {
+                
+                saveItemButton.isEnabled = true
+                
+            } else {
+                
+                saveItemButton.isEnabled = false
+            }
+            
+        } else {
+            
+            saveItemButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func checkForDescription(_ sender: UITextField) {
+        
+        if let _ = descriptionTextField.text {
             
             if let _ = itemNameTextField.text {
                 

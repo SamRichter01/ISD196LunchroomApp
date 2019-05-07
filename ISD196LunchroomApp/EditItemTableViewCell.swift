@@ -14,6 +14,7 @@ class EditItemTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var deleteItemButton: UIButton!
+    @IBOutlet weak var editItemButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,8 +27,14 @@ class EditItemTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func editItemPressed(_ sender: UIButton) {
+        
+        NotificationCenter.default.post(name: NSNotification.Name("editItemPressed"), object: nil, userInfo: ["itemName": itemLabel.text!])
+
+    }
+    
     @IBAction func removeItemPressed(_ sender: UIButton) {
         
-        NotificationCenter.default.post(name: NSNotification.Name("removeALaCartePressed"), object: nil, userInfo: ["itemName": itemLabel.text!])
+        NotificationCenter.default.post(name: NSNotification.Name("deleteItemPressed"), object: nil, userInfo: ["itemName": itemLabel.text!])
     }
 }

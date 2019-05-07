@@ -62,11 +62,11 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if editingLine != "aLaCarte" {
             
-            itemPriceTextField.isEnabled = false
+            itemDescriptionTextField.isEnabled = false
             
         } else {
             
-            itemDescriptionTextField.isEnabled = false
+            itemPriceTextField.isEnabled = false
         }
     }
     

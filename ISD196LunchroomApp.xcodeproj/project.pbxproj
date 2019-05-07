@@ -41,6 +41,7 @@
 		226449DB2281DDF3004705C0 /* EditALaCarteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */; };
 		226449DD2282242C004705C0 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DC2282242C004705C0 /* EditItemViewController.swift */; };
 		226449DF228227DC004705C0 /* EditItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DE228227DC004705C0 /* EditItemTableViewCell.swift */; };
+		226449E1228234A3004705C0 /* EditItemListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449E0228234A2004705C0 /* EditItemListsViewController.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
 		22ACA8BD21C0291800069A70 /* month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BC21C0291800069A70 /* month.swift */; };
@@ -132,6 +133,7 @@
 		226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditALaCarteTableViewCell.swift; sourceTree = "<group>"; };
 		226449DC2282242C004705C0 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		226449DE228227DC004705C0 /* EditItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemTableViewCell.swift; sourceTree = "<group>"; };
+		226449E0228234A2004705C0 /* EditItemListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemListsViewController.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
 		22ACA8BC21C0291800069A70 /* month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = month.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				2229CA7E228092AF00166F0A /* DatabasePopupViewController.swift */,
 				22E490CE22147FED00D3D90C /* EditMenuViewController.swift */,
 				226449D82281BEF2004705C0 /* EditALaCarteViewController.swift */,
+				226449E0228234A2004705C0 /* EditItemListsViewController.swift */,
 				224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */,
 				223438DE22205E41005EB3D0 /* AddItemViewController.swift */,
 				226449DC2282242C004705C0 /* EditItemViewController.swift */,
@@ -639,6 +642,7 @@
 				22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */,
 				22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */,
 				22E490CB2204B6A200D3D90C /* OrderDataViewController.swift in Sources */,
+				226449E1228234A3004705C0 /* EditItemListsViewController.swift in Sources */,
 				22E490CF22147FED00D3D90C /* EditMenuViewController.swift in Sources */,
 				22E490BB21FB7B7600D3D90C /* LunchMenuViewController.swift in Sources */,
 				22ACA8BD21C0291800069A70 /* month.swift in Sources */,

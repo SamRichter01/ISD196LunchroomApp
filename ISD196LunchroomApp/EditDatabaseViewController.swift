@@ -38,6 +38,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     // The two dimensional array of valid school days used to create the monthly menus
     var days = [[String]]()
     
+    var editingType = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,17 +66,28 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func editALaCartePressed(_ sender: UIButton) {
         
+        editingType = "aLaCarte"
         
+        performSegue(withIdentifier: "editItemsPressed", sender: self)
     }
     
     @IBAction func editMenuItemsPressed(_ sender: UIButton) {
         
+        editingType = "mainMenu"
         
+        performSegue(withIdentifier: "editItemsPressed", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let editItemListsViewController = segue.destination as! EditItemListsViewController
+        
+        editItemListsViewController.editingType = editingType
     }
     
     // The number of columns in the month picker
