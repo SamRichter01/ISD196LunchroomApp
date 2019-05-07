@@ -174,7 +174,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("\(self.monthName)")
         //print("\(self.day)")
-        matchingItems = Array(aLaCarteItems.values)
+        matchingItems = Array(aLaCarteMenu.values)
         if let text = searchBar.text {
             if text.count > 0 {
                 for x in stride(from: matchingItems.count - 1, to: -1, by: -1) {

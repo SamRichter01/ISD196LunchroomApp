@@ -26,6 +26,7 @@
 		221FAD5C21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD5B21BAE0C0005AE7AE /* ISD196LunchroomAppUITests.swift */; };
 		221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6921BAE1AD005AE7AE /* Podfile */; };
 		221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */; };
+		2229CA7F228092AF00166F0A /* DatabasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229CA7E228092AF00166F0A /* DatabasePopupViewController.swift */; };
 		223438DD221F1365005EB3D0 /* OrderDataViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */; };
 		223438DF22205E41005EB3D0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438DE22205E41005EB3D0 /* AddItemViewController.swift */; };
 		223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */; };
@@ -36,6 +37,10 @@
 		22457198223C024000D7B02A /* NewLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22457197223C024000D7B02A /* NewLineViewController.swift */; };
 		2245719A2242C5D600D7B02A /* NewSchoolDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */; };
 		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
+		226449D92281BEF3004705C0 /* EditALaCarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449D82281BEF2004705C0 /* EditALaCarteViewController.swift */; };
+		226449DB2281DDF3004705C0 /* EditALaCarteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */; };
+		226449DD2282242C004705C0 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DC2282242C004705C0 /* EditItemViewController.swift */; };
+		226449DF228227DC004705C0 /* EditItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DE228227DC004705C0 /* EditItemTableViewCell.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
 		22ACA8BD21C0291800069A70 /* month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BC21C0291800069A70 /* month.swift */; };
@@ -112,6 +117,7 @@
 		221FAD5D21BAE0C0005AE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2229CA7E228092AF00166F0A /* DatabasePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePopupViewController.swift; sourceTree = "<group>"; };
 		223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewReusableView.swift; sourceTree = "<group>"; };
 		223438DE22205E41005EB3D0 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -122,6 +128,10 @@
 		22457197223C024000D7B02A /* NewLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLineViewController.swift; sourceTree = "<group>"; };
 		224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSchoolDayViewController.swift; sourceTree = "<group>"; };
 		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
+		226449D82281BEF2004705C0 /* EditALaCarteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditALaCarteViewController.swift; sourceTree = "<group>"; };
+		226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditALaCarteTableViewCell.swift; sourceTree = "<group>"; };
+		226449DC2282242C004705C0 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
+		226449DE228227DC004705C0 /* EditItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemTableViewCell.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
 		22ACA8BC21C0291800069A70 /* month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = month.swift; sourceTree = "<group>"; };
@@ -235,9 +245,12 @@
 				22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */,
 				225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */,
 				2203333C222739ED00AF29AC /* DetailPopupViewController.swift */,
+				2229CA7E228092AF00166F0A /* DatabasePopupViewController.swift */,
 				22E490CE22147FED00D3D90C /* EditMenuViewController.swift */,
+				226449D82281BEF2004705C0 /* EditALaCarteViewController.swift */,
 				224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */,
 				223438DE22205E41005EB3D0 /* AddItemViewController.swift */,
+				226449DC2282242C004705C0 /* EditItemViewController.swift */,
 				22033382222D916900AF29AC /* CommentPopupViewController.swift */,
 				22457197223C024000D7B02A /* NewLineViewController.swift */,
 				22E490CC2204C56300D3D90C /* GraphView.swift */,
@@ -247,6 +260,8 @@
 				22ACA8C021C0293100069A70 /* line.swift */,
 				22ACA8C921C171BC00069A70 /* MenuItem.swift */,
 				22ACA8CA21C171BC00069A70 /* MasterMenu.swift */,
+				226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */,
+				226449DE228227DC004705C0 /* EditItemTableViewCell.swift */,
 				223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */,
 				22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */,
 				952B3D8621EF987200B0C381 /* ALaCarteMenuTableViewCell.swift */,
@@ -632,10 +647,12 @@
 				22E490BF21FE728100D3D90C /* MenuCollectionViewCell.swift in Sources */,
 				223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */,
 				95176D1D2252653E009DB6A4 /* CoreData.xcdatamodeld in Sources */,
+				226449DF228227DC004705C0 /* EditItemTableViewCell.swift in Sources */,
 				22ACA8BF21C0292700069A70 /* day.swift in Sources */,
 				22ACA8C121C0293100069A70 /* line.swift in Sources */,
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
 				22E490C522037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift in Sources */,
+				226449DD2282242C004705C0 /* EditItemViewController.swift in Sources */,
 				22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */,
 				22ACA8C421C029EA00069A70 /* bridging header.m in Sources */,
 				22E490CD2204C56300D3D90C /* GraphView.swift in Sources */,
@@ -645,12 +662,15 @@
 				223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */,
 				223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */,
 				22457198223C024000D7B02A /* NewLineViewController.swift in Sources */,
+				226449D92281BEF3004705C0 /* EditALaCarteViewController.swift in Sources */,
 				22E490C121FE795A00D3D90C /* MenuCollectionViewReusableView.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 				22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */,
 				225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */,
 				22457196223AD94B00D7B02A /* NewItemCollectionViewCell.swift in Sources */,
 				2203338522304CD400AF29AC /* CommentTableViewCell.swift in Sources */,
+				2229CA7F228092AF00166F0A /* DatabasePopupViewController.swift in Sources */,
+				226449DB2281DDF3004705C0 /* EditALaCarteTableViewCell.swift in Sources */,
 				22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */,
 				22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */,
 			);

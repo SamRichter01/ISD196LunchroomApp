@@ -33,6 +33,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var itemDescriptionTextField: UITextField!
+    @IBOutlet weak var itemPriceTextField: UITextField!
     @IBOutlet weak var saveAndUploadButton: UIButton!
     
     override func viewDidLoad() {
@@ -58,6 +59,15 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         NotificationCenter.default.addObserver(self, selector: #selector(self.addItem(_:)), name: NSNotification.Name(rawValue: "addedItem"), object: nil)
         
         dateLabel.text = "Editing \(editingLine)"
+        
+        if editingLine != "aLaCarte" {
+            
+            itemPriceTextField.isEnabled = false
+            
+        } else {
+            
+            itemDescriptionTextField.isEnabled = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,49 +82,67 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func saveAndUploadPressed(_ sender: UIButton) {
         
-        let itemIndex = menuItems.count
+        if editingLine == "aLaCarte" {
+            
+            let itemIndex = aLaCarteItems.count
+            
+            let newItem = MenuItem(name: itemNameTextField.text!, price: itemPriceTextField.text!)
+            
+            aLaCarteMenu[newItem.name] = newItem
+            aLaCarteItems[newItem.name] = newItem
+            
+            db.collection("menus").document("A La Carte Items").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!, "Item index": itemIndex], merge: true)
+            
+            db.collection("menus").document("A La Carte Menu").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!, "Item index": itemIndex], merge: true)
+            
+            return
+            
+        } else {
         
-        let newItem = MenuItem(name: itemNameTextField.text!, description: "")
-        
-        monthlyMenus[editingMonth]!.days[Int(editingDay)!]!
-            .lines[editingLine]!.items.append(newItem.name)
-        
-        db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": itemDescriptionTextField.text!])
-        
-        let docReference = db.collection("menus").document(editingMonth).collection("days").document(editingDay)
-        
-        db.runTransaction({ (transaction, errorPointer) -> Any? in
-            let dbDocument: DocumentSnapshot
-            do {
-                try dbDocument = transaction.getDocument(docReference)
-            } catch let fetchError as NSError {
-                errorPointer?.pointee = fetchError
+            let newItem = MenuItem(name: itemNameTextField.text!, description: "")
+            
+            monthlyMenus[editingMonth]!.days[Int(editingDay)!]!
+                .lines[editingLine]!.items.append(newItem.name)
+            
+            db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": itemDescriptionTextField.text!])
+            
+            let docReference = db.collection("menus").document(editingMonth).collection("days").document(editingDay)
+            
+            db.runTransaction({ (transaction, errorPointer) -> Any? in
+                let dbDocument: DocumentSnapshot
+                do {
+                    try dbDocument = transaction.getDocument(docReference)
+                } catch let fetchError as NSError {
+                    errorPointer?.pointee = fetchError
+                    return nil
+                }
+                
+                guard let oldItems = dbDocument.data()?[self.editingLine] as? [String] else {
+                    let error = NSError(
+                        domain: "AppErrorDomain",
+                        code: -1,
+                        userInfo: [
+                            NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
+                        ]
+                    )
+                    errorPointer?.pointee = error
+                    return nil
+                }
+                
+                var newItems = oldItems
+                newItems.append(newItem.name)
+                
+                transaction.updateData([self.editingLine: newItems], forDocument: docReference)
                 return nil
+            }) { (object, error) in
+                if let error = error {
+                    print("Transaction failed: \(error)")
+                } else {
+                    print("Transaction successfully committed!")
+                }
             }
             
-            guard let oldItems = dbDocument.data()?[self.editingLine] as? [String] else {
-                let error = NSError(
-                    domain: "AppErrorDomain",
-                    code: -1,
-                    userInfo: [
-                        NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
-                    ]
-                )
-                errorPointer?.pointee = error
-                return nil
-            }
-            
-            var newItems = oldItems
-            newItems.append(newItem.name)
-            
-            transaction.updateData([self.editingLine: newItems], forDocument: docReference)
-            return nil
-        }) { (object, error) in
-            if let error = error {
-                print("Transaction failed: \(error)")
-            } else {
-                print("Transaction successfully committed!")
-            }
+            return
         }
     }
     
@@ -154,6 +182,33 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBAction func checkForPrice(_ sender: UITextField) {
+        
+        if let _ = itemNameTextField.text {
+            
+            if let _ = itemDescriptionTextField.text {
+                
+                if let _ = itemPriceTextField.text {
+                    
+                    saveAndUploadButton.isEnabled = true
+                    
+                } else {
+                    
+                    saveAndUploadButton.isEnabled = false
+                }
+                
+            } else {
+                
+                saveAndUploadButton.isEnabled = false
+            }
+            
+        } else {
+            
+            saveAndUploadButton.isEnabled = false
+        }
+    }
+        
+    
     @IBAction func searchBarEdited(_ sender: UITextField) {
         aLaCarteMenuTableView.reloadData()
     }
@@ -176,42 +231,50 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let dict = notification.userInfo as NSDictionary? {
             if let str = dict["itemName"] as? String {
                 
-                monthlyMenus[editingMonth]!.days[Int(editingDay)!]!
-                    .lines[editingLine]!.items.append(str)
-                
-                let docReference = db.collection("menus").document(editingMonth).collection("days").document(editingDay)
-                
-                db.runTransaction({ (transaction, errorPointer) -> Any? in
-                    let dbDocument: DocumentSnapshot
-                    do {
-                        try dbDocument = transaction.getDocument(docReference)
-                    } catch let fetchError as NSError {
-                        errorPointer?.pointee = fetchError
+                if editingLine == "aLaCarte" {
+                    
+                    aLaCarteMenu[str] = aLaCarteItems[str]
+                db.collection("menus").document("aLaCarteMenu").collection("Items").document(str).setData(["Cost": aLaCarteItems[str]!.price], merge: true)
+                    
+                } else {
+                    
+                    monthlyMenus[editingMonth]!.days[Int(editingDay)!]!
+                        .lines[editingLine]!.items.append(str)
+                    
+                    let docReference = db.collection("menus").document(editingMonth).collection("days").document(editingDay)
+                    
+                    db.runTransaction({ (transaction, errorPointer) -> Any? in
+                        let dbDocument: DocumentSnapshot
+                        do {
+                            try dbDocument = transaction.getDocument(docReference)
+                        } catch let fetchError as NSError {
+                            errorPointer?.pointee = fetchError
+                            return nil
+                        }
+                        
+                        guard let oldItems = dbDocument.data()?[self.editingLine] as? [String] else {
+                            let error = NSError(
+                                domain: "AppErrorDomain",
+                                code: -1,
+                                userInfo: [
+                                    NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
+                                ]
+                            )
+                            errorPointer?.pointee = error
+                            return nil
+                        }
+                        
+                        var newItems = oldItems
+                        newItems.append(str)
+                        
+                        transaction.updateData([self.editingLine: newItems], forDocument: docReference)
                         return nil
-                    }
-                    
-                    guard let oldItems = dbDocument.data()?[self.editingLine] as? [String] else {
-                        let error = NSError(
-                            domain: "AppErrorDomain",
-                            code: -1,
-                            userInfo: [
-                                NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
-                            ]
-                        )
-                        errorPointer?.pointee = error
-                        return nil
-                    }
-                    
-                    var newItems = oldItems
-                    newItems.append(str)
-                    
-                    transaction.updateData([self.editingLine: newItems], forDocument: docReference)
-                    return nil
-                }) { (object, error) in
-                    if let error = error {
-                        print("Transaction failed: \(error)")
-                    } else {
-                        print("Transaction successfully committed!")
+                    }) { (object, error) in
+                        if let error = error {
+                            print("Transaction failed: \(error)")
+                        } else {
+                            print("Transaction successfully committed!")
+                        }
                     }
                 }
             }
@@ -223,7 +286,15 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        matchingItems = Array(menuItems.values)
+        
+        if editingLine == "aLaCarte" {
+            
+            matchingItems = Array(aLaCarteItems.values)
+            
+        } else {
+            
+            matchingItems = Array(menuItems.values)
+        }
         
         if let text = searchBar.text {
             if text.count > 0 {

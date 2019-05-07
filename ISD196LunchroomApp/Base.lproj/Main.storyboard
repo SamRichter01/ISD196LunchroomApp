@@ -82,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="268.75" y="619.921875"/>
+            <point key="canvasLocation" x="248" y="620"/>
         </scene>
         <!--Admin Menu View Controller-->
         <scene sceneID="gOU-qz-TsC">
@@ -93,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juG-NV-YQy">
-                                <rect key="frame" x="326" y="843" width="118" height="56"/>
+                                <rect key="frame" x="325" y="902" width="118" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="32"/>
                                 <color key="tintColor" red="0.4823529412" green="0.62745098040000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,15 +145,15 @@
                                     <action selector="editDatabasePressed:" destination="cog-fp-Xus" eventType="touchUpInside" id="b8B-EJ-yDw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-Pl-JER">
-                                <rect key="frame" x="204" y="692" width="360" height="72"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLW-Hk-71N">
+                                <rect key="frame" x="204" y="797" width="360" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
                                 <color key="tintColor" red="0.4823529412" green="0.62745098040000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="titleEdgeInsets" minX="32" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="16" minY="13" maxX="296" maxY="13"/>
-                                <state key="normal" title="Edit Lunch Menus" image="Edit Menu">
+                                <state key="normal" title="Edit A La Carte Menu" image="A La Carte">
                                     <color key="titleColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
@@ -165,7 +165,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editLunchMenusPressed:" destination="cog-fp-Xus" eventType="touchUpInside" id="DsX-Dk-FPM"/>
+                                    <action selector="editALaCarteMenuPressed:" destination="cog-fp-Xus" eventType="touchUpInside" id="kA2-24-Xxs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-iE-bjY">
@@ -191,6 +191,29 @@
                                     <action selector="viewOrderDataPressed:" destination="cog-fp-Xus" eventType="touchUpInside" id="jrc-Mb-uHx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-Pl-JER">
+                                <rect key="frame" x="204" y="688" width="360" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
+                                <color key="tintColor" red="0.4823529412" green="0.62745098040000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="titleEdgeInsets" minX="32" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="16" minY="13" maxX="296" maxY="13"/>
+                                <state key="normal" title="Edit Lunch Menus" image="Edit Menu">
+                                    <color key="titleColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editLunchMenusPressed:" destination="cog-fp-Xus" eventType="touchUpInside" id="DsX-Dk-FPM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="WxH-al-W0A"/>
@@ -199,11 +222,12 @@
                         <segue destination="OVd-QR-Wnc" kind="show" identifier="editDatabase" id="ttZ-TF-pVt"/>
                         <segue destination="r1y-tQ-G1S" kind="show" identifier="EditLunchMenuPressed" id="qtO-fA-gLV"/>
                         <segue destination="ZHG-mu-L9B" kind="show" identifier="viewOrderDataPressed" id="yQN-sR-4rh"/>
+                        <segue destination="3aZ-jC-IOa" kind="show" identifier="EditALaCarteMenuPressed" id="k1P-V6-KwX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfF-nL-0Rl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1037.5" y="209.765625"/>
+            <point key="canvasLocation" x="1016" y="210"/>
         </scene>
         <!--Edit Database View Controller-->
         <scene sceneID="bp3-tZ-oQz">
@@ -255,11 +279,16 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kk5-w6-DYO">
                                 <rect key="frame" x="179" y="396" width="411" height="125"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMX-B9-5Sl">
-                                <rect key="frame" x="179" y="377" width="53" height="24"/>
+                                <rect key="frame" x="179" y="368" width="53" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -304,16 +333,42 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARe-bc-t7H">
+                                <rect key="frame" x="308" y="798" width="145" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Edit A La Carte Items">
+                                    <color key="titleColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="editALaCartePressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="XpF-5T-5KH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zV9-SI-wgO">
+                                <rect key="frame" x="308" y="860" width="145" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Edit Menu Items">
+                                    <color key="titleColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="editMenuItemsPressed:" destination="OVd-QR-Wnc" eventType="touchUpInside" id="pvl-QK-L6n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AlP-t2-Mh5"/>
                     </view>
                     <connections>
                         <outlet property="createMonthButton" destination="XJ9-8s-1lJ" id="G9H-5H-4DP"/>
+                        <outlet property="editALaCarteButton" destination="ARe-bc-t7H" id="HHr-Up-qvN"/>
+                        <outlet property="editMenuItemsButton" destination="zV9-SI-wgO" id="kfa-je-XHR"/>
                         <outlet property="monthPicker" destination="Kk5-w6-DYO" id="1WH-hP-rIY"/>
                         <outlet property="sheetIdField" destination="A5P-1S-vJB" id="Klr-z4-IdU"/>
-                        <outlet property="updateALaCarteButton" destination="jfI-fI-Mp1" id="Odg-If-wKa"/>
+                        <outlet property="updateALaCarteButton" destination="jfI-fI-Mp1" id="C6t-UL-0C4"/>
                         <outlet property="updateItemsButton" destination="VJM-Nd-ck9" id="2La-CO-zKZ"/>
+                        <segue destination="y7w-Iq-0bL" kind="presentation" identifier="displayUpdatePopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="QEF-cK-FNm"/>
+                        <segue destination="9PF-Tv-yzd" kind="show" id="bHh-ew-Wjc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaX-L2-ndW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,7 +492,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hfk-H6-MrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038.28125" y="1090.4296875"/>
+            <point key="canvasLocation" x="1018" y="1090"/>
         </scene>
         <!--Lunch Menu View Controller-->
         <scene sceneID="nEQ-87-3tj">
@@ -1233,12 +1288,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sending order..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of3-9s-243">
-                                        <rect key="frame" x="127" y="100" width="178" height="33"/>
+                                        <rect key="frame" x="120" y="79" width="178" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="24"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="I7m-mc-pHb">
+                                        <rect key="frame" x="184" y="132" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -1259,7 +1319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUP-Zt-Yci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4277" y="971"/>
+            <point key="canvasLocation" x="4284" y="986"/>
         </scene>
         <!--Main menu-->
         <scene sceneID="AoQ-pZ-Jlf">
@@ -1685,7 +1745,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBS-IX-QzY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776.5625" y="-1123.2421875"/>
+            <point key="canvasLocation" x="1777" y="-1123"/>
         </scene>
         <!--Order Data View Controller-->
         <scene sceneID="DIc-nd-Ezx">
@@ -1863,14 +1923,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gb3-vh-O0N">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="-6" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="z28-IY-hjB">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKU-Ox-Uyw">
-                                            <rect key="frame" x="122" y="107" width="525" height="810"/>
+                                            <rect key="frame" x="122" y="107" width="525" height="883"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfY-ew-OuG">
@@ -1888,29 +1948,8 @@
                                                         <action selector="returnToMainMenu:" destination="jLu-3Q-5ec" eventType="touchUpInside" id="vio-CH-C02"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Fl-Df7">
-                                                    <rect key="frame" x="20" y="293" width="485" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="returnButtonPressed:" destination="GYg-lE-Vst" eventType="primaryActionTriggered" id="3K7-pq-ewY"/>
-                                                        <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="3i4-yp-sA5"/>
-                                                        <action selector="returnButtonPressed:" destination="jLu-3Q-5ec" eventType="primaryActionTriggered" id="4LX-eB-2hI"/>
-                                                        <action selector="searchBarEdited:" destination="jLu-3Q-5ec" eventType="editingChanged" id="ygz-Bx-roD"/>
-                                                    </connections>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17k-xo-gxK">
-                                                    <rect key="frame" x="477" y="298" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="Remove"/>
-                                                    <connections>
-                                                        <action selector="deleteText:" destination="jLu-3Q-5ec" eventType="touchUpInside" id="ldr-0N-KZ3"/>
-                                                    </connections>
-                                                </button>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ntb-Mt-Rn5">
-                                                    <rect key="frame" x="20" y="342" width="485" height="448"/>
+                                                    <rect key="frame" x="20" y="348" width="485" height="520"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="11"/>
@@ -1971,7 +2010,7 @@
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aIL-BJ-8dp">
-                                                    <rect key="frame" x="20" y="167" width="485" height="30"/>
+                                                    <rect key="frame" x="20" y="158" width="485" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1981,7 +2020,7 @@
                                                     </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFl-3t-oAY">
-                                                    <rect key="frame" x="371" y="205" width="134" height="36"/>
+                                                    <rect key="frame" x="371" y="216" width="134" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                                     <state key="normal" title="Save and Upload">
@@ -2001,8 +2040,39 @@
                                                     <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi9-mJ-Fqm">
+                                                    <rect key="frame" x="20" y="196" width="249" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="checkForPrice:" destination="jLu-3Q-5ec" eventType="editingDidEnd" id="un9-DU-Fdq"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Fl-Df7">
+                                                    <rect key="frame" x="20" y="304" width="485" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="returnButtonPressed:" destination="GYg-lE-Vst" eventType="primaryActionTriggered" id="3K7-pq-ewY"/>
+                                                        <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="3i4-yp-sA5"/>
+                                                        <action selector="returnButtonPressed:" destination="jLu-3Q-5ec" eventType="primaryActionTriggered" id="4LX-eB-2hI"/>
+                                                        <action selector="searchBarEdited:" destination="jLu-3Q-5ec" eventType="editingChanged" id="ygz-Bx-roD"/>
+                                                    </connections>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17k-xo-gxK">
+                                                    <rect key="frame" x="477" y="309" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Remove"/>
+                                                    <connections>
+                                                        <action selector="deleteText:" destination="jLu-3Q-5ec" eventType="touchUpInside" id="ldr-0N-KZ3"/>
+                                                    </connections>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add From List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t65-CA-ORJ">
-                                                    <rect key="frame" x="20" y="249" width="167" height="36"/>
+                                                    <rect key="frame" x="20" y="260" width="167" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
                                                     <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2025,6 +2095,7 @@
                         <outlet property="deleteTextButton" destination="17k-xo-gxK" id="1jZ-Ag-sIk"/>
                         <outlet property="itemDescriptionTextField" destination="aIL-BJ-8dp" id="YGc-8g-bx5"/>
                         <outlet property="itemNameTextField" destination="qVV-sg-5NB" id="4UX-SP-66O"/>
+                        <outlet property="itemPriceTextField" destination="gi9-mJ-Fqm" id="aQL-D3-hPr"/>
                         <outlet property="itemView" destination="sKU-Ox-Uyw" id="ZhI-tJ-MI7"/>
                         <outlet property="saveAndUploadButton" destination="hFl-3t-oAY" id="1cE-iQ-RyB"/>
                         <outlet property="searchBar" destination="tjO-Fl-Df7" id="EmO-GX-jy9"/>
@@ -2033,7 +2104,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIP-Fy-lfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GYg-lE-Vst" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2517.96875" y="-1123.2421875"/>
+            <point key="canvasLocation" x="2804" y="-1123"/>
         </scene>
         <!--Detail Popup View Controller-->
         <scene sceneID="gL5-OK-PUn">
@@ -2414,6 +2485,462 @@
             </objects>
             <point key="canvasLocation" x="3266.40625" y="-1804.1015624999998"/>
         </scene>
+        <!--Database Popup View Controller-->
+        <scene sceneID="njR-IR-hKa">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="y7w-Iq-0bL" customClass="DatabasePopupViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="ugF-kC-imm">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8i5-Rk-lT8">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="e1S-0i-wdq">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h92-Vo-XQE">
+                                <rect key="frame" x="175" y="398" width="418" height="228"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Updating Menus from Spreadsheet..." textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-9Y-LGl">
+                                        <rect key="frame" x="38" y="86" width="343" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                        <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UgI-bd-CJp">
+                                        <rect key="frame" x="191" y="130" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5DU-PX-Lzs"/>
+                    </view>
+                    <size key="freeformSize" width="768" height="1024"/>
+                    <connections>
+                        <outlet property="itemView" destination="h92-Vo-XQE" id="wsF-NY-cFJ"/>
+                        <outlet property="sendingOrderLabel" destination="d3s-9Y-LGl" id="Fg1-o4-s8d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ER4-yE-YYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3266" y="-173"/>
+        </scene>
+        <!--EditA La Carte View Controller-->
+        <scene sceneID="tXJ-zC-EE0">
+            <objects>
+                <viewController id="3aZ-jC-IOa" customClass="EditALaCarteViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5zi-RI-pg3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="86" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C41-t7-p3B">
+                                <rect key="frame" x="0.0" y="161" width="768" height="863"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="11"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="editALaCarteMenuCell" rowHeight="86" id="6si-u2-gdZ" customClass="EditALaCarteTableViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6si-u2-gdZ" id="3ij-la-mOE">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="86"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HB0-qx-Z5w">
+                                                    <rect key="frame" x="27" y="11" width="714" height="74"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgt-79-zYK">
+                                                            <rect key="frame" x="18" y="19" width="475" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
+                                                            <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbl-OU-auD">
+                                                            <rect key="frame" x="501" y="17" width="88" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
+                                                            <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLg-ak-ATl">
+                                                            <rect key="frame" x="666" y="21" width="32" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" image="Remove"/>
+                                                            <connections>
+                                                                <action selector="removeItemPressed:" destination="6si-u2-gdZ" eventType="touchUpInside" id="tc2-nE-gao"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="itemLabel" destination="dgt-79-zYK" id="RQH-cK-kxt"/>
+                                            <outlet property="priceLabel" destination="mbl-OU-auD" id="XSG-Gd-gn8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit A La Carte Menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tn-MN-O0J">
+                                <rect key="frame" x="214" y="20" width="341" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kCB-LA-Cnz">
+                                <rect key="frame" x="20" y="91" width="674" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="returnButtonPressed:" destination="gUh-dj-uQi" eventType="primaryActionTriggered" id="5Zh-b9-8ip"/>
+                                    <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="6n0-cF-9UD"/>
+                                    <action selector="returnButtonPressed:" destination="3aZ-jC-IOa" eventType="primaryActionTriggered" id="rvs-xf-Ifl"/>
+                                    <action selector="searchBarEdited:" destination="3aZ-jC-IOa" eventType="editingChanged" id="Y3R-hI-Uza"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEb-jV-ajZ">
+                                <rect key="frame" x="0.0" y="18" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Light Back Arrow"/>
+                                <connections>
+                                    <action selector="returnToMainMenu:" destination="3aZ-jC-IOa" eventType="touchUpInside" id="SWj-Oh-jw1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAU-jC-FBS">
+                                <rect key="frame" x="689" y="85" width="59" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Search"/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="3aZ-jC-IOa" eventType="touchUpInside" id="MZe-w9-krB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Looks like there's nothing here..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHq-33-gn1">
+                                <rect key="frame" x="0.0" y="484" width="768" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSz-M6-mjV">
+                                <rect key="frame" x="670" y="96" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Remove"/>
+                                <connections>
+                                    <action selector="deleteText:" destination="3aZ-jC-IOa" eventType="touchUpInside" id="do8-yY-nHI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64C-xH-QDb">
+                                <rect key="frame" x="480" y="123" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lI-qu-x4I">
+                                <rect key="frame" x="327" y="130" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create New Item">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewItemPressed:" destination="3aZ-jC-IOa" eventType="touchUpInside" id="uFA-5w-PeJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="A5i-It-nZN"/>
+                    </view>
+                    <connections>
+                        <outlet property="aLaCarteMenuTableView" destination="C41-t7-p3B" id="lx1-IG-cfK"/>
+                        <outlet property="backButton" destination="UEb-jV-ajZ" id="cpS-NE-D8H"/>
+                        <outlet property="deleteTextButton" destination="dSz-M6-mjV" id="S3T-7Q-kcO"/>
+                        <outlet property="emptyViewLabel" destination="FHq-33-gn1" id="sdb-0W-hQX"/>
+                        <outlet property="searchBar" destination="kCB-LA-Cnz" id="UHa-up-10l"/>
+                        <segue destination="jLu-3Q-5ec" kind="show" identifier="addItemPressed" id="0mi-0o-Ida"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HGy-2S-2fg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gUh-dj-uQi" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="-1123"/>
+        </scene>
+        <!--EditA La Carte View Controller-->
+        <scene sceneID="Cjc-zr-uNR">
+            <objects>
+                <viewController id="9PF-Tv-yzd" customClass="EditALaCarteViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TJc-ds-ga3">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="170" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="td0-F4-OdS">
+                                <rect key="frame" x="0.0" y="161" width="768" height="863"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="11"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="editItemTableViewCell" rowHeight="170" id="AtL-yu-VF1" customClass="EditItemTableViewCell" customModule="ISD196LunchroomApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AtL-yu-VF1" id="Vj7-0C-0cS">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZPk-lE-Ar7">
+                                                    <rect key="frame" x="27" y="11" width="714" height="159"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcK-eW-0nf">
+                                                            <rect key="frame" x="18" y="19" width="475" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
+                                                            <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udW-WS-Prh">
+                                                            <rect key="frame" x="501" y="17" width="88" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
+                                                            <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHE-6g-IsG">
+                                                            <rect key="frame" x="666" y="21" width="32" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" image="Remove"/>
+                                                            <connections>
+                                                                <action selector="removeItemPressed:" destination="AtL-yu-VF1" eventType="touchUpInside" id="0Cr-PL-M3s"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r23-5d-iTO">
+                                                            <rect key="frame" x="18" y="62" width="503" height="82"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                                            <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="deleteItemButton" destination="XHE-6g-IsG" id="d4c-mT-m83"/>
+                                            <outlet property="itemDescriptionLabel" destination="r23-5d-iTO" id="Qiq-6c-NCO"/>
+                                            <outlet property="itemLabel" destination="WcK-eW-0nf" id="r7s-DH-ICG"/>
+                                            <outlet property="priceLabel" destination="udW-WS-Prh" id="oVe-gY-huc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Menu Items" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRy-I2-FaJ">
+                                <rect key="frame" x="214" y="20" width="341" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UHY-nk-Gra">
+                                <rect key="frame" x="20" y="91" width="674" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.37254901959999998" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="returnButtonPressed:" destination="5tl-Ii-gqU" eventType="primaryActionTriggered" id="IE2-1j-DXb"/>
+                                    <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="iba-fb-dOD"/>
+                                    <action selector="returnButtonPressed:" destination="9PF-Tv-yzd" eventType="primaryActionTriggered" id="zbe-nU-0Zh"/>
+                                    <action selector="searchBarEdited:" destination="9PF-Tv-yzd" eventType="editingChanged" id="zwP-pl-8JU"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwm-BN-DeJ">
+                                <rect key="frame" x="0.0" y="18" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Light Back Arrow"/>
+                                <connections>
+                                    <action selector="returnToMainMenu:" destination="9PF-Tv-yzd" eventType="touchUpInside" id="yoi-Ku-kzc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOs-Es-YuR">
+                                <rect key="frame" x="689" y="85" width="59" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Search"/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="9PF-Tv-yzd" eventType="touchUpInside" id="9FZ-O9-KZS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Looks like there's nothing here..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFL-fe-ubY">
+                                <rect key="frame" x="0.0" y="484" width="768" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekg-aP-JgB">
+                                <rect key="frame" x="670" y="96" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Remove"/>
+                                <connections>
+                                    <action selector="deleteText:" destination="9PF-Tv-yzd" eventType="touchUpInside" id="yRv-U5-V19"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXy-Z4-iUL">
+                                <rect key="frame" x="480" y="123" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZML-NV-Idp">
+                                <rect key="frame" x="327" y="130" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create New Item">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewItemPressed:" destination="9PF-Tv-yzd" eventType="touchUpInside" id="Amo-b2-CxE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="q8T-Ac-O8f"/>
+                    </view>
+                    <connections>
+                        <outlet property="aLaCarteMenuTableView" destination="td0-F4-OdS" id="iMs-zu-i9U"/>
+                        <outlet property="backButton" destination="Jwm-BN-DeJ" id="ATs-Iw-VZ6"/>
+                        <outlet property="deleteTextButton" destination="Ekg-aP-JgB" id="Fhb-kT-QVq"/>
+                        <outlet property="emptyViewLabel" destination="nFL-fe-ubY" id="yuL-Ya-3iS"/>
+                        <outlet property="searchBar" destination="UHY-nk-Gra" id="YeW-V3-cWb"/>
+                        <segue destination="aNL-6D-HSY" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Uc0-A4-zU8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5eb-cf-aUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5tl-Ii-gqU" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1018" y="-452"/>
+        </scene>
+        <!--Edit Item View Controller-->
+        <scene sceneID="lHW-BK-efm">
+            <objects>
+                <viewController id="aNL-6D-HSY" customClass="EditItemViewController" customModule="ISD196LunchroomApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V1B-PS-gGs">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqX-Rf-ggK">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="XeT-Sm-rGm">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMo-96-Cai">
+                                            <rect key="frame" x="117" y="288" width="535" height="428"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2c-eT-emp">
+                                                    <rect key="frame" x="0.0" y="18" width="67" height="67"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Dark Back Arrow"/>
+                                                    <connections>
+                                                        <action selector="backButtonPressed:" destination="aNL-6D-HSY" eventType="touchUpInside" id="C8t-VF-jqM"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Item" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDZ-iu-IUf">
+                                                    <rect key="frame" x="103" y="18" width="329" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="26"/>
+                                                    <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V33-bS-Tj1">
+                                                    <rect key="frame" x="179" y="335" width="176" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Save and upload">
+                                                        <color key="titleColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <state key="disabled">
+                                                        <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="saveLinePressed:" destination="aNL-6D-HSY" eventType="touchUpInside" id="qbk-Tw-XEa"/>
+                                                    </connections>
+                                                </button>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5w-s7-oPP">
+                                                    <rect key="frame" x="114" y="139" width="306" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="checkForName:" destination="aNL-6D-HSY" eventType="editingChanged" id="0Iu-oD-Abn"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aaJ-Pq-qv3">
+                                                    <rect key="frame" x="114" y="199" width="306" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aSG-ZW-aOi">
+                                                    <rect key="frame" x="114" y="259" width="155" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="checkForPrice:" destination="aNL-6D-HSY" eventType="editingChanged" id="pUZ-Bq-NGc"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="za8-U9-AXv"/>
+                    </view>
+                    <connections>
+                        <outlet property="itemNameTextField" destination="H5w-s7-oPP" id="6rf-m5-bIP"/>
+                        <outlet property="itemView" destination="yMo-96-Cai" id="DCT-FV-UWZ"/>
+                        <outlet property="priceTextField" destination="aSG-ZW-aOi" id="izG-FL-0Az"/>
+                        <outlet property="saveItemButton" destination="V33-bS-Tj1" id="lI8-u7-OcT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVH-ZS-XsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="-452"/>
+        </scene>
     </scenes>
     <resources>
         <image name="A La Carte" width="64" height="64"/>
@@ -2433,9 +2960,10 @@
         <image name="White Logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PcR-hv-sJT"/>
-        <segue reference="yFX-17-F55"/>
+        <segue reference="Lyu-qX-n6J"/>
+        <segue reference="0mi-0o-Ida"/>
+        <segue reference="nvJ-Th-ZPg"/>
         <segue reference="k20-i8-JeH"/>
-        <segue reference="ssW-Ed-HdV"/>
+        <segue reference="CE3-uR-hbH"/>
     </inferredMetricsTieBreakers>
 </document>

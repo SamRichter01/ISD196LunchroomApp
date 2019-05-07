@@ -26,6 +26,10 @@ class AdminMenuViewController: UIViewController {
         performSegue(withIdentifier: "EditLunchMenuPressed", sender: self)
     }
     
+    @IBAction func editALaCarteMenuPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "EditALaCarteMenuPressed", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

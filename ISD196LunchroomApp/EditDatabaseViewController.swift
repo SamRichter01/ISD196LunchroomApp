@@ -20,6 +20,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var monthPicker: UIPickerView!
     @IBOutlet weak var updateItemsButton: UIButton!
     @IBOutlet weak var updateALaCarteButton: UIButton!
+    @IBOutlet weak var editALaCarteButton: UIButton!
+    @IBOutlet weak var editMenuItemsButton: UIButton!
     
     // A service object that acts like a client for the sheets api
     private let service = GTLRSheetsService()
@@ -58,6 +60,16 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func backPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func editALaCartePressed(_ sender: UIButton) {
+        
+        
+    }
+    
+    @IBAction func editMenuItemsPressed(_ sender: UIButton) {
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,6 +124,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     // Process the response and display output
     @objc func importItems(ticket: GTLRServiceTicket,
                             finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
+        
+        NotificationCenter.default.post(name: Notification.Name("itemsLoaded"), object: nil)
         
         if let _ = error {
             return
@@ -215,7 +229,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                                 .collection("days").document("\(day.day)")
                             
                             // Adds the data from the line to the batch query
-                            batch.updateData(["\(line.name)": line.items], forDocument: dayRef)
+                            batch.setData(["\(line.name)": line.items], forDocument: dayRef, merge: true)
                             
                             // Adds the document for orders to the batch
                             batch.setData(["Order count": 0], forDocument: orderDayRef)
@@ -240,6 +254,7 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                 print("Batch write succeeded.")
             }
         }
+        NotificationCenter.default.post(name: Notification.Name("menuUpdated"), object: nil)
     }
     
     // The comments from the code in getMenu should explain all the functions of this function
@@ -264,6 +279,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     // Process the response and display output
     @objc func importMenuItems(ticket: GTLRServiceTicket,
                            finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
+        
+        NotificationCenter.default.post(name: Notification.Name("itemsLoaded"), object: nil)
         
         if let _ = error {
             return
@@ -300,8 +317,10 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                 print("Error writing batch \(err)")
             } else {
                 print("Batch write succeeded.")
+
             }
         }
+        NotificationCenter.default.post(name: Notification.Name("menuUpdated"), object: nil)
     }
     
     // The comments from the code in getMenu should explain all the functions of this function
@@ -327,6 +346,8 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     @objc func importALaCarteItems(ticket: GTLRServiceTicket,
                                finishedWithObject result : GTLRSheets_ValueRange, error : NSError?) {
         
+        NotificationCenter.default.post(name: Notification.Name("itemsLoaded"), object: nil)
+        
         if let _ = error {
             return
         }
@@ -346,15 +367,27 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                 print("Document successfully written!")
             }
         }
+        menus.document("A La Carte Menu").setData(["number of items": "\(rows.count)"]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
         
         let batch = db.batch()
         
         for x in 0..<rows.count {
             
-            let dayRef = db.collection("menus").document("A La Carte Items")
+            var dayRef = db.collection("menus").document("A La Carte Items")
                 .collection("Items").document("\(rows[x][0])")
             
-            batch.setData(["Item index": "\(x)", "Cost": rows[x][1]], forDocument: dayRef)
+            batch.setData(["Cost": rows[x][1]], forDocument: dayRef)
+            
+            dayRef = db.collection("menus").document("A La Carte Menu")
+                .collection("Items").document("\(rows[x][0])")
+            
+            batch.setData(["Cost": rows[x][1]], forDocument: dayRef)
         }
         
         batch.commit() { err in
@@ -364,17 +397,21 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
                 print("Batch write succeeded.")
             }
         }
+        NotificationCenter.default.post(name: Notification.Name("menuUpdated"), object: nil)
     }
     
     @IBAction func createMonthPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
         getMenu()
     }
     
     @IBAction func updateListPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
         getMenuItems()
     }
     
     @IBAction func updateALaCartePressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
         getALaCarteItems()
     }
     

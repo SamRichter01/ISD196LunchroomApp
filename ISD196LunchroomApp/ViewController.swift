@@ -146,21 +146,14 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 if (user.profile.email.contains("@apps.district196.org")) ||
                     (user.profile.email == "isd196lunchroomapp@gmail.com") {
                     
-                    //If menus haven't downloaded, download them. Otherwise perform segue to main menu
-                    if menuItems.isEmpty {
+                    self.nameLabel.text = "Downloading Menus"
                         
-                        self.nameLabel.text = "Downloading Menus"
+                    MasterMenu.downloadALaCarteItems()
+                    MasterMenu.downloadALaCarteMenu()
+                    MasterMenu.downloadMonthlyMenus()
+                    MasterMenu.downloadOrderData()
+                    self.downloadMenuItems()
                         
-                        MasterMenu.downloadALaCarteItems()
-                        MasterMenu.downloadMonthlyMenus()
-                        MasterMenu.downloadOrderData()
-                        self.downloadMenuItems()
-                        
-                    } else {
-                        
-                        NotificationCenter.default.post(name: Notification.Name("userLoggedIn"), object: nil)
-                    }
-                    
                 } else {
                     //Show all buttons and remove activity indicator, along with unauthorized email message
                     self.stopLoading()

@@ -1,17 +1,16 @@
 //
-//  ALaCarteMenuViewController.swift
+//  EditALaCarteViewController.swift
 //  ISD196LunchroomApp
 //
-//  Created by SCHOEPKE, SAMUEL on 1/15/19.
+//  Created by Sam on 5/7/19.
 //  Copyright © 2019 district196.org. All rights reserved.
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
-var selectedName = "Name"
-var selectedPrice = "$0.00"
-
-class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var matchingItems = [MenuItem]()
     
@@ -21,6 +20,7 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var aLaCarteMenuTableView: UITableView!
     @IBOutlet weak var deleteTextButton: UIButton!
     
+    lazy var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,20 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         
         deleteTextButton.isHidden = true
         // Do any additional setup after loading the view.
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(self.removeItem(_:)), name: NSNotification.Name(rawValue: "removeALaCartePressed"), object: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addItemPressed" {
+            let addItemViewController = segue.destination as! AddItemViewController
+            
+            addItemViewController.editingLine = "aLaCarte"
 
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,6 +59,10 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
         aLaCarteMenuTableView.reloadData()
     }
     
+    @IBAction func createNewItemPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "addItemPressed", sender: nil)
+    }
+    
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         searchBar.resignFirstResponder()
     }
@@ -58,6 +74,32 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func deleteText(_ sender: UIButton) {
         searchBar.text = ""
         aLaCarteMenuTableView.reloadData()
+    }
+
+    @objc func removeItem (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let itemName = dict["itemName"] as? String {
+                
+                let alertController = UIAlertController(title: "Delete A La Carte Item", message: "Are you sure you want to remove \(itemName) from the menu?", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+                
+                alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                    self.removeALaCarteItem(itemName: itemName)}))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
+        aLaCarteMenuTableView.reloadData()
+    }
+    
+    func removeALaCarteItem (itemName: String) {
+        
+        aLaCarteMenu.removeValue(forKey: itemName)
+        
+        db.collection("menus").document("A La Carte Items").collection("Items").document(itemName).delete()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -103,15 +145,15 @@ class ALaCarteMenuViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "aLaCarteMenuCell"
+        let cellIdentifier = "editALaCarteMenuCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ALaCarteMenuTableViewCell else {
-            fatalError("The dequeued cell is not an instance of ALaCarteTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EditALaCarteTableViewCell else {
+            fatalError("The dequeued cell is not an instance of EditALaCarteTableViewCell.")
         }
         
         cell.itemLabel.text = matchingItems[indexPath.row].name
         cell.priceLabel.text = matchingItems[indexPath.row].price
-
+        
         return cell
         
     }

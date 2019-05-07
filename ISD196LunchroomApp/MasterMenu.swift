@@ -15,6 +15,7 @@ import UserNotifications
 
 // By default, all variables are global and accessible by any class, functions however are not, so the functions that we use to set these up have "static" in the declaration
 var monthlyMenus = Dictionary<String,Month>()
+var aLaCarteMenu = Dictionary<String,MenuItem>()
 var menuItems = Dictionary<String,MenuItem>()
 var aLaCarteItems = Dictionary<String,MenuItem>()
 var orderData = Dictionary<String, Dictionary<String, Dictionary<String,Int>>>()
@@ -73,6 +74,31 @@ class MasterMenu {
                         price: (document.get("Cost")) as! String))
                 }
             }
+        }
+    }
+    
+    static func downloadALaCarteMenu() {
+        
+        aLaCarteMenu.removeAll()
+        aLaCarteMenu = Dictionary<String,MenuItem>()
+        
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
+        db.collection("menus").document("A La Carte Menu")
+            .collection("Items").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        
+                        aLaCarteMenu[document.documentID] = (MenuItem(
+                            name: document.documentID,
+                            price: (document.get("Cost")) as! String))
+                    }
+                }
         }
     }
     

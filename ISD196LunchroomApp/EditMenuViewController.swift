@@ -173,6 +173,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             addItemViewController.editingMonth = month
             addItemViewController.editingDay = String(day)
             
+            
         } else if segue.identifier == "newLinePressed" {
             
             let newLineViewController = segue.destination as! NewLineViewController
@@ -263,64 +264,14 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if let dict = notification.userInfo as NSDictionary? {
             if let itemName = dict["itemName"] as? String {
                 
-                let items = monthlyMenus[monthName]!.days[Int(day)]!
-                    .lines[line]!.items
+                let alertController = UIAlertController(title: "Delete Menu Item", message: "Are you sure you want to remove \(itemName) from the menu?", preferredStyle: UIAlertControllerStyle.alert)
                 
-                for x in 0..<items.count {
-                    
-                    if items[x] == itemName {
-                        
-                        monthlyMenus[monthName]!.days[Int(day)]!
-                            .lines[line]!.items.remove(at: x)
-                        
-                        break
-                    }
-                }
+                alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
                 
-                let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
+                alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                    self.removeLine(lineName: itemName)}))
                 
-                db.runTransaction({ (transaction, errorPointer) -> Any? in
-                    let dbDocument: DocumentSnapshot
-                    do {
-                        try dbDocument = transaction.getDocument(docReference)
-                    } catch let fetchError as NSError {
-                        errorPointer?.pointee = fetchError
-                        return nil
-                    }
-                    
-                    guard let oldItems = dbDocument.data()?[self.line] as? [String] else {
-                        let error = NSError(
-                            domain: "AppErrorDomain",
-                            code: -1,
-                            userInfo: [
-                                NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
-                            ]
-                        )
-                        errorPointer?.pointee = error
-                        return nil
-                    }
-                    
-                    var newItems = oldItems
-                    
-                    for x in 0..<newItems.count {
-                        
-                        if newItems[x] == itemName {
-
-                            newItems.remove(at: x)
-                            
-                            break
-                        }
-                    }
-
-                    transaction.updateData([self.line: newItems], forDocument: docReference)
-                    return nil
-                }) { (object, error) in
-                    if let error = error {
-                        print("Transaction failed: \(error)")
-                    } else {
-                        print("Transaction successfully committed!")
-                    }
-                }
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         
@@ -328,60 +279,134 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         menuCollectionView.reloadData()
     }
     
+    func removeItem (itemName: String) {
+        
+        let items = monthlyMenus[monthName]!.days[Int(day)]!
+            .lines[line]!.items
+        
+        for x in 0..<items.count {
+            
+            if items[x] == itemName {
+                
+                monthlyMenus[monthName]!.days[Int(day)]!
+                    .lines[line]!.items.remove(at: x)
+                
+                break
+            }
+        }
+        
+        let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
+        
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let dbDocument: DocumentSnapshot
+            do {
+                try dbDocument = transaction.getDocument(docReference)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            guard let oldItems = dbDocument.data()?[self.line] as? [String] else {
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
+                    ]
+                )
+                errorPointer?.pointee = error
+                return nil
+            }
+            
+            var newItems = oldItems
+            
+            for x in 0..<newItems.count {
+                
+                if newItems[x] == itemName {
+                    
+                    newItems.remove(at: x)
+                    
+                    break
+                }
+            }
+            
+            transaction.updateData([self.line: newItems], forDocument: docReference)
+            return nil
+        }) { (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+            }
+        }
+    }
+    
     @objc func removeLine (_ notification: NSNotification) {
         
         if let dict = notification.userInfo as NSDictionary? {
             if let lineName = dict["lineName"] as? String {
                 
-                //let lines = monthlyMenus[monthName]!.days[Int(day)]!.lines
+                let alertController = UIAlertController(title: "Remove Line", message: "Are you sure you want to remove \(lineName) from the menu?", preferredStyle: UIAlertControllerStyle.alert)
                 
-                monthName = monthNames[datePicker.selectedRow(inComponent: 0)]
-                day = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
+                alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
                 
-                monthlyMenus[monthName]!.days[Int(day)]!
-                    .lines.removeValue(forKey: lineName)
+                alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                    self.removeLine(lineName: lineName)}))
                 
-                let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
-                
-                db.runTransaction({ (transaction, errorPointer) -> Any? in
-                    let dbDocument: DocumentSnapshot
-                    do {
-                        try dbDocument = transaction.getDocument(docReference)
-                    } catch let fetchError as NSError {
-                        errorPointer?.pointee = fetchError
-                        return nil
-                    }
-                    
-                    guard let oldLines = dbDocument.data() else {
-                        let error = NSError(
-                            domain: "AppErrorDomain",
-                            code: -1,
-                            userInfo: [
-                                NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
-                            ]
-                        )
-                        errorPointer?.pointee = error
-                        return nil
-                    }
-                    
-                    var newLines = oldLines
-                    
-                    newLines.removeValue(forKey: lineName)
-                    
-                    transaction.setData(newLines, forDocument: docReference)
-                    return nil
-                }) { (object, error) in
-                    if let error = error {
-                        print("Transaction failed: \(error)")
-                    } else {
-                        print("Transaction successfully committed!")
-                    }
-                }
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         
         reloadLines()
         menuCollectionView.reloadData()
+    }
+    
+    func removeLine (lineName: String) {
+        
+        //let lines = monthlyMenus[monthName]!.days[Int(day)]!.lines
+        
+        monthName = monthNames[datePicker.selectedRow(inComponent: 0)]
+        day = dates[monthName]![datePicker.selectedRow(inComponent: 1)]
+        
+        monthlyMenus[monthName]!.days[Int(day)]!
+            .lines.removeValue(forKey: lineName)
+        
+        let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
+        
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let dbDocument: DocumentSnapshot
+            do {
+                try dbDocument = transaction.getDocument(docReference)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            guard let oldLines = dbDocument.data() else {
+                let error = NSError(
+                    domain: "AppErrorDomain",
+                    code: -1,
+                    userInfo: [
+                        NSLocalizedDescriptionKey: "Unable to retrieve data from snapshot \(dbDocument)"
+                    ]
+                )
+                errorPointer?.pointee = error
+                return nil
+            }
+            
+            var newLines = oldLines
+            
+            newLines.removeValue(forKey: lineName)
+            
+            transaction.setData(newLines, forDocument: docReference)
+            return nil
+        }) { (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
