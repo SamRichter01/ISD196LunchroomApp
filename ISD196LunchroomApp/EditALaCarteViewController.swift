@@ -38,6 +38,13 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let addItemViewController = segue.destination as! AddItemViewController
+        
+        addItemViewController.editingLine = "aLaCarte"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -83,16 +90,15 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
-        aLaCarteMenuTableView.reloadData()
     }
     
     func removeItem (itemName: String) {
         
-        aLaCarteItems.removeValue(forKey: itemName)
+        aLaCarteMenu.removeValue(forKey: itemName)
         
         db.collection("menus").document("A La Carte Menus").collection("Items").document(itemName).delete()
-    
+        
+        aLaCarteMenuTableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

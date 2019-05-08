@@ -60,7 +60,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         dateLabel.text = "Editing \(editingLine)"
         
-        if editingLine != "aLaCarte" {
+        if editingLine == "aLaCarte" {
             
             itemDescriptionTextField.isEnabled = false
             
@@ -94,8 +94,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             db.collection("menus").document("A La Carte Items").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!, "Item index": itemIndex], merge: true)
             
             db.collection("menus").document("A La Carte Menu").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!, "Item index": itemIndex], merge: true)
-            
-            return
             
         } else {
         
@@ -141,9 +139,8 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
                     print("Transaction successfully committed!")
                 }
             }
-            
-            return
         }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func checkForName(_ sender: UITextField) {

@@ -26,6 +26,6 @@ class EditALaCarteTableViewCell: UITableViewCell {
 
     @IBAction func removeItemPressed(_ sender: UIButton) {
         
-        NotificationCenter.default.post(name: NSNotification.Name("removeALaCartePressed"), object: nil, userInfo: ["itemName": itemLabel.text!])
+        NotificationCenter.default.post(name: NSNotification.Name("removeItemPressed"), object: nil, userInfo: ["itemName": itemLabel.text!])
     }
 }

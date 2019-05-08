@@ -100,7 +100,7 @@ class EditItemListsViewController: UIViewController, UITableViewDelegate, UITabl
         if let dict = notification.userInfo as NSDictionary? {
             if let itemName = dict["itemName"] as? String {
                 
-                let alertController = UIAlertController(title: "Delete A La Carte Item", message: "Are you sure you want to remove \(itemName) from the menu?", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Delete Item", message: "Are you sure you want to permanently delete \(itemName)?", preferredStyle: UIAlertControllerStyle.alert)
                 
                 alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
                 
@@ -120,7 +120,6 @@ class EditItemListsViewController: UIViewController, UITableViewDelegate, UITabl
             
             db.collection("menus").document("A La Carte Items").collection("Items").document(itemName).delete()
             
-            searchBar.text = ""
             aLaCarteMenuTableView.reloadData()
             
         } else if editingType == "mainMenu" {
@@ -128,8 +127,7 @@ class EditItemListsViewController: UIViewController, UITableViewDelegate, UITabl
             menuItems.removeValue(forKey: itemName)
             
             db.collection("menus").document("Menu Items").collection("Items").document(itemName).delete()
-            
-            searchBar.text = ""
+        
             aLaCarteMenuTableView.reloadData()
         }
     }

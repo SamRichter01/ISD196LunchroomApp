@@ -414,18 +414,42 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func createMonthPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
-        getMenu()
+        
+        let alertController = UIAlertController(title: "Upload Menu Rotation", message: "Are you sure you want to set the daily menus to the rotation from the spreadsheet?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            self.performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
+            self.getMenu()}))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func updateListPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
-        getMenuItems()
+        
+        let alertController = UIAlertController(title: "Upload Menu Items", message: "Are you sure you want to upload the Menu Items from the spreadsheet?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            self.performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
+            self.getMenuItems()}))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func updateALaCartePressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
-        getALaCarteItems()
+        
+        let alertController = UIAlertController(title: "Upload A La Carte Items", message: "Are you sure you want to upload the A La Carte items from the spreadsheet?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            self.performSegue(withIdentifier: "displayUpdatePopup", sender: nil)
+            self.getALaCarteItems()}))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // Gets the spreadsheet containing the days of the month for getMenu to use, and stores them in a global array
