@@ -41,6 +41,8 @@ class EditItemListsViewController: UIViewController, UITableViewDelegate, UITabl
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.editItem(_:)), name: NSNotification.Name(rawValue: "editItemPressed"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name("reload"), object: nil)
+        
         if editingType == "aLaCarte" {
             
             titleLabel.text = "Editing A La Carte Items"
@@ -64,6 +66,11 @@ class EditItemListsViewController: UIViewController, UITableViewDelegate, UITabl
         editItemViewController.editingName = editingName
         
         editingName = ""
+    }
+    
+    @objc func reload() {
+        
+        aLaCarteMenuTableView.reloadData()
     }
     
     @IBAction func returnToMainMenu(_ sender: UIButton) {

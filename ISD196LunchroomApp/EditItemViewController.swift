@@ -18,9 +18,11 @@ class EditItemViewController: UIViewController {
     @IBOutlet weak var saveItemButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var priceStepper: UIStepper!
     
     lazy var db = Firestore.firestore()
     
+    var previousName = ""
     var editingName = ""
     var editingType = ""
 
@@ -56,6 +58,7 @@ class EditItemViewController: UIViewController {
             titleLabel.text = "Edit Menu Item"
             
             priceTextField.isEnabled = false
+            priceStepper.isEnabled = false
             
             if editingName != "" {
                 
@@ -64,6 +67,8 @@ class EditItemViewController: UIViewController {
                 
             }
         }
+        
+        previousName = editingName
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -79,6 +84,13 @@ class EditItemViewController: UIViewController {
             
             db.collection("menus").document("A La Carte Items").collection("Items").document(newItem.name).setData(["Cost": newItem.price], merge: true)
             
+            if editingName != "" && itemNameTextField.text != editingName {
+                
+                aLaCarteItems.removeValue(forKey: editingName)
+                
+                db.collection("menus").document("A La Carte Items").collection("Items").document(editingName).delete()
+            }
+            
         } else if editingType == "mainMenu" {
             
             let newItem = MenuItem(name: itemNameTextField.text!, description: descriptionTextField.text!)
@@ -86,7 +98,15 @@ class EditItemViewController: UIViewController {
             
             db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": newItem.description], merge: true)
             
+            if editingName != "" && itemNameTextField.text != editingName {
+                
+                menuItems.removeValue(forKey: editingName)
+                
+                db.collection("menus").document("Menu Items").collection("Items").document(editingName).delete()
+            }
         }
+        NotificationCenter.default.post(name: NSNotification.Name("reload"),
+                                        object: nil)
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -149,6 +169,44 @@ class EditItemViewController: UIViewController {
             saveItemButton.isEnabled = false
         }
     }
+    
+    @IBAction func priceStepperPressed(_ sender: UIStepper) {
+        
+        var str = priceTextField.text!
+        str.removeFirst()
+        
+        if let dub = Double(str) {
+            
+            let min = 0.25 - dub
+            let max = 10 - dub
+            
+            priceStepper.maximumValue = max
+            priceStepper.minimumValue = min
+            
+            let newPrice = dub + priceStepper.value
+            
+            print(newPrice)
+            
+            print(newPrice/0.1)
+            
+            print(newPrice.truncatingRemainder(dividingBy: 0.1))
+            
+            if newPrice.truncatingRemainder(dividingBy: 0.1) < 0.1 && newPrice.truncatingRemainder(dividingBy: 0.1) > 0.05 {
+                    
+                priceTextField.text = "$\(newPrice)0"
+                    
+            } else {
+                    
+                priceTextField.text = "$\(newPrice)"
+            }
+        } else {
+            
+            priceTextField.text = "$0.25"
+        }
+        
+        priceStepper.value = 0
+    }
+    
     /*
      // MARK: - Navigation
      

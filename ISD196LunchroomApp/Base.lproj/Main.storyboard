@@ -2679,7 +2679,7 @@
                         <outlet property="deleteTextButton" destination="dSz-M6-mjV" id="S3T-7Q-kcO"/>
                         <outlet property="emptyViewLabel" destination="FHq-33-gn1" id="sdb-0W-hQX"/>
                         <outlet property="searchBar" destination="kCB-LA-Cnz" id="UHa-up-10l"/>
-                        <segue destination="jLu-3Q-5ec" kind="show" identifier="addItemPressed" id="0mi-0o-Ida"/>
+                        <segue destination="jLu-3Q-5ec" kind="presentation" identifier="addItemPressed" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="0mi-0o-Ida"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGy-2S-2fg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2905,6 +2905,14 @@
                                                         <action selector="saveLinePressed:" destination="aNL-6D-HSY" eventType="touchUpInside" id="qbk-Tw-XEa"/>
                                                     </connections>
                                                 </button>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" stepValue="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="J5i-SO-vWp">
+                                                    <rect key="frame" x="326" y="259" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="priceStepperPressed:" destination="aNL-6D-HSY" eventType="valueChanged" id="lB5-rq-sFt"/>
+                                                    </connections>
+                                                </stepper>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5w-s7-oPP">
                                                     <rect key="frame" x="114" y="139" width="306" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2926,7 +2934,7 @@
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aSG-ZW-aOi">
-                                                    <rect key="frame" x="114" y="259" width="155" height="30"/>
+                                                    <rect key="frame" x="114" y="259" width="186" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
@@ -2950,6 +2958,7 @@
                         <outlet property="descriptionTextField" destination="aaJ-Pq-qv3" id="cMK-aM-JFg"/>
                         <outlet property="itemNameTextField" destination="H5w-s7-oPP" id="6rf-m5-bIP"/>
                         <outlet property="itemView" destination="yMo-96-Cai" id="DCT-FV-UWZ"/>
+                        <outlet property="priceStepper" destination="J5i-SO-vWp" id="xCi-cM-fFa"/>
                         <outlet property="priceTextField" destination="aSG-ZW-aOi" id="izG-FL-0Az"/>
                         <outlet property="saveItemButton" destination="V33-bS-Tj1" id="lI8-u7-OcT"/>
                         <outlet property="titleLabel" destination="yDZ-iu-IUf" id="SBZ-zB-Nhh"/>
@@ -2957,7 +2966,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVH-ZS-XsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="-452"/>
+            <point key="canvasLocation" x="283.59375" y="-452.34374999999994"/>
         </scene>
     </scenes>
     <resources>
