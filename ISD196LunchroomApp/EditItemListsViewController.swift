@@ -57,6 +57,8 @@ class EditItemListsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        editingName = ""
         aLaCarteMenuTableView.reloadData()
     }
     
@@ -65,6 +67,7 @@ class EditItemListsViewController: UIViewController, UITableViewDelegate, UITabl
         let editItemViewController = segue.destination as! EditItemViewController
         
         editItemViewController.editingType = editingType
+        editItemViewController.editingName = editingName
     }
     
     @IBAction func returnToMainMenu(_ sender: UIButton) {
