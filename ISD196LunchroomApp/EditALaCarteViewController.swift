@@ -96,7 +96,7 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
         
         aLaCarteMenu.removeValue(forKey: itemName)
         
-        db.collection("menus").document("A La Carte Menus").collection("Items").document(itemName).delete()
+        db.collection("menus").document("A La Carte Menu").collection("Items").document(itemName).delete()
         
         aLaCarteMenuTableView.reloadData()
     }

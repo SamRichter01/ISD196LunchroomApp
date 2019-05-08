@@ -229,7 +229,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if editingLine == "aLaCarte" {
                     
                     aLaCarteMenu[str] = aLaCarteItems[str]
-                db.collection("menus").document("aLaCarteMenu").collection("Items").document(str).setData(["Cost": aLaCarteItems[str]!.price], merge: true)
+                db.collection("menus").document("A La Carte Menu").collection("Items").document(str).setData(["Cost": aLaCarteItems[str]!.price], merge: true)
                     
                 } else {
                     

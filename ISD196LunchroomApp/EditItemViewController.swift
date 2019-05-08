@@ -79,7 +79,18 @@ class EditItemViewController: UIViewController {
         
         if editingType == "aLaCarte" {
             
-            let newItem = MenuItem(name: itemNameTextField.text!, price: priceTextField.text!)
+            var str = priceTextField.text!
+            
+            if str.count > 1 {
+                str.removeFirst()
+            }
+            
+            if let dub = Double(str) {
+                
+                str = "$\(String(format: "%.2f", dub))"
+            }
+            
+            let newItem = MenuItem(name: itemNameTextField.text!, price: str)
             aLaCarteItems[itemNameTextField.text!] = newItem
             
             db.collection("menus").document("A La Carte Items").collection("Items").document(newItem.name).setData(["Cost": newItem.price], merge: true)
@@ -87,8 +98,15 @@ class EditItemViewController: UIViewController {
             if editingName != "" && itemNameTextField.text != editingName {
                 
                 aLaCarteItems.removeValue(forKey: editingName)
+                aLaCarteMenu.removeValue(forKey: editingName)
+                
+                aLaCarteMenu[itemNameTextField.text!] = newItem
+                
+                db.collection("menus").document("A La Carte Menu").collection("Items").document(newItem.name).setData(["Cost": newItem.price], merge: true)
                 
                 db.collection("menus").document("A La Carte Items").collection("Items").document(editingName).delete()
+                
+                db.collection("menus").document("A La Carte Menu").collection("Items").document(editingName).delete()
             }
             
         } else if editingType == "mainMenu" {
@@ -173,32 +191,20 @@ class EditItemViewController: UIViewController {
     @IBAction func priceStepperPressed(_ sender: UIStepper) {
         
         var str = priceTextField.text!
-        str.removeFirst()
+        
+        if str.count > 1 {
+            str.removeFirst()
+        }
         
         if let dub = Double(str) {
             
-            let min = 0.25 - dub
-            let max = 10 - dub
-            
-            priceStepper.maximumValue = max
-            priceStepper.minimumValue = min
+            priceStepper.maximumValue = (10.0 - dub)
+            priceStepper.minimumValue = (0.25 - dub)
             
             let newPrice = dub + priceStepper.value
             
-            print(newPrice)
+            priceTextField.text = "$\(String(format: "%.2f", newPrice))"
             
-            print(newPrice/0.1)
-            
-            print(newPrice.truncatingRemainder(dividingBy: 0.1))
-            
-            if newPrice.truncatingRemainder(dividingBy: 0.1) < 0.1 && newPrice.truncatingRemainder(dividingBy: 0.1) > 0.05 {
-                    
-                priceTextField.text = "$\(newPrice)0"
-                    
-            } else {
-                    
-                priceTextField.text = "$\(newPrice)"
-            }
         } else {
             
             priceTextField.text = "$0.25"
