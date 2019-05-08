@@ -40,8 +40,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         signInButton.isEnabled = true
         
         // Creates listener that calls a method to change the name label when the user logs in.
-        NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn),
-            name: Notification.Name("userLoggedIn"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn), name: Notification.Name("userLoggedIn"), object: nil)
     
         // Setup of the default google user settings and auto-signin
         GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeSheetsSpreadsheetsReadonly]
@@ -143,8 +142,15 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             } else if error == nil {
                 // ensures that the user that just logged in is using an approved email account, logs out if not.
                 // Again, we probably want the users saved in the database so we don't have to hardcode admins in.
-                if (user.profile.email.contains("@apps.district196.org")) ||
-                    (user.profile.email == "isd196lunchroomapp@gmail.com") {
+                if (user.profile.email.contains("@apps.district196.org")) {
+                    
+                    self.nameLabel.text = "Downloading Menus"
+                    
+                    MasterMenu.downloadALaCarteMenu()
+                    MasterMenu.downloadMonthlyMenus()
+                    self.downloadMenuItems()
+                    
+                } else if (user.profile.email == "isd196lunchroomapp@gmail.com") {
                     
                     self.nameLabel.text = "Downloading Menus"
                         
@@ -182,10 +188,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     func downloadMenuItems() {
         
-        // Checks to make sure that the dictionary hasn't already been created.
-        if menuItems.count > 0 {
-            return
-        }
+        menuItems.removeAll()
+        menuItems = Dictionary<String,MenuItem>()
         
         let db = Firestore.firestore()
         let settings = db.settings
@@ -212,8 +216,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                                 name: document.documentID,
                                 description: ""))
                         }
+                        
                     }
-                    
                     NotificationCenter.default.post(name: NSNotification.Name("userLoggedIn"), object: nil)
                 }
         })

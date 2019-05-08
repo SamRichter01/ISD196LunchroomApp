@@ -151,8 +151,11 @@ class StudentMenuViewController: UIViewController {
         day = calendar.component(.day, from: date) - 1
         let month = calendar.component(.month, from: date)
         monthName = monthToString(month: month)
-        
+        print(monthName)
+        print(day)
         while (monthlyMenus[monthName]!.days[day] == nil) {
+            print(monthName)
+            print(day)
             if (day <= 0) {
                 if (month == 1) {
                     monthName = monthToString(month: 12)

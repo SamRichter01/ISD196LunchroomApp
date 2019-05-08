@@ -25,6 +25,8 @@ class MasterMenu {
     
     static func downloadMenuItems() {
         
+        print("downloading menu items")
+        
         // Checks to make sure that the dictionary hasn't already been created.
         menuItems.removeAll()
         menuItems = Dictionary<String,MenuItem>()
@@ -54,6 +56,8 @@ class MasterMenu {
     
     static func downloadALaCarteItems() {
         
+        print("downloading a la carte items")
+        
         aLaCarteItems.removeAll()
         aLaCarteItems = Dictionary<String,MenuItem>()
         
@@ -79,6 +83,8 @@ class MasterMenu {
     
     static func downloadALaCarteMenu() {
         
+        print("downloading menu menu")
+        
         aLaCarteMenu.removeAll()
         aLaCarteMenu = Dictionary<String,MenuItem>()
         
@@ -103,6 +109,8 @@ class MasterMenu {
     }
     
     static func downloadMonthlyMenus() {
+        
+        print("downloading main menu")
         
         monthlyMenus.removeAll()
         monthlyMenus = Dictionary<String,Month>()
@@ -191,6 +199,8 @@ class MasterMenu {
     }
     
     static func downloadOrderData() {
+        
+        print("downloading order data")
         
         orderData.removeAll()
         orderData = Dictionary<String, Dictionary<String, Dictionary<String,Int>>>()

@@ -84,16 +84,14 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if editingLine == "aLaCarte" {
             
-            let itemIndex = aLaCarteItems.count
-            
             let newItem = MenuItem(name: itemNameTextField.text!, price: itemPriceTextField.text!)
             
             aLaCarteMenu[newItem.name] = newItem
             aLaCarteItems[newItem.name] = newItem
             
-            db.collection("menus").document("A La Carte Items").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!, "Item index": itemIndex], merge: true)
+            db.collection("menus").document("A La Carte Items").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!], merge: true)
             
-            db.collection("menus").document("A La Carte Menu").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!, "Item index": itemIndex], merge: true)
+            db.collection("menus").document("A La Carte Menu").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!], merge: true)
             
         } else {
         
