@@ -81,7 +81,8 @@ class EditItemViewController: UIViewController {
             
             var str = priceTextField.text!
             
-            if str.count > 1 {
+            if str.contains("$") {
+                
                 str.removeFirst()
             }
             
@@ -192,7 +193,8 @@ class EditItemViewController: UIViewController {
         
         var str = priceTextField.text!
         
-        if str.count > 1 {
+        if str.contains("$") {
+            
             str.removeFirst()
         }
         

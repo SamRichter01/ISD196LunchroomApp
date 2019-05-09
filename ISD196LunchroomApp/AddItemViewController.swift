@@ -35,6 +35,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var itemDescriptionTextField: UITextField!
     @IBOutlet weak var itemPriceTextField: UITextField!
     @IBOutlet weak var saveAndUploadButton: UIButton!
+    @IBOutlet weak var priceStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +85,19 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if editingLine == "aLaCarte" {
             
-            let newItem = MenuItem(name: itemNameTextField.text!, price: itemPriceTextField.text!)
+            var str = itemPriceTextField.text!
+            
+            if str.contains("$") {
+                
+                str.removeFirst()
+            }
+            
+            if let dub = Double(str) {
+                
+                str = "$\(String(format: "%.2f", dub))"
+            }
+            
+            let newItem = MenuItem(name: itemNameTextField.text!, price: str)
             
             aLaCarteMenu[newItem.name] = newItem
             aLaCarteItems[newItem.name] = newItem
@@ -274,6 +287,34 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
+        
+        aLaCarteMenuTableView.reloadData()
+    }
+    
+    @IBAction func priceStepperPressed(_ sender: UIStepper) {
+        
+        var str = itemPriceTextField.text!
+        
+        if str.contains("$") {
+            
+            str.removeFirst()
+        }
+        
+        if let dub = Double(str) {
+            
+            priceStepper.maximumValue = (10.0 - dub)
+            priceStepper.minimumValue = (0.25 - dub)
+            
+            let newPrice = dub + priceStepper.value
+            
+            itemPriceTextField.text = "$\(String(format: "%.2f", newPrice))"
+            
+        } else {
+            
+            itemPriceTextField.text = "$0.25"
+        }
+        
+        priceStepper.value = 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -282,9 +323,17 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        matchingItems.removeAll()
+        
         if editingLine == "aLaCarte" {
             
-            matchingItems = Array(aLaCarteItems.values)
+            for item in aLaCarteItems.values {
+                
+                if aLaCarteMenu[item.name] == nil {
+                    
+                    matchingItems.append(item)
+                }
+            }
             
         } else {
             

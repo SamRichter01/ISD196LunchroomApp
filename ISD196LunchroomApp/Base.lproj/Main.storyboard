@@ -1930,7 +1930,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKU-Ox-Uyw">
-                                            <rect key="frame" x="122" y="107" width="525" height="883"/>
+                                            <rect key="frame" x="122" y="71" width="525" height="883"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfY-ew-OuG">
@@ -1946,6 +1946,27 @@
                                                     <state key="normal" image="Dark Back Arrow"/>
                                                     <connections>
                                                         <action selector="returnToMainMenu:" destination="jLu-3Q-5ec" eventType="touchUpInside" id="vio-CH-C02"/>
+                                                    </connections>
+                                                </button>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Fl-Df7">
+                                                    <rect key="frame" x="20" y="304" width="485" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="returnButtonPressed:" destination="GYg-lE-Vst" eventType="primaryActionTriggered" id="3K7-pq-ewY"/>
+                                                        <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="3i4-yp-sA5"/>
+                                                        <action selector="returnButtonPressed:" destination="jLu-3Q-5ec" eventType="primaryActionTriggered" id="4LX-eB-2hI"/>
+                                                        <action selector="searchBarEdited:" destination="jLu-3Q-5ec" eventType="editingChanged" id="ygz-Bx-roD"/>
+                                                    </connections>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17k-xo-gxK">
+                                                    <rect key="frame" x="477" y="309" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Remove"/>
+                                                    <connections>
+                                                        <action selector="deleteText:" destination="jLu-3Q-5ec" eventType="touchUpInside" id="ldr-0N-KZ3"/>
                                                     </connections>
                                                 </button>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ntb-Mt-Rn5">
@@ -2002,7 +2023,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qVV-sg-5NB">
                                                     <rect key="frame" x="20" y="120" width="485" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -2012,7 +2033,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aIL-BJ-8dp">
                                                     <rect key="frame" x="20" y="158" width="485" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -2020,7 +2041,7 @@
                                                     </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFl-3t-oAY">
-                                                    <rect key="frame" x="371" y="216" width="134" height="36"/>
+                                                    <rect key="frame" x="371" y="242" width="134" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                                     <state key="normal" title="Save and Upload">
@@ -2040,37 +2061,6 @@
                                                     <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi9-mJ-Fqm">
-                                                    <rect key="frame" x="20" y="196" width="249" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="checkForPrice:" destination="jLu-3Q-5ec" eventType="editingDidEnd" id="un9-DU-Fdq"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Fl-Df7">
-                                                    <rect key="frame" x="20" y="304" width="485" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="returnButtonPressed:" destination="GYg-lE-Vst" eventType="primaryActionTriggered" id="3K7-pq-ewY"/>
-                                                        <action selector="returnButtonPressed:" destination="ii8-sK-ybY" eventType="primaryActionTriggered" id="3i4-yp-sA5"/>
-                                                        <action selector="returnButtonPressed:" destination="jLu-3Q-5ec" eventType="primaryActionTriggered" id="4LX-eB-2hI"/>
-                                                        <action selector="searchBarEdited:" destination="jLu-3Q-5ec" eventType="editingChanged" id="ygz-Bx-roD"/>
-                                                    </connections>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17k-xo-gxK">
-                                                    <rect key="frame" x="477" y="309" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="Remove"/>
-                                                    <connections>
-                                                        <action selector="deleteText:" destination="jLu-3Q-5ec" eventType="touchUpInside" id="ldr-0N-KZ3"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add From List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t65-CA-ORJ">
                                                     <rect key="frame" x="20" y="260" width="167" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2078,6 +2068,24 @@
                                                     <color key="textColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi9-mJ-Fqm">
+                                                    <rect key="frame" x="20" y="196" width="363" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="checkForPrice:" destination="jLu-3Q-5ec" eventType="editingDidEnd" id="un9-DU-Fdq"/>
+                                                    </connections>
+                                                </textField>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" stepValue="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="spt-GT-2dW">
+                                                    <rect key="frame" x="411" y="197" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.49019607840000001" green="0.71372549019999998" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="priceStepperPressed:" destination="jLu-3Q-5ec" eventType="valueChanged" id="VEI-Z0-YRy"/>
+                                                    </connections>
+                                                </stepper>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
@@ -2097,6 +2105,7 @@
                         <outlet property="itemNameTextField" destination="qVV-sg-5NB" id="4UX-SP-66O"/>
                         <outlet property="itemPriceTextField" destination="gi9-mJ-Fqm" id="aQL-D3-hPr"/>
                         <outlet property="itemView" destination="sKU-Ox-Uyw" id="ZhI-tJ-MI7"/>
+                        <outlet property="priceStepper" destination="spt-GT-2dW" id="1iL-Bb-NRB"/>
                         <outlet property="saveAndUploadButton" destination="hFl-3t-oAY" id="1cE-iQ-RyB"/>
                         <outlet property="searchBar" destination="tjO-Fl-Df7" id="EmO-GX-jy9"/>
                     </connections>
@@ -2104,7 +2113,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIP-Fy-lfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GYg-lE-Vst" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2804" y="-1123"/>
+            <point key="canvasLocation" x="2803.90625" y="-1123.2421875"/>
         </scene>
         <!--Detail Popup View Controller-->
         <scene sceneID="gL5-OK-PUn">
