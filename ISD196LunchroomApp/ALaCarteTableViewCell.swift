@@ -26,6 +26,15 @@ class ALaCarteTableViewCell: UITableViewCell {
     }
 
     @IBAction func addItemToOrder(_ sender: UIButton) {
+        
+        if itemsOrdered.count >= 6 {
+            
+            let removedName = itemsOrdered[0].name
+            itemsOrdered.remove(at: 0)
+            
+            NotificationCenter.default.post(name: Notification.Name("itemLimitReached"), object: nil, userInfo: ["removedName": removedName])
+        }
+        
         let item = MenuItem(name: itemLabel.text!, price: priceLabel.text!)
         itemsOrdered.append(item)
         let price = Double(item.price.suffix(4))

@@ -23,11 +23,17 @@ class OrderCollectionViewReusableView: UICollectionReusableView {
     
     @IBAction func addToOrderPressed(_ sender: UIButton) {
         
-        if priceLabel.text != "Prices vary" {
+        if mealsOrdered.count >= 3 {
             
-            let price = Double(line.price.suffix(4))
-            totalPrice += price!
+            let removedName = mealsOrdered[0].name
+            mealsOrdered.remove(at: 0)
             
+            NotificationCenter.default.post(name: Notification.Name("mealLimitReached"), object: nil, userInfo: ["removedName": removedName])
+        }
+        
+        if let price = Double(line.price.suffix(4)) {
+            
+            totalPrice += price
         }
         
         let meal = Line(name: lineLabel.text!, price: priceLabel.text!)

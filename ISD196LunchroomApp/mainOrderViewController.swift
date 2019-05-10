@@ -69,6 +69,8 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         // Creates a listener to update the item count when a new item is added
         NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
             name: Notification.Name("itemOrdered"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.limitReached(_:)), name: NSNotification.Name(rawValue: "mealLimitReached"), object: nil)
 
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
@@ -143,6 +145,20 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         } else {
             self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc func limitReached (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let str = dict["removedName"] as? String {
+                
+                let alertController = UIAlertController(title: "Meal Limit Reached", message: "Exceeded meal limit of 3, \(str) has been removed from order to make room", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     

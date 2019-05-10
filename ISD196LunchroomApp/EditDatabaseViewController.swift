@@ -85,9 +85,13 @@ class EditDatabaseViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let editItemListsViewController = segue.destination as! EditItemListsViewController
-        
-        editItemListsViewController.editingType = editingType
+        if segue.identifier == "editItemsPressed" {
+            
+            let editItemListsViewController = segue.destination as! EditItemListsViewController
+            
+            editItemListsViewController.editingType = editingType
+            
+        }
     }
     
     // The number of columns in the month picker

@@ -116,7 +116,7 @@ class ItemPopupViewController: UIViewController {
         
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         let sentDate = dateFormatter.string(from: date)
         
         var commentText = "No comment"
@@ -139,7 +139,9 @@ class ItemPopupViewController: UIViewController {
             studentName = GIDSignIn.sharedInstance()!.currentUser.profile.name
         }
         
-        feedbackRef.addDocument(data: ["commentText": commentText, "rating": rating, "line": line, "sentDate": sentDate, "studentName": studentName])
+        let studentEmail = GIDSignIn.sharedInstance()!.currentUser.profile.email
+        
+        feedbackRef.addDocument(data: ["commentText": commentText, "rating": rating, "line": line, "sentDate": sentDate, "studentName": studentName, "email": studentEmail])
         
         self.dismiss(animated: true, completion: nil)
     }

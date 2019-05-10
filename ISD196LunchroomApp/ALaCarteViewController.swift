@@ -72,6 +72,9 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         // Creates a listener to update the item count when a new item is added
         NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
             name: Notification.Name("itemOrdered"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(limitReached),
+            name: Notification.Name("itemLimitReached"), object: nil)
     }
 
     @objc func itemOrdered () {
@@ -146,6 +149,20 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func deleteText(_ sender: UIButton) {
         searchBar.text = ""
         aLaCarteTableView.reloadData()
+    }
+    
+    @objc func limitReached (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let str = dict["removedName"] as? String {
+                
+                let alertController = UIAlertController(title: "Item Limit Reached", message: "Exceeded item limit of 6, \(str) has been removed from order", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func finalizeOrderPressed(_ sender: UIButton) {

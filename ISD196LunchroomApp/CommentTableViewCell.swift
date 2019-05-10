@@ -14,6 +14,10 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var commentTextLabel: UILabel!
     @IBOutlet weak var studentNameLabel: UILabel!
+    @IBOutlet weak var studentEmailLabel: UILabel!
+    @IBOutlet weak var deleteCommentButton: UIButton!
+    
+    var documentId = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,4 +31,8 @@ class CommentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func deleteCommentPressed(_ sender: UIButton) {
+        
+        NotificationCenter.default.post(name: NSNotification.Name("deleteComment"), object: nil, userInfo: ["documentId": documentId])
+    }
 }

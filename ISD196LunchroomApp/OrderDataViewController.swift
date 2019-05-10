@@ -156,8 +156,11 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 
                 for document in querySnapshot!.documents {
                     
+                    let docId = document.documentID
                     var tempDoc = document.data()
                     var comment = feedback()
+                    
+                    comment.documentId = docId
                     
                     if tempDoc["line"] as! String == forLine {
                         
@@ -173,6 +176,11 @@ class OrderDataViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                         if tempDoc["commentText"] != nil {
                             
                             comment.text = tempDoc["commentText"] as! String
+                        }
+                        
+                        if tempDoc["email"] != nil {
+                            
+                            comment.studentEmail = tempDoc["email"] as! String
                         }
                         
                         loadedComments.append(comment)

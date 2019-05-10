@@ -112,7 +112,14 @@ class EditItemViewController: UIViewController {
             
         } else if editingType == "mainMenu" {
             
-            let newItem = MenuItem(name: itemNameTextField.text!, description: descriptionTextField.text!)
+            var desc = ""
+            
+            if descriptionTextField.text == "" {
+                
+                desc = "No description provided"
+            }
+            
+            let newItem = MenuItem(name: itemNameTextField.text!, description: desc)
             menuItems[itemNameTextField.text!] = newItem
             
             db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": newItem.description], merge: true)
@@ -134,40 +141,21 @@ class EditItemViewController: UIViewController {
         
         if let _ = itemNameTextField.text {
             
-            if let _ = descriptionTextField.text {
+            if editingName == "aLaCarte" {
                 
-                saveItemButton.isEnabled = true
+                if let _ = priceTextField.text {
                 
-            } else if let _ = priceTextField.text {
+                    saveItemButton.isEnabled = true
                 
-                saveItemButton.isEnabled = true
+                } else {
                 
+                    saveItemButton.isEnabled = false
+            
+                }
             } else {
                 
-                saveItemButton.isEnabled = false
-            }
-            
-        } else {
-            
-            saveItemButton.isEnabled = false
-        }
-    }
-    
-    @IBAction func checkForDescription(_ sender: UITextField) {
-        
-        if let _ = descriptionTextField.text {
-            
-            if let _ = itemNameTextField.text {
-                
                 saveItemButton.isEnabled = true
-                
-            } else {
-                
-                saveItemButton.isEnabled = false
             }
-        } else {
-            
-            saveItemButton.isEnabled = false
         }
     }
     

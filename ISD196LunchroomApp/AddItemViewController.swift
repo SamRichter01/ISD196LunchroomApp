@@ -107,13 +107,20 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             db.collection("menus").document("A La Carte Menu").collection("Items").document(newItem.name).setData(["Cost": itemPriceTextField.text!], merge: true)
             
         } else {
+            
+            var desc = ""
+            
+            if itemDescriptionTextField.text == "" {
+                
+                desc = "No description provided"
+            }
         
-            let newItem = MenuItem(name: itemNameTextField.text!, description: "")
+            let newItem = MenuItem(name: itemNameTextField.text!, description: desc)
             
             monthlyMenus[editingMonth]!.days[Int(editingDay)!]!
                 .lines[editingLine]!.items.append(newItem.name)
             
-            db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": itemDescriptionTextField.text!])
+            db.collection("menus").document("Menu Items").collection("Items").document(newItem.name).setData(["Description": desc])
             
             let docReference = db.collection("menus").document(editingMonth).collection("days").document(editingDay)
             
@@ -158,31 +165,16 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if let _ = itemNameTextField.text {
             
-            if let _ = itemDescriptionTextField.text {
+            if editingLine == "aLaCarte" {
                 
-                saveAndUploadButton.isEnabled = true
-                
-            } else {
-                
-                saveAndUploadButton.isEnabled = false
-            }
-        } else {
-            
-            saveAndUploadButton.isEnabled = false
-        }
-    }
-    
-    @IBAction func checkForDescription(_ sender: UITextField) {
-        
-        if let _ = itemNameTextField.text {
-            
-            if let _ = itemDescriptionTextField.text {
-                
-                saveAndUploadButton.isEnabled = true
+                if let _ = itemPriceTextField.text {
+                    
+                    saveAndUploadButton.isEnabled = true
+                }
                 
             } else {
                 
-                saveAndUploadButton.isEnabled = false
+                saveAndUploadButton.isEnabled = true
             }
         } else {
             
@@ -193,25 +185,18 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func checkForPrice(_ sender: UITextField) {
         
         if let _ = itemNameTextField.text {
-            
-            if let _ = itemDescriptionTextField.text {
                 
-                if let _ = itemPriceTextField.text {
+            if let _ = itemPriceTextField.text {
                     
-                    saveAndUploadButton.isEnabled = true
+                saveAndUploadButton.isEnabled = true
                     
-                } else {
-                    
-                    saveAndUploadButton.isEnabled = false
-                }
-                
             } else {
-                
+                    
                 saveAndUploadButton.isEnabled = false
             }
-            
+                
         } else {
-            
+                
             saveAndUploadButton.isEnabled = false
         }
     }

@@ -16,6 +16,8 @@ struct feedback {
     var rating = ""
     var text = ""
     var studentName = ""
+    var studentEmail = ""
+    var documentId = ""
 }
 
 class CommentPopupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -31,6 +33,8 @@ class CommentPopupViewController: UIViewController, UITableViewDelegate, UITable
     var month = ""
     var day = ""
     
+    lazy var db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +46,7 @@ class CommentPopupViewController: UIViewController, UITableViewDelegate, UITable
         itemView.layer.shadowRadius = 10
         itemView.layer.shadowOpacity = 0.1
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deleteComment(_:)), name: NSNotification.Name(rawValue: "deleteComment"), object: nil)
         
         titleLabel.text = "Feedback for \(line)"
     }
@@ -69,6 +73,49 @@ class CommentPopupViewController: UIViewController, UITableViewDelegate, UITable
      // Pass the selected object to the new view controller.
      }
      */
+    
+    @objc func deleteComment (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let docId = dict["documentId"] as? String {
+                
+                let alertController = UIAlertController(title: "Delete Comment", message: "Are you sure you want to delete this comment?", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+                
+                alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                    self.deleteComment(docId: docId)}))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func deleteComment (docId: String) {
+        
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
+        print(docId)
+        
+        db.collection("feedback").document(month).collection("days")
+            .document(day).collection("comments").document(docId).delete()
+        
+        for var x in 0..<comments.count {
+            
+            if comments[x].documentId == docId {
+                
+                comments.remove(at: x)
+                
+                x -= 1
+                
+                break
+            }
+        }
+        
+        commentTableView.reloadData()
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -110,6 +157,8 @@ class CommentPopupViewController: UIViewController, UITableViewDelegate, UITable
         cell.commentTextLabel.text = comments[indexPath.row].text
         cell.dateLabel.text = comments[indexPath.row].commentDate
         cell.studentNameLabel.text = comments[indexPath.row].studentName
+        cell.studentEmailLabel.text = comments[indexPath.row].studentEmail
+        cell.documentId = comments[indexPath.row].documentId
         
         return cell
         
