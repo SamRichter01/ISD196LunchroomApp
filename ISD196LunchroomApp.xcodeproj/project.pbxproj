@@ -17,7 +17,6 @@
 		2203334522287D2000AF29AC /* ProfanityFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2203334422287D2000AF29AC /* ProfanityFilter.swift */; };
 		2203334722288C4E00AF29AC /* Profanity.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2203334622288C4D00AF29AC /* Profanity.txt */; };
 		22033383222D916A00AF29AC /* CommentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22033382222D916900AF29AC /* CommentPopupViewController.swift */; };
-		2203338522304CD400AF29AC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2203338422304CD400AF29AC /* CommentTableViewCell.swift */; };
 		221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */; };
 		221FAD4121BAE0B8005AE7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD3F21BAE0B8005AE7AE /* Main.storyboard */; };
 		221FAD4321BAE0C0005AE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD4221BAE0C0005AE7AE /* Assets.xcassets */; };
@@ -27,49 +26,36 @@
 		221FAD6A21BAE1AE005AE7AE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6921BAE1AD005AE7AE /* Podfile */; };
 		221FAD6C21BAEDD8005AE7AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */; };
 		2229CA7F228092AF00166F0A /* DatabasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229CA7E228092AF00166F0A /* DatabasePopupViewController.swift */; };
-		223438DD221F1365005EB3D0 /* OrderDataViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */; };
 		223438DF22205E41005EB3D0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438DE22205E41005EB3D0 /* AddItemViewController.swift */; };
-		223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */; };
-		223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */; };
-		223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */; };
 		223438E92225A241005EB3D0 /* Open_Sans in Resources */ = {isa = PBXBuildFile; fileRef = 223438E82225A241005EB3D0 /* Open_Sans */; };
-		22457196223AD94B00D7B02A /* NewItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */; };
 		22457198223C024000D7B02A /* NewLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22457197223C024000D7B02A /* NewLineViewController.swift */; };
 		2245719A2242C5D600D7B02A /* NewSchoolDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */; };
 		225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */; };
 		226449D92281BEF3004705C0 /* EditALaCarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449D82281BEF2004705C0 /* EditALaCarteViewController.swift */; };
-		226449DB2281DDF3004705C0 /* EditALaCarteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */; };
 		226449DD2282242C004705C0 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DC2282242C004705C0 /* EditItemViewController.swift */; };
-		226449DF228227DC004705C0 /* EditItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449DE228227DC004705C0 /* EditItemTableViewCell.swift */; };
 		226449E1228234A3004705C0 /* EditItemListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449E0228234A2004705C0 /* EditItemListsViewController.swift */; };
+		226449E32289B421004705C0 /* TableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449E22289B420004705C0 /* TableViewCells.swift */; };
+		226449E52289B63A004705C0 /* CollectionReusableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449E42289B63A004705C0 /* CollectionReusableViews.swift */; };
+		226449E72289B712004705C0 /* CollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449E62289B712004705C0 /* CollectionViewCells.swift */; };
+		226449E92289B7C8004705C0 /* DataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226449E82289B7C8004705C0 /* DataClasses.swift */; };
 		22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22873A65221483D5002D5F64 /* NetworkManager.swift */; };
 		22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */; };
-		22ACA8BD21C0291800069A70 /* month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BC21C0291800069A70 /* month.swift */; };
-		22ACA8BF21C0292700069A70 /* day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8BE21C0292700069A70 /* day.swift */; };
-		22ACA8C121C0293100069A70 /* line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C021C0293100069A70 /* line.swift */; };
 		22ACA8C421C029EA00069A70 /* bridging header.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C321C029EA00069A70 /* bridging header.m */; };
-		22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8C921C171BC00069A70 /* MenuItem.swift */; };
 		22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8CA21C171BC00069A70 /* MasterMenu.swift */; };
 		22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACA8CD21C2CB1B00069A70 /* mainOrderViewController.swift */; };
 		22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C321BED70500114D53 /* StudentMenuViewController.swift */; };
 		22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C415C521BED71400114D53 /* AdminMenuViewController.swift */; };
 		22E490B921FA347B00D3D90C /* SendPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490B821FA347B00D3D90C /* SendPopupViewController.swift */; };
 		22E490BB21FB7B7600D3D90C /* LunchMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490BA21FB7B7300D3D90C /* LunchMenuViewController.swift */; };
-		22E490BF21FE728100D3D90C /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490BE21FE728100D3D90C /* MenuCollectionViewCell.swift */; };
-		22E490C121FE795A00D3D90C /* MenuCollectionViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */; };
-		22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490C222036FF900D3D90C /* OrderCollectionViewReusableView.swift */; };
-		22E490C522037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490C422037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift */; };
 		22E490CB2204B6A200D3D90C /* OrderDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */; };
 		22E490CD2204C56300D3D90C /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490CC2204C56300D3D90C /* GraphView.swift */; };
 		22E490CF22147FED00D3D90C /* EditMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E490CE22147FED00D3D90C /* EditMenuViewController.swift */; };
 		22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */; };
-		22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */; };
 		22E918FA21DE894A004B60D6 /* FinalizeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918F921DE894A004B60D6 /* FinalizeOrderViewController.swift */; };
 		22E918FC21DE897D004B60D6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E918FB21DE897D004B60D6 /* Order.swift */; };
 		22F858C421BB082000C20293 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F858C321BB082000C20293 /* ViewController.swift */; };
 		2A5FD482F110986530353F15 /* Pods_ISD196LunchroomApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F43DE2E23A5F89B8C158DE7 /* Pods_ISD196LunchroomApp.framework */; };
 		95176D1D2252653E009DB6A4 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95176D1B2252653E009DB6A4 /* CoreData.xcdatamodeld */; };
-		952B3D8721EF987300B0C381 /* ALaCarteMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952B3D8621EF987200B0C381 /* ALaCarteMenuTableViewCell.swift */; };
 		958DA4AA21EE497400F36E65 /* ALaCarteMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DA4A921EE497400F36E65 /* ALaCarteMenuViewController.swift */; };
 		A28BB2D02B89CB2C85787003 /* Pods_ISD196LunchroomAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7671651E122AB4F6D2494A1 /* Pods_ISD196LunchroomAppUITests.framework */; };
 		C550F10235C41D608DABDA17 /* Pods_ISD196LunchroomAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F90115164A48B5FCCA4A5DE /* Pods_ISD196LunchroomAppTests.framework */; };
@@ -96,14 +82,13 @@
 		220333302225B65200AF29AC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		220333312225B65300AF29AC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		220333332225B65300AF29AC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		220333332225B65300AF29AC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		220333342225B65300AF29AC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		220333352225B65400AF29AC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "ISD196LunchroomApp/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		2203333C222739ED00AF29AC /* DetailPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopupViewController.swift; sourceTree = "<group>"; };
 		2203334422287D2000AF29AC /* ProfanityFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfanityFilter.swift; sourceTree = "<group>"; };
 		2203334622288C4D00AF29AC /* Profanity.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Profanity.txt; sourceTree = "<group>"; };
 		22033382222D916900AF29AC /* CommentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPopupViewController.swift; sourceTree = "<group>"; };
-		2203338422304CD400AF29AC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		221FAD3821BAE0B8005AE7AE /* ISD196LunchroomApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISD196LunchroomApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221FAD3B21BAE0B8005AE7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		221FAD4021BAE0B8005AE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,44 +104,32 @@
 		221FAD6921BAE1AD005AE7AE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		221FAD6B21BAEDD7005AE7AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2229CA7E228092AF00166F0A /* DatabasePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePopupViewController.swift; sourceTree = "<group>"; };
-		223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewReusableView.swift; sourceTree = "<group>"; };
 		223438DE22205E41005EB3D0 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
-		223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
-		223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionReusableView.swift; sourceTree = "<group>"; };
-		223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		223438E82225A241005EB3D0 /* Open_Sans */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Open_Sans; sourceTree = "<group>"; };
-		22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		22457197223C024000D7B02A /* NewLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLineViewController.swift; sourceTree = "<group>"; };
 		224571992242C5D300D7B02A /* NewSchoolDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSchoolDayViewController.swift; sourceTree = "<group>"; };
 		225BF6F121FB851200ABEBFF /* ItemPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPopupViewController.swift; sourceTree = "<group>"; };
 		226449D82281BEF2004705C0 /* EditALaCarteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditALaCarteViewController.swift; sourceTree = "<group>"; };
-		226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditALaCarteTableViewCell.swift; sourceTree = "<group>"; };
 		226449DC2282242C004705C0 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
-		226449DE228227DC004705C0 /* EditItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemTableViewCell.swift; sourceTree = "<group>"; };
 		226449E0228234A2004705C0 /* EditItemListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemListsViewController.swift; sourceTree = "<group>"; };
+		226449E22289B420004705C0 /* TableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCells.swift; sourceTree = "<group>"; };
+		226449E42289B63A004705C0 /* CollectionReusableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableViews.swift; sourceTree = "<group>"; };
+		226449E62289B712004705C0 /* CollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCells.swift; sourceTree = "<group>"; };
+		226449E82289B7C8004705C0 /* DataClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClasses.swift; sourceTree = "<group>"; };
 		22873A65221483D5002D5F64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		22ACA8BA21C0220100069A70 /* EditDatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDatabaseViewController.swift; sourceTree = "<group>"; };
-		22ACA8BC21C0291800069A70 /* month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = month.swift; sourceTree = "<group>"; };
-		22ACA8BE21C0292700069A70 /* day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day.swift; sourceTree = "<group>"; };
-		22ACA8C021C0293100069A70 /* line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = line.swift; sourceTree = "<group>"; };
 		22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISD196LunchroomApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		22ACA8C321C029EA00069A70 /* bridging header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "bridging header.m"; sourceTree = "<group>"; };
-		22ACA8C921C171BC00069A70 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		22ACA8CA21C171BC00069A70 /* MasterMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMenu.swift; sourceTree = "<group>"; };
 		22ACA8CD21C2CB1B00069A70 /* mainOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainOrderViewController.swift; sourceTree = "<group>"; };
 		22C415C321BED70500114D53 /* StudentMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuViewController.swift; sourceTree = "<group>"; };
 		22C415C521BED71400114D53 /* AdminMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuViewController.swift; sourceTree = "<group>"; };
 		22E490B821FA347B00D3D90C /* SendPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPopupViewController.swift; sourceTree = "<group>"; };
 		22E490BA21FB7B7300D3D90C /* LunchMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchMenuViewController.swift; sourceTree = "<group>"; };
-		22E490BE21FE728100D3D90C /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
-		22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewReusableView.swift; sourceTree = "<group>"; };
-		22E490C222036FF900D3D90C /* OrderCollectionViewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCollectionViewReusableView.swift; sourceTree = "<group>"; };
-		22E490C422037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		22E490CA2204B6A200D3D90C /* OrderDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewController.swift; sourceTree = "<group>"; };
 		22E490CC2204C56300D3D90C /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		22E490CE22147FED00D3D90C /* EditMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuViewController.swift; sourceTree = "<group>"; };
 		22E918F121C7E19B004B60D6 /* ALaCarteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteViewController.swift; sourceTree = "<group>"; };
-		22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteTableViewCell.swift; sourceTree = "<group>"; };
 		22E918F921DE894A004B60D6 /* FinalizeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeOrderViewController.swift; sourceTree = "<group>"; };
 		22E918FB21DE897D004B60D6 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		22F858C321BB082000C20293 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +139,6 @@
 		80F1FAF184299D5AF2887E1B /* Pods-ISD196LunchroomAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomAppTests/Pods-ISD196LunchroomAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		85D711385BD263704F4A9A4F /* Pods-ISD196LunchroomAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomAppUITests/Pods-ISD196LunchroomAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		95176D1C2252653E009DB6A4 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
-		952B3D8621EF987200B0C381 /* ALaCarteMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteMenuTableViewCell.swift; sourceTree = "<group>"; };
 		958DA4A921EE497400F36E65 /* ALaCarteMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALaCarteMenuViewController.swift; sourceTree = "<group>"; };
 		C9BB80375B1E49E5EB74EE16 /* Pods-ISD196LunchroomApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomApp/Pods-ISD196LunchroomApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D0394E73C5C9A01F04F9D074 /* Pods-ISD196LunchroomAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISD196LunchroomAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISD196LunchroomAppUITests/Pods-ISD196LunchroomAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				221FAD3A21BAE0B8005AE7AE /* ISD196LunchroomApp */,
-				220333332225B65300AF29AC /* OpenSans-Bold.ttf */,
 				220333312225B65300AF29AC /* OpenSans-Italic.ttf */,
 				220333302225B65200AF29AC /* OpenSans-Light.ttf */,
 				220333322225B65300AF29AC /* OpenSans-LightItalic.ttf */,
@@ -258,25 +229,11 @@
 				22457197223C024000D7B02A /* NewLineViewController.swift */,
 				22E490CC2204C56300D3D90C /* GraphView.swift */,
 				22E918FB21DE897D004B60D6 /* Order.swift */,
-				22ACA8BC21C0291800069A70 /* month.swift */,
-				22ACA8BE21C0292700069A70 /* day.swift */,
-				22ACA8C021C0293100069A70 /* line.swift */,
-				22ACA8C921C171BC00069A70 /* MenuItem.swift */,
+				226449E82289B7C8004705C0 /* DataClasses.swift */,
 				22ACA8CA21C171BC00069A70 /* MasterMenu.swift */,
-				226449DA2281DDF3004705C0 /* EditALaCarteTableViewCell.swift */,
-				226449DE228227DC004705C0 /* EditItemTableViewCell.swift */,
-				223438E0222065F7005EB3D0 /* AddItemTableViewCell.swift */,
-				22E918F321C7E2E3004B60D6 /* ALaCarteTableViewCell.swift */,
-				952B3D8621EF987200B0C381 /* ALaCarteMenuTableViewCell.swift */,
-				22E490BE21FE728100D3D90C /* MenuCollectionViewCell.swift */,
-				22457195223AD94B00D7B02A /* NewItemCollectionViewCell.swift */,
-				2203338422304CD400AF29AC /* CommentTableViewCell.swift */,
-				223438E422242D2B005EB3D0 /* EditMenuCollectionViewCell.swift */,
-				223438E222242D02005EB3D0 /* EditMenuCollectionReusableView.swift */,
-				22E490C021FE795A00D3D90C /* MenuCollectionViewReusableView.swift */,
-				22E490C222036FF900D3D90C /* OrderCollectionViewReusableView.swift */,
-				22E490C422037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift */,
-				223438DC221F1365005EB3D0 /* OrderDataViewReusableView.swift */,
+				226449E22289B420004705C0 /* TableViewCells.swift */,
+				226449E62289B712004705C0 /* CollectionViewCells.swift */,
+				226449E42289B63A004705C0 /* CollectionReusableViews.swift */,
 				22873A65221483D5002D5F64 /* NetworkManager.swift */,
 				2203334422287D2000AF29AC /* ProfanityFilter.swift */,
 				221FAD3F21BAE0B8005AE7AE /* Main.storyboard */,
@@ -290,6 +247,7 @@
 				22ACA8C221C029E900069A70 /* ISD196LunchroomApp-Bridging-Header.h */,
 				2203334622288C4D00AF29AC /* Profanity.txt */,
 				95176D1B2252653E009DB6A4 /* CoreData.xcdatamodeld */,
+				220333332225B65300AF29AC /* OpenSans-Bold.ttf */,
 			);
 			path = ISD196LunchroomApp;
 			sourceTree = "<group>";
@@ -629,53 +587,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226449E32289B421004705C0 /* TableViewCells.swift in Sources */,
 				958DA4AA21EE497400F36E65 /* ALaCarteMenuViewController.swift in Sources */,
-				223438DD221F1365005EB3D0 /* OrderDataViewReusableView.swift in Sources */,
 				22E490B921FA347B00D3D90C /* SendPopupViewController.swift in Sources */,
 				22ACA8BB21C0220100069A70 /* EditDatabaseViewController.swift in Sources */,
-				952B3D8721EF987300B0C381 /* ALaCarteMenuTableViewCell.swift in Sources */,
 				22C415C421BED70500114D53 /* StudentMenuViewController.swift in Sources */,
 				223438DF22205E41005EB3D0 /* AddItemViewController.swift in Sources */,
 				2203333D222739ED00AF29AC /* DetailPopupViewController.swift in Sources */,
 				22E918FA21DE894A004B60D6 /* FinalizeOrderViewController.swift in Sources */,
 				22033383222D916A00AF29AC /* CommentPopupViewController.swift in Sources */,
-				22E490C322036FFE00D3D90C /* OrderCollectionViewReusableView.swift in Sources */,
 				22E918F221C7E19B004B60D6 /* ALaCarteViewController.swift in Sources */,
 				22E490CB2204B6A200D3D90C /* OrderDataViewController.swift in Sources */,
 				226449E1228234A3004705C0 /* EditItemListsViewController.swift in Sources */,
 				22E490CF22147FED00D3D90C /* EditMenuViewController.swift in Sources */,
 				22E490BB21FB7B7600D3D90C /* LunchMenuViewController.swift in Sources */,
-				22ACA8BD21C0291800069A70 /* month.swift in Sources */,
 				22C415C621BED71400114D53 /* AdminMenuViewController.swift in Sources */,
 				2245719A2242C5D600D7B02A /* NewSchoolDayViewController.swift in Sources */,
-				22E490BF21FE728100D3D90C /* MenuCollectionViewCell.swift in Sources */,
-				223438E1222065F7005EB3D0 /* AddItemTableViewCell.swift in Sources */,
 				95176D1D2252653E009DB6A4 /* CoreData.xcdatamodeld in Sources */,
-				226449DF228227DC004705C0 /* EditItemTableViewCell.swift in Sources */,
-				22ACA8BF21C0292700069A70 /* day.swift in Sources */,
-				22ACA8C121C0293100069A70 /* line.swift in Sources */,
 				22F858C421BB082000C20293 /* ViewController.swift in Sources */,
-				22E490C522037A2C00D3D90C /* FinalizeViewCollectionReusableView.swift in Sources */,
+				226449E52289B63A004705C0 /* CollectionReusableViews.swift in Sources */,
 				226449DD2282242C004705C0 /* EditItemViewController.swift in Sources */,
-				22E918F421C7E2E3004B60D6 /* ALaCarteTableViewCell.swift in Sources */,
 				22ACA8C421C029EA00069A70 /* bridging header.m in Sources */,
 				22E490CD2204C56300D3D90C /* GraphView.swift in Sources */,
 				22E918FC21DE897D004B60D6 /* Order.swift in Sources */,
 				22ACA8CE21C2CB1B00069A70 /* mainOrderViewController.swift in Sources */,
 				2203334522287D2000AF29AC /* ProfanityFilter.swift in Sources */,
-				223438E522242D2B005EB3D0 /* EditMenuCollectionViewCell.swift in Sources */,
-				223438E322242D02005EB3D0 /* EditMenuCollectionReusableView.swift in Sources */,
+				226449E72289B712004705C0 /* CollectionViewCells.swift in Sources */,
 				22457198223C024000D7B02A /* NewLineViewController.swift in Sources */,
 				226449D92281BEF3004705C0 /* EditALaCarteViewController.swift in Sources */,
-				22E490C121FE795A00D3D90C /* MenuCollectionViewReusableView.swift in Sources */,
 				221FAD3C21BAE0B8005AE7AE /* AppDelegate.swift in Sources */,
 				22873A66221483D5002D5F64 /* NetworkManager.swift in Sources */,
 				225BF6F221FB851200ABEBFF /* ItemPopupViewController.swift in Sources */,
-				22457196223AD94B00D7B02A /* NewItemCollectionViewCell.swift in Sources */,
-				2203338522304CD400AF29AC /* CommentTableViewCell.swift in Sources */,
+				226449E92289B7C8004705C0 /* DataClasses.swift in Sources */,
 				2229CA7F228092AF00166F0A /* DatabasePopupViewController.swift in Sources */,
-				226449DB2281DDF3004705C0 /* EditALaCarteTableViewCell.swift in Sources */,
-				22ACA8CB21C171BC00069A70 /* MenuItem.swift in Sources */,
 				22ACA8CC21C171BC00069A70 /* MasterMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

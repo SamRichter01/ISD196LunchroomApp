@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return GIDSignIn.sharedInstance().handle(url,
             sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
     }
+    
     /*
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...
