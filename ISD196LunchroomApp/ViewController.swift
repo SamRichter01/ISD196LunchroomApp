@@ -18,8 +18,6 @@ var shouldSignOut = false //variable which allows user to be automatically signe
 class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     @IBOutlet weak var signInButton: GIDSignInButton!
-    @IBOutlet weak var signOutButton: UIButton!
-    @IBOutlet weak var mainMenuButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
