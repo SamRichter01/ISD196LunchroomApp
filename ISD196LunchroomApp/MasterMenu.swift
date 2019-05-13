@@ -115,6 +115,8 @@ class MasterMenu {
         monthlyMenus.removeAll()
         monthlyMenus = Dictionary<String,Month>()
         
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         let db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
