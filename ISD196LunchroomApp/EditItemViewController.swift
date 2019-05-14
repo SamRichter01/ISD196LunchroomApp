@@ -50,6 +50,7 @@ class EditItemViewController: UIViewController {
                 
                 itemNameTextField.text = aLaCarteItems[editingName]!.name
                 priceTextField.text = aLaCarteItems[editingName]!.price
+                saveItemButton.isEnabled = true
                 
             }
             
@@ -64,6 +65,7 @@ class EditItemViewController: UIViewController {
                 
                 itemNameTextField.text = menuItems[editingName]!.name
                 descriptionTextField.text = menuItems[editingName]!.description
+                saveItemButton.isEnabled = true
                 
             }
         }
