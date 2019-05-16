@@ -75,37 +75,37 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         
         dateLabel.text = "My order for \(monthName) \(day)"
         
-        Order.reloadItemCount()
+        itemCount = (itemsOrdered.count + mealsOrdered.count)
         itemCountLabel.text = "\(itemCount)"
         // Do any additional setup after loading the view.
         
         // Creates a listener to update the item count when a new item is added
-        NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
-            name: Notification.Name("itemOrdered"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.itemOrdered(_:)), name: NSNotification.Name(rawValue: "itemOrdered"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(limitReached),
             name: Notification.Name("itemLimitReached"), object: nil)
     }
 
-    @objc func itemOrdered () {
+    @objc func itemOrdered (_ notification: NSNotification) {
         
-        itemCountLabel.text = "\(itemCount)"
+        if let dict = notification.userInfo as NSDictionary? {
+            if let item = dict["item"] as? String {
         
-        if itemsOrdered.count < 6 {
+                itemCountLabel.text = "\(itemCount)"
+                itemAddedLabel.text = "Added \(item.dropLast()) to order"
+        
+                self.view.layer.removeAllAnimations()
             
-            self.view.layer.removeAllAnimations()
-            
-            UIView.animateKeyframes(withDuration: 2.2, delay: 0.0, options: [], animations: {
+                UIView.animateKeyframes(withDuration: 2.2, delay: 0.0, options: [], animations: {
                 
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
-                    self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height
-                })
+                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
+                    self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height})
                 
-                UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
-                    self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height
-                })
+                    UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
+                    self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height})
                 
-            }, completion: nil)
+                }, completion: nil)
+            }
         }
     }
     

@@ -71,13 +71,4 @@ class Order {
         
         itemCount = 0
     }
-    
-    static func reloadItemCount () {
-        
-        itemCount = 0
-        
-        itemCount = (itemsOrdered.count + mealsOrdered.count)
-        
-        NotificationCenter.default.post(name: Notification.Name("itemOrdered"), object: nil)
-    }
 }

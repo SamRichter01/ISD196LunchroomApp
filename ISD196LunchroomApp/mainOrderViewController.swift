@@ -72,13 +72,16 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         dateLabel.text = "My order for \(monthName) \(day)"
         
-        Order.reloadItemCount()
+        itemCount = (itemsOrdered.count + mealsOrdered.count)
         itemCountLabel.text = "\(itemCount)"
         // Do any additional setup after loading the view.
         
         // Creates a listener to update the item count when a new item is added
-        NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
-                                               name: Notification.Name("itemOrdered"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.lineOrdered(_:)), name: NSNotification.Name(rawValue: "lineOrdered"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(limitReached),
+            name: Notification.Name("mealLimitReached"), object: nil)
         
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
@@ -94,25 +97,53 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    @objc func itemOrdered () {
+    @objc func lineOrdered (_ notification: NSNotification) {
         
-        itemCountLabel.text = "\(itemCount)"
+        if let dict = notification.userInfo as NSDictionary? {
+            if let meal = dict["line"] as? Line {
+                
+                var str = ""
+                for x in 0..<meal.items.count {
+                    
+                    if x < meal.items.count - 1 {
+                        
+                        str.append("\(meal.items[x].dropLast()), ")
+                        
+                    } else {
+                        
+                        str.append("\(meal.items[x].dropLast())")
+                    }
+                }
         
-        if mealsOrdered.count < 3 {
+                itemAddedLabel.text = "Added \(meal.name): \(str) to order"
+                itemCountLabel.text = "\(itemCount)"
+        
+                self.view.layer.removeAllAnimations()
             
-            self.view.layer.removeAllAnimations()
-            
-            UIView.animateKeyframes(withDuration: 2.2, delay: 0.0, options: [], animations: {
+                UIView.animateKeyframes(withDuration: 2.5, delay: 0.0, options: [], animations: {
                 
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
-                    self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height
-                })
+                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
+                        self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height})
                 
-                UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
-                    self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height
-                })
+                    UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
+                            self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height})
                 
-            }, completion: nil)
+                }, completion: nil)
+            }
+        }
+    }
+    
+    @objc func limitReached (_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let str = dict["removedName"] as? String {
+                
+                let alertController = UIAlertController(title: "Meal Limit Reached", message: "Exceeded meal limit of 3, \(str) has been removed from order", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
     

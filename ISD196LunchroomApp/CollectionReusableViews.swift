@@ -47,26 +47,32 @@ class OrderCollectionViewReusableView: UICollectionReusableView {
     
     @IBAction func addToOrderPressed(_ sender: UIButton) {
         
-        NotificationCenter.default.post(name: Notification.Name("itemOrdered"), object: nil)
+        let meal = Line(name: lineLabel.text!, price: priceLabel.text!)
+        meal.items = line.items
+        mealsOrdered.append(meal)
         
-        if mealsOrdered.count >= 3 {
+        if mealsOrdered.count > 3 {
             
             let removedName = mealsOrdered[0].name
+            
+            if let price = Double(mealsOrdered[0].price.dropFirst()) {
+                
+                totalPrice -= price
+            }
+            
             mealsOrdered.remove(at: 0)
             
             NotificationCenter.default.post(name: Notification.Name("mealLimitReached"), object: nil, userInfo: ["removedName": removedName])
         }
+        
+        itemCount = (itemsOrdered.count + mealsOrdered.count)
         
         if let price = Double(line.price.suffix(4)) {
             
             totalPrice += price
         }
         
-        let meal = Line(name: lineLabel.text!, price: priceLabel.text!)
-        meal.items = line.items
-        mealsOrdered.append(meal)
-        
-        Order.reloadItemCount()
+        NotificationCenter.default.post(name: NSNotification.Name("lineOrdered"), object: nil, userInfo: ["line": meal])
     }
 }
 
@@ -75,13 +81,11 @@ class FinalizeViewCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var removeLineButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        backgroundView.isHidden = true
     }
     
     @IBAction func removeLinePressed(_ sender: UIButton) {
@@ -105,11 +109,13 @@ class FinalizeViewCollectionReusableView: UICollectionReusableView {
         }
         
         if let price = Double(priceLabel.text!.suffix(4)) {
+            
             totalPrice -= price
         }
         
+        itemCount = (itemsOrdered.count + mealsOrdered.count)
+        
         NotificationCenter.default.post(name: Notification.Name("itemRemoved"), object: nil)
-        Order.reloadItemCount()
     }
 }
 

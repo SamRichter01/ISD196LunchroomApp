@@ -89,7 +89,7 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func changePrice() {
-        totalPriceLabel.text = "Total: $\(String(format: "%.2f", totalPrice))"
+        totalPriceLabel.text = "Total: $\(String(format: "%.2f", abs(totalPrice)))"
     }
     
     @objc func itemRemoved () {
@@ -140,15 +140,15 @@ class FinalizeOrderViewController: UIViewController, UICollectionViewDelegate, U
             
             if indexPath.section < mealsOrdered.count {
                 
-                header.backgroundView.isHidden = true
                 header.lineLabel.text = mealsOrdered[indexPath.section].name
                 header.priceLabel.text = mealsOrdered[indexPath.section].price
+                header.backgroundView.isHidden = true
                 
             } else {
                 
-                header.backgroundView.isHidden = false
                 header.lineLabel.text = itemsOrdered[indexPath.section - mealsOrdered.count].name
                 header.priceLabel.text = itemsOrdered[indexPath.section - mealsOrdered.count].price
+                header.backgroundView.isHidden = false
             }
             
             return header
