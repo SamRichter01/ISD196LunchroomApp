@@ -108,6 +108,8 @@ class ALaCarteTableViewCell: UITableViewCell {
     
     @IBAction func addItemToOrder(_ sender: UIButton) {
         
+        NotificationCenter.default.post(name: Notification.Name("itemOrdered"), object: nil)
+        
         if itemsOrdered.count >= 6 {
             
             let removedName = itemsOrdered[0].name
@@ -120,7 +122,6 @@ class ALaCarteTableViewCell: UITableViewCell {
         itemsOrdered.append(item)
         let price = Double(item.price.suffix(4))
         totalPrice += price!
-        NotificationCenter.default.post(name: Notification.Name("itemOrdered"), object: nil)
         Order.reloadItemCount()
     }
 }

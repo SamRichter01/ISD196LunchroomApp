@@ -47,6 +47,8 @@ class OrderCollectionViewReusableView: UICollectionReusableView {
     
     @IBAction func addToOrderPressed(_ sender: UIButton) {
         
+        NotificationCenter.default.post(name: Notification.Name("itemOrdered"), object: nil)
+        
         if mealsOrdered.count >= 3 {
             
             let removedName = mealsOrdered[0].name

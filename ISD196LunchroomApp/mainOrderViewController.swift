@@ -98,19 +98,22 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         itemCountLabel.text = "\(itemCount)"
         
-        self.view.layer.removeAllAnimations()
-        
-        UIView.animateKeyframes(withDuration: 2.2, delay: 0.0, options: [], animations: {
+        if mealsOrdered.count < 3 {
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
-                self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height
-            })
+            self.view.layer.removeAllAnimations()
             
-            UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
-                self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height
-            })
-            
-        }, completion: nil)
+            UIView.animateKeyframes(withDuration: 2.2, delay: 0.0, options: [], animations: {
+                
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
+                    self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
+                    self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height
+                })
+                
+            }, completion: nil)
+        }
     }
     
     // Just a switch statement that converts the number of the month to the name
