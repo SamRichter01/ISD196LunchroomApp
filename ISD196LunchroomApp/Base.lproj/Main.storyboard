@@ -1053,6 +1053,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item added to order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDs-lx-reE">
+                                <rect key="frame" x="156" y="0.0" width="456" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="QX7-5k-gQm"/>
@@ -1067,6 +1075,7 @@
                         <outlet property="deleteTextButton" destination="qX0-OM-mPv" id="tbl-yt-RMN"/>
                         <outlet property="emptyViewLabel" destination="1nj-VW-KK8" id="TcY-xQ-G70"/>
                         <outlet property="finalizeOrderButton" destination="FwE-XD-5SQ" id="26O-yc-iUC"/>
+                        <outlet property="itemAddedLabel" destination="rDs-lx-reE" id="ffQ-Qf-qUg"/>
                         <outlet property="itemCountLabel" destination="2bG-JW-P7W" id="Mqz-VB-71x"/>
                         <outlet property="searchBar" destination="OAg-qf-4Ub" id="7I7-Ji-WRJ"/>
                         <outlet property="searchButton" destination="36a-uT-RVt" id="x2Z-4s-Dgy"/>
@@ -1381,6 +1390,14 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item added to order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgw-6u-esI">
+                                        <rect key="frame" x="156" y="0.0" width="456" height="79"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.70196078431372544" green="0.90980392156862744" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -1494,6 +1511,7 @@
                         <outlet property="cancelOrderButton" destination="2d6-RE-NMg" id="pIx-lC-jO8"/>
                         <outlet property="dateLabel" destination="CYC-Qc-tHS" id="kLh-ea-Lxl"/>
                         <outlet property="emptyViewLabel" destination="4Vl-qh-Uhw" id="Osa-wT-xFh"/>
+                        <outlet property="itemAddedLabel" destination="mgw-6u-esI" id="6Pa-z0-ScS"/>
                         <outlet property="itemCountLabel" destination="jwq-1F-Di8" id="plb-Y1-k6n"/>
                         <outlet property="menuCollectionView" destination="cer-xJ-nGV" id="7gB-Ef-FyV"/>
                         <segue destination="L9Z-2l-dYj" kind="show" identifier="finalizeOrder1" id="nvJ-Th-ZPg"/>
@@ -3016,9 +3034,9 @@
         <image name="White Logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IS0-kx-Bth"/>
+        <segue reference="epm-Lw-Qsb"/>
         <segue reference="T4e-iu-B4I"/>
-        <segue reference="yFX-17-F55"/>
+        <segue reference="nvJ-Th-ZPg"/>
         <segue reference="k20-i8-JeH"/>
         <segue reference="ssW-Ed-HdV"/>
     </inferredMetricsTieBreakers>

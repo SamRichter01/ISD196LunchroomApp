@@ -15,6 +15,7 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var cancelOrderButton: UIButton!
     @IBOutlet weak var itemCountLabel: UILabel!
     @IBOutlet weak var emptyViewLabel: UILabel!
+    @IBOutlet weak var itemAddedLabel: UILabel!
     
     // The default month and day
     var monthName = "September"
@@ -25,12 +26,12 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         emptyViewLabel.isHidden = true
         
         menuCollectionView.delegate = self
         menuCollectionView.dataSource = self
-    
+        
         let date = Date()
         let calendar = Calendar.current
         
@@ -39,6 +40,15 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         let month = calendar.component(.month, from: date)
         let hour = calendar.component(.hour, from: date)
         monthName = monthToString(month: month)
+        
+        let bounds: CGRect = itemAddedLabel.bounds
+        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 10, height: 10))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = maskPath.cgPath
+        itemAddedLabel.layer.mask = maskLayer
+        
+        itemAddedLabel.center.y -= itemAddedLabel.bounds.height
         
         // If the current date is not a valid school day, this while loop will increment the school day until it finds the next one. If it's december, it sets the month to january. I don't know what would happen if you set the date to after school ended but it might just run forever so that needs to be fixed.
         
@@ -68,10 +78,8 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         // Creates a listener to update the item count when a new item is added
         NotificationCenter.default.addObserver(self, selector: #selector(itemOrdered),
-            name: Notification.Name("itemOrdered"), object: nil)
+                                               name: Notification.Name("itemOrdered"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.limitReached(_:)), name: NSNotification.Name(rawValue: "mealLimitReached"), object: nil)
-
         // Sets the lineKeys array to contain all the keys for the lines in the dictionary
         todaysLines = [Line]()
         let tempLineKeys = Array(monthlyMenus[self.monthName]!.days[self.day]!.lines.keys)
@@ -89,6 +97,20 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
     @objc func itemOrdered () {
         
         itemCountLabel.text = "\(itemCount)"
+        
+        self.view.layer.removeAllAnimations()
+        
+        UIView.animateKeyframes(withDuration: 2.2, delay: 0.0, options: [], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
+                self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
+                self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height
+            })
+            
+        }, completion: nil)
     }
     
     // Just a switch statement that converts the number of the month to the name
@@ -123,7 +145,7 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         
         return monthName
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -140,25 +162,11 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
             alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
                 Order.deleteOrder()
                 self.dismiss(animated: true, completion: nil)}))
-        
+            
             self.present(alertController, animated: true, completion: nil)
-        
+            
         } else {
             self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    @objc func limitReached (_ notification: NSNotification) {
-        
-        if let dict = notification.userInfo as NSDictionary? {
-            if let str = dict["removedName"] as? String {
-                
-                let alertController = UIAlertController(title: "Meal Limit Reached", message: "Exceeded meal limit of 3, \(str) has been removed from order to make room", preferredStyle: UIAlertControllerStyle.alert)
-                
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
         }
     }
     
@@ -183,7 +191,7 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-
+        
         if  todaysLines.count < 1 {
             
             emptyViewLabel.isHidden = false
@@ -251,12 +259,14 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
+
+

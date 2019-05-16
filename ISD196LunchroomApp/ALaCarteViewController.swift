@@ -19,6 +19,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var itemCountLabel: UILabel!
     @IBOutlet weak var emptyViewLabel: UILabel!
     @IBOutlet weak var deleteTextButton: UIButton!
+    @IBOutlet weak var itemAddedLabel: UILabel!
     
     var monthName = "September"
     var day = 1
@@ -43,6 +44,15 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         let month = calendar.component(.month, from: date)
         let hour = calendar.component(.hour, from: date)
         monthName = monthToString(month: month)
+        
+        let bounds: CGRect = itemAddedLabel.bounds
+        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 10, height: 10))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = maskPath.cgPath
+        itemAddedLabel.layer.mask = maskLayer
+        
+        itemAddedLabel.center.y -= itemAddedLabel.bounds.height
         
         // If the current date is not a valid school day, this while loop will increment the school day until it finds the next one. If it's december, it sets the month to january. I don't know what would happen if you set the date to after school ended but it might just run forever so that needs to be fixed.
         
@@ -80,6 +90,20 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
     @objc func itemOrdered () {
         
         itemCountLabel.text = "\(itemCount)"
+        
+        self.view.layer.removeAllAnimations()
+        
+        UIView.animateKeyframes(withDuration: 2.2, delay: 0.0, options: [], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1/2.2, animations: {
+                self.itemAddedLabel.center.y += self.itemAddedLabel.bounds.height
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 2.1/2.2, relativeDuration: 0.1/2.2, animations: {
+                self.itemAddedLabel.center.y -= self.itemAddedLabel.bounds.height
+            })
+            
+        }, completion: nil)
     }
     
     func monthToString (month: Int) -> String {
