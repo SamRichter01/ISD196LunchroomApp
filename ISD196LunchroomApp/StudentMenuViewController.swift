@@ -72,12 +72,11 @@ class StudentMenuViewController: UIViewController {
                 
                 print("Last Order: \(pastDay) \(pastHour)")
                 print("Current Order: \(day) \(hour)")
-                print(getLast())
-                print(getNext())
+                print("getlast: \(getLast())")
+                print("getnext: \(getNext())")
                 
-                if ((pastDay == getLast() && pastHour > 10) || (pastDay > getLast()))
-                    && ((day == getNext() && hour < 11) || (day < getNext())) {
-                    
+                if ((pastDay == getLast() && pastHour > 10) || (pastDay > getLast())) && ((day == getNext() && hour < 11) || (day < getNext())) {
+                
                     itemsOrdered.removeAll()
                     mealsOrdered.removeAll()
                     previousMeals.removeAll()
@@ -148,22 +147,32 @@ class StudentMenuViewController: UIViewController {
         var day = 1
         
         // Gets the currennt date and calls monthToString to convert the integer month to an actual word
-        day = calendar.component(.day, from: date) - 1
+        day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
+        let hour = calendar.component(.hour, from: date)
         monthName = monthToString(month: month)
-        print(monthName)
-        print(day)
+        
+        if hour < 11 {
+            
+            day -= 1
+        }
+        
         while (monthlyMenus[monthName]!.days[day] == nil) {
-            print(monthName)
-            print(day)
+            
             if (day <= 0) {
+                
                 if (month == 1) {
+                    
                     monthName = monthToString(month: 12)
+                    
                 } else {
+                    
                     monthName = monthToString(month: month - 1)
                 }
+                
                 day = calendar.range(of: .day, in: .month, for: date)!.count
             }
+            
             day -= 1
         }
         
@@ -180,8 +189,14 @@ class StudentMenuViewController: UIViewController {
         
         // Gets the currennt date and calls monthToString to convert the integer month to an actual word
         day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
         let month = calendar.component(.month, from: date)
         monthName = monthToString(month: month)
+        
+        if hour >= 11 {
+            
+            day += 1
+        }
         
         while (monthlyMenus[monthName]!.days[day] == nil) {
             if (day >= calendar.range(of: .day, in: .month, for: date)!.count) {
