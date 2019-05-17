@@ -138,7 +138,7 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         if let dict = notification.userInfo as NSDictionary? {
             if let str = dict["removedName"] as? String {
                 
-                let alertController = UIAlertController(title: "Meal Limit Reached", message: "Exceeded meal limit of 3, \(str) has been removed from order", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Meal Limit Reached", message: "Exceeded meal limit of 3, removed \(str) from your order to make room", preferredStyle: UIAlertControllerStyle.alert)
                 
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
                 

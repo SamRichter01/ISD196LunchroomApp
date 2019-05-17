@@ -183,7 +183,7 @@ class ALaCarteViewController: UIViewController, UITableViewDataSource, UITableVi
         if let dict = notification.userInfo as NSDictionary? {
             if let str = dict["removedName"] as? String {
                 
-                let alertController = UIAlertController(title: "Item Limit Reached", message: "Exceeded item limit of 6, \(str) has been removed from order", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Item Limit Reached", message: "Exceeded item limit of 6, removed \(str) from your order to make room", preferredStyle: UIAlertControllerStyle.alert)
                 
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
                 

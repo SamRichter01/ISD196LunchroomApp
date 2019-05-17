@@ -112,7 +112,6 @@ class ALaCarteTableViewCell: UITableViewCell {
         itemsOrdered.append(item)
         let price = Double(item.price.dropFirst())
         totalPrice += price!
-        itemCount = (itemsOrdered.count + mealsOrdered.count)
         
         if itemsOrdered.count > 6 {
             
@@ -127,6 +126,8 @@ class ALaCarteTableViewCell: UITableViewCell {
             
             NotificationCenter.default.post(name: Notification.Name("itemLimitReached"), object: nil, userInfo: ["removedName": removedName])
         }
+        
+        itemCount = (itemsOrdered.count + mealsOrdered.count)
         
         NotificationCenter.default.post(name: NSNotification.Name("itemOrdered"), object: nil, userInfo: ["item": item.name])
     }
