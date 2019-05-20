@@ -36,6 +36,14 @@ class EditALaCarteViewController: UIViewController, UITableViewDelegate, UITable
         
          NotificationCenter.default.addObserver(self, selector: #selector(self.removeItem(_:)), name: NSNotification.Name(rawValue: "removeItemPressed"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadView),
+            name: Notification.Name("reloadView"), object: nil)
+        
+    }
+    
+    @objc func reloadView() {
+        
+        aLaCarteMenuTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

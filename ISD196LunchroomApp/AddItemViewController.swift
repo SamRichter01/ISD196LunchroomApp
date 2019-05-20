@@ -158,56 +158,45 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
+        
+        NotificationCenter.default.post(name: Notification.Name("reloadView"), object: nil)
+        
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func checkForName(_ sender: UITextField) {
+    @IBAction func checkValues(_ sender: Any) {
         
-        if let _ = itemNameTextField.text {
+        if let name = itemNameTextField.text {
             
-            if editingLine == "aLaCarte" {
+            if name.count > 0 {
                 
-                if let _ = itemPriceTextField.text {
+                if editingLine == "aLaCarte" {
+                    
+                    if let price = itemPriceTextField.text {
+                        
+                        if price.count > 0 {
+                            
+                            saveAndUploadButton.isEnabled = true
+                            
+                            return
+                            
+                        }
+                    }
+                    
+                } else {
                     
                     saveAndUploadButton.isEnabled = true
+                    
+                    return
                 }
-                
-            } else {
-                
-                saveAndUploadButton.isEnabled = true
             }
-        } else {
-            
-            saveAndUploadButton.isEnabled = false
         }
-    }
-    
-    @IBAction func checkForPrice(_ sender: UITextField) {
         
-        if let _ = itemNameTextField.text {
-                
-            if let _ = itemPriceTextField.text {
-                    
-                saveAndUploadButton.isEnabled = true
-                    
-            } else {
-                    
-                saveAndUploadButton.isEnabled = false
-            }
-                
-        } else {
-                
-            saveAndUploadButton.isEnabled = false
-        }
+        saveAndUploadButton.isEnabled = false
     }
-        
     
     @IBAction func searchBarEdited(_ sender: UITextField) {
         aLaCarteMenuTableView.reloadData()
-    }
-    
-    @IBAction func searchButtonPressed(_ sender: UIButton) {
-        searchBar.resignFirstResponder()
     }
     
     @IBAction func returnButtonPressed(_ sender: UITextField) {
@@ -278,28 +267,33 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func priceStepperPressed(_ sender: UIStepper) {
         
-        var str = itemPriceTextField.text!
-        
-        if str.contains("$") {
+        if itemPriceTextField.isEnabled {
             
-            str.removeFirst()
+            var str = itemPriceTextField.text!
+        
+            if str.contains("$") {
+            
+                str.removeFirst()
+            }
+        
+            if let dub = Double(str) {
+            
+                priceStepper.maximumValue = (10.0 - dub)
+                priceStepper.minimumValue = (0.25 - dub)
+            
+                let newPrice = dub + priceStepper.value
+            
+                itemPriceTextField.text = "$\(String(format: "%.2f", newPrice))"
+            
+            } else {
+            
+                itemPriceTextField.text = "$0.25"
+            }
+        
+            priceStepper.value = 0
+            
+            checkValues(self)
         }
-        
-        if let dub = Double(str) {
-            
-            priceStepper.maximumValue = (10.0 - dub)
-            priceStepper.minimumValue = (0.25 - dub)
-            
-            let newPrice = dub + priceStepper.value
-            
-            itemPriceTextField.text = "$\(String(format: "%.2f", newPrice))"
-            
-        } else {
-            
-            itemPriceTextField.text = "$0.25"
-        }
-        
-        priceStepper.value = 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -340,8 +334,11 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if searchBar.text != "" {
+            
             deleteTextButton.isHidden = false
+            
         } else {
+            
             deleteTextButton.isHidden = true
         }
         

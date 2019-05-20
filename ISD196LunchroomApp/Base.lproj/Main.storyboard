@@ -2036,7 +2036,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="checkForName:" destination="jLu-3Q-5ec" eventType="editingDidEnd" id="dqG-CS-DaN"/>
+                                                        <action selector="checkValues:" destination="jLu-3Q-5ec" eventType="editingDidEnd" id="pvh-XE-U6s"/>
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aIL-BJ-8dp">
@@ -2081,7 +2081,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="checkForPrice:" destination="jLu-3Q-5ec" eventType="editingDidEnd" id="un9-DU-Fdq"/>
+                                                        <action selector="checkValues:" destination="jLu-3Q-5ec" eventType="editingChanged" id="V7t-Y5-zSV"/>
                                                     </connections>
                                                 </textField>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" stepValue="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="spt-GT-2dW">
