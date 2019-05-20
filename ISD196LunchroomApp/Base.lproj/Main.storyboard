@@ -1065,9 +1065,7 @@
                         <color key="backgroundColor" red="0.70196078429999997" green="0.90980392160000001" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="QX7-5k-gQm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="A La Carte" image="A La Carte" id="VLl-Di-luT">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="4"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="A La Carte" image="Light A La Carte" id="VLl-Di-luT"/>
                     <connections>
                         <outlet property="aLaCarteTableView" destination="F0c-5q-idN" id="VQb-zc-Opg"/>
                         <outlet property="cancelOrderButton" destination="txV-tQ-XmI" id="0hV-Nr-kKI"/>
@@ -1502,9 +1500,7 @@
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="2yx-bp-Lf6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main menu" image="View Menu" id="kne-Jc-TJT">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="4"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Main menu" image="Light Menu" id="kne-Jc-TJT"/>
                     <connections>
                         <outlet property="cancelOrderButton" destination="2d6-RE-NMg" id="pIx-lC-jO8"/>
                         <outlet property="dateLabel" destination="CYC-Qc-tHS" id="kLh-ea-Lxl"/>
@@ -3022,7 +3018,9 @@
         <image name="Disabled Comment" width="32" height="32"/>
         <image name="Edit Menu" width="64" height="64"/>
         <image name="Finalize Order" width="32" height="32"/>
+        <image name="Light A La Carte" width="32" height="32"/>
         <image name="Light Back Arrow" width="32" height="32"/>
+        <image name="Light Menu" width="32" height="32"/>
         <image name="Order" width="64" height="64"/>
         <image name="Order Data" width="64" height="64"/>
         <image name="Remove" width="32" height="32"/>
@@ -3032,10 +3030,10 @@
         <image name="White Logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IS0-kx-Bth"/>
+        <segue reference="epm-Lw-Qsb"/>
         <segue reference="T4e-iu-B4I"/>
-        <segue reference="yFX-17-F55"/>
+        <segue reference="nvJ-Th-ZPg"/>
         <segue reference="k20-i8-JeH"/>
-        <segue reference="ssW-Ed-HdV"/>
+        <segue reference="CE3-uR-hbH"/>
     </inferredMetricsTieBreakers>
 </document>

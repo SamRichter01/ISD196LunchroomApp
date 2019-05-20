@@ -263,37 +263,39 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         if let dict = notification.userInfo as NSDictionary? {
             if let itemName = dict["itemName"] as? String {
+                if let lineName = dict["lineName"] as? String {
                 
-                let alertController = UIAlertController(title: "Delete Menu Item", message: "Are you sure you want to remove \(itemName) from the menu?", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertController = UIAlertController(title: "Delete Menu Item", message: "Are you sure you want to remove \(itemName) from the menu?", preferredStyle: UIAlertControllerStyle.alert)
                 
-                alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+                    alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
                 
-                alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-                    self.removeLine(lineName: itemName)}))
+                    alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                    self.removeItem(lineName: lineName, itemName: itemName)}))
                 
-                self.present(alertController, animated: true, completion: nil)
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
         }
-        
-        reloadLines()
-        menuCollectionView.reloadData()
     }
     
-    func removeItem (itemName: String) {
+    func removeItem (lineName: String, itemName: String) {
         
         let items = monthlyMenus[monthName]!.days[Int(day)]!
-            .lines[line]!.items
+            .lines[lineName]!.items
         
         for x in 0..<items.count {
             
             if items[x] == itemName {
                 
                 monthlyMenus[monthName]!.days[Int(day)]!
-                    .lines[line]!.items.remove(at: x)
-                
+                    .lines[lineName]!.items.remove(at: x)
+            
                 break
             }
         }
+        
+        reloadLines()
+        menuCollectionView.reloadData()
         
         let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
         
@@ -306,7 +308,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 return nil
             }
             
-            guard let oldItems = dbDocument.data()?[self.line] as? [String] else {
+            guard let oldItems = dbDocument.data()?[lineName] as? [String] else {
                 let error = NSError(
                     domain: "AppErrorDomain",
                     code: -1,
@@ -330,7 +332,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 }
             }
             
-            transaction.updateData([self.line: newItems], forDocument: docReference)
+            transaction.updateData([lineName: newItems], forDocument: docReference)
             return nil
         }) { (object, error) in
             if let error = error {
@@ -356,9 +358,6 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
-        reloadLines()
-        menuCollectionView.reloadData()
     }
     
     func removeLine (lineName: String) {
@@ -370,6 +369,9 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         monthlyMenus[monthName]!.days[Int(day)]!
             .lines.removeValue(forKey: lineName)
+        
+        reloadLines()
+        menuCollectionView.reloadData()
         
         let docReference = db.collection("menus").document(monthName).collection("days").document(String(day))
         
@@ -437,6 +439,7 @@ class EditMenuViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
         
             cell.itemLabel.text = todaysLines[indexPath.section].items[indexPath.row]
+            cell.lineName = todaysLines[indexPath.section].name
             
             return cell
         }

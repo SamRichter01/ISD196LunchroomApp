@@ -33,13 +33,15 @@ class EditMenuCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var removeItemPressed: UIButton!
     @IBOutlet weak var itemLabel: UILabel!
     
+    var lineName = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     @IBAction func removeItemPressed(_ sender: UIButton) {
         
-        NotificationCenter.default.post(name: NSNotification.Name("removeItemPressed"), object: nil, userInfo: ["itemName": itemLabel.text!])
+        NotificationCenter.default.post(name: NSNotification.Name("removeItemPressed"), object: nil, userInfo: ["lineName": lineName, "itemName": itemLabel.text!])
     }
 }
 
