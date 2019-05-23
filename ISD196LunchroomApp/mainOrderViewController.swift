@@ -97,6 +97,11 @@ class mainOrderViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        itemCountLabel.text = "\(itemCount)"
+    }
+    
     @objc func lineOrdered (_ notification: NSNotification) {
         
         if let dict = notification.userInfo as NSDictionary? {
