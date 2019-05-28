@@ -15,6 +15,7 @@ class NewSchoolDayViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var itemView: UIView!
     @IBOutlet weak var datePicker: UIPickerView!
     @IBOutlet weak var saveDayButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
     
     lazy var db = Firestore.firestore()
     

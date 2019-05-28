@@ -16,6 +16,7 @@ class NewLineViewController: UIViewController {
     @IBOutlet weak var lineNameTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var saveLineButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
     
     lazy var db = Firestore.firestore()
     

@@ -14,6 +14,7 @@ class DetailPopupViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var itemView: UIView!
     @IBOutlet weak var itemDescriptionLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

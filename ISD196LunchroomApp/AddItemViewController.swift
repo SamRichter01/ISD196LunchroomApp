@@ -36,6 +36,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var itemPriceTextField: UITextField!
     @IBOutlet weak var saveAndUploadButton: UIButton!
     @IBOutlet weak var priceStepper: UIStepper!
+    @IBOutlet weak var headerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

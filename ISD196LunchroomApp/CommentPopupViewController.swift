@@ -25,6 +25,7 @@ class CommentPopupViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var itemView: UIView!
     @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var headerView: UIView!
     
     var comments = [feedback]()
     var line = ""

@@ -19,6 +19,7 @@ class EditItemViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var priceStepper: UIStepper!
+    @IBOutlet weak var headerView: UIView!
     
     lazy var db = Firestore.firestore()
     

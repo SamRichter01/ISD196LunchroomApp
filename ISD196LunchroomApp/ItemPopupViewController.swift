@@ -19,6 +19,7 @@ class ItemPopupViewController: UIViewController {
     @IBOutlet weak var ratingSlider: UISlider!
     @IBOutlet weak var nameSwitch: UISwitch!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var headerView: UIView!
     
     lazy var db = Firestore.firestore()
     
